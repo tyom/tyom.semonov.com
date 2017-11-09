@@ -1,0 +1,24 @@
+{
+  "engines": {
+    "node": "9.2.0"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "nuxt",
+    "build-pdf": "node ./scripts/build-pdf",
+    "build": "nuxt generate && yarn build-pdf && cp static/*.pdf dist/",
+    "deploy": "gh-pages -d dist --dotfiles"
+  },
+  "dependencies": {
+    "@nuxtjs/google-analytics": "2.0.2",
+    "nuxt": "1.0.0-rc11",
+    "simple-icons": "1.2.10",
+    "vue-markdown": "2.2.4",
+    "vue-svg-loader": "0.4.0",
+    "yaml-loader": "0.5.0"
+  },
+  "devDependencies": {
+    "gh-pages": "1.1.0",
+    "puppeteer": "0.13.0"
+  }
+}

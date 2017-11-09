@@ -1,0 +1,174 @@
+-
+  name: Fractal
+  url: https://fractal.build/
+-
+  name: React
+  url: https://reactjs.org
+-
+  name: Redux
+  url: https://redux.js.org
+-
+  name: Vue.js
+  url: https://vuejs.org
+-
+  name: Nunjucks
+  url: https://mozilla.github.io/nunjucks/
+-
+  name: Express
+  url: https://expressjs.com
+-
+  name: Node.js
+  url: https://nodejs.org/
+-
+  name: Jest
+  url: https://facebook.github.io/jest/
+-
+  name: Webpack
+  url: https://webpack.js.org
+-
+  name: CSS Modules
+  url: https://css-tricks.com/css-modules-part-1-need/
+-
+  name: BrowserStack
+  url: https://www.browserstack.com/
+-
+  name: WebDriver
+  url: http://webdriver.io/
+-
+  name: PhantomJS
+  url: http://phantomjs.org/
+-
+  name: Nightwatch.js
+  url: http://nightwatchjs.org
+-
+  name: Mocha
+  url: https://mochajs.org
+-
+  name: Karma
+  url: https://karma-runner.github.io/1.0/index.html
+-
+  name: Jasmine
+  url: https://jasmine.github.io/
+-
+  name: Spock
+  url: http://spockframework.org/
+-
+  name: Gulp
+  url: https://gulpjs.com/
+-
+  name: Grunt
+  url: https://gruntjs.com/
+-
+  name: Galen Framework
+  url: http://galenframework.com/
+-
+  name: skin-deep
+  url: https://github.com/glenjamin/skin-deep
+-
+  name: Middleman
+  url: https://middlemanapp.com/
+-
+  name: Rails
+  url: http://rubyonrails.org/
+-
+  name: Flask
+  url: http://flask.pocoo.org/
+-
+  name: Jinja
+  url: http://jinja.pocoo.org/
+-
+  name: Twig
+  url: https://twig.symfony.com/
+-
+  name: Django
+  url: https://www.djangoproject.com/
+-
+  name: AngularJS
+  url: https://angularjs.org/
+-
+  name: Graphviz
+  url: http://www.graphviz.org/
+-
+  name: Buster.js
+  url: http://docs.busterjs.org/en/latest/
+-
+  name: D3.js
+  url: https://d3js.org/
+-
+  name: AngularJS
+  url: https://angularjs.org/
+-
+  name: Dojo Toolkit
+  url: https://dojotoolkit.org/
+-
+  name: AMD
+  url: https://dojotoolkit.org/documentation/tutorials/1.10/modules/
+-
+  name: Perforce
+  url: https://en.wikipedia.org/wiki/Perforce_Helix
+-
+  name: jQuery
+  url: https://jquery.com/
+-
+  name: Vagrant
+  url: https://www.vagrantup.com/
+-
+  name: Puppet
+  url: https://puppet.com/products/how-puppet-works
+-
+  name: Backbone.js
+  url: http://backbonejs.org/
+-
+  name: Jenkins
+  url: https://jenkins.io/
+-
+  name: Template Toolkit
+  url: http://www.template-toolkit.org/
+-
+  name: MediaWiki
+  url: https://www.mediawiki.org/wiki/MediaWiki
+-
+  name: Sketch
+  url: https://www.sketchapp.com/
+-
+  name: Less
+  url: https://en.wikipedia.org/wiki/Less_(stylesheet_language)
+-
+  name: Git
+  url: https://en.wikipedia.org/wiki/Git
+-
+  name: GitHub
+  url: https://en.wikipedia.org/wiki/GitHub
+-
+  name: Sass
+  url: https://en.wikipedia.org/wiki/Sass_(stylesheet_language)
+-
+  name: HTML
+  url: https://en.wikipedia.org/wiki/HTML
+-
+  name: CSS
+  url: https://en.wikipedia.org/wiki/Cascading_Style_Sheets
+-
+  name: MongoDB
+  url: https://en.wikipedia.org/wiki/MongoDB
+-
+  name: JavaScript
+  url: https://en.wikipedia.org/wiki/JavaScript
+-
+  name: CoffeeScript
+  url: https://en.wikipedia.org/wiki/CoffeeScript
+-
+  name: Python
+  url: https://en.wikipedia.org/wiki/Python_(programming_language)
+-
+  name: PHP
+  url: https://en.wikipedia.org/wiki/PHP
+-
+  name: Photoshop
+  url: https://en.wikipedia.org/wiki/Adobe_Photoshop
+-
+  name: Illustrator
+  url: https://en.wikipedia.org/wiki/Adobe_Illustrator
+-
+  name: OmniGraffle
+  url: https://en.wikipedia.org/wiki/OmniGraffle

@@ -1,0 +1,36 @@
+name: Tyom Semonov
+title: Frontend Developer
+
+contact:
+  web: tyom.semonov.com
+  email: tyom@semonov.com
+
+online:
+  github: https://github.com/tyom
+  linkedin: https://linkedin.com/in/tyoms
+  twitter: https://twitter.com/tyom
+
+summary: |
+  Passionate developer with over 13 years of professional experience in building high-traffic complex websites
+  and applications using web standards and best practices for desktops and mobile devices.
+
+  Great attention to detail, code maintainability and performance. Keen learner in multiple disciplines.
+  Advocate of data-driven, user-centred, accessible, mobile-first design.
+
+coreSkills:
+  - JavaScript
+  - Node.js
+  - Webpack
+  - Express
+  - React
+  - CSS/PostCSS/Sass
+  - HTML5
+  - Git/GitHub
+  - Accessibility
+  - Photoshop, Illustrator, Sketch
+
+currentFocus:
+  - Functional Programming
+  - Node.js
+  - React/Redux
+  - Vue.js
