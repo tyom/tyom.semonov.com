@@ -38,6 +38,7 @@ const config = {
     },
   },
   plugins: ['~/plugins/vue-markdown'],
+  modules: [],
 }
 
 if (process.env.GA_TRACKING_ID) {
