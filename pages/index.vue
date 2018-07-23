@@ -30,6 +30,9 @@
   import Intro from '../components/Intro'
   import ExperienceItem from '../components/ExperienceItem'
 
+  const description = about.summary.split('\n\n')[0].replace('\n', '');
+  const url = `https://${about.contact.web}`;
+
   export default {
     asyncData () {
       return {
@@ -37,6 +40,35 @@
         experience,
         education,
       }
+    },
+    head: {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: description,
+        },
+        {
+          hid: `og:title`,
+          property: 'og:title',
+          content: `${about.name} (${about.title})`,
+        },
+        {
+          hid: `og:url`,
+          property: 'og:url',
+          content: url,
+        },
+        {
+          hid: `og:image`,
+          property: 'og:image',
+          content: `${url}/logo.png`,
+        },
+        {
+          hid: `og:description`,
+          property: 'og:description',
+          content: description,
+        },
+      ]
     },
     components: {
       Intro,
