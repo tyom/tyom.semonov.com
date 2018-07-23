@@ -2,8 +2,7 @@
   <div class="list" v-if="items">
     <h4>{{ title }}</h4>
     <ul :class="{ inline: isInline }">
-      <li v-for="item in items" v-html="linkTechnology(item)">
-      </li>
+      <li v-for="item in items" v-html="linkTechnology(item)"/>
     </ul>
   </div>
 </template>

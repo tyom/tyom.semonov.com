@@ -5,11 +5,17 @@
   name: React
   url: https://reactjs.org
 -
+  name: GraphQL
+  url: https://graphql.org
+-
   name: Redux
   url: https://redux.js.org
 -
   name: Vue.js
   url: https://vuejs.org
+-
+  name: Nuxt.js
+  url: https://nuxtjs.org
 -
   name: Nunjucks
   url: https://mozilla.github.io/nunjucks/
@@ -172,3 +178,12 @@
 -
   name: OmniGraffle
   url: https://en.wikipedia.org/wiki/OmniGraffle
+-
+  name: Shopify
+  url: https://www.shopify.com
+-
+  name: Kubernetes
+  url: http://kubernetes.io
+-
+  name: AWS
+  url: http://aws.amazon.com

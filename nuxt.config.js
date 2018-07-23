@@ -13,7 +13,6 @@ const config = {
     '~/assets/main.css',
   ],
   build: {
-    vendor: ['vue-markdown'],
     extend (config) {
       const urlLoader = config.module.rules.find((rule) => rule.loader === 'url-loader')
       urlLoader.exclude = /(assets\/svg|node_modules\/simple-icons)/
@@ -39,7 +38,6 @@ const config = {
     },
   },
   plugins: ['~/plugins/vue-markdown'],
-  modules: [],
 }
 
 if (process.env.GA_TRACKING_ID) {

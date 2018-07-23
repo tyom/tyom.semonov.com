@@ -1,4 +1,47 @@
 -
+  name: Simba Sleep
+  role: Senior Frontend Developer
+  isContractor: true
+  start:
+    month: March
+    year: 2018
+  end:
+    year: Current
+  description:
+    Working in a digital product team, building a new shopping experience for the client.
+  technologies:
+    - Shopify
+    - JavaScript:
+      - Vue.js
+      - Nuxt.js
+      - Jest
+      - Webpack
+    - CSS
+    - Git
+    - AWS
+    - Kubernetes
+-
+  name: Tesco
+  role: Senior Developer
+  isContractor: true
+  start:
+    month: January
+    year: 2018
+  end:
+    month: March
+    year: 2018
+  description:
+    Working in One Account team, responsible for feature development and maintenance of account management on tesco.com.
+  technologies:
+    - JavaScript:
+      - React
+      - Redux
+      - GraphQL
+      - Jest
+      - Webpack
+    - Sass
+    - Git
+-
   name: BCG Digital Ventures
   role: Senior Frontend Engineer
   isContractor: true

@@ -16,7 +16,7 @@
     </header>
     <markdown
       class="description"
-      :class="{ 'u-print-hidden': shouldPrint }"
+      :class="{ 'u-print-hidden': shouldHideFromPrint }"
       :source="description"
       :breaks="false"
     />
@@ -49,7 +49,7 @@
       List,
     },
     computed: {
-      shouldPrint () {
+      shouldHideFromPrint () {
         const currentYear = parseInt(this.start.year, 10)
         const threeYearsAgo = new Date().getFullYear() - 3
         return this.type === 'work' && currentYear < threeYearsAgo
