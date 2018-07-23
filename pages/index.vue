@@ -31,7 +31,7 @@
   import ExperienceItem from '../components/ExperienceItem'
 
   export default {
-    data () {
+    asyncData () {
       return {
         about,
         experience,
