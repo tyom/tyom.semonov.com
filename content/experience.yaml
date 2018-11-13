@@ -8,8 +8,9 @@
   end:
     month: December
     year: 2018
-  description:
+  description: |
     Worked on building a new shopping experience for multiple stores and languages.
+
     Additionally, supported the existing site and developers with critical
     performance improvements, especially for mobile devices. Helped junior
     developers with pairing and knowledge sharing sessions.
@@ -34,7 +35,7 @@
   end:
     month: March
     year: 2018
-  description:
+  description: |
     Working in One Account team, responsible for feature development and maintenance of account management on tesco.com.
   technologies:
     - JavaScript:
@@ -55,7 +56,7 @@
   end:
     month: November
     year: 2017
-  description:
+  description: |
     Working in a team responsible for building interactive dashboard with collaboration tools for a large
     cement producer. The project was eventually taken over by the client to be built in-house.
   technologies:
@@ -76,9 +77,8 @@
   end:
     month: October
     year: 2017
-  description:
+  description: |
     Working in a medium-sized team developing a complex CRM application in Node.js with Python backend.
-
 
     The application was built to support a wide range of browsers (including legacy). The constraints led to
     interesting innovations to fulfil the user and business needs. Vastly improved development tools and processes.
@@ -103,7 +103,7 @@
   end:
     month: April
     year: 2017
-  description:
+  description: |
     Working in a team on transformation of the NHS.UK. Created and maintained common components library which documents
     and shows usage of various components that make various NHS.UK online services, such as beta.nhs.uk.
   technologies:
@@ -274,7 +274,7 @@
   end:
     month: May
     year: 2012
-  description:
+  description: |
     Responsible for initial development of internal Quiz Editor rich application, intended to replace legacy
     application that was managing all of company’s quizzes.
   technologies:
@@ -294,7 +294,7 @@
   end:
     month: December
     year: 2011
-  description:
+  description: |
     Joined the team of one back-end developer, and two founders. Assumed responsibilities of designer and full-stack
     developer. Built initial prototypes and led the research and design of the product (Information Architecture,
     sketches and wireframes, prototypes, visual design, and full front-end implementation). The site rapidly grew to
@@ -322,7 +322,7 @@
   end:
     month: February
     year: 2010
-  description:
+  description: |
     Worked in small team of designers and developers on redesign of discoverireland.ie.
   technologies:
     - JavaScript:
@@ -339,7 +339,7 @@
   end:
     month: November
     year: 2009
-  description:
+  description: |
     Worked in a medium size team on Bing Maps UK as a UX researcher and developer. Created interactive prototypes and
     conducted usability tests to help shape decisions on product direction. Worked with other software engineers to
     deliver a number features for high-traffic Bing Maps. Including UI for Bird’s Eye view, public transit information,
@@ -361,7 +361,7 @@
   end:
     month: December
     year: 2007
-  description:
+  description: |
     Joined the development team as one of the core developers, redesigning a website featuring complex and interactive
     standards-based web interface. Responsible for the majority of new stylesheets and markup. Restyling of all map
     interface elements for the public API and website with full cross-browser support.
@@ -382,7 +382,7 @@
   end:
     month: August
     year: 2006
-  description:
+  description: |
     Working in a multilingual team of developers. Rebuilt table-based Russian website with web standards and best
     practices, greatly improving performance and maintainability. Promoted web standards across the team. Maintained
     internal Wiki to share best practices, assets and resources. Designed mobile UI elements.
@@ -401,7 +401,7 @@
   end:
     month: October
     year: 2005
-  description:
+  description: |
     Worked on a number of projects ranging from wireframes, websites, CMS integrations and design (branding and
     promotional material).
   technologies:

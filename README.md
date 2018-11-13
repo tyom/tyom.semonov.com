@@ -11,7 +11,7 @@ The site is automatically built and deployed on update to master using CircleCI.
 
 ## How it works
 
-The data is stored in separate YAML files in [data](data) directory. The UI is built in Vue using Nuxt which gives SSR
+The data is stored in separate YAML files in [data](content/data) directory. The UI is built in Vue using Nuxt which gives SSR
 support.
 
 The site is deployed via CircleCI. During the build stage PDF is generated using Puppeteer and the generated files

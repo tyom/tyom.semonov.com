@@ -5,13 +5,22 @@ contact:
   web: tyom.semonov.com
   email: tyom@semonov.com
 
-online:
-  github: https://github.com/tyom
-  linkedin: https://linkedin.com/in/tyoms
-  twitter: https://twitter.com/tyom
+social:
+  -
+    icon: github
+    label: GitHub
+    url: https://github.com/tyom
+  -
+    icon: linkedin
+    label: LinkedIn
+    url: https://linkedin.com/in/tyoms
+  -
+    icon: twitter
+    label: Twitter
+    url: https://twitter.com/tyom
 
-summary: |
-  Passionate developer with over 15 years of professional experience in building high-traffic complex websites
+synopsis: |
+  A passionate developer with over 15 years of professional experience in building high-traffic complex websites
   and applications using web standards and best practices for desktops and mobile devices.
 
   Great attention to detail, code maintainability and performance. Keen learner in multiple disciplines.

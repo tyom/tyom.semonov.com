@@ -1,17 +1,19 @@
-const path = require("path")
-const puppeteer = require("puppeteer")
+const path = require('path');
+const puppeteer = require('puppeteer');
 
-;(async () => {
+(async () => {
   try {
-    const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] })
-    const page = await browser.newPage()
-    await page.goto(`file://${path.join(__dirname, "../dist/index.html")}`, {
-      waitUntil: "networkidle2"
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
-    await page.pdf({ path: "static/cv.pdf", format: "A4" })
-    console.log('PDF generated!')
-    await browser.close()
+    const page = await browser.newPage();
+    await page.goto(`file://${path.join(__dirname, '../dist/index.html')}`, {
+      waitUntil: 'networkidle2',
+    });
+    await page.pdf({ path: 'static/tyom-semonov-cv.pdf', format: 'A4' });
+    console.log('PDF generated!');
+    await browser.close();
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-})()
+})();

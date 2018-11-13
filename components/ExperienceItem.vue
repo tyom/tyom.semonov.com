@@ -1,153 +1,132 @@
 <template>
-  <article class="experience">
+  <section :class="{ 'u-print-hidden': shouldHideFromPrint }" class="ExperienceItem">
     <header>
       <div class="period">
-        {{ start.month }} {{ start.year }} - {{ end.month }} {{ end.year }}
-        <span class="location" v-if="location">({{ location }})</span>
+        {{ content.start.month }} {{ content.start.year }} - {{ content.end.month }} {{ content.end.year }}
+        <span v-if="content.location" class="location">({{ content.location }})</span>
       </div>
-      <h3 class="name" v-if="name">
-        {{ name }}
-        <span class="defunct" v-if="isDefunct">(defunct)</span>
+      <h3 v-if="content.name" class="name">
+        {{ content.name }}
+        <span v-if="content.isDefunct" class="defunct">(defunct)</span>
       </h3>
       <div class="role">
-        {{ role }}
-        <span class="type" v-if="isContractor">Contractor</span>
+        {{ content.role }}
+        <span v-if="content.isContractor" class="type">Contractor</span>
       </div>
     </header>
-    <markdown
+    <div
+      v-if="content.description"
       class="description"
-      :class="{ 'u-print-hidden': shouldHideFromPrint }"
-      :source="description"
-      :breaks="false"
+      v-html="$md.render(content.description)"
     />
-    <list
-      is-inline
+    <ListSection
+      v-if="content.technologies"
+      :items="content.technologies"
+      inline
       class="technologies"
-      title="Technologies"
-      :items="technologies"
+      title="Technologies:"
     />
-  </article>
+  </section>
 </template>
 
 <script>
-  import List from './List'
+import ListSection from './ListSection';
 
-  export default {
-    props: {
-      type: String,
-      name: String,
-      role: String,
-      location: String,
-      isContractor: Boolean,
-      isDefunct: Boolean,
-      start: Object,
-      end: Object,
-      description: String,
-      technologies: Array,
+export default {
+  components: {
+    ListSection,
+  },
+  props: {
+    content: {
+      type: Object,
+      default: () => {},
     },
-    components: {
-      List,
+  },
+  computed: {
+    shouldHideFromPrint() {
+      const itemStartYear = parseInt(this.content.start.year, 10);
+      const threeYearsAgo = new Date().getFullYear() - 4;
+      return itemStartYear < threeYearsAgo;
     },
-    computed: {
-      shouldHideFromPrint () {
-        const currentYear = parseInt(this.start.year, 10)
-        const threeYearsAgo = new Date().getFullYear() - 3
-        return this.type === 'work' && currentYear < threeYearsAgo
-      }
-    }
-  }
+  },
+};
 </script>
 
 <style scoped>
-  .experience {
-    page-break-inside: avoid;
-    max-width: 45em;
+@import '~/css/_settings.css';
+
+.ExperienceItem {
+  page-break-inside: avoid;
+  max-width: 70ch;
+
+  @nest .ExperienceItem + & {
+    margin-top: 2em;
+
+    &::before {
+      content: '';
+      border-top: 0.25em solid var(--color-blue-500);
+      opacity: 0.5;
+      margin-bottom: 2em;
+      width: 3em;
+      display: block;
+    }
   }
 
-  .experience + .experience {
-    margin-top: 60px;
+  & > * + * {
+    margin-top: 1em;
+  }
+}
+
+.name {
+  margin: 0;
+  font-size: 1.25em;
+}
+
+.name .defunct {
+  margin-left: 0.25em;
+  font-weight: 300;
+  color: #aaa;
+  font-size: 1rem;
+}
+
+.period,
+.role {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.role {
+  color: #666;
+}
+
+.type {
+  font-size: 0.8em;
+  font-weight: 500;
+  display: inline-block;
+  padding: 0.1em 0.3em 0;
+  text-transform: uppercase;
+  border-radius: 0.2em;
+  background-color: #eee;
+  margin-left: 0.2em;
+}
+
+.technologies {
+  font-size: 0.9em;
+}
+
+@media print {
+  .type {
+    color: #aaa;
+    border: 1px solid #ccc;
+    background-color: transparent;
   }
 
-  .experience + .experience::before {
-    content: "";
-    border-top: 4px solid #1643a9;
-    opacity: .3;
-    margin-top: -28px;
-    margin-bottom: 28px;
-    width: 30px;
-    display: block;
+  .ExperienceItem + .ExperienceItem::before {
+    border-color: #000;
   }
 
-  .experience > * + * {
-    margin-top: 20px;
-  }
-
-  .description >>> p {
-    margin: 0;
-  }
-  .description >>>  p + p {
+  .u-print-hidden + .technologies {
     margin-top: 10px;
   }
-
-  .name {
-    margin: 0;
-    font-size: 1.25em;
-    line-height: 1.2;
-  }
-
-  .name .defunct {
-    margin-left: .5em;
-    font-weight: 300;
-    color: #aaa;
-    font-size: 1rem;
-  }
-
-  .period,
-  .role {
-    margin: 0;
-    font-size: .9em;
-  }
-
-  .period {
-    line-height: 1;
-    margin-bottom: 5px;
-  }
-
-  .role {
-    margin-top: 5px;
-    line-height: 1.2;
-    color: #666;
-  }
-
-  .type {
-    font-size: .8em;
-    line-height: 1.1;
-    font-weight: 500;
-    display: inline-block;
-    padding: .15em .3em;
-    text-transform: uppercase;
-    border: 1px solid #aaa;
-    border-radius: .2em;
-    margin-left: .2em;
-  }
-
-  .technologies {
-    font-size: .9em;
-  }
-
-  @media print {
-    .type {
-      color: #aaa;
-      border: 1px solid #ccc;
-      background-color: transparent;
-    }
-
-    .experience + .experience::before {
-      border-color: #000;
-    }
-
-    .u-print-hidden + .technologies {
-      margin-top: 10px;
-    }
-  }
+}
 </style>

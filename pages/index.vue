@@ -1,47 +1,52 @@
 <template>
   <div class="container">
-    <intro v-bind="about"/>
-
-    <main>
-      <h2>Experience</h2>
-      <p class="u-print-only print-details-info">Details for the last 3 years. For more see tyom.semonov.com</p>
-      <experience-item
-        type="work"
-        v-for="item in experience"
-        v-bind="item"
-        :key="item.company + item.start.year"
-      />
-
-      <h2>Education</h2>
-      <experience-item
-        type="study"
-        v-for="item in education"
-        v-bind="item"
-        :key="item.name + item.start.year"
-      />
+    <IntroPanel
+      :content="content.about"
+      class="aside"
+    />
+    <main class="main">
+      <article class="section experience">
+        <h2>Experience</h2>
+        <ExperienceItem
+          v-for="item in content.experience"
+          :content="item"
+          :key="item.company + item.start.year"
+        />
+        <p class="u-print-only print-details-info">
+          <v-icon class="info-icon" name="info-circle"/>
+          Only the last 4 years are shown here.<br>
+          To see more go to tyom.semonov.com.
+        </p>
+      </article>
+      <article class="section education">
+        <h2>Education</h2>
+        <experience-item
+          v-for="item in content.education"
+          :content="item"
+          :key="item.name + item.start.year"
+        />
+      </article>
     </main>
   </div>
 </template>
 
 <script>
-  import about from '../data/about.yaml'
-  import experience from '../data/experience.yaml'
-  import education from '../data/education.yaml'
-  import Intro from '../components/Intro'
-  import ExperienceItem from '../components/ExperienceItem'
+import { mapState } from 'vuex';
+import IntroPanel from '~/components/IntroPanel';
+import ExperienceItem from '~/components/ExperienceItem';
 
-  const description = about.summary.split('\n\n')[0].replace('\n', '');
-  const url = `https://${about.contact.web}`;
+export default {
+  components: {
+    IntroPanel,
+    ExperienceItem,
+  },
+  head() {
+    const fullUrl = `https://${this.content.about.contact.web.urk}`;
+    const description = this.content.about.synopsis
+      .split(/\n\n/)[0]
+      .replace(/\n+/, '');
 
-  export default {
-    asyncData () {
-      return {
-        about,
-        experience,
-        education,
-      }
-    },
-    head: {
+    return {
       meta: [
         {
           hid: 'description',
@@ -51,105 +56,116 @@
         {
           hid: `og:title`,
           property: 'og:title',
-          content: `${about.name} (${about.title})`,
+          content: `${this.content.about.name} (${this.content.about.title})`,
         },
         {
           hid: `og:url`,
           property: 'og:url',
-          content: url,
+          content: fullUrl,
         },
         {
           hid: `og:image`,
           property: 'og:image',
-          content: `${url}/logo.png`,
+          content: `${fullUrl}/logo.png`,
         },
         {
           hid: `og:description`,
           property: 'og:description',
-          content: description,
+          content: this.content.about.description,
         },
-      ]
-    },
-    components: {
-      Intro,
-      ExperienceItem,
-    },
-  }
+      ],
+    };
+  },
+  computed: {
+    ...mapState(['content']),
+  },
+};
 </script>
 
 <style scoped>
+@import '~/css/_settings.css';
+
+h2 {
+  font-size: 1.2em;
+  margin: 0 0 1.5em;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  page-break-inside: avoid;
+  page-break-after: avoid;
+}
+
+.section + .section {
+  margin-top: 3em;
+}
+
+@media screen {
+  .main,
+  .aside {
+    padding: 2em;
+  }
+
+  .experience {
+    margin-top: -1.5em;
+  }
+
   h2 {
-    color: #aaa;
-    margin: 0 0 30px;
-    text-transform: uppercase;
-    font-weight: 800;
-    letter-spacing: 1px;
-    page-break-inside: avoid;
-    page-break-after: avoid;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    line-height: 1;
+    margin: 0 0 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #0001;
+    background-color: #fffe;
   }
 
-  h2:not(:first-child) {
-     margin-top: 50px;
-  }
-
-  @media screen {
-    @media (min-width: 60em) {
-      .intro {
-        width: 30%;
-      }
-
-      .container {
-        display: flex;
-      }
-
-      .intro {
-        min-width: 300px;
-      }
+  @media (--medium-viewport-above) {
+    .container {
+      display: flex;
+      min-height: 100vh;
     }
 
-    main {
+    .aside {
       flex: 1;
-      padding: 30px;
     }
 
-    h2 {
-      position: sticky;
-      z-index: 1;
-      top: 0;
-      line-height: 1;
-      margin: 50px -30px 30px;
-      padding: 30px;
-      border-bottom: 1px solid rgba(0, 0, 0, .05);
-      background-color: rgba(255, 255, 255, .95);
-    }
-
-    h2:first-child {
-      margin-top: -30px;
+    .main {
+      flex: 2;
     }
   }
 
-  @media print {
-    .intro {
-      min-width: 0;
-      float: left;
-      width: 30%;
-      margin-right: 30px;
-    }
-
-    .print-details-info {
-      position: relative;
-      font-size: .8em;
-      top: -30px;
-      font-weight: bold;
-      color: #999;
-    }
-
-    main {
-      overflow: hidden;
-    }
-
-    h2 {
-      color: #ddd;
+  @media (--large-viewport-above) {
+    .main {
+      flex: 1.62;
     }
   }
+}
+
+@media print {
+  .container {
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .print-details-info {
+    position: relative;
+    font-size: 0.9em;
+    top: 2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .info-icon {
+    height: 2em;
+    width: 2em;
+    color: #777;
+    margin-right: 1em;
+  }
+
+  .education {
+    display: none;
+  }
+}
 </style>

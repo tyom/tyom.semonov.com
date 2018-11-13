@@ -6,48 +6,45 @@ const config = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Roboto',
+      },
       { rel: 'icon', type: 'image/png', href: 'favicon.png' },
-    ]
+    ],
   },
-  css: [
-    '~/assets/main.css',
-  ],
+  loading: false,
+  css: ['~/css/global.css'],
+  plugins: ['~/plugins/global'],
+  modules: ['@nuxtjs/markdownit'],
+  markdownit: {
+    injected: true,
+  },
   build: {
-    extend (config) {
-      const urlLoader = config.module.rules.find((rule) => rule.loader === 'url-loader')
-      urlLoader.exclude = /(assets\/svg|node_modules\/simple-icons)/
-
-      config.module.rules.push(
-        {
-          test: /\.yaml$/,
-          use: ['json-loader', 'yaml-loader'],
-        },
-        {
-          test: /\.svg$/,
-          loader: 'vue-svg-loader',
-          options: {
-            svgo: {
-              plugins: [
-                { removeDoctype: true },
-                { removeComments: true },
-              ],
-            },
+    transpile: [/vue-awesome/],
+    postcss: {
+      plugins: {
+        'postcss-preset-env': {
+          stage: 1,
+          features: {
+            'nesting-rules': true,
+            'custom-properties': { preserve: false },
           },
         },
-      )
+        'rucksack-css': {},
+        'postcss-normalize': {},
+      },
     },
   },
-  plugins: ['~/plugins/vue-markdown'],
-  modules: [],
-}
+};
 
 if (process.env.GA_TRACKING_ID) {
-  config.modules.push(
-    ['@nuxtjs/google-analytics', {
+  config.modules.push([
+    '@nuxtjs/google-analytics',
+    {
       id: process.env.GA_TRACKING_ID,
-    }]
-  )
+    },
+  ]);
 }
 
-module.exports = config
+module.exports = config;
