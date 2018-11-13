@@ -6,9 +6,13 @@
     month: March
     year: 2018
   end:
-    year: Current
+    month: December
+    year: 2018
   description:
-    Working in a digital product team, building a new shopping experience for the client.
+    Worked on building a new shopping experience for multiple stores and languages.
+    Additionally, supported the existing site and developers with critical
+    performance improvements, especially for mobile devices. Helped junior
+    developers with pairing and knowledge sharing sessions.
   technologies:
     - Shopify
     - JavaScript:
