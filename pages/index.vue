@@ -121,6 +121,10 @@ h2 {
   }
 
   @media (--medium-viewport-above) {
+    .aside {
+      max-width: 40vw;
+    }
+
     .container {
       display: flex;
       min-height: 100vh;

@@ -16,7 +16,7 @@ const config = {
   loading: false,
   css: ['~/css/global.css'],
   plugins: ['~/plugins/global'],
-  modules: ['@nuxtjs/markdownit'],
+  modules: ['@nuxtjs/markdownit', '@nuxtjs/axios'],
   markdownit: {
     injected: true,
   },

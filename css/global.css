@@ -1,3 +1,4 @@
+@import './_settings.css';
 @import-normalize;
 
 * {
@@ -17,6 +18,11 @@ html {
 body {
   margin: 0;
   padding: 0;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
 }
 
 p {

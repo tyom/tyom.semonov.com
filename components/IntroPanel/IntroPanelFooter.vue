@@ -77,7 +77,7 @@ export default {
     display: flex;
     align-items: center;
     vertical-align: top;
-    padding: 0.25em;
+    padding: 0.3em;
     border-radius: 0.3em;
     text-decoration: none;
   }

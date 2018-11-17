@@ -24,7 +24,7 @@
       :items="content.technologies"
       inline
       class="technologies"
-      title="Technologies:"
+      title="Technologies & tools:"
     />
   </section>
 </template>

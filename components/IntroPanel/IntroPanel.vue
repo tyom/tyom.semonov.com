@@ -56,7 +56,7 @@ export default {
 
 @media screen {
   >>> h1,
-  >>> a:hover {
+  >>> a[href]:hover {
     color: #fff;
   }
 
