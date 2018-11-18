@@ -5,13 +5,13 @@
   --color-blue-900: #0e1019;
 }
 
-@custom-media --extra-small-viewport-below (width < 21rem);
-@custom-media --extra-small-viewport-above (width >= 21rem);
-@custom-media --small-viewport-below (width < 30rem);
-@custom-media --small-viewport-above (width >= 30rem);
-@custom-media --medium-viewport-below (width < 50rem);
-@custom-media --medium-viewport-above (width >= 50rem);
-@custom-media --large-viewport-below (width < 64rem);
-@custom-media --large-viewport-above (width >= 64rem);
-@custom-media --extra-large-viewport-below (width < 80rem);
-@custom-media --extra-large-viewport-above (width >= 80rem);
+@custom-media --extra-small-viewport-below (width < 320px);
+@custom-media --extra-small-viewport-above (width >= 320px);
+@custom-media --small-viewport-below (width < 375px);
+@custom-media --small-viewport-above (width >= 375px);
+@custom-media --medium-viewport-below (width < 768px);
+@custom-media --medium-viewport-above (width >= 768px);
+@custom-media --large-viewport-below (width < 1024px);
+@custom-media --large-viewport-above (width >= 1024px);
+@custom-media --extra-large-viewport-below (width < 1280px);
+@custom-media --extra-large-viewport-above (width >= 1280px);
