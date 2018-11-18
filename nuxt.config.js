@@ -22,6 +22,11 @@ const config = {
   },
   build: {
     transpile: [/vue-awesome/],
+    extend(config, { isDev }) {
+      if (isDev) {
+        config.devtool = 'eval-source-map'; // WebStorm debug
+      }
+    },
     postcss: {
       plugins: {
         'postcss-preset-env': {
