@@ -40,7 +40,7 @@ h3 {
   font-size: 1.1em;
 }
 
-.list {
+.ListSection .list {
   margin-top: 0.5em;
 }
 
