@@ -14,6 +14,8 @@
     Additionally, supported the existing site and developers with critical
     performance improvements, especially for mobile devices. Helped junior
     developers with pairing and knowledge sharing sessions.
+
+    Development of tools and processes to support business and developers.
   technologies:
     - Shopify
     - JavaScript:
@@ -23,6 +25,8 @@
       - Webpack
     - CSS
     - Git
+    - CircleCI
+    - now.sh
     - AWS
     - Kubernetes
 -

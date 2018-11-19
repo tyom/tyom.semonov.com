@@ -284,3 +284,9 @@
   name: Perl
   url: https://en.wikipedia.org/wiki/Perl
   wikipedia: Perl
+-
+  name: CircleCI
+  url: https://circleci.com
+-
+  name: now.sh
+  url: https://zeit.co/now
