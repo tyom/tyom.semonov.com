@@ -178,6 +178,10 @@
   url: https://en.wikipedia.org/wiki/Git
   wikipedia: Git
 -
+  name: SVN
+  url: https://en.wikipedia.org/wiki/Apache_Subversion
+  wikipedia: Apache_Subversion
+-
   name: GitHub
   url: https://en.wikipedia.org/wiki/GitHub
   wikipedia: GitHub
@@ -186,9 +190,17 @@
   url: https://en.wikipedia.org/wiki/Sass_(stylesheet_language)
   wikipedia: Sass_(stylesheet_language)
 -
+  name: PostCSS
+  url: https://postcss.org
+  wikipedia: PostCSS
+-
   name: HTML
   url: https://en.wikipedia.org/wiki/HTML
   wikipedia: HTML
+-
+  name: HTML5
+  url: https://en.wikipedia.org/wiki/HTML5
+  wikipedia: HTML5
 -
   name: CSS
   url: https://en.wikipedia.org/wiki/Cascading_Style_Sheets
@@ -236,3 +248,39 @@
   name: AWS
   url: http://aws.amazon.com
   wikipedia: Amazon_Web_Services
+-
+  name: Accessibility
+  url: https://en.wikipedia.org/wiki/Web_accessibility
+  wikipedia: Web_accessibility
+-
+  name: Functional programming
+  url: https://en.wikipedia.org/wiki/Functional_programming
+  wikipedia: Functional_programming
+-
+  name: Google Analytics
+  url: https://en.wikipedia.org/wiki/Google_Analytics
+  wikipedia: Google_Analytics
+-
+  name: Redis
+  url: https://en.wikipedia.org/wiki/Redis
+  wikipedia: Redis
+-
+  name: SVG
+  url: https://en.wikipedia.org/wiki/Scalable_Vector_Graphics
+  wikipedia: Scalable_Vector_Graphics
+-
+  name: Ruby
+  url: https://en.wikipedia.org/wiki/Ruby_(programming_language)
+  wikipedia: Ruby_(programming_language)
+-
+  name: 'C#'
+  url: https://en.wikipedia.org/wiki/C_Sharp_(programming_language)
+  wikipedia: C_Sharp_(programming_language)
+-
+  name: XML
+  url: https://en.wikipedia.org/wiki/XML
+  wikipedia: XML
+-
+  name: Perl
+  url: https://en.wikipedia.org/wiki/Perl
+  wikipedia: Perl
