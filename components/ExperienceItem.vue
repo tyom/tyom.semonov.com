@@ -3,6 +3,9 @@
     <header>
       <div class="period">
         {{ content.start.month }} {{ content.start.year }} - {{ content.end.month }} {{ content.end.year }}
+        <span v-if="durationInMonths" class="duration">
+          ({{ durationInMonths }} {{ durationInMonths | pluralize('month') }})
+        </span>
         <span v-if="content.location" class="location">({{ content.location }})</span>
       </div>
       <h3 v-if="content.name" class="name">
@@ -36,6 +39,11 @@ export default {
   components: {
     ListSection,
   },
+  filters: {
+    pluralize(value, word) {
+      return `${word}${value === 1 ? '' : 's'}`;
+    },
+  },
   props: {
     content: {
       type: Object,
@@ -47,6 +55,19 @@ export default {
       const itemStartYear = parseInt(this.content.start.year, 10);
       const threeYearsAgo = new Date().getFullYear() - 4;
       return itemStartYear < threeYearsAgo;
+    },
+    durationInMonths() {
+      const startDate = new Date(
+        `${this.content.start.year}-${this.content.start.month}`,
+      );
+      const endDate = new Date(
+        `${this.content.end.year}-${this.content.end.month}`,
+      );
+      return (
+        endDate.getMonth() -
+        startDate.getMonth() +
+        12 * (endDate.getFullYear() - startDate.getFullYear())
+      );
     },
   },
 };
@@ -93,6 +114,11 @@ export default {
 .role {
   margin: 0;
   font-size: 0.9em;
+}
+
+.duration {
+  color: #666;
+  margin-left: 0.25em;
 }
 
 .role {
