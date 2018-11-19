@@ -85,10 +85,6 @@ export default {
   & img {
     width: 7em;
   }
-
-  > div {
-    flex: 1;
-  }
 }
 
 .tooltip-thumbnail {
