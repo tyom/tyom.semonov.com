@@ -1,7 +1,7 @@
 function createDefinitionLookup(definitions = []) {
   return function getDefinition(name) {
     const found = definitions.find(d =>
-      name.match(new RegExp(`\\b${d.name}\\b`)),
+      name.match(new RegExp(`\\b${d.name}\\b`, 'i')),
     );
 
     if (!found) {
