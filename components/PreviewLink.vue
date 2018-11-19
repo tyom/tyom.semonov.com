@@ -35,7 +35,15 @@ export default {
       const { data: summary } = await this.$axios.get(
         `https://en.wikipedia.org/api/rest_v1/page/summary/${wikipediaTitle}`,
       );
-      return summary.extract;
+      const thumbnailImg = summary.thumbnail
+        ? `<div class="tooltip-thumbnail">
+            <img src="${summary.thumbnail.source}" alt="${summary.description}">
+          </div>`
+        : '';
+      return `
+        ${thumbnailImg}
+        <div>${summary.extract_html}</div>
+      `;
     },
   },
 };
@@ -47,17 +55,46 @@ export default {
 }
 
 .tooltip {
-  font-size: 0.7em;
-  max-width: 25rem;
   z-index: 1;
+  border-radius: 0.3em;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 6px 1px #0002;
+  background: #fff;
+  padding: 1em;
 }
 
 .tooltip-inner {
-  background: #fff;
-  border-radius: 0.5em;
-  border: 1px solid #bbb;
-  box-shadow: 0 1px 4px #0002;
-  padding: 1em;
+  position: relative;
+  line-height: 1.3;
+  max-width: 40ch;
+  max-height: 11.2em;
+  font-size: 0.8em;
+  overflow: hidden;
+  display: flex;
+
+  &::after {
+    content: '';
+    height: 1.3em;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #fff0, #fff 80%);
+  }
+
+  & img {
+    width: 7em;
+  }
+
+  > div {
+    flex: 1;
+  }
+}
+
+.tooltip-thumbnail {
+  margin-right: 1em;
+  display: flex;
+  align-items: center;
 }
 
 .tooltip-arrow {
@@ -69,8 +106,9 @@ export default {
   &::before {
     content: '';
     position: absolute;
-    border: 1px solid #bbb;
+    border: 1px solid #aaa;
     background-color: #fff;
+    box-shadow: 0 0 1px #0002;
     transform: rotate(45deg);
     height: var(--arrow-size);
     width: var(--arrow-size);
@@ -94,7 +132,7 @@ export default {
 }
 
 [x-placement^='top'] .tooltip-arrow {
-  top: calc(100% + var(--arrow-size) / 2 - 1px);
+  top: calc(100% + var(--arrow-size) / 2);
 
   &::before {
     bottom: 0;
@@ -103,7 +141,7 @@ export default {
 }
 
 [x-placement^='bottom'] .tooltip-arrow {
-  bottom: calc(100% + var(--arrow-size) / 2 - 1px);
+  bottom: calc(100% + var(--arrow-size) / 2);
 
   &::before {
     top: 0;
@@ -112,7 +150,7 @@ export default {
 }
 
 [x-placement^='right'] .tooltip-arrow {
-  right: calc(100% + var(--arrow-size) / 2 - 1px);
+  right: calc(100% + var(--arrow-size) / 2);
 
   &::before {
     left: 0;
@@ -121,7 +159,7 @@ export default {
 }
 
 [x-placement^='left'] .tooltip-arrow {
-  left: calc(100% + var(--arrow-size) / 2 - 1px);
+  left: calc(100% + var(--arrow-size) / 2);
 
   &::before {
     right: 0;
