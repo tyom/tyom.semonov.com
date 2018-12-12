@@ -290,3 +290,7 @@
 -
   name: now.sh
   url: https://zeit.co/now
+-
+  name: Docker
+  url: https://en.wikipedia.org/wiki/Docker_(software)
+  wikipedia: Docker_(software)

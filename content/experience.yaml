@@ -23,10 +23,12 @@
       - Nuxt.js
       - Jest
       - Webpack
-    - CSS
-    - Git
+      - Node.js/Express
+    - CSS/PostCSS
+    - Git/GitHub
     - CircleCI
     - now.sh
+    - Docker
     - AWS
     - Kubernetes
 -
