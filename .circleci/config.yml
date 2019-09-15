@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10.5.0-browsers
+      - image: circleci/node:10.13.0-browsers
     working_directory: ~/cv
     steps:
       - checkout
@@ -28,7 +28,7 @@ jobs:
             - dist/
   deploy:
     docker:
-      - image: circleci/node:9.2.0-browsers
+      - image: circleci/node:10.13.0-browsers
     working_directory: ~/cv
     steps:
       - add-ssh-keys:
