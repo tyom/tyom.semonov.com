@@ -1666,6 +1666,24 @@ function handle_popstate(event) {
   }
 }
 
+function googleAnalytics(gaId) {
+  var script = document.createElement('script');
+  script.src = "https://www.googletagmanager.com/gtag/js?id=".concat(gaId);
+  document.body.appendChild(script);
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag('js', new Date());
+  gtag('config', gaId);
+}
+
 start({
   target: document.querySelector('#container')
 });
+
+{
+  googleAnalytics("UA-332655-6");
+}
