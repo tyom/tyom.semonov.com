@@ -877,9 +877,9 @@ function (_SvelteComponentDev) {
 var ignore = [/^\/([^\/]+?).json$/];
 var components = [{
   js: function js() {
-    return import('./index.30d86937.js');
+    return import('./index.83fd8a87.js');
   },
-  css: ["legacy/index.30d86937.css"]
+  css: ["legacy/index.83fd8a87.css"]
 }];
 var routes = [{
   // index.svelte
@@ -1666,25 +1666,6 @@ function handle_popstate(event) {
   }
 }
 
-function googleAnalytics(gaId) {
-  var _arguments = arguments;
-  window.dataLayer = window.dataLayer || [];
-
-  var gtag = function gtag() {
-    dataLayer.push(_arguments);
-  };
-
-  gtag();
-  gtag();
-  var script = document.createElement('script');
-  script.src = "https://www.googletagmanager.com/gtag/js?id=".concat(gaId);
-  document.body.appendChild(script);
-}
-
 start({
   target: document.querySelector('#container')
 });
-
-{
-  googleAnalytics("UA-332655-6");
-}

@@ -7687,7 +7687,7 @@ function get_each_context_1$3(ctx, list, i) {
   var child_ctx = Object.create(ctx);
   child_ctx.experience = list[i];
   return child_ctx;
-} // (130:4) {#each linkedExperienceItems as experience}
+} // (131:4) {#each linkedExperienceItems as experience}
 
 
 function create_each_block_1$3(ctx) {
@@ -7735,11 +7735,11 @@ function create_each_block_1$3(ctx) {
     block: block,
     id: create_each_block_1$3.name,
     type: "each",
-    source: "(130:4) {#each linkedExperienceItems as experience}",
+    source: "(131:4) {#each linkedExperienceItems as experience}",
     ctx: ctx
   });
   return block;
-} // (136:4) {#each educationItems as experience}
+} // (137:4) {#each educationItems as experience}
 
 
 function create_each_block$3(ctx) {
@@ -7787,14 +7787,14 @@ function create_each_block$3(ctx) {
     block: block,
     id: create_each_block$3.name,
     type: "each",
-    source: "(136:4) {#each educationItems as experience}",
+    source: "(137:4) {#each educationItems as experience}",
     ctx: ctx
   });
   return block;
 }
 
 function create_fragment$c(ctx) {
-  var title_value, t0, aside, t1, article, section0, h20, t2, t3, t4, section1, h21, t5, t6, t7, p, t8, br, t9, current;
+  var title_value, meta, meta_content_value, t0, aside, t1, article, section0, h20, t2, t3, t4, section1, h21, t5, t6, t7, p, t8, br, t9, current;
   document.title = title_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV";
   var summary_1_spread_levels = [ctx.summary, {
     pdfLink: "tyom-semonov-cv.pdf"
@@ -7840,6 +7840,7 @@ function create_fragment$c(ctx) {
   });
   var block = {
     c: function create() {
+      meta = element("meta");
       t0 = space();
       aside = element("aside");
       summary_1.$$.fragment.c();
@@ -7873,6 +7874,13 @@ function create_fragment$c(ctx) {
       this.h();
     },
     l: function claim(nodes) {
+      meta = claim_element(nodes, "META", {
+        name: true,
+        content: true,
+        class: true
+      }, false);
+      var meta_nodes = children(meta);
+      meta_nodes.forEach(detach_dev);
       t0 = claim_space(nodes);
       aside = claim_element(nodes, "ASIDE", {
         class: true
@@ -7938,24 +7946,29 @@ function create_fragment$c(ctx) {
       this.h();
     },
     h: function hydrate() {
+      attr_dev(meta, "name", "description");
+      attr_dev(meta, "content", meta_content_value = ctx.about.description);
+      attr_dev(meta, "class", "svelte-19ui9f4");
+      add_location(meta, file$b, 120, 2, 6264);
       attr_dev(aside, "class", "svelte-19ui9f4");
-      add_location(aside, file$b, 122, 0, 6278);
+      add_location(aside, file$b, 123, 0, 6336);
       attr_dev(h20, "class", "svelte-19ui9f4");
-      add_location(h20, file$b, 128, 4, 6414);
+      add_location(h20, file$b, 129, 4, 6472);
       attr_dev(section0, "class", "experience svelte-19ui9f4");
-      add_location(section0, file$b, 127, 2, 6381);
+      add_location(section0, file$b, 128, 2, 6439);
       attr_dev(h21, "class", "svelte-19ui9f4");
-      add_location(h21, file$b, 134, 4, 6582);
+      add_location(h21, file$b, 135, 4, 6640);
       attr_dev(section1, "class", "education svelte-19ui9f4");
-      add_location(section1, file$b, 133, 2, 6550);
+      add_location(section1, file$b, 134, 2, 6608);
       attr_dev(br, "class", "svelte-19ui9f4");
-      add_location(br, file$b, 143, 4, 6832);
+      add_location(br, file$b, 144, 4, 6890);
       attr_dev(p, "class", "u-print-only print-details-info svelte-19ui9f4");
-      add_location(p, file$b, 140, 2, 6711);
+      add_location(p, file$b, 141, 2, 6769);
       attr_dev(article, "class", "content svelte-19ui9f4");
-      add_location(article, file$b, 126, 0, 6353);
+      add_location(article, file$b, 127, 0, 6411);
     },
     m: function mount(target, anchor) {
+      append_dev(document.head, meta);
       insert_dev(target, t0, anchor);
       insert_dev(target, aside, anchor);
       mount_component(summary_1, aside, null);
@@ -7991,6 +8004,10 @@ function create_fragment$c(ctx) {
     p: function update(changed, ctx) {
       if ((!current || changed.about) && title_value !== (title_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV")) {
         document.title = title_value;
+      }
+
+      if ((!current || changed.about) && meta_content_value !== (meta_content_value = ctx.about.description)) {
+        attr_dev(meta, "content", meta_content_value);
       }
 
       var summary_1_changes = changed.summary ? get_spread_update(summary_1_spread_levels, [get_spread_object(ctx.summary), summary_1_spread_levels[1]]) : {};
@@ -8093,6 +8110,8 @@ function create_fragment$c(ctx) {
       current = false;
     },
     d: function destroy(detaching) {
+      detach_dev(meta);
+
       if (detaching) {
         detach_dev(t0);
         detach_dev(aside);
