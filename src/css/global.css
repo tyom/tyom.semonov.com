@@ -1,0 +1,92 @@
+@import '../css/variables.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: responsive 15px 19px;
+  font-family: Roboto, sans-serif;
+  line-height: 1.4;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+}
+
+body {
+  margin: 0;
+}
+
+@media screen {
+  body {
+    color: #333;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+p + p {
+  margin-top: 1em;
+}
+
+a {
+  text-decoration: underline;
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.divided::before,
+hr {
+  content: '';
+  border: 0;
+  border-top: 0.25em solid;
+  opacity: 0.3;
+  width: 3em;
+  display: block;
+  margin: 2em 0;
+}
+
+.visually-hidden {
+  border: none !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
+}
+
+@media screen {
+  .u-print-only {
+    display: none;
+  }
+}
+
+@media print {
+  body {
+    font-size: 11pt;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .u-print-hidden {
+    display: none;
+  }
+}
+
+@page {
+  margin: 1cm;
+}

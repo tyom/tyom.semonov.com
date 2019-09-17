@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+
+const childProcess = require('child_process');
+const path = require('path');
+const puppeteer = require('puppeteer');
+
+const buildDir =
+  (process.argv[2] && process.argv[2].split('=')[1]) || '__sapper__/build';
+const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+
+(async () => {
+  const serverProc = childProcess.fork(
+    path.resolve(`${buildDir}/server/server.js`),
+    [],
+    {
+      cwd: process.cwd(),
+      env: {
+        PORT: port,
+        NODE_ENV: 'production',
+        ...process.env,
+      },
+    }
+  );
+
+  try {
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+    const page = await browser.newPage();
+    await page.goto(`http://localhost:${port}`, {
+      waitUntil: 'networkidle2',
+    });
+    await page.pdf({ path: 'static/tyom-semonov-cv.pdf', format: 'A4' });
+    console.log('PDF generated!');
+    await browser.close();
+    serverProc.kill();
+  } catch (err) {
+    serverProc.kill();
+    console.log(err);
+  }
+})();
