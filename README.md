@@ -12,8 +12,8 @@ The site is automatically built and deployed with CircleCI on commit to master.
 
 ## Result
 
-Published site: https://tyom.github.io/tyom.semonov.com
-Published Storybook: https://tyom.github.io/tyom.semonov.com/storybook
+- Published site: https://tyom.github.io/tyom.semonov.com
+- Published Storybook: https://tyom.github.io/tyom.semonov.com/storybook
 
 ## How it works
 
