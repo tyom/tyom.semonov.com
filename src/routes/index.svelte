@@ -114,6 +114,19 @@
 <svelte:head>
   <title>{about.name} - {about.title}: CV</title>
   <meta name="description" content={about.description} />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tyom.semonov.com/">
+  <meta property="og:title" content="{about.name} - {about.title}: CV">
+  <meta property="og:description" content={about.description}>
+  <meta property="og:image" content="https://tyom.semonov.com/logo.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://tyom.semonov.com/">
+  <meta property="twitter:title" content="{about.name} - {about.title}: CV">
+  <meta property="twitter:description" content={about.description}>
+  <meta property="twitter:image" content="https://tyom.semonov.com/logo.png">
 </svelte:head>
 
 <aside>
