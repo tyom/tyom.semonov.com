@@ -55,8 +55,8 @@ export function createDefinitionFinder(definitions = []) {
     };
 
   const processWikipediaLink = item => {
-    const result = { ...item };
-    if (item.wikipedia) {
+    const result = Object.assign({}, item);
+    if (result.wikipedia) {
       result.wikipedia = `https://en.wikipedia.org/api/rest_v1/page/summary/${item.wikipedia}`;
     }
     return result;
@@ -73,9 +73,7 @@ export function createDefinitionFinder(definitions = []) {
     const containerName = term.name || Object.keys(term)[0];
     const containerDefinition = define(containerName);
 
-    const result = {
-      ...processWikipediaLink(containerDefinition),
-    };
+    const result = processWikipediaLink(containerDefinition);
 
     const children = term[containerName];
     if (Array.isArray(children)) {

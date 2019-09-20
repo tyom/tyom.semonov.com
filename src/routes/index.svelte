@@ -1,7 +1,7 @@
 <script context="module">
   export async function preload() {
-    const getData = async resourceName =>
-      await this.fetch(resourceName).then(res => res.json());
+    const getData = resourceName =>
+      this.fetch(resourceName).then(res => res.json());
 
     const about = await getData('about.json');
     const experienceItems = await getData('experience.json');
@@ -26,11 +26,12 @@
   const defLinker = createDefinitionFinder(definitions);
   const coreSkills = buildList(about.coreSkills, defLinker);
   const currentFocus = buildList(about.currentFocus, defLinker);
-  const summary = { ...about, coreSkills, currentFocus };
-  const linkedExperienceItems = experienceItems.map(item => ({
-    ...item,
-    technologies: buildList(item.technologies, defLinker),
-  }));
+  const summary = Object.assign({}, about, { coreSkills, currentFocus });
+  const linkedExperienceItems = experienceItems.map(item =>
+    Object.assign({}, item, {
+      technologies: buildList(item.technologies, defLinker),
+    }),
+  );
 </script>
 
 <style>
@@ -113,6 +114,19 @@
 <svelte:head>
   <title>{about.name} - {about.title}: CV</title>
   <meta name="description" content={about.description} />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tyom.semonov.com/">
+  <meta property="og:title" content="{about.name} - {about.title}: CV">
+  <meta property="og:description" content={about.description}>
+  <meta property="og:image" content="https://tyom.semonov.com/logo.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://tyom.semonov.com/">
+  <meta property="twitter:title" content="{about.name} - {about.title}: CV">
+  <meta property="twitter:description" content={about.description}>
+  <meta property="twitter:image" content="https://tyom.semonov.com/logo.png">
 </svelte:head>
 
 <aside>
