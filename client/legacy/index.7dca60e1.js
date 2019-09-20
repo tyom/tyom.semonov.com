@@ -1,4 +1,4 @@
-import { N as _typeof, O as _slicedToArray, P as _defineProperty, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, r as _createClass, S as SvelteComponentDev, f as create_slot, Q as svg_element, v as text, h as claim_element, j as children, w as claim_text, k as detach_dev, l as add_location, m as insert_dev, x as append_dev, y as set_data_dev, A as empty, C as attr_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, D as assign, R as exclude_internal_props, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, g as element, L as _asyncToGenerator, M as _regeneratorRuntime, T as listen, J as group_outros, K as check_outros, U as destroy_each, n as noop, z as space, B as claim_space, V as toggle_class } from './index.d1c2cf9f.js';
+import { N as _typeof, O as _slicedToArray, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, r as _createClass, S as SvelteComponentDev, f as create_slot, P as svg_element, v as text, h as claim_element, j as children, w as claim_text, k as detach_dev, l as add_location, m as insert_dev, x as append_dev, y as set_data_dev, A as empty, C as attr_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, D as assign, Q as _defineProperty, R as exclude_internal_props, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, g as element, L as _asyncToGenerator, M as _regeneratorRuntime, T as listen, J as group_outros, K as check_outros, U as destroy_each, n as noop, z as space, B as claim_space, V as toggle_class, u as globals } from './index.b3d7ddfb.js';
 
 /*!
  * isobject <https://github.com/jonschlinkert/isobject>
@@ -39,9 +39,6 @@ function isPlainObject(o) {
   return true;
 }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 function durationInMonths(fromDate, toDate) {
   var months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -92,9 +89,9 @@ function createDefinitionFinder() {
   };
 
   var processWikipediaLink = function processWikipediaLink(item) {
-    var result = _objectSpread({}, item);
+    var result = Object.assign({}, item);
 
-    if (item.wikipedia) {
+    if (result.wikipedia) {
       result.wikipedia = "https://en.wikipedia.org/api/rest_v1/page/summary/".concat(item.wikipedia);
     }
 
@@ -108,9 +105,7 @@ function createDefinitionFinder() {
 
     var containerName = term.name || Object.keys(term)[0];
     var containerDefinition = define(containerName);
-
-    var result = _objectSpread({}, processWikipediaLink(containerDefinition));
-
+    var result = processWikipediaLink(containerDefinition);
     var children = term[containerName];
 
     if (Array.isArray(children)) {
@@ -7694,22 +7689,20 @@ function (_SvelteComponentDev) {
   return Summary;
 }(SvelteComponentDev);
 
-function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var Object_1 = globals.Object;
 var file$b = "src/routes/index.svelte";
 
 function get_each_context$3(ctx, list, i) {
-  var child_ctx = Object.create(ctx);
+  var child_ctx = Object_1.create(ctx);
   child_ctx.experience = list[i];
   return child_ctx;
 }
 
 function get_each_context_1$3(ctx, list, i) {
-  var child_ctx = Object.create(ctx);
+  var child_ctx = Object_1.create(ctx);
   child_ctx.experience = list[i];
   return child_ctx;
-} // (131:4) {#each linkedExperienceItems as experience}
+} // (145:4) {#each linkedExperienceItems as experience}
 
 
 function create_each_block_1$3(ctx) {
@@ -7757,11 +7750,11 @@ function create_each_block_1$3(ctx) {
     block: block,
     id: create_each_block_1$3.name,
     type: "each",
-    source: "(131:4) {#each linkedExperienceItems as experience}",
+    source: "(145:4) {#each linkedExperienceItems as experience}",
     ctx: ctx
   });
   return block;
-} // (137:4) {#each educationItems as experience}
+} // (151:4) {#each educationItems as experience}
 
 
 function create_each_block$3(ctx) {
@@ -7809,14 +7802,14 @@ function create_each_block$3(ctx) {
     block: block,
     id: create_each_block$3.name,
     type: "each",
-    source: "(137:4) {#each educationItems as experience}",
+    source: "(151:4) {#each educationItems as experience}",
     ctx: ctx
   });
   return block;
 }
 
 function create_fragment$c(ctx) {
-  var title_value, meta, meta_content_value, t0, aside, t1, article, section0, h20, t2, t3, t4, section1, h21, t5, t6, t7, p, t8, br, t9, current;
+  var title_value, meta0, meta0_content_value, meta1, meta2, meta3, meta3_content_value, meta4, meta4_content_value, meta5, meta6, meta7, meta8, meta8_content_value, meta9, meta9_content_value, meta10, t0, aside, t1, article, section0, h20, t2, t3, t4, section1, h21, t5, t6, t7, p, t8, br, t9, current;
   document.title = title_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV";
   var summary_1_spread_levels = [ctx.summary, {
     pdfLink: "tyom-semonov-cv.pdf"
@@ -7862,7 +7855,17 @@ function create_fragment$c(ctx) {
   });
   var block = {
     c: function create() {
-      meta = element("meta");
+      meta0 = element("meta");
+      meta1 = element("meta");
+      meta2 = element("meta");
+      meta3 = element("meta");
+      meta4 = element("meta");
+      meta5 = element("meta");
+      meta6 = element("meta");
+      meta7 = element("meta");
+      meta8 = element("meta");
+      meta9 = element("meta");
+      meta10 = element("meta");
       t0 = space();
       aside = element("aside");
       summary_1.$$.fragment.c();
@@ -7896,13 +7899,83 @@ function create_fragment$c(ctx) {
       this.h();
     },
     l: function claim(nodes) {
-      meta = claim_element(nodes, "META", {
+      meta0 = claim_element(nodes, "META", {
         name: true,
         content: true,
         class: true
       }, false);
-      var meta_nodes = children(meta);
-      meta_nodes.forEach(detach_dev);
+      var meta0_nodes = children(meta0);
+      meta0_nodes.forEach(detach_dev);
+      meta1 = claim_element(nodes, "META", {
+        property: true,
+        content: true,
+        class: true
+      }, false);
+      var meta1_nodes = children(meta1);
+      meta1_nodes.forEach(detach_dev);
+      meta2 = claim_element(nodes, "META", {
+        property: true,
+        content: true,
+        class: true
+      }, false);
+      var meta2_nodes = children(meta2);
+      meta2_nodes.forEach(detach_dev);
+      meta3 = claim_element(nodes, "META", {
+        property: true,
+        content: true,
+        class: true
+      }, false);
+      var meta3_nodes = children(meta3);
+      meta3_nodes.forEach(detach_dev);
+      meta4 = claim_element(nodes, "META", {
+        property: true,
+        content: true,
+        class: true
+      }, false);
+      var meta4_nodes = children(meta4);
+      meta4_nodes.forEach(detach_dev);
+      meta5 = claim_element(nodes, "META", {
+        property: true,
+        content: true,
+        class: true
+      }, false);
+      var meta5_nodes = children(meta5);
+      meta5_nodes.forEach(detach_dev);
+      meta6 = claim_element(nodes, "META", {
+        property: true,
+        content: true,
+        class: true
+      }, false);
+      var meta6_nodes = children(meta6);
+      meta6_nodes.forEach(detach_dev);
+      meta7 = claim_element(nodes, "META", {
+        property: true,
+        content: true,
+        class: true
+      }, false);
+      var meta7_nodes = children(meta7);
+      meta7_nodes.forEach(detach_dev);
+      meta8 = claim_element(nodes, "META", {
+        property: true,
+        content: true,
+        class: true
+      }, false);
+      var meta8_nodes = children(meta8);
+      meta8_nodes.forEach(detach_dev);
+      meta9 = claim_element(nodes, "META", {
+        property: true,
+        content: true,
+        class: true
+      }, false);
+      var meta9_nodes = children(meta9);
+      meta9_nodes.forEach(detach_dev);
+      meta10 = claim_element(nodes, "META", {
+        property: true,
+        content: true,
+        class: true
+      }, false);
+      var meta10_nodes = children(meta10);
+      meta10_nodes.forEach(detach_dev);
       t0 = claim_space(nodes);
       aside = claim_element(nodes, "ASIDE", {
         class: true
@@ -7968,29 +8041,79 @@ function create_fragment$c(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(meta, "name", "description");
-      attr_dev(meta, "content", meta_content_value = ctx.about.description);
-      attr_dev(meta, "class", "svelte-19ui9f4");
-      add_location(meta, file$b, 120, 2, 6264);
+      attr_dev(meta0, "name", "description");
+      attr_dev(meta0, "content", meta0_content_value = ctx.about.description);
+      attr_dev(meta0, "class", "svelte-19ui9f4");
+      add_location(meta0, file$b, 121, 2, 6290);
+      attr_dev(meta1, "property", "og:type");
+      attr_dev(meta1, "content", "website");
+      attr_dev(meta1, "class", "svelte-19ui9f4");
+      add_location(meta1, file$b, 123, 2, 6381);
+      attr_dev(meta2, "property", "og:url");
+      attr_dev(meta2, "content", "https://tyom.semonov.com/");
+      attr_dev(meta2, "class", "svelte-19ui9f4");
+      add_location(meta2, file$b, 124, 2, 6427);
+      attr_dev(meta3, "property", "og:title");
+      attr_dev(meta3, "content", meta3_content_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV");
+      attr_dev(meta3, "class", "svelte-19ui9f4");
+      add_location(meta3, file$b, 125, 2, 6490);
+      attr_dev(meta4, "property", "og:description");
+      attr_dev(meta4, "content", meta4_content_value = ctx.about.description);
+      attr_dev(meta4, "class", "svelte-19ui9f4");
+      add_location(meta4, file$b, 126, 2, 6562);
+      attr_dev(meta5, "property", "og:image");
+      attr_dev(meta5, "content", "https://tyom.semonov.com/logo.png");
+      attr_dev(meta5, "class", "svelte-19ui9f4");
+      add_location(meta5, file$b, 127, 2, 6625);
+      attr_dev(meta6, "property", "twitter:card");
+      attr_dev(meta6, "content", "summary_large_image");
+      attr_dev(meta6, "class", "svelte-19ui9f4");
+      add_location(meta6, file$b, 130, 2, 6718);
+      attr_dev(meta7, "property", "twitter:url");
+      attr_dev(meta7, "content", "https://tyom.semonov.com/");
+      attr_dev(meta7, "class", "svelte-19ui9f4");
+      add_location(meta7, file$b, 131, 2, 6781);
+      attr_dev(meta8, "property", "twitter:title");
+      attr_dev(meta8, "content", meta8_content_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV");
+      attr_dev(meta8, "class", "svelte-19ui9f4");
+      add_location(meta8, file$b, 132, 2, 6849);
+      attr_dev(meta9, "property", "twitter:description");
+      attr_dev(meta9, "content", meta9_content_value = ctx.about.description);
+      attr_dev(meta9, "class", "svelte-19ui9f4");
+      add_location(meta9, file$b, 133, 2, 6926);
+      attr_dev(meta10, "property", "twitter:image");
+      attr_dev(meta10, "content", "https://tyom.semonov.com/logo.png");
+      attr_dev(meta10, "class", "svelte-19ui9f4");
+      add_location(meta10, file$b, 134, 2, 6994);
       attr_dev(aside, "class", "svelte-19ui9f4");
-      add_location(aside, file$b, 123, 0, 6336);
+      add_location(aside, file$b, 137, 0, 7086);
       attr_dev(h20, "class", "svelte-19ui9f4");
-      add_location(h20, file$b, 129, 4, 6472);
+      add_location(h20, file$b, 143, 4, 7222);
       attr_dev(section0, "class", "experience svelte-19ui9f4");
-      add_location(section0, file$b, 128, 2, 6439);
+      add_location(section0, file$b, 142, 2, 7189);
       attr_dev(h21, "class", "svelte-19ui9f4");
-      add_location(h21, file$b, 135, 4, 6640);
+      add_location(h21, file$b, 149, 4, 7390);
       attr_dev(section1, "class", "education svelte-19ui9f4");
-      add_location(section1, file$b, 134, 2, 6608);
+      add_location(section1, file$b, 148, 2, 7358);
       attr_dev(br, "class", "svelte-19ui9f4");
-      add_location(br, file$b, 144, 4, 6890);
+      add_location(br, file$b, 158, 4, 7640);
       attr_dev(p, "class", "u-print-only print-details-info svelte-19ui9f4");
-      add_location(p, file$b, 141, 2, 6769);
+      add_location(p, file$b, 155, 2, 7519);
       attr_dev(article, "class", "content svelte-19ui9f4");
-      add_location(article, file$b, 127, 0, 6411);
+      add_location(article, file$b, 141, 0, 7161);
     },
     m: function mount(target, anchor) {
-      append_dev(document.head, meta);
+      append_dev(document.head, meta0);
+      append_dev(document.head, meta1);
+      append_dev(document.head, meta2);
+      append_dev(document.head, meta3);
+      append_dev(document.head, meta4);
+      append_dev(document.head, meta5);
+      append_dev(document.head, meta6);
+      append_dev(document.head, meta7);
+      append_dev(document.head, meta8);
+      append_dev(document.head, meta9);
+      append_dev(document.head, meta10);
       insert_dev(target, t0, anchor);
       insert_dev(target, aside, anchor);
       mount_component(summary_1, aside, null);
@@ -8028,8 +8151,24 @@ function create_fragment$c(ctx) {
         document.title = title_value;
       }
 
-      if ((!current || changed.about) && meta_content_value !== (meta_content_value = ctx.about.description)) {
-        attr_dev(meta, "content", meta_content_value);
+      if ((!current || changed.about) && meta0_content_value !== (meta0_content_value = ctx.about.description)) {
+        attr_dev(meta0, "content", meta0_content_value);
+      }
+
+      if ((!current || changed.about) && meta3_content_value !== (meta3_content_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV")) {
+        attr_dev(meta3, "content", meta3_content_value);
+      }
+
+      if ((!current || changed.about) && meta4_content_value !== (meta4_content_value = ctx.about.description)) {
+        attr_dev(meta4, "content", meta4_content_value);
+      }
+
+      if ((!current || changed.about) && meta8_content_value !== (meta8_content_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV")) {
+        attr_dev(meta8, "content", meta8_content_value);
+      }
+
+      if ((!current || changed.about) && meta9_content_value !== (meta9_content_value = ctx.about.description)) {
+        attr_dev(meta9, "content", meta9_content_value);
       }
 
       var summary_1_changes = changed.summary ? get_spread_update(summary_1_spread_levels, [get_spread_object(ctx.summary), summary_1_spread_levels[1]]) : {};
@@ -8132,7 +8271,17 @@ function create_fragment$c(ctx) {
       current = false;
     },
     d: function destroy(detaching) {
-      detach_dev(meta);
+      detach_dev(meta0);
+      detach_dev(meta1);
+      detach_dev(meta2);
+      detach_dev(meta3);
+      detach_dev(meta4);
+      detach_dev(meta5);
+      detach_dev(meta6);
+      detach_dev(meta7);
+      detach_dev(meta8);
+      detach_dev(meta9);
+      detach_dev(meta10);
 
       if (detaching) {
         detach_dev(t0);
@@ -8168,66 +8317,41 @@ function preload() {
 function _preload() {
   _preload = _asyncToGenerator(
   /*#__PURE__*/
-  _regeneratorRuntime.mark(function _callee2() {
+  _regeneratorRuntime.mark(function _callee() {
     var _this2 = this;
 
     var getData, about, experienceItems, educationItems, definitions;
-    return _regeneratorRuntime.wrap(function _callee2$(_context2) {
+    return _regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context.prev = _context.next) {
           case 0:
-            getData =
-            /*#__PURE__*/
-            function () {
-              var _ref = _asyncToGenerator(
-              /*#__PURE__*/
-              _regeneratorRuntime.mark(function _callee(resourceName) {
-                return _regeneratorRuntime.wrap(function _callee$(_context) {
-                  while (1) {
-                    switch (_context.prev = _context.next) {
-                      case 0:
-                        _context.next = 2;
-                        return _this2.fetch(resourceName).then(function (res) {
-                          return res.json();
-                        });
+            getData = function getData(resourceName) {
+              return _this2.fetch(resourceName).then(function (res) {
+                return res.json();
+              });
+            };
 
-                      case 2:
-                        return _context.abrupt("return", _context.sent);
-
-                      case 3:
-                      case "end":
-                        return _context.stop();
-                    }
-                  }
-                }, _callee);
-              }));
-
-              return function getData(_x) {
-                return _ref.apply(this, arguments);
-              };
-            }();
-
-            _context2.next = 3;
+            _context.next = 3;
             return getData('about.json');
 
           case 3:
-            about = _context2.sent;
-            _context2.next = 6;
+            about = _context.sent;
+            _context.next = 6;
             return getData('experience.json');
 
           case 6:
-            experienceItems = _context2.sent;
-            _context2.next = 9;
+            experienceItems = _context.sent;
+            _context.next = 9;
             return getData('education.json');
 
           case 9:
-            educationItems = _context2.sent;
-            _context2.next = 12;
+            educationItems = _context.sent;
+            _context.next = 12;
             return getData('definitions.json');
 
           case 12:
-            definitions = _context2.sent;
-            return _context2.abrupt("return", {
+            definitions = _context.sent;
+            return _context.abrupt("return", {
               about: about,
               experienceItems: experienceItems,
               educationItems: educationItems,
@@ -8236,10 +8360,10 @@ function _preload() {
 
           case 14:
           case "end":
-            return _context2.stop();
+            return _context.stop();
         }
       }
-    }, _callee2);
+    }, _callee);
   }));
   return _preload.apply(this, arguments);
 }
@@ -8252,19 +8376,17 @@ function instance$c($$self, $$props, $$invalidate) {
   var defLinker = createDefinitionFinder(definitions);
   var coreSkills = buildList(about.coreSkills, defLinker);
   var currentFocus = buildList(about.currentFocus, defLinker);
-
-  var summary = _objectSpread$1({}, about, {
+  var summary = Object.assign({}, about, {
     coreSkills: coreSkills,
     currentFocus: currentFocus
   });
-
   var linkedExperienceItems = experienceItems.map(function (item) {
-    return _objectSpread$1({}, item, {
+    return Object.assign({}, item, {
       technologies: buildList(item.technologies, defLinker)
     });
   });
   var writable_props = ['about', 'experienceItems', 'educationItems', 'definitions'];
-  Object.keys($$props).forEach(function (key) {
+  Object_1.keys($$props).forEach(function (key) {
     if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn("<Index> was created with unknown prop '".concat(key, "'"));
   });
 
