@@ -1,7 +1,7 @@
 <script context="module">
   export async function preload() {
-    const getData = async resourceName =>
-      await this.fetch(resourceName).then(res => res.json());
+    const getData = resourceName =>
+      this.fetch(resourceName).then(res => res.json());
 
     const about = await getData('about.json');
     const experienceItems = await getData('experience.json');
@@ -26,11 +26,12 @@
   const defLinker = createDefinitionFinder(definitions);
   const coreSkills = buildList(about.coreSkills, defLinker);
   const currentFocus = buildList(about.currentFocus, defLinker);
-  const summary = { ...about, coreSkills, currentFocus };
-  const linkedExperienceItems = experienceItems.map(item => ({
-    ...item,
-    technologies: buildList(item.technologies, defLinker),
-  }));
+  const summary = Object.assign({}, about, { coreSkills, currentFocus });
+  const linkedExperienceItems = experienceItems.map(item =>
+    Object.assign({}, item, {
+      technologies: buildList(item.technologies, defLinker),
+    }),
+  );
 </script>
 
 <style>
