@@ -19,6 +19,9 @@ export function durationInMonths(fromDate, toDate) {
 
   const pad = num => ('00' + num).slice(-2);
 
+  const buildLabel = (label, num) =>
+    num > 0 ? `${num} ${label}` + (num === 1 ? '' : 's') : '';
+
   const startDate = new Date(
     `${fromDate.year}-${pad(months.indexOf(fromDate.month))}`,
   );
@@ -29,7 +32,17 @@ export function durationInMonths(fromDate, toDate) {
     endDate.getMonth() -
     startDate.getMonth() +
     12 * (endDate.getFullYear() - startDate.getFullYear());
-  return `${durationInMonths} month${durationInMonths === 1 ? '' : 's'}`;
+  const durationInYears = Math.floor(durationInMonths / 12);
+  const duration = {
+    years: durationInYears,
+    months: durationInMonths % 12,
+  };
+  return [
+    buildLabel('year', duration.years),
+    buildLabel('month', duration.months),
+  ]
+    .filter(Boolean)
+    .join(', ');
 }
 
 export function buildList(list = [], linkerFn = item => [{ name: item }]) {
