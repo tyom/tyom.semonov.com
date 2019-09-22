@@ -30,8 +30,10 @@
   @media screen {
     .summary {
       padding: var(--padding);
+      position: relative;
       color: #fffd;
       width: 100%;
+      font-size: 0.9em;
       background: linear-gradient(
         120deg,
         var(--panel-color-hi, #333),
@@ -41,6 +43,35 @@
       & :global(a):hover {
         color: #fff;
       }
+
+      & .skill-set {
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    .summary::before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      opacity: 0.1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: repeating-linear-gradient(
+        30deg,
+        #fff 0px,
+        #fff 2px,
+        #fff0 2px,
+        #fff0 12px
+      );
+      mask: radial-gradient(
+        150vw 1000vh ellipse at top left,
+        #0000,
+        #0003,
+        #000
+      );
     }
   }
 
@@ -60,18 +91,18 @@
 
   h3 {
     font-size: 1.2em;
-    margin: 0 0 0.5em;
+    margin: 0 0 0.3em;
   }
 
   * + h2 {
-    margin-top: 0.5em;
+    margin-top: 1em;
   }
 
-  .synopsis {
+  .details {
     max-width: 68ch;
   }
 
-  * + .synopsis {
+  * + .details {
     margin-top: 1em;
   }
 
@@ -95,7 +126,6 @@
     margin-right: 1rem;
     display: inline-flex;
     transition: 0.05s;
-
 
     &:hover {
       transition: 0.15s;
