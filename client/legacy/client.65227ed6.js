@@ -877,9 +877,9 @@ function (_SvelteComponentDev) {
 var ignore = [/^\/([^\/]+?).json$/];
 var components = [{
   js: function js() {
-    return import('./index.1bf3b397.js');
+    return import('./index.fa45a039.js');
   },
-  css: ["legacy/index.1bf3b397.css"]
+  css: ["legacy/index.fa45a039.css"]
 }];
 var routes = [{
   // index.svelte

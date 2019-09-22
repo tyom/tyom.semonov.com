@@ -1,4 +1,4 @@
-import { N as _typeof, O as _slicedToArray, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, r as _createClass, S as SvelteComponentDev, f as create_slot, P as svg_element, v as text, h as claim_element, j as children, w as claim_text, k as detach_dev, l as add_location, m as insert_dev, x as append_dev, y as set_data_dev, A as empty, C as attr_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, D as assign, Q as _defineProperty, R as exclude_internal_props, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, g as element, L as _asyncToGenerator, M as _regeneratorRuntime, T as listen, J as group_outros, K as check_outros, U as destroy_each, n as noop, z as space, B as claim_space, V as toggle_class, u as globals } from './index.b3d7ddfb.js';
+import { N as _typeof, O as _slicedToArray, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, r as _createClass, S as SvelteComponentDev, f as create_slot, P as svg_element, v as text, h as claim_element, j as children, w as claim_text, k as detach_dev, l as add_location, m as insert_dev, x as append_dev, y as set_data_dev, A as empty, C as attr_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, D as assign, Q as _defineProperty, R as exclude_internal_props, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, g as element, L as _asyncToGenerator, M as _regeneratorRuntime, T as listen, u as globals, J as group_outros, K as check_outros, U as destroy_each, n as noop, z as space, B as claim_space, V as toggle_class } from './index.b3d7ddfb.js';
 
 /*!
  * isobject <https://github.com/jonschlinkert/isobject>
@@ -3398,23 +3398,25 @@ function (_SvelteComponentDev) {
   return LinkWithPreview;
 }(SvelteComponentDev);
 
+var Object_1 = globals.Object;
+
 function get_each_context_1(ctx, list, i) {
-  var child_ctx = Object.create(ctx);
+  var child_ctx = Object_1.create(ctx);
   child_ctx.link = list[i];
   child_ctx.idx = i;
   return child_ctx;
 }
 
 function get_each_context(ctx, list, i) {
-  var child_ctx = Object.create(ctx);
+  var child_ctx = Object_1.create(ctx);
   child_ctx.item = list[i];
   child_ctx.idx = i;
   return child_ctx;
-} // (13:2) {:else}
+} // (19:2) {:else}
 
 
 function create_else_block_1(ctx) {
-  var t0_value = ctx.item.name + "",
+  var t0_value = ctx.getPlainItemName(ctx.item) + "",
       t0,
       t1_value = ctx.separator(ctx.idx, ctx.items) + "",
       t1,
@@ -3438,7 +3440,27 @@ function create_else_block_1(ctx) {
       current = true;
     },
     p: function update(changed, ctx) {
-      if (ctx.item.children) if_block.p(changed, ctx);
+      if ((!current || changed.items) && t0_value !== (t0_value = ctx.getPlainItemName(ctx.item) + "")) {
+        set_data_dev(t0, t0_value);
+      }
+
+      if (ctx.item.children) {
+        if (if_block) {
+          if_block.p(changed, ctx);
+          transition_in(if_block, 1);
+        } else {
+          if_block = create_if_block_3(ctx);
+          if_block.c();
+          transition_in(if_block, 1);
+          if_block.m(t1.parentNode, t1);
+        }
+      } else if (if_block) {
+        group_outros();
+        transition_out(if_block, 1, 1, function () {
+          if_block = null;
+        });
+        check_outros();
+      }
 
       if ((!current || changed.items) && t1_value !== (t1_value = ctx.separator(ctx.idx, ctx.items) + "")) {
         set_data_dev(t1, t1_value);
@@ -3469,11 +3491,11 @@ function create_else_block_1(ctx) {
     block: block,
     id: create_else_block_1.name,
     type: "else",
-    source: "(13:2) {:else}",
+    source: "(19:2) {:else}",
     ctx: ctx
   });
   return block;
-} // (11:2) {#if item.links}
+} // (17:2) {#if item.links}
 
 
 function create_if_block$1(ctx) {
@@ -3525,7 +3547,7 @@ function create_if_block$1(ctx) {
       current = true;
     },
     p: function update(changed, ctx) {
-      if (changed.separator || changed.formattedList) {
+      if (changed.separator || changed.items) {
         each_value_1 = ctx.item.links;
 
         var _i4;
@@ -3557,7 +3579,23 @@ function create_if_block$1(ctx) {
         check_outros();
       }
 
-      if (ctx.item.children) if_block.p(changed, ctx);
+      if (ctx.item.children) {
+        if (if_block) {
+          if_block.p(changed, ctx);
+          transition_in(if_block, 1);
+        } else {
+          if_block = create_if_block_1(ctx);
+          if_block.c();
+          transition_in(if_block, 1);
+          if_block.m(t.parentNode, t);
+        }
+      } else if (if_block) {
+        group_outros();
+        transition_out(if_block, 1, 1, function () {
+          if_block = null;
+        });
+        check_outros();
+      }
 
       if ((!current || changed.items) && t_value !== (t_value = ctx.separator(ctx.idx, ctx.items) + "")) {
         set_data_dev(t, t_value);
@@ -3601,11 +3639,11 @@ function create_if_block$1(ctx) {
     block: block,
     id: create_if_block$1.name,
     type: "if",
-    source: "(11:2) {#if item.links}",
+    source: "(17:2) {#if item.links}",
     ctx: ctx
   });
   return block;
-} // (14:15) {#if item.children}
+} // (20:28) {#if item.children}
 
 
 function create_if_block_3(ctx) {
@@ -3640,7 +3678,11 @@ function create_if_block_3(ctx) {
       insert_dev(target, t2, anchor);
       current = true;
     },
-    p: noop,
+    p: function update(changed, ctx) {
+      var inlinelist_changes = {};
+      if (changed.items) inlinelist_changes.items = ctx.item.children;
+      inlinelist.$set(inlinelist_changes);
+    },
     i: function intro(local) {
       if (current) return;
       transition_in(inlinelist.$$.fragment, local);
@@ -3667,11 +3709,11 @@ function create_if_block_3(ctx) {
     block: block,
     id: create_if_block_3.name,
     type: "if",
-    source: "(14:15) {#if item.children}",
+    source: "(20:28) {#if item.children}",
     ctx: ctx
   });
   return block;
-} // (12:174) {:else}
+} // (18:174) {:else}
 
 
 function create_else_block(ctx) {
@@ -3687,7 +3729,11 @@ function create_else_block(ctx) {
     m: function mount(target, anchor) {
       insert_dev(target, t, anchor);
     },
-    p: noop,
+    p: function update(changed, ctx) {
+      if (changed.items && t_value !== (t_value = ctx.link.name + "")) {
+        set_data_dev(t, t_value);
+      }
+    },
     i: noop,
     o: noop,
     d: function destroy(detaching) {
@@ -3700,11 +3746,11 @@ function create_else_block(ctx) {
     block: block,
     id: create_else_block.name,
     type: "else",
-    source: "(12:174) {:else}",
+    source: "(18:174) {:else}",
     ctx: ctx
   });
   return block;
-} // (12:35) {#if link.url}
+} // (18:35) {#if link.url}
 
 
 function create_if_block_2(ctx) {
@@ -3736,7 +3782,10 @@ function create_if_block_2(ctx) {
     },
     p: function update(changed, ctx) {
       var linkwithpreview_changes = {};
-      if (changed.$$scope) linkwithpreview_changes.$$scope = {
+      if (changed.items) linkwithpreview_changes.href = ctx.link.url;
+      if (changed.items) linkwithpreview_changes.descriptionUrl = ctx.link.wikipedia;
+      if (changed.items) linkwithpreview_changes.description = ctx.link.description;
+      if (changed.$$scope || changed.items) linkwithpreview_changes.$$scope = {
         changed: changed,
         ctx: ctx
       };
@@ -3759,11 +3808,11 @@ function create_if_block_2(ctx) {
     block: block,
     id: create_if_block_2.name,
     type: "if",
-    source: "(12:35) {#if link.url}",
+    source: "(18:35) {#if link.url}",
     ctx: ctx
   });
   return block;
-} // (12:49) <LinkWithPreview href={link.url} descriptionUrl={link.wikipedia} description={link.description}>
+} // (18:49) <LinkWithPreview href={link.url} descriptionUrl={link.wikipedia} description={link.description}>
 
 
 function create_default_slot$1(ctx) {
@@ -3779,7 +3828,11 @@ function create_default_slot$1(ctx) {
     m: function mount(target, anchor) {
       insert_dev(target, t, anchor);
     },
-    p: noop,
+    p: function update(changed, ctx) {
+      if (changed.items && t_value !== (t_value = ctx.link.name + "")) {
+        set_data_dev(t, t_value);
+      }
+    },
     d: function destroy(detaching) {
       if (detaching) {
         detach_dev(t);
@@ -3790,11 +3843,11 @@ function create_default_slot$1(ctx) {
     block: block,
     id: create_default_slot$1.name,
     type: "slot",
-    source: "(12:49) <LinkWithPreview href={link.url} descriptionUrl={link.wikipedia} description={link.description}>",
+    source: "(18:49) <LinkWithPreview href={link.url} descriptionUrl={link.wikipedia} description={link.description}>",
     ctx: ctx
   });
   return block;
-} // (12:4) {#each item.links as link, idx}
+} // (18:4) {#each item.links as link, idx}
 
 
 function create_each_block_1(ctx) {
@@ -3828,7 +3881,31 @@ function create_each_block_1(ctx) {
       current = true;
     },
     p: function update(changed, ctx) {
-      if_block.p(changed, ctx);
+      var previous_block_index = current_block_type_index;
+      current_block_type_index = select_block_type_1(changed, ctx);
+
+      if (current_block_type_index === previous_block_index) {
+        if_blocks[current_block_type_index].p(changed, ctx);
+      } else {
+        group_outros();
+        transition_out(if_blocks[previous_block_index], 1, 1, function () {
+          if_blocks[previous_block_index] = null;
+        });
+        check_outros();
+        if_block = if_blocks[current_block_type_index];
+
+        if (!if_block) {
+          if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+          if_block.c();
+        }
+
+        transition_in(if_block, 1);
+        if_block.m(t.parentNode, t);
+      }
+
+      if ((!current || changed.items) && t_value !== (t_value = ctx.separator(ctx.idx, ctx.item.links) + "")) {
+        set_data_dev(t, t_value);
+      }
     },
     i: function intro(local) {
       if (current) return;
@@ -3851,11 +3928,11 @@ function create_each_block_1(ctx) {
     block: block,
     id: create_each_block_1.name,
     type: "each",
-    source: "(12:4) {#each item.links as link, idx}",
+    source: "(18:4) {#each item.links as link, idx}",
     ctx: ctx
   });
   return block;
-} // (12:232) {#if item.children}
+} // (18:232) {#if item.children}
 
 
 function create_if_block_1(ctx) {
@@ -3890,7 +3967,11 @@ function create_if_block_1(ctx) {
       insert_dev(target, t2, anchor);
       current = true;
     },
-    p: noop,
+    p: function update(changed, ctx) {
+      var inlinelist_changes = {};
+      if (changed.items) inlinelist_changes.items = ctx.item.children;
+      inlinelist.$set(inlinelist_changes);
+    },
     i: function intro(local) {
       if (current) return;
       transition_in(inlinelist.$$.fragment, local);
@@ -3917,11 +3998,11 @@ function create_if_block_1(ctx) {
     block: block,
     id: create_if_block_1.name,
     type: "if",
-    source: "(12:232) {#if item.children}",
+    source: "(18:232) {#if item.children}",
     ctx: ctx
   });
   return block;
-} // (10:0) {#each formattedList as item, idx}
+} // (16:0) {#each items as item, idx}
 
 
 function create_each_block(ctx) {
@@ -3951,7 +4032,27 @@ function create_each_block(ctx) {
       current = true;
     },
     p: function update(changed, ctx) {
-      if_block.p(changed, ctx);
+      var previous_block_index = current_block_type_index;
+      current_block_type_index = select_block_type(changed, ctx);
+
+      if (current_block_type_index === previous_block_index) {
+        if_blocks[current_block_type_index].p(changed, ctx);
+      } else {
+        group_outros();
+        transition_out(if_blocks[previous_block_index], 1, 1, function () {
+          if_blocks[previous_block_index] = null;
+        });
+        check_outros();
+        if_block = if_blocks[current_block_type_index];
+
+        if (!if_block) {
+          if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+          if_block.c();
+        }
+
+        transition_in(if_block, 1);
+        if_block.m(if_block_anchor.parentNode, if_block_anchor);
+      }
     },
     i: function intro(local) {
       if (current) return;
@@ -3974,7 +4075,7 @@ function create_each_block(ctx) {
     block: block,
     id: create_each_block.name,
     type: "each",
-    source: "(10:0) {#each formattedList as item, idx}",
+    source: "(16:0) {#each items as item, idx}",
     ctx: ctx
   });
   return block;
@@ -3982,7 +4083,7 @@ function create_each_block(ctx) {
 
 function create_fragment$3(ctx) {
   var each_1_anchor, current;
-  var each_value = ctx.formattedList;
+  var each_value = ctx.items;
   var each_blocks = [];
 
   for (var i = 0; i < each_value.length; i += 1) {
@@ -4019,8 +4120,8 @@ function create_fragment$3(ctx) {
       current = true;
     },
     p: function update(changed, ctx) {
-      if (changed.formattedList || changed.separator || changed.items) {
-        each_value = ctx.formattedList;
+      if (changed.items || changed.separator || changed.getPlainItemName) {
+        each_value = ctx.items;
 
         var _i10;
 
@@ -4088,17 +4189,27 @@ function create_fragment$3(ctx) {
 }
 
 function instance$3($$self, $$props, $$invalidate) {
+  var _$$props$items = $$props.items,
+      items = _$$props$items === void 0 ? [] : _$$props$items;
+
   var separator = function separator(idx, list) {
     return idx < list.length - 1 ? ', ' : '';
   };
 
-  var _$$props$items = $$props.items,
-      items = _$$props$items === void 0 ? [] : _$$props$items;
-  var formattedList = items.filter(function (x) {
-    return x.name;
-  });
+  var getPlainItemName = function getPlainItemName(item) {
+    if (typeof item.name === 'string') {
+      return item.name;
+    }
+
+    var _Object$entries$ = _slicedToArray(Object.entries(item.name)[0], 2),
+        parentName = _Object$entries$[0],
+        children = _Object$entries$[1];
+
+    return "".concat(parentName, " (").concat(children.join(', '), ")");
+  };
+
   var writable_props = ['items'];
-  Object.keys($$props).forEach(function (key) {
+  Object_1.keys($$props).forEach(function (key) {
     if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn("<InlineList> was created with unknown prop '".concat(key, "'"));
   });
 
@@ -4117,9 +4228,9 @@ function instance$3($$self, $$props, $$invalidate) {
   };
 
   return {
-    separator: separator,
     items: items,
-    formattedList: formattedList
+    separator: separator,
+    getPlainItemName: getPlainItemName
   };
 }
 
@@ -4170,7 +4281,7 @@ function get_each_context$1(ctx, list, i) {
   var child_ctx = Object.create(ctx);
   child_ctx.item = list[i];
   return child_ctx;
-} // (30:6) {:else}
+} // (28:6) {:else}
 
 
 function create_else_block_1$1(ctx) {
@@ -4186,7 +4297,11 @@ function create_else_block_1$1(ctx) {
     m: function mount(target, anchor) {
       insert_dev(target, t, anchor);
     },
-    p: noop,
+    p: function update(changed, ctx) {
+      if (changed.items && t_value !== (t_value = ctx.item.name + "")) {
+        set_data_dev(t, t_value);
+      }
+    },
     i: noop,
     o: noop,
     d: function destroy(detaching) {
@@ -4199,11 +4314,11 @@ function create_else_block_1$1(ctx) {
     block: block,
     id: create_else_block_1$1.name,
     type: "else",
-    source: "(30:6) {:else}",
+    source: "(28:6) {:else}",
     ctx: ctx
   });
   return block;
-} // (26:6) {#if item.links}
+} // (24:6) {#if item.links}
 
 
 function create_if_block$2(ctx) {
@@ -4245,7 +4360,7 @@ function create_if_block$2(ctx) {
       current = true;
     },
     p: function update(changed, ctx) {
-      if (changed.separator || changed.formattedList) {
+      if (changed.separator || changed.items) {
         each_value_1 = ctx.item.links;
 
         var _i4;
@@ -4307,11 +4422,11 @@ function create_if_block$2(ctx) {
     block: block,
     id: create_if_block$2.name,
     type: "if",
-    source: "(26:6) {#if item.links}",
+    source: "(24:6) {#if item.links}",
     ctx: ctx
   });
   return block;
-} // (28:149) {:else}
+} // (26:149) {:else}
 
 
 function create_else_block$1(ctx) {
@@ -4327,7 +4442,11 @@ function create_else_block$1(ctx) {
     m: function mount(target, anchor) {
       insert_dev(target, t, anchor);
     },
-    p: noop,
+    p: function update(changed, ctx) {
+      if (changed.items && t_value !== (t_value = ctx.link.name + "")) {
+        set_data_dev(t, t_value);
+      }
+    },
     i: noop,
     o: noop,
     d: function destroy(detaching) {
@@ -4340,11 +4459,11 @@ function create_else_block$1(ctx) {
     block: block,
     id: create_else_block$1.name,
     type: "else",
-    source: "(28:149) {:else}",
+    source: "(26:149) {:else}",
     ctx: ctx
   });
   return block;
-} // (28:10) {#if link.url}
+} // (26:10) {#if link.url}
 
 
 function create_if_block_1$1(ctx) {
@@ -4376,7 +4495,10 @@ function create_if_block_1$1(ctx) {
     },
     p: function update(changed, ctx) {
       var linkwithpreview_changes = {};
-      if (changed.$$scope) linkwithpreview_changes.$$scope = {
+      if (changed.items) linkwithpreview_changes.href = ctx.link.url;
+      if (changed.items) linkwithpreview_changes.descriptionUrl = ctx.link.wikipedia;
+      if (changed.items) linkwithpreview_changes.description = ctx.link.description;
+      if (changed.$$scope || changed.items) linkwithpreview_changes.$$scope = {
         changed: changed,
         ctx: ctx
       };
@@ -4399,11 +4521,11 @@ function create_if_block_1$1(ctx) {
     block: block,
     id: create_if_block_1$1.name,
     type: "if",
-    source: "(28:10) {#if link.url}",
+    source: "(26:10) {#if link.url}",
     ctx: ctx
   });
   return block;
-} // (28:24) <LinkWithPreview href={link.url} descriptionUrl={link.wikipedia} description={link.description}>
+} // (26:24) <LinkWithPreview href={link.url} descriptionUrl={link.wikipedia} description={link.description}>
 
 
 function create_default_slot$2(ctx) {
@@ -4419,7 +4541,11 @@ function create_default_slot$2(ctx) {
     m: function mount(target, anchor) {
       insert_dev(target, t, anchor);
     },
-    p: noop,
+    p: function update(changed, ctx) {
+      if (changed.items && t_value !== (t_value = ctx.link.name + "")) {
+        set_data_dev(t, t_value);
+      }
+    },
     d: function destroy(detaching) {
       if (detaching) {
         detach_dev(t);
@@ -4430,11 +4556,11 @@ function create_default_slot$2(ctx) {
     block: block,
     id: create_default_slot$2.name,
     type: "slot",
-    source: "(28:24) <LinkWithPreview href={link.url} descriptionUrl={link.wikipedia} description={link.description}>",
+    source: "(26:24) <LinkWithPreview href={link.url} descriptionUrl={link.wikipedia} description={link.description}>",
     ctx: ctx
   });
   return block;
-} // (27:8) {#each item.links as link, idx}
+} // (25:8) {#each item.links as link, idx}
 
 
 function create_each_block_1$1(ctx) {
@@ -4468,7 +4594,31 @@ function create_each_block_1$1(ctx) {
       current = true;
     },
     p: function update(changed, ctx) {
-      if_block.p(changed, ctx);
+      var previous_block_index = current_block_type_index;
+      current_block_type_index = select_block_type_1(changed, ctx);
+
+      if (current_block_type_index === previous_block_index) {
+        if_blocks[current_block_type_index].p(changed, ctx);
+      } else {
+        group_outros();
+        transition_out(if_blocks[previous_block_index], 1, 1, function () {
+          if_blocks[previous_block_index] = null;
+        });
+        check_outros();
+        if_block = if_blocks[current_block_type_index];
+
+        if (!if_block) {
+          if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+          if_block.c();
+        }
+
+        transition_in(if_block, 1);
+        if_block.m(t.parentNode, t);
+      }
+
+      if ((!current || changed.items) && t_value !== (t_value = ctx.separator(ctx.idx, ctx.item.links) + "")) {
+        set_data_dev(t, t_value);
+      }
     },
     i: function intro(local) {
       if (current) return;
@@ -4491,11 +4641,11 @@ function create_each_block_1$1(ctx) {
     block: block,
     id: create_each_block_1$1.name,
     type: "each",
-    source: "(27:8) {#each item.links as link, idx}",
+    source: "(25:8) {#each item.links as link, idx}",
     ctx: ctx
   });
   return block;
-} // (24:2) {#each formattedList as item}
+} // (22:2) {#each items as item}
 
 
 function create_each_block$1(ctx) {
@@ -4536,7 +4686,7 @@ function create_each_block$1(ctx) {
       this.h();
     },
     h: function hydrate() {
-      add_location(li, file$3, 24, 4, 919);
+      add_location(li, file$3, 22, 4, 812);
     },
     m: function mount(target, anchor) {
       insert_dev(target, li, anchor);
@@ -4547,7 +4697,31 @@ function create_each_block$1(ctx) {
       current = true;
     },
     p: function update(changed, ctx) {
-      if_block.p(changed, ctx);
+      var previous_block_index = current_block_type_index;
+      current_block_type_index = select_block_type(changed, ctx);
+
+      if (current_block_type_index === previous_block_index) {
+        if_blocks[current_block_type_index].p(changed, ctx);
+      } else {
+        group_outros();
+        transition_out(if_blocks[previous_block_index], 1, 1, function () {
+          if_blocks[previous_block_index] = null;
+        });
+        check_outros();
+        if_block = if_blocks[current_block_type_index];
+
+        if (!if_block) {
+          if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+          if_block.c();
+        }
+
+        transition_in(if_block, 1);
+        if_block.m(li, t0);
+      }
+
+      var blocklist_changes = {};
+      if (changed.items) blocklist_changes.items = ctx.item.children;
+      blocklist.$set(blocklist_changes);
     },
     i: function intro(local) {
       if (current) return;
@@ -4573,7 +4747,7 @@ function create_each_block$1(ctx) {
     block: block,
     id: create_each_block$1.name,
     type: "each",
-    source: "(24:2) {#each formattedList as item}",
+    source: "(22:2) {#each items as item}",
     ctx: ctx
   });
   return block;
@@ -4581,7 +4755,7 @@ function create_each_block$1(ctx) {
 
 function create_fragment$4(ctx) {
   var ul, current;
-  var each_value = ctx.formattedList;
+  var each_value = ctx.items;
   var each_blocks = [];
 
   for (var i = 0; i < each_value.length; i += 1) {
@@ -4619,7 +4793,7 @@ function create_fragment$4(ctx) {
     },
     h: function hydrate() {
       attr_dev(ul, "class", "plain-list svelte-8qcibv");
-      add_location(ul, file$3, 22, 0, 859);
+      add_location(ul, file$3, 20, 0, 760);
     },
     m: function mount(target, anchor) {
       insert_dev(target, ul, anchor);
@@ -4631,8 +4805,8 @@ function create_fragment$4(ctx) {
       current = true;
     },
     p: function update(changed, ctx) {
-      if (changed.formattedList || changed.separator) {
-        each_value = ctx.formattedList;
+      if (changed.items || changed.separator) {
+        each_value = ctx.items;
 
         var _i10;
 
@@ -4701,44 +4875,34 @@ function create_fragment$4(ctx) {
 
 function instance$4($$self, $$props, $$invalidate) {
   var _$$props$items = $$props.items,
-      items = _$$props$items === void 0 ? [] : _$$props$items,
-      _$$props$inlineSepara = $$props.inlineSeparator,
-      inlineSeparator = _$$props$inlineSepara === void 0 ? ', ' : _$$props$inlineSepara;
+      items = _$$props$items === void 0 ? [] : _$$props$items;
 
   var separator = function separator(idx, list) {
-    return idx < list.length - 1 ? inlineSeparator : '';
+    return idx < list.length - 1 ? ', ' : '';
   };
 
-  var formattedList = items.filter(function (x) {
-    return x.name;
-  });
-  var writable_props = ['items', 'inlineSeparator'];
+  var writable_props = ['items'];
   Object.keys($$props).forEach(function (key) {
     if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn("<BlockList> was created with unknown prop '".concat(key, "'"));
   });
 
   $$self.$set = function ($$props) {
     if ('items' in $$props) $$invalidate('items', items = $$props.items);
-    if ('inlineSeparator' in $$props) $$invalidate('inlineSeparator', inlineSeparator = $$props.inlineSeparator);
   };
 
   $$self.$capture_state = function () {
     return {
-      items: items,
-      inlineSeparator: inlineSeparator
+      items: items
     };
   };
 
   $$self.$inject_state = function ($$props) {
     if ('items' in $$props) $$invalidate('items', items = $$props.items);
-    if ('inlineSeparator' in $$props) $$invalidate('inlineSeparator', inlineSeparator = $$props.inlineSeparator);
   };
 
   return {
     items: items,
-    inlineSeparator: inlineSeparator,
-    separator: separator,
-    formattedList: formattedList
+    separator: separator
   };
 }
 
@@ -4753,7 +4917,7 @@ function (_SvelteComponentDev) {
     _classCallCheck(this, BlockList);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(BlockList).call(this, options));
-    init(_assertThisInitialized(_this), options, instance$4, create_fragment$4, safe_not_equal, ["items", "inlineSeparator"]);
+    init(_assertThisInitialized(_this), options, instance$4, create_fragment$4, safe_not_equal, ["items"]);
     dispatch_dev("SvelteRegisterComponent", {
       component: _assertThisInitialized(_this),
       tagName: "BlockList",
@@ -4771,26 +4935,18 @@ function (_SvelteComponentDev) {
     set: function set(value) {
       throw new Error("<BlockList>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     }
-  }, {
-    key: "inlineSeparator",
-    get: function get() {
-      throw new Error("<BlockList>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    },
-    set: function set(value) {
-      throw new Error("<BlockList>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    }
   }]);
 
   return BlockList;
 }(SvelteComponentDev);
 
-var file$4 = "src/components/List/List.svelte"; // (14:0) {:else}
+var file$4 = "src/components/List/List.svelte"; // (17:0) {:else}
 
 function create_else_block$2(ctx) {
   var current;
   var blocklist = new BlockList({
     props: {
-      items: ctx.items
+      items: ctx.formattedList
     },
     $$inline: true
   });
@@ -4805,11 +4961,7 @@ function create_else_block$2(ctx) {
       mount_component(blocklist, target, anchor);
       current = true;
     },
-    p: function update(changed, ctx) {
-      var blocklist_changes = {};
-      if (changed.items) blocklist_changes.items = ctx.items;
-      blocklist.$set(blocklist_changes);
-    },
+    p: noop,
     i: function intro(local) {
       if (current) return;
       transition_in(blocklist.$$.fragment, local);
@@ -4827,18 +4979,18 @@ function create_else_block$2(ctx) {
     block: block,
     id: create_else_block$2.name,
     type: "else",
-    source: "(14:0) {:else}",
+    source: "(17:0) {:else}",
     ctx: ctx
   });
   return block;
-} // (10:0) {#if inline}
+} // (13:0) {#if inline}
 
 
 function create_if_block$3(ctx) {
   var div, current;
   var inlinelist = new InlineList({
     props: {
-      items: ctx.items
+      items: ctx.formattedList
     },
     $$inline: true
   });
@@ -4859,18 +5011,14 @@ function create_if_block$3(ctx) {
     },
     h: function hydrate() {
       attr_dev(div, "class", "plain-list-inline");
-      add_location(div, file$4, 10, 2, 235);
+      add_location(div, file$4, 13, 2, 318);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
       mount_component(inlinelist, div, null);
       current = true;
     },
-    p: function update(changed, ctx) {
-      var inlinelist_changes = {};
-      if (changed.items) inlinelist_changes.items = ctx.items;
-      inlinelist.$set(inlinelist_changes);
-    },
+    p: noop,
     i: function intro(local) {
       if (current) return;
       transition_in(inlinelist.$$.fragment, local);
@@ -4892,7 +5040,7 @@ function create_if_block$3(ctx) {
     block: block,
     id: create_if_block$3.name,
     type: "if",
-    source: "(10:0) {#if inline}",
+    source: "(13:0) {#if inline}",
     ctx: ctx
   });
   return block;
@@ -4979,7 +5127,13 @@ function instance$5($$self, $$props, $$invalidate) {
       items = _$$props$items === void 0 ? [] : _$$props$items,
       _$$props$inline = $$props.inline,
       inline = _$$props$inline === void 0 ? false : _$$props$inline;
-  var formattedList = items.filter(function (x) {
+  var formattedList = items.map(function (x) {
+    return {
+      name: x.name || x,
+      links: x.links,
+      children: x.children
+    };
+  }).filter(function (x) {
     return x.name;
   });
   var writable_props = ['items', 'inline'];
@@ -5006,7 +5160,8 @@ function instance$5($$self, $$props, $$invalidate) {
 
   return {
     items: items,
-    inline: inline
+    inline: inline,
+    formattedList: formattedList
   };
 }
 
@@ -5233,7 +5388,7 @@ function create_if_block_1$2(ctx) {
     ctx: ctx
   });
   return block;
-} // (128:2) {#if technologies}
+} // (128:2) {#if technologies.length}
 
 
 function create_if_block$4(ctx) {
@@ -5272,9 +5427,9 @@ function create_if_block$4(ctx) {
     },
     h: function hydrate() {
       attr_dev(h4, "class", "svelte-1s4coi2");
-      add_location(h4, file$5, 129, 6, 5605);
+      add_location(h4, file$5, 129, 6, 5612);
       attr_dev(footer, "class", "svelte-1s4coi2");
-      add_location(footer, file$5, 128, 4, 5590);
+      add_location(footer, file$5, 128, 4, 5597);
     },
     m: function mount(target, anchor) {
       insert_dev(target, footer, anchor);
@@ -5310,7 +5465,7 @@ function create_if_block$4(ctx) {
     block: block,
     id: create_if_block$4.name,
     type: "if",
-    source: "(128:2) {#if technologies}",
+    source: "(128:2) {#if technologies.length}",
     ctx: ctx
   });
   return block;
@@ -5353,7 +5508,7 @@ function create_fragment$6(ctx) {
   var if_block1 = ctx.isDefunct && create_if_block_3$1(ctx);
   var if_block2 = ctx.isContractor && create_if_block_2$1(ctx);
   var if_block3 = ctx.description && create_if_block_1$2(ctx);
-  var if_block4 = ctx.technologies && create_if_block$4(ctx);
+  var if_block4 = ctx.technologies.length && create_if_block$4(ctx);
   var block = {
     c: function create() {
       div2 = element("div");
@@ -5573,7 +5728,7 @@ function create_fragment$6(ctx) {
         if_block3 = null;
       }
 
-      if (ctx.technologies) {
+      if (ctx.technologies.length) {
         if (if_block4) {
           if_block4.p(changed, ctx);
           transition_in(if_block4, 1);
@@ -7749,17 +7904,17 @@ function (_SvelteComponentDev) {
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var Object_1 = globals.Object;
+var Object_1$1 = globals.Object;
 var file$b = "src/routes/index.svelte";
 
 function get_each_context$3(ctx, list, i) {
-  var child_ctx = Object_1.create(ctx);
+  var child_ctx = Object_1$1.create(ctx);
   child_ctx.experience = list[i];
   return child_ctx;
 }
 
 function get_each_context_1$3(ctx, list, i) {
-  var child_ctx = Object_1.create(ctx);
+  var child_ctx = Object_1$1.create(ctx);
   child_ctx.experience = list[i];
   return child_ctx;
 } // (145:4) {#each linkedExperienceItems as experience}
@@ -8448,7 +8603,7 @@ function instance$c($$self, $$props, $$invalidate) {
     });
   });
   var writable_props = ['about', 'experienceItems', 'educationItems', 'definitions'];
-  Object_1.keys($$props).forEach(function (key) {
+  Object_1$1.keys($$props).forEach(function (key) {
     if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn("<Index> was created with unknown prop '".concat(key, "'"));
   });
 
