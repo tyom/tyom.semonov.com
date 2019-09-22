@@ -9,12 +9,12 @@
 
   export let name = '[Name]';
   export let title = '[Title]';
-  export let synopsis = '[Synopsis]';
+  export let details = '[Details]';
   export let description;
   export let contact;
   export let social;
   export let coreSkills;
-  export let currentFocus;
+  export let currentInterests;
   export let pdfLink;
 
   export let icons = {
@@ -30,8 +30,10 @@
   @media screen {
     .summary {
       padding: var(--padding);
+      position: relative;
       color: #fffd;
       width: 100%;
+      font-size: 0.9em;
       background: linear-gradient(
         120deg,
         var(--panel-color-hi, #333),
@@ -41,6 +43,35 @@
       & :global(a):hover {
         color: #fff;
       }
+
+      & .skill-set {
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    .summary::before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      opacity: 0.1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: repeating-linear-gradient(
+        30deg,
+        #fff 0px,
+        #fff 2px,
+        #fff0 2px,
+        #fff0 12px
+      );
+      mask: radial-gradient(
+        150vw 1000vh ellipse at top left,
+        #0000,
+        #0003,
+        #000
+      );
     }
   }
 
@@ -60,18 +91,18 @@
 
   h3 {
     font-size: 1.2em;
-    margin: 0 0 0.5em;
+    margin: 0 0 0.3em;
   }
 
   * + h2 {
-    margin-top: 0.5em;
+    margin-top: 1em;
   }
 
-  .synopsis {
+  .details {
     max-width: 68ch;
   }
 
-  * + .synopsis {
+  * + .details {
     margin-top: 1em;
   }
 
@@ -95,7 +126,6 @@
     margin-right: 1rem;
     display: inline-flex;
     transition: 0.05s;
-
 
     &:hover {
       transition: 0.15s;
@@ -179,6 +209,10 @@
   }
 
   @media print {
+    .summary {
+      font-size: 10.5pt;
+    }
+
     h1 {
       font-size: 2.8rem;
     }
@@ -209,10 +243,10 @@
 <div class="summary">
   <h1>{name}</h1>
   <h2>{title}</h2>
-  <div class="synopsis">
-    {@html synopsis}
+  <div class="details">
+    {@html details}
   </div>
-  {#if coreSkills || currentFocus}
+  {#if coreSkills || currentInterests}
     <div class="skill-set">
       {#if coreSkills}
         <section>
@@ -220,10 +254,10 @@
           <List items={coreSkills} />
         </section>
       {/if}
-      {#if currentFocus}
+      {#if currentInterests}
         <section>
           <h3>Current focus</h3>
-          <List items={currentFocus} />
+          <List items={currentInterests} />
         </section>
       {/if}
     </div>

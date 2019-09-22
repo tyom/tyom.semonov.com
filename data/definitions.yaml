@@ -3,6 +3,8 @@
 - name: React
   url: https://reactjs.org
   wikipedia: React_(web_framework)
+- name: Preact
+  url: https://preactjs.com
 - name: GraphQL
   url: https://graphql.org
   wikipedia: GraphQL
@@ -15,20 +17,30 @@
 - name: Nuxt.js
   url: https://nuxtjs.org
   wikipedia: Nuxt.js
+- name: Svelte
+  url: https://svelte.dev
+- name: Storybook
+  url: https://storybook.js.org/
 - name: Nunjucks
   url: https://mozilla.github.io/nunjucks/
 - name: Express
   url: https://expressjs.com
-  wikipedia: Express.js
+- name: Polka
+  url: https://github.com/lukeed/polka
 - name: Node.js
   url: https://nodejs.org/
   wikipedia: Node.js
+- name: Microservices
+  url: https://microservices.io
+  wikipedia: Microservices
 - name: Jest
   url: https://facebook.github.io/jest/
   wikipedia: Jest_(JavaScript_framework)
 - name: Webpack
   url: https://webpack.js.org
   wikipedia: Webpack
+- name: Rollup
+  url: https://rollupjs.org/guide/en/
 - name: CSS Modules
   url: https://css-tricks.com/css-modules-part-1-need/
 - name: BrowserStack
@@ -213,9 +225,15 @@
   wikipedia: Perl
 - name: CircleCI
   url: https://circleci.com
+- name: Travis CI
+  url: https://travis-ci.org/
+  wikipedia: Travis_CI
 - name: now.sh
   url: https://zeit.co/now
   description: ZEIT Now is a cloud platform for static sites and serverless functions. It enables developers to host websites and web services that deploy instantly, scale automatically, and requires no supervision, all with no configuration.
 - name: Docker
   url: https://en.wikipedia.org/wiki/Docker_(software)
   wikipedia: Docker_(software)
+- name: Web Components
+  url: https://developer.mozilla.org/en-US/docs/Web/Web_Components
+  wikipedia: Web_Components
