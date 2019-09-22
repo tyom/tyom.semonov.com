@@ -3,6 +3,8 @@
 - name: React
   url: https://reactjs.org
   wikipedia: React_(web_framework)
+- name: Preact
+  url: https://preactjs.com
 - name: GraphQL
   url: https://graphql.org
   wikipedia: GraphQL
@@ -15,6 +17,8 @@
 - name: Nuxt.js
   url: https://nuxtjs.org
   wikipedia: Nuxt.js
+- name: Svelte
+  url: https://svelte.dev
 - name: Nunjucks
   url: https://mozilla.github.io/nunjucks/
 - name: Express
@@ -23,6 +27,9 @@
 - name: Node.js
   url: https://nodejs.org/
   wikipedia: Node.js
+- name: Microservices
+  url: https://microservices.io
+  wikipedia: Microservices
 - name: Jest
   url: https://facebook.github.io/jest/
   wikipedia: Jest_(JavaScript_framework)

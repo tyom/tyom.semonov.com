@@ -4,7 +4,7 @@ description: Experienced frontend developer based in London.
 
 contact:
   web: !imd tyom.semonov.com
-  email: !imd tyom@semonov.com
+  email: !imd tyom+cv@semonov.com
 
 social:
   - icon: github
@@ -17,27 +17,31 @@ social:
     label: Twitter
     url: https://twitter.com/tyom
 
-synopsis: !md |
-  A passionate developer with over 15 years of professional experience in building high-traffic complex websites
-  and applications using web standards and best practices for desktops and mobile devices.
+details: !md |
+  A passionate web developer with over 15 years of professional experience in
+  building websites and applications for the Web to be used on various devices.
+  Progressively enhanced and built on web standards with best practices.
 
-  Great attention to detail, code maintainability and performance. A keen learner in multiple disciplines.
-  Advocate of data-driven, user-centred, accessible, mobile-first design.
+  Curious and always eager to learn and experiment. With attention to detail,
+  code maintainability and performance under different conditions and
+  range of devices. Cross-skilled but focused and an advocate of data-driven,
+  user-centred and accessible design.
 
 coreSkills:
   - JavaScript
-  - Node.js
-  - Webpack
-  - Express
-  - React
   - CSS/PostCSS/Sass
+  - Node.js
+  - Webpack/Rollup
+  - Express/Polka
+  - React/Preact
   - HTML5
-  - Git/GitHub
   - Accessibility
+  - Git/GitHub
   - Photoshop/Illustrator/Sketch
 
-currentFocus:
+currentInterests:
   - Functional Programming
-  - Node.js
-  - React/Redux
+  - Node.js/Microservices/API
+  - React/Preact/Redux
   - Vue.js
+  - Svelte

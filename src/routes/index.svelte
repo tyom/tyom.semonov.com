@@ -25,8 +25,8 @@
 
   const defLinker = createDefinitionFinder(definitions);
   const coreSkills = buildList(about.coreSkills, defLinker);
-  const currentFocus = buildList(about.currentFocus, defLinker);
-  const summary = Object.assign({}, about, { coreSkills, currentFocus });
+  const currentInterests = buildList(about.currentInterests, defLinker);
+  const summary = { ...about, coreSkills, currentInterests };
   const linkedExperienceItems = experienceItems.map(item =>
     Object.assign({}, item, {
       technologies: buildList(item.technologies, defLinker),
