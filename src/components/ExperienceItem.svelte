@@ -119,6 +119,8 @@
     <div class="description">
       {@html description}
     </div>
+  {/if}
+  {#if technologies}
     <footer>
       <h4>Technologies & tools</h4>
       <List items={technologies} inline />

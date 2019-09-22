@@ -1,3 +1,45 @@
+- name: Schibsted/Adevinta
+  role: Senior Frontend Developer
+  isContractor: true
+  start:
+    month: February
+    year: 2019
+  end:
+    month: September
+    year: 2019
+  description: !md |
+    I worked in a team responsible for research and development of features
+    used by online marketplaces around the world for various platforms. Such as
+    suggestions by similarity or personal relevance.
+
+    I was hired as a sole frontend developer in the team to build a web SDK which
+    used backend services developed by the rest of the group. It needed to
+    provide a customisable UI for the marketplaces to use on their sites.
+    I evaluated several options and advised on using Preact for UI layer while
+    separating the core business logic to a separate package. The SDK contained
+    several packages: core, UI and Web Components.
+
+    The SDK, being technology-agnostic, was designed to be used with any stack
+    and distributed in several ways: via a package manager and scripts stored
+    in an S3 bucket (CDN). The SDK was extensively documented to help other
+    developers to include it to their sites.
+
+    Challenges included: browser support (IE11+), file sizes, styling and
+    customisation.
+  technologies:
+    - JavaScript:
+        - Preact
+        - Storybook
+        - Jest
+        - Rollup
+        - Node.js/Polka
+    - Web Components
+    - CSS/Sass
+    - Git/GitHub
+    - Travis CI
+    - Docker
+    - AWS
+
 - name: Simba Sleep
   role: Senior Frontend Developer
   isContractor: true
@@ -8,13 +50,15 @@
     month: December
     year: 2018
   description: !md |
-    Worked on building a new shopping experience for multiple stores and languages.
+    I was in a small team building a new shopping experience for a well-known
+    mattress brand for stores in multiple regions.
 
-    Additionally, supported the existing site and developers with critical
-    performance improvements, especially for mobile devices. Helped junior
-    developers with pairing and knowledge sharing sessions.
-
-    Development of tools and processes to support business and developers.
+    Helped to maintain the existing e-commerce site providing critical
+    performance improvements which resulted in better customer experience and
+    improved retention. Continually supported junior developers and helped
+    learn and apply best practices in web development with pairing and knowledge
+    sharing sessions. Helped to design and develop tools and processes to
+    improve developers experience and business operation.
   technologies:
     - Shopify
     - JavaScript:
@@ -41,7 +85,9 @@
     month: March
     year: 2018
   description: !md |
-    Working in One Account team, responsible for feature development and maintenance of account management on tesco.com.
+    I worked in One Account team working on new features of user account
+    management at testco.com. While supporting the existing software and
+    helping to transition to modern architecture.
   technologies:
     - JavaScript:
         - React
@@ -62,8 +108,9 @@
     month: November
     year: 2017
   description: !md |
-    Working in a team responsible for building interactive dashboard with collaboration tools for a large
-    cement producer. The project was eventually taken over by the client to be built in-house.
+    I worked in a team tasked with building an interactive dashboard with
+    collaborative tools for a large cement producer. Shortly after I joined
+    the team, the project was moved by the client in-house.
   technologies:
     - JavaScript:
         - React
@@ -83,10 +130,14 @@
     month: October
     year: 2017
   description: !md |
-    Working in a medium-sized team developing a complex CRM application in Node.js with Python backend.
+    I worked in a medium-sized team, developing a sophisticated open-source CRM
+    system in Node.js with Python backend. The frontend was built on GOV.UK
+    design system with modularity in mind.
 
-    The application was built to support a wide range of browsers (including legacy). The constraints led to
-    interesting innovations to fulfil the user and business needs. Vastly improved development tools and processes.
+    The application was built to support a wide range of browsers (with a
+    requirement to support old browsers). These constraints led to interesting
+    innovations to fulfil the user and business needs. I also contributed to
+    the development of tools and processes used in the department.
   technologies:
     - JavaScript:
         - Node.js
@@ -108,8 +159,9 @@
     month: April
     year: 2017
   description: !md |
-    Working in a team on transformation of the NHS.UK. Created and maintained common components library which documents
-    and shows usage of various components that make various NHS.UK online services, such as beta.nhs.uk.
+    Working in a team on the transformation of the NHS.UK. Created and
+    maintained standard components library which documented and showed usage of
+    components used to make various NHS.UK online services, such as beta.nhs.uk.
   technologies:
     - JavaScript:
         - Node.js
@@ -131,11 +183,13 @@
     month: November
     year: 2016
   description: !md |
-    I was working on internal tool for managing risks in agile development of projects within the bank.
+    I worked on an internal tool for managing risks in the agile development
+    of projects within the bank.
 
-    Responsible for ensuring that the application was meeting Barclays standards for accessibility and usability.
-    Introduced a number of front-end best practices to the team as the codebase was shared. Optimised and improved
-    maintainability of the front-end code.
+    Responsible for ensuring that the application was meeting Barclays standards
+    for accessibility and usability. I have introduced several frontend best
+    practices to the team. Optimised and improved the maintainability of the
+    frontend code and helped to improve release processes.
   technologies:
     - JavaScript:
         - AngularJS
@@ -158,14 +212,16 @@
     month: June
     year: 2016
   description: !md |
-    Working in a small team responsible for launching the [BBC Three](http://www.bbc.co.uk/bbcthree) online service.
+    I worked in a small agile team responsible for launching the
+    [BBC Three](http://www.bbc.co.uk/bbcthree) online service.
 
-    Building [universal](https://medium.com/@ghengeveld/isomorphism-vs-universal-javascript-4b47fb481beb) BBC Three
-    components in React and BBC Morph modules in node.js. Using BBC GEL design framework with focus on reusability,
-    unit/acceptance testing, performance and consistent cross-device/browser experience.
+    Building [universal](https://medium.com/@ghengeveld/isomorphism-vs-universal-javascript-4b47fb481beb)
+    BBC Three components in React and BBC Morph modules in Node.js. Using the
+    BBC GEL design framework with a focus on reusability, unit/acceptance testing,
+    performance and consistent cross-device/browser experience.
 
-    Designed and built a number of BBC Three specific features as well as general improvements to performance and
-    organisation of the codebase.
+    I designed and built several BBC Three specific features and helped with
+    general improvements to performance and organisation of the codebase.
   technologies:
     - JavaScript:
         - React
@@ -193,13 +249,15 @@
     month: December
     year: 2015
   description: !md |
-    Responsible for front-end development and design of [public service](https://www.gov.uk/check-legal-aid) to check
-    if one can get legal aid. Continuous development of functional prototypes used in rounds of user-testing to
-    regularly test hypothesis and validate design decisions. Later maintained the call-centre counterpart application
-    written in AngularJS.
+    I was responsible for the frontend development and design of
+    [public service](https://www.gov.uk/check-legal-aid) to check if one can get
+    legal aid. Continuous development of functional prototypes used in rounds
+    of user-testing to regularly test hypothesis and validate design decisions.
+    Later maintained the call-centre counterpart application written in AngularJS.
 
-    Developed component libraries and generated service style guides. Built NPM packages to ease the exchange
-    and development of assets and components across government websites and web applications.
+    Developed component libraries and generated service style guides. Built NPM
+    packages to ease the exchange and development of assets and components
+    across government websites and web applications.
   technologies:
     - JavaScript:
         - Node.js
@@ -232,21 +290,24 @@
     month: September
     year: 2014
   description: !md |
-    Working in a small team. Responsible for development and maintenance of public site and internal applications.
-    Primarily working with Ruby, node.js, Sass, HTML5 and JavaScript running on AWS.
+    I worked in the core team responsible for the development and maintenance
+    of the public site and internal applications. Primarily working with Ruby,
+    node.js, Sass, HTML5 and JavaScript running on AWS.
 
-    Leading the development and management of scalable modular stylesheet architecture for State’s platform.
-    Developed methodology and processes for management of complex stylesheets which allows efficient reuse
-    of components across various products.
+    Leading the development and management of scalable modular stylesheet
+    architecture for State’s platform. Developed methodology and processes for
+    management of complex stylesheets which allows efficient reuse of components
+    across various products.
 
-    Regularly built functional prototypes for usability testing. Made large contributions to component server
-    for testing, development and presentation of complex interfaces which allows interactive testing of each
-    interface component in isolation.
+    Regularly built functional prototypes for usability testing. Made significant
+    contributions to a component server for testing, development and presentation
+    of complex interfaces which allows interactive examination of each interface
+    component in isolation. Managed a large number of cross-client email templates.
+    Built tools for their creation and testing (integrated with MailChimp API),
+    used by the whole team.
 
-    Managed a large number of cross-client email templates. Built tools for their creation and testing
-    (integrated with MailChimp API), used by the whole team.
-
-    Redesigned site’s admin panel (Rails) and API documentation.
+    Also, I redesigned the site’s admin panel (Rails) to improve the experience
+    of the site manager, and API documentation for developers.
   technologies:
     - JavaScript:
         - Dojo Toolkit
@@ -265,6 +326,7 @@
     - MongoDB
     - Redis
     - Photoshop/Illustrator
+
 - name: VisualDNA
   role: Frontend Developer
   start:
@@ -274,8 +336,12 @@
     month: May
     year: 2012
   description: !md |
-    Responsible for initial development of internal Quiz Editor rich application, intended to replace legacy
-    application that was managing all of company’s quizzes.
+    I was responsible for the initial development of the Quiz Editor, an
+    application which intended to replace the legacy application that was at
+    the used for creation and management of personality quizzes. These quizzes
+    were at the core of the company’s business and used to capture various
+    aspects of online users’ personality to help create better relevance for
+    targeted advertisements.
   technologies:
     - JavaScript/CoffeeScript:
         - jQuery
@@ -294,10 +360,13 @@
     month: December
     year: 2011
   description: !md |
-    Joined the team of one back-end developer, and two founders. Assumed responsibilities of designer and full-stack
-    developer. Built initial prototypes and led the research and design of the product (Information Architecture,
-    sketches and wireframes, prototypes, visual design, and full front-end implementation). The site rapidly grew to
-    tens of thousands of active users and hundreds of communities in the UK and featured across British media.
+    I joined the team of one backend developer and two founders of this start-up.
+    Assumed responsibilities of designer and full-stack developer. Built initial
+    prototypes and led the research and design of the product (Information
+    Architecture, sketches and wireframes, prototypes, visual design, and full
+    frontend implementation). The site rapidly grew to tens of thousands of
+    active users and hundreds of communities in the UK and featured across
+    British media.
   technologies:
     - JavaScript:
         - jQuery
@@ -322,7 +391,8 @@
     month: February
     year: 2010
   description: !md |
-    Worked in small team of designers and developers on redesign of discoverireland.ie.
+    I worked in a small team of designers and developers on the redesign of
+    discoverireland.ie.
   technologies:
     - JavaScript:
         - jQuery
@@ -339,10 +409,11 @@
     month: November
     year: 2009
   description: !md |
-    Worked in a medium size team on Bing Maps UK as a UX researcher and developer. Created interactive prototypes and
-    conducted usability tests to help shape decisions on product direction. Worked with other software engineers to
-    deliver a number features for high-traffic Bing Maps. Including UI for Bird’s Eye view, public transit information,
-    printable and shareable maps.
+    I worked in a medium-sized team on Bing Maps UK as a UX researcher and
+    developer. Created interactive prototypes and conducted usability tests to
+    help shape decisions on product direction. Worked with other software
+    engineers to deliver features for high-traffic Bing Maps. Including UI for
+    Bird’s Eye view, public transit information, printable and shareable maps.
   technologies:
     - JavaScript
     - HTML/XML
@@ -361,9 +432,12 @@
     month: December
     year: 2007
   description: !md |
-    Joined the development team as one of the core developers, redesigning a website featuring complex and interactive
-    standards-based web interface. Responsible for the majority of new stylesheets and markup. Restyling of all map
-    interface elements for the public API and website with full cross-browser support.
+    I joined the development team as one of the core developers responsible for
+    the redesign of the website featuring complex and highly-interactive
+    standards-based web interface centred around maps. Responsible for the
+    majority of new stylesheets and markup. I styled of all map interface elements
+    for the public API and website with full cross-browser support.
+
   technologies:
     - JavaScript
     - CSS
@@ -382,9 +456,11 @@
     month: August
     year: 2006
   description: !md |
-    Working in a multilingual team of developers. Rebuilt table-based Russian website with web standards and best
-    practices, greatly improving performance and maintainability. Promoted web standards across the team. Maintained
-    internal Wiki to share best practices, assets and resources. Designed mobile UI elements.
+    I worked in a multilingual team of developers responsible for regional sites
+     I rebuilt the table-based Russian website using web standards and best practices,
+     significantly improving performance and code maintainability. Promoted
+     web standards across the team. Maintained internal Wiki to share best
+     practices, assets and resources. Designed mobile UI elements.
   technologies:
     - HTML
     - CSS
@@ -401,8 +477,8 @@
     month: October
     year: 2005
   description: !md |
-    Worked on a number of projects ranging from wireframes, websites, CMS integrations and design (branding and
-    promotional material).
+    I worked on several projects ranging from wireframes, websites, CMS
+    integrations and design (branding and promotional material).
   technologies:
     - HTML
     - CSS
