@@ -1,6 +1,9 @@
 import isPlainObject from 'is-plain-object';
 
-export function durationInMonths(fromDate, toDate) {
+const renderPluralisedLabel = (label, num) =>
+  num > 0 ? `${num} ${label}` + (num === 1 ? '' : 's') : '';
+
+export function getNumberOfMonthsBetweenDates(fromDate, toDate) {
   const months = [
     '',
     'January',
@@ -18,28 +21,29 @@ export function durationInMonths(fromDate, toDate) {
   ];
 
   const pad = num => ('00' + num).slice(-2);
-
-  const buildLabel = (label, num) =>
-    num > 0 ? `${num} ${label}` + (num === 1 ? '' : 's') : '';
-
   const startDate = new Date(
     `${fromDate.year}-${pad(months.indexOf(fromDate.month))}`,
   );
   const endDate = new Date(
     `${toDate.year}-${pad(months.indexOf(toDate.month))}`,
   );
-  const durationInMonths =
+
+  return (
     endDate.getMonth() -
     startDate.getMonth() +
-    12 * (endDate.getFullYear() - startDate.getFullYear());
-  const durationInYears = Math.floor(durationInMonths / 12);
+    12 * (endDate.getFullYear() - startDate.getFullYear())
+  );
+}
+
+export function durationInMonths(fromDate, toDate) {
+  const numberOfMonths = getNumberOfMonthsBetweenDates(fromDate, toDate);
   const duration = {
-    years: durationInYears,
-    months: durationInMonths % 12,
+    years: Math.floor(numberOfMonths / 12),
+    months: numberOfMonths % 12,
   };
   return [
-    buildLabel('year', duration.years),
-    buildLabel('month', duration.months),
+    renderPluralisedLabel('year', duration.years),
+    renderPluralisedLabel('month', duration.months),
   ]
     .filter(Boolean)
     .join(', ');

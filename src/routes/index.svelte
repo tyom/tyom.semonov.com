@@ -13,10 +13,12 @@
 </script>
 
 <script>
+  import { onMount } from 'svelte';
   import { buildList, createDefinitionFinder } from '../utils';
   import InfoIcon from 'svelte-icons/fa/FaInfoCircle.svelte';
   import ExperienceItem from '../components/ExperienceItem.svelte';
   import Summary from '../components/Summary.svelte';
+  import Timeline from '../components/Timeline.svelte';
 
   export let about;
   export let experienceItems;
@@ -32,6 +34,12 @@
       technologies: buildList(item.technologies, defLinker),
     }),
   );
+  let experienceSectionEl;
+  let intersectionNodes;
+
+  onMount(() => {
+    intersectionNodes = document.querySelectorAll('.experience .experience-item');
+  });
 </script>
 
 <style>
@@ -61,7 +69,7 @@
       margin-top: -1.5em;
     }
 
-    h2 {
+    header {
       position: sticky;
       z-index: 1;
       top: 0;
@@ -69,6 +77,18 @@
       padding: 1.5rem 0;
       border-bottom: 1px solid #0001;
       background-color: #fffe;
+      margin-bottom: 2em;
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    header :global(.timeline) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
   }
 
@@ -115,18 +135,17 @@
   <title>{about.name} - {about.title}: CV</title>
   <meta name="description" content={about.description} />
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tyom.semonov.com/">
-  <meta property="og:title" content="{about.name} - {about.title}: CV">
-  <meta property="og:description" content={about.description}>
-  <meta property="og:image" content="https://tyom.semonov.com/logo.png">
-
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tyom.semonov.com/" />
+  <meta property="og:title" content="{about.name} - {about.title}: CV" />
+  <meta property="og:description" content={about.description} />
+  <meta property="og:image" content="https://tyom.semonov.com/logo.png" />
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://tyom.semonov.com/">
-  <meta property="twitter:title" content="{about.name} - {about.title}: CV">
-  <meta property="twitter:description" content={about.description}>
-  <meta property="twitter:image" content="https://tyom.semonov.com/logo.png">
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://tyom.semonov.com/" />
+  <meta property="twitter:title" content="{about.name} - {about.title}: CV" />
+  <meta property="twitter:description" content={about.description} />
+  <meta property="twitter:image" content="https://tyom.semonov.com/logo.png" />
 </svelte:head>
 
 <aside>
@@ -135,13 +154,20 @@
 
 <article class="content">
   <section class="experience">
-    <h2>Experience</h2>
+    <header>
+      <h2>Experience</h2>
+      {#if intersectionNodes}
+        <Timeline events={experienceItems} {intersectionNodes} />
+      {/if}
+    </header>
     {#each linkedExperienceItems as experience}
       <ExperienceItem {...experience} />
     {/each}
   </section>
   <section class="education">
-    <h2>Education</h2>
+    <header>
+      <h2>Education</h2>
+    </header>
     {#each educationItems as experience}
       <ExperienceItem {...experience} />
     {/each}
