@@ -1,4 +1,4 @@
-import { N as _typeof, O as _slicedToArray, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, r as _createClass, S as SvelteComponentDev, f as create_slot, P as svg_element, v as text, h as claim_element, j as children, w as claim_text, k as detach_dev, l as add_location, m as insert_dev, x as append_dev, y as set_data_dev, A as empty, C as attr_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, D as assign, Q as _defineProperty, R as exclude_internal_props, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, g as element, L as _asyncToGenerator, M as _regeneratorRuntime, T as listen, u as globals, J as group_outros, K as check_outros, U as destroy_each, n as noop, z as space, B as claim_space, V as toggle_class } from './index.b3d7ddfb.js';
+import { N as _typeof, O as _slicedToArray, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, r as _createClass, S as SvelteComponentDev, f as create_slot, P as svg_element, v as text, h as claim_element, j as children, w as claim_text, k as detach_dev, l as add_location, m as insert_dev, x as append_dev, y as set_data_dev, A as empty, C as attr_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, D as assign, Q as _defineProperty, R as exclude_internal_props, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, g as element, L as _asyncToGenerator, M as _regeneratorRuntime, T as listen, u as globals, J as group_outros, K as check_outros, U as destroy_each, n as noop, z as space, B as claim_space, V as toggle_class, W as onMount, X as onDestroy, Y as add_render_callback, Z as create_bidirectional_transition, $ as set_style, a0 as _toConsumableArray } from './index.d976ff0f.js';
 
 /*!
  * isobject <https://github.com/jonschlinkert/isobject>
@@ -39,26 +39,28 @@ function isPlainObject(o) {
   return true;
 }
 
-function durationInMonths(fromDate, toDate) {
+var renderPluralisedLabel = function renderPluralisedLabel(label, num) {
+  return num > 0 ? "".concat(num, " ").concat(label) + (num === 1 ? '' : 's') : '';
+};
+
+function getNumberOfMonthsBetweenDates(fromDate, toDate) {
   var months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   var pad = function pad(num) {
     return ('00' + num).slice(-2);
   };
 
-  var buildLabel = function buildLabel(label, num) {
-    return num > 0 ? "".concat(num, " ").concat(label) + (num === 1 ? '' : 's') : '';
-  };
-
   var startDate = new Date("".concat(fromDate.year, "-").concat(pad(months.indexOf(fromDate.month))));
   var endDate = new Date("".concat(toDate.year, "-").concat(pad(months.indexOf(toDate.month))));
-  var durationInMonths = endDate.getMonth() - startDate.getMonth() + 12 * (endDate.getFullYear() - startDate.getFullYear());
-  var durationInYears = Math.floor(durationInMonths / 12);
+  return endDate.getMonth() - startDate.getMonth() + 12 * (endDate.getFullYear() - startDate.getFullYear());
+}
+function durationInMonths(fromDate, toDate) {
+  var numberOfMonths = getNumberOfMonthsBetweenDates(fromDate, toDate);
   var duration = {
-    years: durationInYears,
-    months: durationInMonths % 12
+    years: Math.floor(numberOfMonths / 12),
+    months: numberOfMonths % 12
   };
-  return [buildLabel('year', duration.years), buildLabel('month', duration.months)].filter(Boolean).join(', ');
+  return [renderPluralisedLabel('year', duration.years), renderPluralisedLabel('month', duration.months)].filter(Boolean).join(', ');
 }
 function buildList() {
   var list = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -7901,13 +7903,468 @@ function (_SvelteComponentDev) {
   return Summary;
 }(SvelteComponentDev);
 
+function fade(node, _ref2) {
+  var _ref2$delay = _ref2.delay,
+      delay = _ref2$delay === void 0 ? 0 : _ref2$delay,
+      _ref2$duration = _ref2.duration,
+      duration = _ref2$duration === void 0 ? 400 : _ref2$duration;
+  var o = +getComputedStyle(node).opacity;
+  return {
+    delay: delay,
+    duration: duration,
+    css: function css(t) {
+      return "opacity: ".concat(t * o);
+    }
+  };
+}
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var Object_1$1 = globals.Object;
-var file$b = "src/routes/index.svelte";
+var file$b = "src/components/Timeline.svelte";
 
 function get_each_context$3(ctx, list, i) {
+  var child_ctx = Object.create(ctx);
+  child_ctx.event = list[i];
+  return child_ctx;
+} // (111:0) {#if timelineEvents}
+
+
+function create_if_block$6(ctx) {
+  var div3,
+      div0,
+      t0_value = ctx.firstDate.year + "",
+      t0,
+      t1,
+      div1,
+      t2,
+      div2,
+      t3_value = ctx.lastDate.year + "",
+      t3,
+      div3_transition,
+      current;
+  var each_value = ctx.timelineEvents;
+  var each_blocks = [];
+
+  for (var i = 0; i < each_value.length; i += 1) {
+    each_blocks[i] = create_each_block$3(get_each_context$3(ctx, each_value, i));
+  }
+
+  var block = {
+    c: function create() {
+      div3 = element("div");
+      div0 = element("div");
+      t0 = text(t0_value);
+      t1 = space();
+      div1 = element("div");
+
+      for (var _i = 0; _i < each_blocks.length; _i += 1) {
+        each_blocks[_i].c();
+      }
+
+      t2 = space();
+      div2 = element("div");
+      t3 = text(t3_value);
+      this.h();
+    },
+    l: function claim(nodes) {
+      div3 = claim_element(nodes, "DIV", {
+        class: true
+      }, false);
+      var div3_nodes = children(div3);
+      div0 = claim_element(div3_nodes, "DIV", {
+        class: true
+      }, false);
+      var div0_nodes = children(div0);
+      t0 = claim_text(div0_nodes, t0_value);
+      div0_nodes.forEach(detach_dev);
+      t1 = claim_space(div3_nodes);
+      div1 = claim_element(div3_nodes, "DIV", {
+        class: true
+      }, false);
+      var div1_nodes = children(div1);
+
+      for (var _i2 = 0; _i2 < each_blocks.length; _i2 += 1) {
+        each_blocks[_i2].l(div1_nodes);
+      }
+
+      div1_nodes.forEach(detach_dev);
+      t2 = claim_space(div3_nodes);
+      div2 = claim_element(div3_nodes, "DIV", {
+        class: true
+      }, false);
+      var div2_nodes = children(div2);
+      t3 = claim_text(div2_nodes, t3_value);
+      div2_nodes.forEach(detach_dev);
+      div3_nodes.forEach(detach_dev);
+      this.h();
+    },
+    h: function hydrate() {
+      attr_dev(div0, "class", "from-year svelte-ecgmls");
+      add_location(div0, file$b, 112, 4, 3925);
+      attr_dev(div1, "class", "events svelte-ecgmls");
+      add_location(div1, file$b, 113, 4, 3975);
+      attr_dev(div2, "class", "to-year svelte-ecgmls");
+      add_location(div2, file$b, 122, 4, 4242);
+      attr_dev(div3, "class", "timeline svelte-ecgmls");
+      add_location(div3, file$b, 111, 2, 3850);
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, div3, anchor);
+      append_dev(div3, div0);
+      append_dev(div0, t0);
+      append_dev(div3, t1);
+      append_dev(div3, div1);
+
+      for (var _i3 = 0; _i3 < each_blocks.length; _i3 += 1) {
+        each_blocks[_i3].m(div1, null);
+      }
+
+      append_dev(div3, t2);
+      append_dev(div3, div2);
+      append_dev(div2, t3);
+      current = true;
+    },
+    p: function update(changed, ctx) {
+      if (changed.timelineEvents) {
+        each_value = ctx.timelineEvents;
+
+        var _i4;
+
+        for (_i4 = 0; _i4 < each_value.length; _i4 += 1) {
+          var child_ctx = get_each_context$3(ctx, each_value, _i4);
+
+          if (each_blocks[_i4]) {
+            each_blocks[_i4].p(changed, child_ctx);
+          } else {
+            each_blocks[_i4] = create_each_block$3(child_ctx);
+
+            each_blocks[_i4].c();
+
+            each_blocks[_i4].m(div1, null);
+          }
+        }
+
+        for (; _i4 < each_blocks.length; _i4 += 1) {
+          each_blocks[_i4].d(1);
+        }
+
+        each_blocks.length = each_value.length;
+      }
+    },
+    i: function intro(local) {
+      if (current) return;
+      add_render_callback(function () {
+        if (!div3_transition) div3_transition = create_bidirectional_transition(div3, fade, {
+          delay: 250,
+          duration: 300
+        }, true);
+        div3_transition.run(1);
+      });
+      current = true;
+    },
+    o: function outro(local) {
+      if (!div3_transition) div3_transition = create_bidirectional_transition(div3, fade, {
+        delay: 250,
+        duration: 300
+      }, false);
+      div3_transition.run(0);
+      current = false;
+    },
+    d: function destroy(detaching) {
+      if (detaching) {
+        detach_dev(div3);
+      }
+
+      destroy_each(each_blocks, detaching);
+
+      if (detaching) {
+        if (div3_transition) div3_transition.end();
+      }
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_if_block$6.name,
+    type: "if",
+    source: "(111:0) {#if timelineEvents}",
+    ctx: ctx
+  });
+  return block;
+} // (115:6) {#each timelineEvents as event}
+
+
+function create_each_block$3(ctx) {
+  var div, div_class_value, div_title_value;
+  var block = {
+    c: function create() {
+      div = element("div");
+      this.h();
+    },
+    l: function claim(nodes) {
+      div = claim_element(nodes, "DIV", {
+        class: true,
+        style: true,
+        title: true
+      }, false);
+      var div_nodes = children(div);
+      div_nodes.forEach(detach_dev);
+      this.h();
+    },
+    h: function hydrate() {
+      attr_dev(div, "class", div_class_value = "timeline-event " + ctx.event.modifier + " svelte-ecgmls");
+      set_style(div, "width", "" + ctx.event.percent + "%");
+      attr_dev(div, "title", div_title_value = ctx.event.name);
+      toggle_class(div, "visible", ctx.event.isVisible);
+      add_location(div, file$b, 115, 8, 4042);
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, div, anchor);
+    },
+    p: function update(changed, ctx) {
+      if (changed.timelineEvents && div_class_value !== (div_class_value = "timeline-event " + ctx.event.modifier + " svelte-ecgmls")) {
+        attr_dev(div, "class", div_class_value);
+      }
+
+      if (changed.timelineEvents) {
+        set_style(div, "width", "" + ctx.event.percent + "%");
+      }
+
+      if (changed.timelineEvents && div_title_value !== (div_title_value = ctx.event.name)) {
+        attr_dev(div, "title", div_title_value);
+      }
+
+      if (changed.timelineEvents || changed.timelineEvents) {
+        toggle_class(div, "visible", ctx.event.isVisible);
+      }
+    },
+    d: function destroy(detaching) {
+      if (detaching) {
+        detach_dev(div);
+      }
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_each_block$3.name,
+    type: "each",
+    source: "(115:6) {#each timelineEvents as event}",
+    ctx: ctx
+  });
+  return block;
+}
+
+function create_fragment$c(ctx) {
+  var if_block_anchor, current;
+  var if_block = ctx.timelineEvents && create_if_block$6(ctx);
+  var block = {
+    c: function create() {
+      if (if_block) if_block.c();
+      if_block_anchor = empty();
+    },
+    l: function claim(nodes) {
+      if (if_block) if_block.l(nodes);
+      if_block_anchor = empty();
+    },
+    m: function mount(target, anchor) {
+      if (if_block) if_block.m(target, anchor);
+      insert_dev(target, if_block_anchor, anchor);
+      current = true;
+    },
+    p: function update(changed, ctx) {
+      if (ctx.timelineEvents) {
+        if (if_block) {
+          if_block.p(changed, ctx);
+          transition_in(if_block, 1);
+        } else {
+          if_block = create_if_block$6(ctx);
+          if_block.c();
+          transition_in(if_block, 1);
+          if_block.m(if_block_anchor.parentNode, if_block_anchor);
+        }
+      } else if (if_block) {
+        group_outros();
+        transition_out(if_block, 1, 1, function () {
+          if_block = null;
+        });
+        check_outros();
+      }
+    },
+    i: function intro(local) {
+      if (current) return;
+      transition_in(if_block);
+      current = true;
+    },
+    o: function outro(local) {
+      transition_out(if_block);
+      current = false;
+    },
+    d: function destroy(detaching) {
+      if (if_block) if_block.d(detaching);
+
+      if (detaching) {
+        detach_dev(if_block_anchor);
+      }
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_fragment$c.name,
+    type: "component",
+    source: "",
+    ctx: ctx
+  });
+  return block;
+}
+
+function instance$c($$self, $$props, $$invalidate) {
+  var events = $$props.events,
+      intersectionNodes = $$props.intersectionNodes;
+  var eventsMonthWithLength = events.map(function (event) {
+    return {
+      name: event.name,
+      modifier: event.isContractor ? 'contract' : 'permanent',
+      monthLength: getNumberOfMonthsBetweenDates(event.start, event.end)
+    };
+  });
+  var totalTimelineInMonths = eventsMonthWithLength.reduce(function (acc, curr) {
+    return acc + curr.monthLength;
+  }, 0);
+  var firstDate = events[events.length - 1].start;
+  var lastDate = events[0].end;
+  var scaledEvents = eventsMonthWithLength.map(function (event) {
+    return _objectSpread({}, event, {
+      percent: 100 / totalTimelineInMonths * event.monthLength
+    });
+  });
+  var timelineEvents;
+  var observer;
+
+  function intersectionCallback(entries) {
+    var updatedEvents = _toConsumableArray(scaledEvents);
+
+    entries.forEach(function (entry) {
+      var event = updatedEvents.find(function (x) {
+        return x.target === entry.target;
+      });
+      event.isVisible = entry.isIntersecting;
+    });
+    $$invalidate('timelineEvents', timelineEvents = updatedEvents);
+  }
+
+  onMount(function () {
+    if (!window.IntersectionObserver) {
+      return;
+    }
+
+    observer = new IntersectionObserver(intersectionCallback, {
+      threshold: 0.5
+    });
+    intersectionNodes.forEach(function (node, i) {
+      if (!scaledEvents[i]) return;
+      scaledEvents[i].target = node;
+      observer.observe(node);
+    });
+  });
+  onDestroy(function () {
+    observer && observer.destroy();
+  });
+  var writable_props = ['events', 'intersectionNodes'];
+  Object.keys($$props).forEach(function (key) {
+    if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn("<Timeline> was created with unknown prop '".concat(key, "'"));
+  });
+
+  $$self.$set = function ($$props) {
+    if ('events' in $$props) $$invalidate('events', events = $$props.events);
+    if ('intersectionNodes' in $$props) $$invalidate('intersectionNodes', intersectionNodes = $$props.intersectionNodes);
+  };
+
+  $$self.$capture_state = function () {
+    return {
+      events: events,
+      intersectionNodes: intersectionNodes,
+      timelineEvents: timelineEvents,
+      observer: observer
+    };
+  };
+
+  $$self.$inject_state = function ($$props) {
+    if ('events' in $$props) $$invalidate('events', events = $$props.events);
+    if ('intersectionNodes' in $$props) $$invalidate('intersectionNodes', intersectionNodes = $$props.intersectionNodes);
+    if ('timelineEvents' in $$props) $$invalidate('timelineEvents', timelineEvents = $$props.timelineEvents);
+    if ('observer' in $$props) observer = $$props.observer;
+  };
+
+  return {
+    events: events,
+    intersectionNodes: intersectionNodes,
+    firstDate: firstDate,
+    lastDate: lastDate,
+    timelineEvents: timelineEvents
+  };
+}
+
+var Timeline =
+/*#__PURE__*/
+function (_SvelteComponentDev) {
+  _inherits(Timeline, _SvelteComponentDev);
+
+  function Timeline(options) {
+    var _this;
+
+    _classCallCheck(this, Timeline);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Timeline).call(this, options));
+    init(_assertThisInitialized(_this), options, instance$c, create_fragment$c, safe_not_equal, ["events", "intersectionNodes"]);
+    dispatch_dev("SvelteRegisterComponent", {
+      component: _assertThisInitialized(_this),
+      tagName: "Timeline",
+      options: options,
+      id: create_fragment$c.name
+    });
+    var ctx = _this.$$.ctx;
+    var props = options.props || {};
+
+    if (ctx.events === undefined && !('events' in props)) {
+      console.warn("<Timeline> was created without expected prop 'events'");
+    }
+
+    if (ctx.intersectionNodes === undefined && !('intersectionNodes' in props)) {
+      console.warn("<Timeline> was created without expected prop 'intersectionNodes'");
+    }
+
+    return _this;
+  }
+
+  _createClass(Timeline, [{
+    key: "events",
+    get: function get() {
+      throw new Error("<Timeline>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    },
+    set: function set(value) {
+      throw new Error("<Timeline>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    }
+  }, {
+    key: "intersectionNodes",
+    get: function get() {
+      throw new Error("<Timeline>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    },
+    set: function set(value) {
+      throw new Error("<Timeline>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    }
+  }]);
+
+  return Timeline;
+}(SvelteComponentDev);
+
+function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var Object_1$1 = globals.Object,
+    document_1 = globals.document;
+var file$c = "src/routes/index.svelte";
+
+function get_each_context$4(ctx, list, i) {
   var child_ctx = Object_1$1.create(ctx);
   child_ctx.experience = list[i];
   return child_ctx;
@@ -7917,7 +8374,57 @@ function get_each_context_1$3(ctx, list, i) {
   var child_ctx = Object_1$1.create(ctx);
   child_ctx.experience = list[i];
   return child_ctx;
-} // (145:4) {#each linkedExperienceItems as experience}
+} // (165:6) {#if intersectionNodes}
+
+
+function create_if_block$7(ctx) {
+  var current;
+  var timeline = new Timeline({
+    props: {
+      events: ctx.experienceItems,
+      intersectionNodes: ctx.intersectionNodes
+    },
+    $$inline: true
+  });
+  var block = {
+    c: function create() {
+      timeline.$$.fragment.c();
+    },
+    l: function claim(nodes) {
+      timeline.$$.fragment.l(nodes);
+    },
+    m: function mount(target, anchor) {
+      mount_component(timeline, target, anchor);
+      current = true;
+    },
+    p: function update(changed, ctx) {
+      var timeline_changes = {};
+      if (changed.experienceItems) timeline_changes.events = ctx.experienceItems;
+      if (changed.intersectionNodes) timeline_changes.intersectionNodes = ctx.intersectionNodes;
+      timeline.$set(timeline_changes);
+    },
+    i: function intro(local) {
+      if (current) return;
+      transition_in(timeline.$$.fragment, local);
+      current = true;
+    },
+    o: function outro(local) {
+      transition_out(timeline.$$.fragment, local);
+      current = false;
+    },
+    d: function destroy(detaching) {
+      destroy_component(timeline, detaching);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_if_block$7.name,
+    type: "if",
+    source: "(165:6) {#if intersectionNodes}",
+    ctx: ctx
+  });
+  return block;
+} // (169:4) {#each linkedExperienceItems as experience}
 
 
 function create_each_block_1$3(ctx) {
@@ -7965,14 +8472,14 @@ function create_each_block_1$3(ctx) {
     block: block,
     id: create_each_block_1$3.name,
     type: "each",
-    source: "(145:4) {#each linkedExperienceItems as experience}",
+    source: "(169:4) {#each linkedExperienceItems as experience}",
     ctx: ctx
   });
   return block;
-} // (151:4) {#each educationItems as experience}
+} // (175:4) {#each educationItems as experience}
 
 
-function create_each_block$3(ctx) {
+function create_each_block$4(ctx) {
   var current;
   var experienceitem_spread_levels = [ctx.experience];
   var experienceitem_props = {};
@@ -8015,17 +8522,17 @@ function create_each_block$3(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_each_block$3.name,
+    id: create_each_block$4.name,
     type: "each",
-    source: "(151:4) {#each educationItems as experience}",
+    source: "(175:4) {#each educationItems as experience}",
     ctx: ctx
   });
   return block;
 }
 
-function create_fragment$c(ctx) {
-  var title_value, meta0, meta0_content_value, meta1, meta2, meta3, meta3_content_value, meta4, meta4_content_value, meta5, meta6, meta7, meta8, meta8_content_value, meta9, meta9_content_value, meta10, t0, aside, t1, article, section0, h20, t2, t3, t4, section1, h21, t5, t6, t7, p, t8, br, t9, current;
-  document.title = title_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV";
+function create_fragment$d(ctx) {
+  var title_value, meta0, meta0_content_value, meta1, meta2, meta3, meta3_content_value, meta4, meta4_content_value, meta5, meta6, meta7, meta8, meta8_content_value, meta9, meta9_content_value, meta10, t0, aside, t1, article, section0, header, h20, t2, t3, t4, t5, section1, h21, t6, t7, t8, p, t9, br, t10, current;
+  document_1.title = title_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV";
   var summary_1_spread_levels = [ctx.summary, {
     pdfLink: "tyom-semonov-cv.pdf"
   }];
@@ -8039,6 +8546,7 @@ function create_fragment$c(ctx) {
     props: summary_1_props,
     $$inline: true
   });
+  var if_block = ctx.intersectionNodes && create_if_block$7(ctx);
   var each_value_1 = ctx.linkedExperienceItems;
   var each_blocks_1 = [];
 
@@ -8056,7 +8564,7 @@ function create_fragment$c(ctx) {
   var each_blocks = [];
 
   for (var _i2 = 0; _i2 < each_value.length; _i2 += 1) {
-    each_blocks[_i2] = create_each_block$3(get_each_context$3(ctx, each_value, _i2));
+    each_blocks[_i2] = create_each_block$4(get_each_context$4(ctx, each_value, _i2));
   }
 
   var out_1 = function out_1(i) {
@@ -8087,30 +8595,33 @@ function create_fragment$c(ctx) {
       t1 = space();
       article = element("article");
       section0 = element("section");
+      header = element("header");
       h20 = element("h2");
       t2 = text("Experience");
       t3 = space();
+      if (if_block) if_block.c();
+      t4 = space();
 
       for (var _i3 = 0; _i3 < each_blocks_1.length; _i3 += 1) {
         each_blocks_1[_i3].c();
       }
 
-      t4 = space();
+      t5 = space();
       section1 = element("section");
       h21 = element("h2");
-      t5 = text("Education");
-      t6 = space();
+      t6 = text("Education");
+      t7 = space();
 
       for (var _i4 = 0; _i4 < each_blocks.length; _i4 += 1) {
         each_blocks[_i4].c();
       }
 
-      t7 = space();
+      t8 = space();
       p = element("p");
       infoicon.$$.fragment.c();
-      t8 = text("\n    For brevity only the last few years are shown here.\n    ");
+      t9 = text("\n    For brevity only the last few years are shown here.\n    ");
       br = element("br");
-      t9 = text("\n    See more at tyom.semonov.com.");
+      t10 = text("\n    See more at tyom.semonov.com.");
       this.h();
     },
     l: function claim(nodes) {
@@ -8207,20 +8718,27 @@ function create_fragment$c(ctx) {
         class: true
       }, false);
       var section0_nodes = children(section0);
-      h20 = claim_element(section0_nodes, "H2", {
+      header = claim_element(section0_nodes, "HEADER", {
+        class: true
+      }, false);
+      var header_nodes = children(header);
+      h20 = claim_element(header_nodes, "H2", {
         class: true
       }, false);
       var h20_nodes = children(h20);
       t2 = claim_text(h20_nodes, "Experience");
       h20_nodes.forEach(detach_dev);
-      t3 = claim_space(section0_nodes);
+      t3 = claim_space(header_nodes);
+      if (if_block) if_block.l(header_nodes);
+      header_nodes.forEach(detach_dev);
+      t4 = claim_space(section0_nodes);
 
       for (var _i5 = 0; _i5 < each_blocks_1.length; _i5 += 1) {
         each_blocks_1[_i5].l(section0_nodes);
       }
 
       section0_nodes.forEach(detach_dev);
-      t4 = claim_space(article_nodes);
+      t5 = claim_space(article_nodes);
       section1 = claim_element(article_nodes, "SECTION", {
         class: true
       }, false);
@@ -8229,28 +8747,28 @@ function create_fragment$c(ctx) {
         class: true
       }, false);
       var h21_nodes = children(h21);
-      t5 = claim_text(h21_nodes, "Education");
+      t6 = claim_text(h21_nodes, "Education");
       h21_nodes.forEach(detach_dev);
-      t6 = claim_space(section1_nodes);
+      t7 = claim_space(section1_nodes);
 
       for (var _i6 = 0; _i6 < each_blocks.length; _i6 += 1) {
         each_blocks[_i6].l(section1_nodes);
       }
 
       section1_nodes.forEach(detach_dev);
-      t7 = claim_space(article_nodes);
+      t8 = claim_space(article_nodes);
       p = claim_element(article_nodes, "P", {
         class: true
       }, false);
       var p_nodes = children(p);
       infoicon.$$.fragment.l(p_nodes);
-      t8 = claim_text(p_nodes, "\n    For brevity only the last few years are shown here.\n    ");
+      t9 = claim_text(p_nodes, "\n    For brevity only the last few years are shown here.\n    ");
       br = claim_element(p_nodes, "BR", {
         class: true
       }, false);
       var br_nodes = children(br);
       br_nodes.forEach(detach_dev);
-      t9 = claim_text(p_nodes, "\n    See more at tyom.semonov.com.");
+      t10 = claim_text(p_nodes, "\n    See more at tyom.semonov.com.");
       p_nodes.forEach(detach_dev);
       article_nodes.forEach(detach_dev);
       this.h();
@@ -8258,112 +8776,117 @@ function create_fragment$c(ctx) {
     h: function hydrate() {
       attr_dev(meta0, "name", "description");
       attr_dev(meta0, "content", meta0_content_value = ctx.about.description);
-      attr_dev(meta0, "class", "svelte-19ui9f4");
-      add_location(meta0, file$b, 121, 2, 6286);
+      attr_dev(meta0, "class", "svelte-7ba723");
+      add_location(meta0, file$c, 141, 2, 7082);
       attr_dev(meta1, "property", "og:type");
       attr_dev(meta1, "content", "website");
-      attr_dev(meta1, "class", "svelte-19ui9f4");
-      add_location(meta1, file$b, 123, 2, 6377);
+      attr_dev(meta1, "class", "svelte-7ba723");
+      add_location(meta1, file$c, 143, 2, 7173);
       attr_dev(meta2, "property", "og:url");
       attr_dev(meta2, "content", "https://tyom.semonov.com/");
-      attr_dev(meta2, "class", "svelte-19ui9f4");
-      add_location(meta2, file$b, 124, 2, 6423);
+      attr_dev(meta2, "class", "svelte-7ba723");
+      add_location(meta2, file$c, 144, 2, 7221);
       attr_dev(meta3, "property", "og:title");
       attr_dev(meta3, "content", meta3_content_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV");
-      attr_dev(meta3, "class", "svelte-19ui9f4");
-      add_location(meta3, file$b, 125, 2, 6486);
+      attr_dev(meta3, "class", "svelte-7ba723");
+      add_location(meta3, file$c, 145, 2, 7286);
       attr_dev(meta4, "property", "og:description");
       attr_dev(meta4, "content", meta4_content_value = ctx.about.description);
-      attr_dev(meta4, "class", "svelte-19ui9f4");
-      add_location(meta4, file$b, 126, 2, 6558);
+      attr_dev(meta4, "class", "svelte-7ba723");
+      add_location(meta4, file$c, 146, 2, 7360);
       attr_dev(meta5, "property", "og:image");
       attr_dev(meta5, "content", "https://tyom.semonov.com/logo.png");
-      attr_dev(meta5, "class", "svelte-19ui9f4");
-      add_location(meta5, file$b, 127, 2, 6621);
+      attr_dev(meta5, "class", "svelte-7ba723");
+      add_location(meta5, file$c, 147, 2, 7425);
       attr_dev(meta6, "property", "twitter:card");
       attr_dev(meta6, "content", "summary_large_image");
-      attr_dev(meta6, "class", "svelte-19ui9f4");
-      add_location(meta6, file$b, 130, 2, 6714);
+      attr_dev(meta6, "class", "svelte-7ba723");
+      add_location(meta6, file$c, 149, 2, 7519);
       attr_dev(meta7, "property", "twitter:url");
       attr_dev(meta7, "content", "https://tyom.semonov.com/");
-      attr_dev(meta7, "class", "svelte-19ui9f4");
-      add_location(meta7, file$b, 131, 2, 6777);
+      attr_dev(meta7, "class", "svelte-7ba723");
+      add_location(meta7, file$c, 150, 2, 7584);
       attr_dev(meta8, "property", "twitter:title");
       attr_dev(meta8, "content", meta8_content_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV");
-      attr_dev(meta8, "class", "svelte-19ui9f4");
-      add_location(meta8, file$b, 132, 2, 6845);
+      attr_dev(meta8, "class", "svelte-7ba723");
+      add_location(meta8, file$c, 151, 2, 7654);
       attr_dev(meta9, "property", "twitter:description");
       attr_dev(meta9, "content", meta9_content_value = ctx.about.description);
-      attr_dev(meta9, "class", "svelte-19ui9f4");
-      add_location(meta9, file$b, 133, 2, 6922);
+      attr_dev(meta9, "class", "svelte-7ba723");
+      add_location(meta9, file$c, 152, 2, 7733);
       attr_dev(meta10, "property", "twitter:image");
       attr_dev(meta10, "content", "https://tyom.semonov.com/logo.png");
-      attr_dev(meta10, "class", "svelte-19ui9f4");
-      add_location(meta10, file$b, 134, 2, 6990);
-      attr_dev(aside, "class", "svelte-19ui9f4");
-      add_location(aside, file$b, 137, 0, 7082);
-      attr_dev(h20, "class", "svelte-19ui9f4");
-      add_location(h20, file$b, 143, 4, 7218);
-      attr_dev(section0, "class", "experience svelte-19ui9f4");
-      add_location(section0, file$b, 142, 2, 7185);
-      attr_dev(h21, "class", "svelte-19ui9f4");
-      add_location(h21, file$b, 149, 4, 7386);
-      attr_dev(section1, "class", "education svelte-19ui9f4");
-      add_location(section1, file$b, 148, 2, 7354);
-      attr_dev(br, "class", "svelte-19ui9f4");
-      add_location(br, file$b, 158, 4, 7636);
-      attr_dev(p, "class", "u-print-only print-details-info svelte-19ui9f4");
-      add_location(p, file$b, 155, 2, 7515);
-      attr_dev(article, "class", "content svelte-19ui9f4");
-      add_location(article, file$b, 141, 0, 7157);
+      attr_dev(meta10, "class", "svelte-7ba723");
+      add_location(meta10, file$c, 153, 2, 7803);
+      attr_dev(aside, "class", "svelte-7ba723");
+      add_location(aside, file$c, 156, 0, 7897);
+      attr_dev(h20, "class", "svelte-7ba723");
+      add_location(h20, file$c, 163, 6, 8048);
+      attr_dev(header, "class", "svelte-7ba723");
+      add_location(header, file$c, 162, 4, 8033);
+      attr_dev(section0, "class", "experience svelte-7ba723");
+      add_location(section0, file$c, 161, 2, 8000);
+      attr_dev(h21, "class", "svelte-7ba723");
+      add_location(h21, file$c, 173, 4, 8338);
+      attr_dev(section1, "class", "education svelte-7ba723");
+      add_location(section1, file$c, 172, 2, 8306);
+      attr_dev(br, "class", "svelte-7ba723");
+      add_location(br, file$c, 182, 4, 8588);
+      attr_dev(p, "class", "u-print-only print-details-info svelte-7ba723");
+      add_location(p, file$c, 179, 2, 8467);
+      attr_dev(article, "class", "content svelte-7ba723");
+      add_location(article, file$c, 160, 0, 7972);
     },
     m: function mount(target, anchor) {
-      append_dev(document.head, meta0);
-      append_dev(document.head, meta1);
-      append_dev(document.head, meta2);
-      append_dev(document.head, meta3);
-      append_dev(document.head, meta4);
-      append_dev(document.head, meta5);
-      append_dev(document.head, meta6);
-      append_dev(document.head, meta7);
-      append_dev(document.head, meta8);
-      append_dev(document.head, meta9);
-      append_dev(document.head, meta10);
+      append_dev(document_1.head, meta0);
+      append_dev(document_1.head, meta1);
+      append_dev(document_1.head, meta2);
+      append_dev(document_1.head, meta3);
+      append_dev(document_1.head, meta4);
+      append_dev(document_1.head, meta5);
+      append_dev(document_1.head, meta6);
+      append_dev(document_1.head, meta7);
+      append_dev(document_1.head, meta8);
+      append_dev(document_1.head, meta9);
+      append_dev(document_1.head, meta10);
       insert_dev(target, t0, anchor);
       insert_dev(target, aside, anchor);
       mount_component(summary_1, aside, null);
       insert_dev(target, t1, anchor);
       insert_dev(target, article, anchor);
       append_dev(article, section0);
-      append_dev(section0, h20);
+      append_dev(section0, header);
+      append_dev(header, h20);
       append_dev(h20, t2);
-      append_dev(section0, t3);
+      append_dev(header, t3);
+      if (if_block) if_block.m(header, null);
+      append_dev(section0, t4);
 
       for (var _i7 = 0; _i7 < each_blocks_1.length; _i7 += 1) {
         each_blocks_1[_i7].m(section0, null);
       }
 
-      append_dev(article, t4);
+      append_dev(article, t5);
       append_dev(article, section1);
       append_dev(section1, h21);
-      append_dev(h21, t5);
-      append_dev(section1, t6);
+      append_dev(h21, t6);
+      append_dev(section1, t7);
 
       for (var _i8 = 0; _i8 < each_blocks.length; _i8 += 1) {
         each_blocks[_i8].m(section1, null);
       }
 
-      append_dev(article, t7);
+      append_dev(article, t8);
       append_dev(article, p);
       mount_component(infoicon, p, null);
-      append_dev(p, t8);
-      append_dev(p, br);
       append_dev(p, t9);
+      append_dev(p, br);
+      append_dev(p, t10);
       current = true;
     },
     p: function update(changed, ctx) {
       if ((!current || changed.about) && title_value !== (title_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV")) {
-        document.title = title_value;
+        document_1.title = title_value;
       }
 
       if ((!current || changed.about) && meta0_content_value !== (meta0_content_value = ctx.about.description)) {
@@ -8388,6 +8911,24 @@ function create_fragment$c(ctx) {
 
       var summary_1_changes = changed.summary ? get_spread_update(summary_1_spread_levels, [get_spread_object(ctx.summary), summary_1_spread_levels[1]]) : {};
       summary_1.$set(summary_1_changes);
+
+      if (ctx.intersectionNodes) {
+        if (if_block) {
+          if_block.p(changed, ctx);
+          transition_in(if_block, 1);
+        } else {
+          if_block = create_if_block$7(ctx);
+          if_block.c();
+          transition_in(if_block, 1);
+          if_block.m(header, null);
+        }
+      } else if (if_block) {
+        group_outros();
+        transition_out(if_block, 1, 1, function () {
+          if_block = null;
+        });
+        check_outros();
+      }
 
       if (changed.linkedExperienceItems) {
         each_value_1 = ctx.linkedExperienceItems;
@@ -8427,14 +8968,14 @@ function create_fragment$c(ctx) {
         var _i10;
 
         for (_i10 = 0; _i10 < each_value.length; _i10 += 1) {
-          var _child_ctx = get_each_context$3(ctx, each_value, _i10);
+          var _child_ctx = get_each_context$4(ctx, each_value, _i10);
 
           if (each_blocks[_i10]) {
             each_blocks[_i10].p(changed, _child_ctx);
 
             transition_in(each_blocks[_i10], 1);
           } else {
-            each_blocks[_i10] = create_each_block$3(_child_ctx);
+            each_blocks[_i10] = create_each_block$4(_child_ctx);
 
             each_blocks[_i10].c();
 
@@ -8456,6 +8997,7 @@ function create_fragment$c(ctx) {
     i: function intro(local) {
       if (current) return;
       transition_in(summary_1.$$.fragment, local);
+      transition_in(if_block);
 
       for (var _i11 = 0; _i11 < each_value_1.length; _i11 += 1) {
         transition_in(each_blocks_1[_i11]);
@@ -8470,6 +9012,7 @@ function create_fragment$c(ctx) {
     },
     o: function outro(local) {
       transition_out(summary_1.$$.fragment, local);
+      transition_out(if_block);
       each_blocks_1 = each_blocks_1.filter(Boolean);
 
       for (var _i13 = 0; _i13 < each_blocks_1.length; _i13 += 1) {
@@ -8510,6 +9053,7 @@ function create_fragment$c(ctx) {
         detach_dev(article);
       }
 
+      if (if_block) if_block.d();
       destroy_each(each_blocks_1, detaching);
       destroy_each(each_blocks, detaching);
       destroy_component(infoicon);
@@ -8517,7 +9061,7 @@ function create_fragment$c(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_fragment$c.name,
+    id: create_fragment$d.name,
     type: "component",
     source: "",
     ctx: ctx
@@ -8583,7 +9127,7 @@ function _preload() {
   return _preload.apply(this, arguments);
 }
 
-function instance$c($$self, $$props, $$invalidate) {
+function instance$d($$self, $$props, $$invalidate) {
   var about = $$props.about,
       experienceItems = $$props.experienceItems,
       educationItems = $$props.educationItems,
@@ -8592,7 +9136,7 @@ function instance$c($$self, $$props, $$invalidate) {
   var coreSkills = buildList(about.coreSkills, defLinker);
   var currentInterests = buildList(about.currentInterests, defLinker);
 
-  var summary = _objectSpread({}, about, {
+  var summary = _objectSpread$1({}, about, {
     coreSkills: coreSkills,
     currentInterests: currentInterests
   });
@@ -8601,6 +9145,11 @@ function instance$c($$self, $$props, $$invalidate) {
     return Object.assign({}, item, {
       technologies: buildList(item.technologies, defLinker)
     });
+  });
+  var experienceSectionEl;
+  var intersectionNodes;
+  onMount(function () {
+    $$invalidate('intersectionNodes', intersectionNodes = document.querySelectorAll('.experience .experience-item'));
   });
   var writable_props = ['about', 'experienceItems', 'educationItems', 'definitions'];
   Object_1$1.keys($$props).forEach(function (key) {
@@ -8619,7 +9168,9 @@ function instance$c($$self, $$props, $$invalidate) {
       about: about,
       experienceItems: experienceItems,
       educationItems: educationItems,
-      definitions: definitions
+      definitions: definitions,
+      experienceSectionEl: experienceSectionEl,
+      intersectionNodes: intersectionNodes
     };
   };
 
@@ -8628,6 +9179,8 @@ function instance$c($$self, $$props, $$invalidate) {
     if ('experienceItems' in $$props) $$invalidate('experienceItems', experienceItems = $$props.experienceItems);
     if ('educationItems' in $$props) $$invalidate('educationItems', educationItems = $$props.educationItems);
     if ('definitions' in $$props) $$invalidate('definitions', definitions = $$props.definitions);
+    if ('experienceSectionEl' in $$props) experienceSectionEl = $$props.experienceSectionEl;
+    if ('intersectionNodes' in $$props) $$invalidate('intersectionNodes', intersectionNodes = $$props.intersectionNodes);
   };
 
   return {
@@ -8636,7 +9189,8 @@ function instance$c($$self, $$props, $$invalidate) {
     educationItems: educationItems,
     definitions: definitions,
     summary: summary,
-    linkedExperienceItems: linkedExperienceItems
+    linkedExperienceItems: linkedExperienceItems,
+    intersectionNodes: intersectionNodes
   };
 }
 
@@ -8651,12 +9205,12 @@ function (_SvelteComponentDev) {
     _classCallCheck(this, Index);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Index).call(this, options));
-    init(_assertThisInitialized(_this), options, instance$c, create_fragment$c, safe_not_equal, ["about", "experienceItems", "educationItems", "definitions"]);
+    init(_assertThisInitialized(_this), options, instance$d, create_fragment$d, safe_not_equal, ["about", "experienceItems", "educationItems", "definitions"]);
     dispatch_dev("SvelteRegisterComponent", {
       component: _assertThisInitialized(_this),
       tagName: "Index",
       options: options,
-      id: create_fragment$c.name
+      id: create_fragment$d.name
     });
     var ctx = _this.$$.ctx;
     var props = options.props || {};

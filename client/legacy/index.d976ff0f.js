@@ -1031,6 +1031,10 @@ function _createClass(Constructor, protoProps, staticProps) {
 
 function noop() {}
 
+var identity = function identity(x) {
+  return x;
+};
+
 function assign(tar, src) {
   // @ts-ignore
   for (var k in src) {
@@ -1094,6 +1098,48 @@ function exclude_internal_props(props) {
   }
 
   return result;
+}
+
+var is_client = typeof window !== 'undefined';
+var now = is_client ? function () {
+  return window.performance.now();
+} : function () {
+  return Date.now();
+};
+var raf = is_client ? function (cb) {
+  return requestAnimationFrame(cb);
+} : noop; // used internally for testing
+
+var tasks = new Set();
+var running = false;
+
+function run_tasks() {
+  tasks.forEach(function (task) {
+    if (!task[0](now())) {
+      tasks.delete(task);
+      task[1]();
+    }
+  });
+  running = tasks.size > 0;
+  if (running) raf(run_tasks);
+}
+
+function loop(fn) {
+  var task;
+
+  if (!running) {
+    running = true;
+    raf(run_tasks);
+  }
+
+  return {
+    promise: new Promise(function (fulfil) {
+      tasks.add(task = [fn, fulfil]);
+    }),
+    abort: function abort() {
+      tasks.delete(task);
+    }
+  };
 }
 
 function append(target, node) {
@@ -1183,6 +1229,10 @@ function claim_space(nodes) {
   return claim_text(nodes, ' ');
 }
 
+function set_style(node, key, value, important) {
+  node.style.setProperty(key, value, important ? 'important' : '');
+}
+
 function toggle_class(element, name, toggle) {
   element.classList[toggle ? 'add' : 'remove'](name);
 }
@@ -1191,6 +1241,75 @@ function custom_event(type, detail) {
   var e = document.createEvent('CustomEvent');
   e.initCustomEvent(type, false, false, detail);
   return e;
+}
+
+var stylesheet;
+var active = 0;
+var current_rules = {}; // https://github.com/darkskyapp/string-hash/blob/master/index.js
+
+function hash(str) {
+  var hash = 5381;
+  var i = str.length;
+
+  while (i--) {
+    hash = (hash << 5) - hash ^ str.charCodeAt(i);
+  }
+
+  return hash >>> 0;
+}
+
+function create_rule(node, a, b, duration, delay, ease, fn) {
+  var uid = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 0;
+  var step = 16.666 / duration;
+  var keyframes = '{\n';
+
+  for (var p = 0; p <= 1; p += step) {
+    var t = a + (b - a) * ease(p);
+    keyframes += p * 100 + "%{".concat(fn(t, 1 - t), "}\n");
+  }
+
+  var rule = keyframes + "100% {".concat(fn(b, 1 - b), "}\n}");
+  var name = "__svelte_".concat(hash(rule), "_").concat(uid);
+
+  if (!current_rules[name]) {
+    if (!stylesheet) {
+      var style = element('style');
+      document.head.appendChild(style);
+      stylesheet = style.sheet;
+    }
+
+    current_rules[name] = true;
+    stylesheet.insertRule("@keyframes ".concat(name, " ").concat(rule), stylesheet.cssRules.length);
+  }
+
+  var animation = node.style.animation || '';
+  node.style.animation = "".concat(animation ? "".concat(animation, ", ") : "").concat(name, " ").concat(duration, "ms linear ").concat(delay, "ms 1 both");
+  active += 1;
+  return name;
+}
+
+function delete_rule(node, name) {
+  node.style.animation = (node.style.animation || '').split(', ').filter(name ? function (anim) {
+    return anim.indexOf(name) < 0;
+  } // remove specific animation
+  : function (anim) {
+    return anim.indexOf('__svelte') === -1;
+  } // remove all Svelte animations
+  ).join(', ');
+  if (name && ! --active) clear_rules();
+}
+
+function clear_rules() {
+  raf(function () {
+    if (active) return;
+    var i = stylesheet.cssRules.length;
+
+    while (i--) {
+      stylesheet.deleteRule(i);
+    }
+
+    current_rules = {};
+  });
 }
 
 var current_component;
@@ -1202,6 +1321,14 @@ function set_current_component(component) {
 function get_current_component() {
   if (!current_component) throw new Error("Function called outside component initialization");
   return current_component;
+}
+
+function onMount(fn) {
+  get_current_component().$$.on_mount.push(fn);
+}
+
+function onDestroy(fn) {
+  get_current_component().$$.on_destroy.push(fn);
 }
 
 function setContext(key, context) {
@@ -1275,6 +1402,23 @@ function update($$) {
   }
 }
 
+var promise;
+
+function wait() {
+  if (!promise) {
+    promise = Promise.resolve();
+    promise.then(function () {
+      promise = null;
+    });
+  }
+
+  return promise;
+}
+
+function dispatch(node, direction, kind) {
+  node.dispatchEvent(custom_event("".concat(direction ? 'intro' : 'outro').concat(kind)));
+}
+
 var outroing = new Set();
 var outros;
 
@@ -1316,6 +1460,133 @@ function transition_out(block, local, detach, callback) {
     });
     block.o(local);
   }
+}
+
+var null_transition = {
+  duration: 0
+};
+
+function create_bidirectional_transition(node, fn, params, intro) {
+  var config = fn(node, params);
+  var t = intro ? 0 : 1;
+  var running_program = null;
+  var pending_program = null;
+  var animation_name = null;
+
+  function clear_animation() {
+    if (animation_name) delete_rule(node, animation_name);
+  }
+
+  function init(program, duration) {
+    var d = program.b - t;
+    duration *= Math.abs(d);
+    return {
+      a: t,
+      b: program.b,
+      d: d,
+      duration: duration,
+      start: program.start,
+      end: program.start + duration,
+      group: program.group
+    };
+  }
+
+  function go(b) {
+    var _ref3 = config || null_transition,
+        _ref3$delay = _ref3.delay,
+        delay = _ref3$delay === void 0 ? 0 : _ref3$delay,
+        _ref3$duration = _ref3.duration,
+        duration = _ref3$duration === void 0 ? 300 : _ref3$duration,
+        _ref3$easing = _ref3.easing,
+        easing = _ref3$easing === void 0 ? identity : _ref3$easing,
+        _ref3$tick = _ref3.tick,
+        tick = _ref3$tick === void 0 ? noop : _ref3$tick,
+        css = _ref3.css;
+
+    var program = {
+      start: now() + delay,
+      b: b
+    };
+
+    if (!b) {
+      // @ts-ignore todo: improve typings
+      program.group = outros;
+      outros.r += 1;
+    }
+
+    if (running_program) {
+      pending_program = program;
+    } else {
+      // if this is an intro, and there's a delay, we need to do
+      // an initial tick and/or apply CSS animation immediately
+      if (css) {
+        clear_animation();
+        animation_name = create_rule(node, t, b, duration, delay, easing, css);
+      }
+
+      if (b) tick(0, 1);
+      running_program = init(program, duration);
+      add_render_callback(function () {
+        return dispatch(node, b, 'start');
+      });
+      loop(function (now) {
+        if (pending_program && now > pending_program.start) {
+          running_program = init(pending_program, duration);
+          pending_program = null;
+          dispatch(node, running_program.b, 'start');
+
+          if (css) {
+            clear_animation();
+            animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
+          }
+        }
+
+        if (running_program) {
+          if (now >= running_program.end) {
+            tick(t = running_program.b, 1 - t);
+            dispatch(node, running_program.b, 'end');
+
+            if (!pending_program) {
+              // we're done
+              if (running_program.b) {
+                // intro — we can tidy up immediately
+                clear_animation();
+              } else {
+                // outro — needs to be coordinated
+                if (! --running_program.group.r) run_all(running_program.group.c);
+              }
+            }
+
+            running_program = null;
+          } else if (now >= running_program.start) {
+            var p = now - running_program.start;
+            t = running_program.a + running_program.d * easing(p / running_program.duration);
+            tick(t, 1 - t);
+          }
+        }
+
+        return !!(running_program || pending_program);
+      });
+    }
+  }
+
+  return {
+    run: function run(b) {
+      if (is_function(config)) {
+        wait().then(function () {
+          // @ts-ignore
+          config = config();
+          go(b);
+        });
+      } else {
+        go(b);
+      }
+    },
+    end: function end() {
+      clear_animation();
+      running_program = pending_program = null;
+    }
+  };
 }
 
 var globals = typeof window !== 'undefined' ? window : global;
@@ -1637,4 +1908,4 @@ function (_SvelteComponent) {
   return SvelteComponentDev;
 }(SvelteComponent);
 
-export { empty as A, claim_space as B, attr_dev as C, assign as D, mount_component as E, get_spread_update as F, get_spread_object as G, destroy_component as H, setContext as I, group_outros as J, check_outros as K, _asyncToGenerator as L, regenerator as M, _typeof as N, _slicedToArray as O, svg_element as P, _defineProperty as Q, exclude_internal_props as R, SvelteComponentDev as S, listen as T, destroy_each as U, toggle_class as V, _inherits as _, _classCallCheck as a, _possibleConstructorReturn as b, _getPrototypeOf as c, _assertThisInitialized as d, dispatch_dev as e, create_slot as f, element as g, claim_element as h, init as i, children as j, detach_dev as k, add_location as l, insert_dev as m, noop as n, get_slot_changes as o, get_slot_context as p, transition_out as q, _createClass as r, safe_not_equal as s, transition_in as t, globals as u, text as v, claim_text as w, append_dev as x, set_data_dev as y, space as z };
+export { set_style as $, empty as A, claim_space as B, attr_dev as C, assign as D, mount_component as E, get_spread_update as F, get_spread_object as G, destroy_component as H, setContext as I, group_outros as J, check_outros as K, _asyncToGenerator as L, regenerator as M, _typeof as N, _slicedToArray as O, svg_element as P, _defineProperty as Q, exclude_internal_props as R, SvelteComponentDev as S, listen as T, destroy_each as U, toggle_class as V, onMount as W, onDestroy as X, add_render_callback as Y, create_bidirectional_transition as Z, _inherits as _, _classCallCheck as a, _toConsumableArray as a0, _possibleConstructorReturn as b, _getPrototypeOf as c, _assertThisInitialized as d, dispatch_dev as e, create_slot as f, element as g, claim_element as h, init as i, children as j, detach_dev as k, add_location as l, insert_dev as m, noop as n, get_slot_changes as o, get_slot_context as p, transition_out as q, _createClass as r, safe_not_equal as s, transition_in as t, globals as u, text as v, claim_text as w, append_dev as x, set_data_dev as y, space as z };
