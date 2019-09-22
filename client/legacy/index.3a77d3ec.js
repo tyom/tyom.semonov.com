@@ -8476,7 +8476,7 @@ function create_each_block_1$3(ctx) {
     ctx: ctx
   });
   return block;
-} // (175:4) {#each educationItems as experience}
+} // (177:4) {#each educationItems as experience}
 
 
 function create_each_block$4(ctx) {
@@ -8524,14 +8524,14 @@ function create_each_block$4(ctx) {
     block: block,
     id: create_each_block$4.name,
     type: "each",
-    source: "(175:4) {#each educationItems as experience}",
+    source: "(177:4) {#each educationItems as experience}",
     ctx: ctx
   });
   return block;
 }
 
 function create_fragment$d(ctx) {
-  var title_value, meta0, meta0_content_value, meta1, meta2, meta3, meta3_content_value, meta4, meta4_content_value, meta5, meta6, meta7, meta8, meta8_content_value, meta9, meta9_content_value, meta10, t0, aside, t1, article, section0, header, h20, t2, t3, t4, t5, section1, h21, t6, t7, t8, p, t9, br, t10, current;
+  var title_value, meta0, meta0_content_value, meta1, meta2, meta3, meta3_content_value, meta4, meta4_content_value, meta5, meta6, meta7, meta8, meta8_content_value, meta9, meta9_content_value, meta10, t0, aside, t1, article, section0, header0, h20, t2, t3, t4, t5, section1, header1, h21, t6, t7, t8, p, t9, br, t10, current;
   document_1.title = title_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV";
   var summary_1_spread_levels = [ctx.summary, {
     pdfLink: "tyom-semonov-cv.pdf"
@@ -8595,7 +8595,7 @@ function create_fragment$d(ctx) {
       t1 = space();
       article = element("article");
       section0 = element("section");
-      header = element("header");
+      header0 = element("header");
       h20 = element("h2");
       t2 = text("Experience");
       t3 = space();
@@ -8608,6 +8608,7 @@ function create_fragment$d(ctx) {
 
       t5 = space();
       section1 = element("section");
+      header1 = element("header");
       h21 = element("h2");
       t6 = text("Education");
       t7 = space();
@@ -8718,19 +8719,19 @@ function create_fragment$d(ctx) {
         class: true
       }, false);
       var section0_nodes = children(section0);
-      header = claim_element(section0_nodes, "HEADER", {
+      header0 = claim_element(section0_nodes, "HEADER", {
         class: true
       }, false);
-      var header_nodes = children(header);
-      h20 = claim_element(header_nodes, "H2", {
+      var header0_nodes = children(header0);
+      h20 = claim_element(header0_nodes, "H2", {
         class: true
       }, false);
       var h20_nodes = children(h20);
       t2 = claim_text(h20_nodes, "Experience");
       h20_nodes.forEach(detach_dev);
-      t3 = claim_space(header_nodes);
-      if (if_block) if_block.l(header_nodes);
-      header_nodes.forEach(detach_dev);
+      t3 = claim_space(header0_nodes);
+      if (if_block) if_block.l(header0_nodes);
+      header0_nodes.forEach(detach_dev);
       t4 = claim_space(section0_nodes);
 
       for (var _i5 = 0; _i5 < each_blocks_1.length; _i5 += 1) {
@@ -8743,12 +8744,17 @@ function create_fragment$d(ctx) {
         class: true
       }, false);
       var section1_nodes = children(section1);
-      h21 = claim_element(section1_nodes, "H2", {
+      header1 = claim_element(section1_nodes, "HEADER", {
+        class: true
+      }, false);
+      var header1_nodes = children(header1);
+      h21 = claim_element(header1_nodes, "H2", {
         class: true
       }, false);
       var h21_nodes = children(h21);
       t6 = claim_text(h21_nodes, "Education");
       h21_nodes.forEach(detach_dev);
+      header1_nodes.forEach(detach_dev);
       t7 = claim_space(section1_nodes);
 
       for (var _i6 = 0; _i6 < each_blocks.length; _i6 += 1) {
@@ -8822,18 +8828,20 @@ function create_fragment$d(ctx) {
       add_location(aside, file$c, 156, 0, 7897);
       attr_dev(h20, "class", "svelte-7ba723");
       add_location(h20, file$c, 163, 6, 8048);
-      attr_dev(header, "class", "svelte-7ba723");
-      add_location(header, file$c, 162, 4, 8033);
+      attr_dev(header0, "class", "svelte-7ba723");
+      add_location(header0, file$c, 162, 4, 8033);
       attr_dev(section0, "class", "experience svelte-7ba723");
       add_location(section0, file$c, 161, 2, 8000);
       attr_dev(h21, "class", "svelte-7ba723");
-      add_location(h21, file$c, 173, 4, 8338);
+      add_location(h21, file$c, 174, 6, 8353);
+      attr_dev(header1, "class", "svelte-7ba723");
+      add_location(header1, file$c, 173, 4, 8338);
       attr_dev(section1, "class", "education svelte-7ba723");
       add_location(section1, file$c, 172, 2, 8306);
       attr_dev(br, "class", "svelte-7ba723");
-      add_location(br, file$c, 182, 4, 8588);
+      add_location(br, file$c, 184, 4, 8617);
       attr_dev(p, "class", "u-print-only print-details-info svelte-7ba723");
-      add_location(p, file$c, 179, 2, 8467);
+      add_location(p, file$c, 181, 2, 8496);
       attr_dev(article, "class", "content svelte-7ba723");
       add_location(article, file$c, 160, 0, 7972);
     },
@@ -8855,11 +8863,11 @@ function create_fragment$d(ctx) {
       insert_dev(target, t1, anchor);
       insert_dev(target, article, anchor);
       append_dev(article, section0);
-      append_dev(section0, header);
-      append_dev(header, h20);
+      append_dev(section0, header0);
+      append_dev(header0, h20);
       append_dev(h20, t2);
-      append_dev(header, t3);
-      if (if_block) if_block.m(header, null);
+      append_dev(header0, t3);
+      if (if_block) if_block.m(header0, null);
       append_dev(section0, t4);
 
       for (var _i7 = 0; _i7 < each_blocks_1.length; _i7 += 1) {
@@ -8868,7 +8876,8 @@ function create_fragment$d(ctx) {
 
       append_dev(article, t5);
       append_dev(article, section1);
-      append_dev(section1, h21);
+      append_dev(section1, header1);
+      append_dev(header1, h21);
       append_dev(h21, t6);
       append_dev(section1, t7);
 
@@ -8920,7 +8929,7 @@ function create_fragment$d(ctx) {
           if_block = create_if_block$7(ctx);
           if_block.c();
           transition_in(if_block, 1);
-          if_block.m(header, null);
+          if_block.m(header0, null);
         }
       } else if (if_block) {
         group_outros();
