@@ -2,10 +2,8 @@
   import LinkWithPreview from '../LinkWithPreview.svelte';
 
   export let items = [];
-  export let inlineSeparator = ', ';
 
-  const separator = (idx, list) => (idx < list.length - 1 ? inlineSeparator : '');
-  const formattedList = items.filter(x => x.name);
+  const separator = (idx, list) => (idx < list.length - 1 ? ', ' : '');
 </script>
 
 <style>
@@ -20,7 +18,7 @@
 </style>
 
 <ul class="plain-list">
-  {#each formattedList as item}
+  {#each items as item}
     <li>
       {#if item.links}
         {#each item.links as link, idx}

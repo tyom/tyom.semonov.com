@@ -120,7 +120,7 @@
       {@html description}
     </div>
   {/if}
-  {#if technologies}
+  {#if technologies.length}
     <footer>
       <h4>Technologies & tools</h4>
       <List items={technologies} inline />
