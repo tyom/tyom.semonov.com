@@ -31,6 +31,7 @@
         - Preact
         - Storybook
         - Jest
+        - TestCafe
         - Rollup
         - Node.js/Polka
     - Web Components
