@@ -7912,7 +7912,7 @@ function get_each_context$3(ctx, list, i) {
   var child_ctx = Object_1$1.create(ctx);
   child_ctx.event = list[i];
   return child_ctx;
-} // (153:0) {#if timelineEvents}
+} // (161:0) {#if timelineEvents}
 
 
 function create_if_block$6(ctx) {
@@ -7986,13 +7986,13 @@ function create_if_block$6(ctx) {
     },
     h: function hydrate() {
       attr_dev(div0, "class", "end-year svelte-3xxkil");
-      add_location(div0, file$b, 154, 4, 5683);
+      add_location(div0, file$b, 165, 4, 5937);
       attr_dev(div1, "class", "events svelte-3xxkil");
-      add_location(div1, file$b, 155, 4, 5731);
+      add_location(div1, file$b, 166, 4, 5985);
       attr_dev(div2, "class", "start-year svelte-3xxkil");
-      add_location(div2, file$b, 165, 4, 6065);
+      add_location(div2, file$b, 176, 4, 6319);
       attr_dev(div3, "class", "timeline svelte-3xxkil");
-      add_location(div3, file$b, 153, 2, 5596);
+      add_location(div3, file$b, 161, 2, 5838);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div3, anchor);
@@ -8072,11 +8072,11 @@ function create_if_block$6(ctx) {
     block: block,
     id: create_if_block$6.name,
     type: "if",
-    source: "(153:0) {#if timelineEvents}",
+    source: "(161:0) {#if timelineEvents}",
     ctx: ctx
   });
   return block;
-} // (157:6) {#each timelineEvents as event}
+} // (168:6) {#each timelineEvents as event}
 
 
 function create_each_block$3(ctx) {
@@ -8104,7 +8104,7 @@ function create_each_block$3(ctx) {
       attr_dev(div, "class", div_class_value = "timeline-event " + ctx.event.modifier + " svelte-3xxkil");
       set_style(div, "width", "" + ctx.event.percent + "%");
       toggle_class(div, "visible", ctx.event.isVisible);
-      add_location(div, file$b, 157, 8, 5798);
+      add_location(div, file$b, 168, 8, 6052);
       dispose = listen_dev(div, "click", click_handler);
     },
     m: function mount(target, anchor) {
@@ -8147,7 +8147,7 @@ function create_each_block$3(ctx) {
     block: block,
     id: create_each_block$3.name,
     type: "each",
-    source: "(157:6) {#each timelineEvents as event}",
+    source: "(168:6) {#each timelineEvents as event}",
     ctx: ctx
   });
   return block;
@@ -8265,10 +8265,17 @@ function instance$c($$self, $$props, $$invalidate) {
   function scrollTo(node) {
     var scrollPosition = node.getBoundingClientRect().top + window.pageYOffset;
     var offset = containerEl.getBoundingClientRect().top;
-    window.scrollTo({
-      top: scrollPosition - offset,
-      behavior: 'smooth'
-    });
+    var scrollOffset = scrollPosition - offset;
+    var supportsNativeSmoothScroll = 'scrollBehavior' in document.documentElement.style;
+
+    if (supportsNativeSmoothScroll) {
+      window.scrollTo({
+        top: scrollOffset,
+        behavior: 'smooth'
+      });
+    } else {
+      window.scrollTo(0, scrollOffset);
+    }
   }
 
   onMount(function () {
