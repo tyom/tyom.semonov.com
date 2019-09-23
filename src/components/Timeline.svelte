@@ -7,19 +7,19 @@
 
   const intersectedEvents = [];
 
-  const eventsMonthWithLength = events.map(event => ({
+  const eventsWithMonthLength = events.map(event => ({
     name: event.name,
     modifier: event.isContractor ? 'contract' : 'permanent',
     monthLength: getNumberOfMonthsBetweenDates(event.start, event.end),
   }));
-  const totalTimelineInMonths = eventsMonthWithLength.reduce(
+  const totalTimelineInMonths = eventsWithMonthLength.reduce(
     (acc, curr) => acc + curr.monthLength,
     0,
   );
   const firstDate = events[events.length - 1].start;
   const lastDate = events[0].end;
-  const scaledEvents = eventsMonthWithLength.map(event => ({
-    ...event,
+  const scaledEvents = eventsWithMonthLength.map(event => Object.assign({}, {
+    event,
     percent: (100 / totalTimelineInMonths) * event.monthLength,
   }));
   let timelineEvents;
