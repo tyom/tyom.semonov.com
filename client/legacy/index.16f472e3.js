@@ -1857,6 +1857,28 @@ function detach_dev(node) {
   detach(node);
 }
 
+function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
+  var modifiers = options === true ? ["capture"] : options ? Array.from(Object.keys(options)) : [];
+  if (has_prevent_default) modifiers.push('preventDefault');
+  if (has_stop_propagation) modifiers.push('stopPropagation');
+  dispatch_dev("SvelteDOMAddEventListener", {
+    node: node,
+    event: event,
+    handler: handler,
+    modifiers: modifiers
+  });
+  var dispose = listen(node, event, handler, options);
+  return function () {
+    dispatch_dev("SvelteDOMRemoveEventListener", {
+      node: node,
+      event: event,
+      handler: handler,
+      modifiers: modifiers
+    });
+    dispose();
+  };
+}
+
 function attr_dev(node, attribute, value) {
   attr(node, attribute, value);
   if (value == null) dispatch_dev("SvelteDOMRemoveAttribute", {
@@ -1908,4 +1930,4 @@ function (_SvelteComponent) {
   return SvelteComponentDev;
 }(SvelteComponent);
 
-export { set_style as $, empty as A, claim_space as B, attr_dev as C, assign as D, mount_component as E, get_spread_update as F, get_spread_object as G, destroy_component as H, setContext as I, group_outros as J, check_outros as K, _asyncToGenerator as L, regenerator as M, _typeof as N, _slicedToArray as O, svg_element as P, _defineProperty as Q, exclude_internal_props as R, SvelteComponentDev as S, listen as T, destroy_each as U, toggle_class as V, onMount as W, onDestroy as X, add_render_callback as Y, create_bidirectional_transition as Z, _inherits as _, _classCallCheck as a, _toConsumableArray as a0, _possibleConstructorReturn as b, _getPrototypeOf as c, _assertThisInitialized as d, dispatch_dev as e, create_slot as f, element as g, claim_element as h, init as i, children as j, detach_dev as k, add_location as l, insert_dev as m, noop as n, get_slot_changes as o, get_slot_context as p, transition_out as q, _createClass as r, safe_not_equal as s, transition_in as t, globals as u, text as v, claim_text as w, append_dev as x, set_data_dev as y, space as z };
+export { set_style as $, empty as A, claim_space as B, attr_dev as C, assign as D, mount_component as E, get_spread_update as F, get_spread_object as G, destroy_component as H, setContext as I, group_outros as J, check_outros as K, _asyncToGenerator as L, regenerator as M, _typeof as N, _slicedToArray as O, svg_element as P, _defineProperty as Q, exclude_internal_props as R, SvelteComponentDev as S, listen as T, destroy_each as U, toggle_class as V, onMount as W, onDestroy as X, add_render_callback as Y, create_bidirectional_transition as Z, _inherits as _, _classCallCheck as a, listen_dev as a0, _toConsumableArray as a1, _possibleConstructorReturn as b, _getPrototypeOf as c, _assertThisInitialized as d, dispatch_dev as e, create_slot as f, element as g, claim_element as h, init as i, children as j, detach_dev as k, add_location as l, insert_dev as m, noop as n, get_slot_changes as o, get_slot_context as p, transition_out as q, _createClass as r, safe_not_equal as s, transition_in as t, globals as u, text as v, claim_text as w, append_dev as x, set_data_dev as y, space as z };

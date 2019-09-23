@@ -1,4 +1,4 @@
-import { N as _typeof, O as _slicedToArray, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, r as _createClass, S as SvelteComponentDev, f as create_slot, P as svg_element, v as text, h as claim_element, j as children, w as claim_text, k as detach_dev, l as add_location, m as insert_dev, x as append_dev, y as set_data_dev, A as empty, C as attr_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, D as assign, Q as _defineProperty, R as exclude_internal_props, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, g as element, L as _asyncToGenerator, M as _regeneratorRuntime, T as listen, u as globals, J as group_outros, K as check_outros, U as destroy_each, n as noop, z as space, B as claim_space, V as toggle_class, W as onMount, X as onDestroy, Y as add_render_callback, Z as create_bidirectional_transition, $ as set_style, a0 as _toConsumableArray } from './index.d976ff0f.js';
+import { N as _typeof, O as _slicedToArray, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, r as _createClass, S as SvelteComponentDev, f as create_slot, P as svg_element, v as text, h as claim_element, j as children, w as claim_text, k as detach_dev, l as add_location, m as insert_dev, x as append_dev, y as set_data_dev, A as empty, C as attr_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, D as assign, Q as _defineProperty, R as exclude_internal_props, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, L as _asyncToGenerator, M as _regeneratorRuntime, T as listen, g as element, u as globals, J as group_outros, K as check_outros, U as destroy_each, n as noop, z as space, B as claim_space, V as toggle_class, W as onMount, X as onDestroy, Y as add_render_callback, Z as create_bidirectional_transition, $ as set_style, a0 as listen_dev, a1 as _toConsumableArray } from './index.16f472e3.js';
 
 /*!
  * isobject <https://github.com/jonschlinkert/isobject>
@@ -54,7 +54,11 @@ function getNumberOfMonthsBetweenDates(fromDate, toDate) {
   var endDate = new Date("".concat(toDate.year, "-").concat(pad(months.indexOf(toDate.month))));
   return endDate.getMonth() - startDate.getMonth() + 12 * (endDate.getFullYear() - startDate.getFullYear());
 }
-function durationInMonths(fromDate, toDate) {
+function periodDuration(fromDate, toDate) {
+  if (!fromDate && !toDate) {
+    throw new Error('fromDate and toDate objects or numberOfMonths number are required');
+  }
+
   var numberOfMonths = getNumberOfMonthsBetweenDates(fromDate, toDate);
   var duration = {
     years: Math.floor(numberOfMonths / 12),
@@ -3098,6 +3102,112 @@ Popper.Utils = (typeof window !== 'undefined' ? window : global).PopperUtils;
 Popper.placements = placements;
 Popper.Defaults = Defaults;
 
+function tooltip(_x, _x2) {
+  return _tooltip.apply(this, arguments);
+}
+
+function _tooltip() {
+  _tooltip = _asyncToGenerator(
+  /*#__PURE__*/
+  _regeneratorRuntime.mark(function _callee2(node, _ref) {
+    var text, url, resultProp, el, arrowEl, tooltipText, append, _append, remove, cancelMouseEnter, cancelMouseLeave;
+
+    return _regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            remove = function _ref4() {
+              el.remove();
+            };
+
+            _append = function _ref3() {
+              _append = _asyncToGenerator(
+              /*#__PURE__*/
+              _regeneratorRuntime.mark(function _callee() {
+                var result;
+                return _regeneratorRuntime.wrap(function _callee$(_context) {
+                  while (1) {
+                    switch (_context.prev = _context.next) {
+                      case 0:
+                        document.body.appendChild(el);
+                        el.style.zIndex = '10';
+                        el.style.opacity = '0';
+
+                        if (!(!tooltipText && url)) {
+                          _context.next = 8;
+                          break;
+                        }
+
+                        _context.next = 6;
+                        return fetch(url).then(function (res) {
+                          return res.json();
+                        });
+
+                      case 6:
+                        result = _context.sent;
+                        tooltipText = resultProp ? result[resultProp] : result;
+
+                      case 8:
+                        el.textContent = tooltipText;
+                        new Popper(node, el, {
+                          placement: 'bottom',
+                          positionFixed: true
+                        });
+                        setTimeout(function () {
+                          el.style.opacity = '1';
+                        });
+                        el.appendChild(arrowEl);
+
+                      case 12:
+                      case "end":
+                        return _context.stop();
+                    }
+                  }
+                }, _callee);
+              }));
+              return _append.apply(this, arguments);
+            };
+
+            append = function _ref2() {
+              return _append.apply(this, arguments);
+            };
+
+            text = _ref.text, url = _ref.url, resultProp = _ref.resultProp;
+
+            if (!(!text && !url)) {
+              _context2.next = 6;
+              break;
+            }
+
+            return _context2.abrupt("return");
+
+          case 6:
+            el = document.createElement('div');
+            arrowEl = document.createElement('div');
+            el.className = 'popper';
+            arrowEl.className = 'popper__arrow';
+            arrowEl.setAttribute('x-arrow', '');
+            tooltipText = text;
+            cancelMouseEnter = listen(node, 'mouseenter', append);
+            cancelMouseLeave = listen(node, 'mouseleave', remove);
+            return _context2.abrupt("return", {
+              destroy: function destroy() {
+                remove();
+                cancelMouseEnter();
+                cancelMouseLeave();
+              }
+            });
+
+          case 15:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  }));
+  return _tooltip.apply(this, arguments);
+}
+
 var file$2 = "src/components/LinkWithPreview.svelte";
 
 function create_fragment$2(ctx) {
@@ -3121,7 +3231,7 @@ function create_fragment$2(ctx) {
     },
     h: function hydrate() {
       attr_dev(a, "href", ctx.href);
-      add_location(a, file$2, 128, 0, 6478);
+      add_location(a, file$2, 73, 0, 5219);
     },
     m: function mount(target, anchor) {
       insert_dev(target, a, anchor);
@@ -3130,7 +3240,7 @@ function create_fragment$2(ctx) {
         default_slot.m(a, null);
       }
 
-      tooltip_action = ctx.tooltip.call(null, a, {
+      tooltip_action = tooltip.call(null, a, {
         text: ctx.description,
         url: ctx.descriptionUrl,
         resultProp: 'extract'
@@ -3183,114 +3293,6 @@ function create_fragment$2(ctx) {
 }
 
 function instance$2($$self, $$props, $$invalidate) {
-  var tooltipText;
-
-  function tooltip(_x, _x2) {
-    return _tooltip.apply(this, arguments);
-  }
-
-  function _tooltip() {
-    _tooltip = _asyncToGenerator(
-    /*#__PURE__*/
-    _regeneratorRuntime.mark(function _callee2(node, _ref) {
-      var text, url, resultProp, el, arrowEl, append, _append, remove, cancelMouseEnter, cancelMouseLeave;
-
-      return _regeneratorRuntime.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              remove = function _ref4() {
-                el.remove();
-              };
-
-              _append = function _ref3() {
-                _append = _asyncToGenerator(
-                /*#__PURE__*/
-                _regeneratorRuntime.mark(function _callee() {
-                  var result;
-                  return _regeneratorRuntime.wrap(function _callee$(_context) {
-                    while (1) {
-                      switch (_context.prev = _context.next) {
-                        case 0:
-                          document.body.appendChild(el);
-                          el.style.zIndex = '10';
-                          el.style.opacity = '0';
-
-                          if (!(!tooltipText && url)) {
-                            _context.next = 8;
-                            break;
-                          }
-
-                          _context.next = 6;
-                          return fetch(url).then(function (res) {
-                            return res.json();
-                          });
-
-                        case 6:
-                          result = _context.sent;
-                          tooltipText = resultProp ? result[resultProp] : result;
-
-                        case 8:
-                          el.textContent = tooltipText;
-                          new Popper(node, el, {
-                            placement: 'bottom',
-                            positionFixed: true
-                          });
-                          setTimeout(function () {
-                            el.style.opacity = '1';
-                          });
-                          el.appendChild(arrowEl);
-
-                        case 12:
-                        case "end":
-                          return _context.stop();
-                      }
-                    }
-                  }, _callee);
-                }));
-                return _append.apply(this, arguments);
-              };
-
-              append = function _ref2() {
-                return _append.apply(this, arguments);
-              };
-
-              text = _ref.text, url = _ref.url, resultProp = _ref.resultProp;
-
-              if (!(!text && !url)) {
-                _context2.next = 6;
-                break;
-              }
-
-              return _context2.abrupt("return");
-
-            case 6:
-              el = document.createElement('div');
-              arrowEl = document.createElement('div');
-              el.className = 'popper';
-              arrowEl.className = 'popper__arrow';
-              arrowEl.setAttribute('x-arrow', '');
-              tooltipText = text || tooltipText;
-              cancelMouseEnter = listen(node, 'mouseenter', append);
-              cancelMouseLeave = listen(node, 'mouseleave', remove);
-              return _context2.abrupt("return", {
-                destroy: function destroy() {
-                  remove();
-                  cancelMouseEnter();
-                  cancelMouseLeave();
-                }
-              });
-
-            case 15:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }));
-    return _tooltip.apply(this, arguments);
-  }
-
   var href = $$props.href,
       description = $$props.description,
       descriptionUrl = $$props.descriptionUrl;
@@ -3311,7 +3313,6 @@ function instance$2($$self, $$props, $$invalidate) {
 
   $$self.$capture_state = function () {
     return {
-      tooltipText: tooltipText,
       href: href,
       description: description,
       descriptionUrl: descriptionUrl
@@ -3319,14 +3320,12 @@ function instance$2($$self, $$props, $$invalidate) {
   };
 
   $$self.$inject_state = function ($$props) {
-    if ('tooltipText' in $$props) tooltipText = $$props.tooltipText;
     if ('href' in $$props) $$invalidate('href', href = $$props.href);
     if ('description' in $$props) $$invalidate('description', description = $$props.description);
     if ('descriptionUrl' in $$props) $$invalidate('descriptionUrl', descriptionUrl = $$props.descriptionUrl);
   };
 
   return {
-    tooltip: tooltip,
     href: href,
     description: description,
     descriptionUrl: descriptionUrl,
@@ -5234,7 +5233,7 @@ function create_if_block_4(ctx) {
     },
     h: function hydrate() {
       attr_dev(span, "class", "location svelte-1s4coi2");
-      add_location(span, file$5, 106, 8, 5137);
+      add_location(span, file$5, 106, 8, 5133);
     },
     m: function mount(target, anchor) {
       insert_dev(target, span, anchor);
@@ -5283,7 +5282,7 @@ function create_if_block_3$1(ctx) {
     },
     h: function hydrate() {
       attr_dev(span, "class", "defunct svelte-1s4coi2");
-      add_location(span, file$5, 112, 8, 5268);
+      add_location(span, file$5, 112, 8, 5264);
     },
     m: function mount(target, anchor) {
       insert_dev(target, span, anchor);
@@ -5325,7 +5324,7 @@ function create_if_block_2$1(ctx) {
     },
     h: function hydrate() {
       attr_dev(span, "class", "type svelte-1s4coi2");
-      add_location(span, file$5, 118, 8, 5398);
+      add_location(span, file$5, 118, 8, 5394);
     },
     m: function mount(target, anchor) {
       insert_dev(target, span, anchor);
@@ -5365,7 +5364,7 @@ function create_if_block_1$2(ctx) {
     },
     h: function hydrate() {
       attr_dev(div, "class", "description svelte-1s4coi2");
-      add_location(div, file$5, 123, 4, 5494);
+      add_location(div, file$5, 123, 4, 5490);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
@@ -5429,9 +5428,9 @@ function create_if_block$4(ctx) {
     },
     h: function hydrate() {
       attr_dev(h4, "class", "svelte-1s4coi2");
-      add_location(h4, file$5, 129, 6, 5612);
+      add_location(h4, file$5, 129, 6, 5608);
       attr_dev(footer, "class", "svelte-1s4coi2");
-      add_location(footer, file$5, 128, 4, 5597);
+      add_location(footer, file$5, 128, 4, 5593);
     },
     m: function mount(target, anchor) {
       insert_dev(target, footer, anchor);
@@ -5491,7 +5490,7 @@ function create_fragment$6(ctx) {
       t7,
       span,
       t8,
-      t9_value = durationInMonths(ctx.start, ctx.end) + "",
+      t9_value = periodDuration(ctx.start, ctx.end) + "",
       t9,
       t10,
       t11,
@@ -5606,18 +5605,18 @@ function create_fragment$6(ctx) {
     },
     h: function hydrate() {
       attr_dev(span, "class", "duration svelte-1s4coi2");
-      add_location(span, file$5, 104, 6, 5045);
+      add_location(span, file$5, 104, 6, 5043);
       attr_dev(div0, "class", "period svelte-1s4coi2");
-      add_location(div0, file$5, 102, 4, 4960);
+      add_location(div0, file$5, 102, 4, 4958);
       attr_dev(h3, "class", "name svelte-1s4coi2");
-      add_location(h3, file$5, 109, 4, 5207);
+      add_location(h3, file$5, 109, 4, 5203);
       attr_dev(div1, "class", "role svelte-1s4coi2");
-      add_location(div1, file$5, 115, 4, 5333);
+      add_location(div1, file$5, 115, 4, 5329);
       attr_dev(header, "class", "svelte-1s4coi2");
-      add_location(header, file$5, 101, 2, 4947);
+      add_location(header, file$5, 101, 2, 4945);
       attr_dev(div2, "class", "experience-item divided svelte-1s4coi2");
       toggle_class(div2, "u-print-hidden", ctx.shouldHideFromPrint());
-      add_location(div2, file$5, 98, 0, 4858);
+      add_location(div2, file$5, 98, 0, 4856);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div2, anchor);
@@ -5670,7 +5669,7 @@ function create_fragment$6(ctx) {
         set_data_dev(t6, t6_value);
       }
 
-      if ((!current || changed.start || changed.end) && t9_value !== (t9_value = durationInMonths(ctx.start, ctx.end) + "")) {
+      if ((!current || changed.start || changed.end) && t9_value !== (t9_value = periodDuration(ctx.start, ctx.end) + "")) {
         set_data_dev(t9, t9_value);
       }
 
@@ -7913,7 +7912,7 @@ function get_each_context$3(ctx, list, i) {
   var child_ctx = Object_1$1.create(ctx);
   child_ctx.event = list[i];
   return child_ctx;
-} // (113:0) {#if timelineEvents}
+} // (138:0) {#if timelineEvents}
 
 
 function create_if_block$6(ctx) {
@@ -7986,14 +7985,14 @@ function create_if_block$6(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(div0, "class", "end-year svelte-1jg1foz");
-      add_location(div0, file$b, 114, 4, 4008);
-      attr_dev(div1, "class", "events svelte-1jg1foz");
-      add_location(div1, file$b, 115, 4, 4056);
-      attr_dev(div2, "class", "start-year svelte-1jg1foz");
-      add_location(div2, file$b, 124, 4, 4323);
-      attr_dev(div3, "class", "timeline svelte-1jg1foz");
-      add_location(div3, file$b, 113, 2, 3933);
+      attr_dev(div0, "class", "end-year svelte-ziaiio");
+      add_location(div0, file$b, 139, 4, 5186);
+      attr_dev(div1, "class", "events svelte-ziaiio");
+      add_location(div1, file$b, 140, 4, 5234);
+      attr_dev(div2, "class", "start-year svelte-ziaiio");
+      add_location(div2, file$b, 150, 4, 5568);
+      attr_dev(div3, "class", "timeline svelte-ziaiio");
+      add_location(div3, file$b, 138, 2, 5123);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div3, anchor);
@@ -8042,8 +8041,7 @@ function create_if_block$6(ctx) {
       if (current) return;
       add_render_callback(function () {
         if (!div3_transition) div3_transition = create_bidirectional_transition(div3, fade, {
-          delay: 250,
-          duration: 300
+          duration: 200
         }, true);
         div3_transition.run(1);
       });
@@ -8051,8 +8049,7 @@ function create_if_block$6(ctx) {
     },
     o: function outro(local) {
       if (!div3_transition) div3_transition = create_bidirectional_transition(div3, fade, {
-        delay: 250,
-        duration: 300
+        duration: 200
       }, false);
       div3_transition.run(0);
       current = false;
@@ -8073,15 +8070,20 @@ function create_if_block$6(ctx) {
     block: block,
     id: create_if_block$6.name,
     type: "if",
-    source: "(113:0) {#if timelineEvents}",
+    source: "(138:0) {#if timelineEvents}",
     ctx: ctx
   });
   return block;
-} // (117:6) {#each timelineEvents as event}
+} // (142:6) {#each timelineEvents as event}
 
 
 function create_each_block$3(ctx) {
-  var div, div_class_value, div_title_value;
+  var div, div_class_value, tooltip_action, dispose;
+
+  function click_handler() {
+    return ctx.click_handler(ctx);
+  }
+
   var block = {
     c: function create() {
       div = element("div");
@@ -8090,25 +8092,29 @@ function create_each_block$3(ctx) {
     l: function claim(nodes) {
       div = claim_element(nodes, "DIV", {
         class: true,
-        style: true,
-        title: true
+        style: true
       }, false);
       var div_nodes = children(div);
       div_nodes.forEach(detach_dev);
       this.h();
     },
     h: function hydrate() {
-      attr_dev(div, "class", div_class_value = "timeline-event " + ctx.event.modifier + " svelte-1jg1foz");
+      attr_dev(div, "class", div_class_value = "timeline-event " + ctx.event.modifier + " svelte-ziaiio");
       set_style(div, "width", "" + ctx.event.percent + "%");
-      attr_dev(div, "title", div_title_value = ctx.event.name);
       toggle_class(div, "visible", ctx.event.isVisible);
-      add_location(div, file$b, 117, 8, 4123);
+      add_location(div, file$b, 142, 8, 5301);
+      dispose = listen_dev(div, "click", click_handler);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
+      tooltip_action = tooltip.call(null, div, {
+        text: ctx.event.label
+      }) || {};
     },
-    p: function update(changed, ctx) {
-      if (changed.timelineEvents && div_class_value !== (div_class_value = "timeline-event " + ctx.event.modifier + " svelte-1jg1foz")) {
+    p: function update(changed, new_ctx) {
+      ctx = new_ctx;
+
+      if (changed.timelineEvents && div_class_value !== (div_class_value = "timeline-event " + ctx.event.modifier + " svelte-ziaiio")) {
         attr_dev(div, "class", div_class_value);
       }
 
@@ -8116,8 +8122,10 @@ function create_each_block$3(ctx) {
         set_style(div, "width", "" + ctx.event.percent + "%");
       }
 
-      if (changed.timelineEvents && div_title_value !== (div_title_value = ctx.event.name)) {
-        attr_dev(div, "title", div_title_value);
+      if (typeof tooltip_action.update === 'function' && changed.timelineEvents) {
+        tooltip_action.update.call(null, {
+          text: ctx.event.label
+        });
       }
 
       if (changed.timelineEvents || changed.timelineEvents) {
@@ -8128,13 +8136,16 @@ function create_each_block$3(ctx) {
       if (detaching) {
         detach_dev(div);
       }
+
+      if (tooltip_action && typeof tooltip_action.destroy === 'function') tooltip_action.destroy();
+      dispose();
     }
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
     id: create_each_block$3.name,
     type: "each",
-    source: "(117:6) {#each timelineEvents as event}",
+    source: "(142:6) {#each timelineEvents as event}",
     ctx: ctx
   });
   return block;
@@ -8203,14 +8214,25 @@ function create_fragment$c(ctx) {
   return block;
 }
 
+var INTERSECTION_RATIO = 0.5;
+
+function scrollTo(node) {
+  node.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
+  });
+}
+
 function instance$c($$self, $$props, $$invalidate) {
   var events = $$props.events,
       intersectionNodes = $$props.intersectionNodes;
-  var eventsWithMonthLength = events.map(function (event) {
+  var eventsWithMonthLength = events.map(function (event, idx) {
     return {
       name: event.name,
       modifier: event.isContractor ? 'contract' : 'permanent',
-      monthLength: getNumberOfMonthsBetweenDates(event.start, event.end)
+      monthLength: getNumberOfMonthsBetweenDates(event.start, event.end),
+      label: "".concat(event.name, ": ").concat(periodDuration(event.start, event.end)),
+      target: intersectionNodes[idx]
     };
   });
   var totalTimelineInMonths = eventsWithMonthLength.reduce(function (acc, curr) {
@@ -8233,7 +8255,7 @@ function instance$c($$self, $$props, $$invalidate) {
       var event = updatedEvents.find(function (x) {
         return x.target === entry.target;
       });
-      event.isVisible = entry.isIntersecting;
+      event.isVisible = entry.intersectionRatio >= INTERSECTION_RATIO;
     });
     $$invalidate('timelineEvents', timelineEvents = updatedEvents);
   }
@@ -8244,7 +8266,7 @@ function instance$c($$self, $$props, $$invalidate) {
     }
 
     observer = new IntersectionObserver(intersectionCallback, {
-      threshold: 0.5
+      threshold: INTERSECTION_RATIO
     });
     intersectionNodes.forEach(function (node, i) {
       if (!scaledEvents[i]) return;
@@ -8259,6 +8281,11 @@ function instance$c($$self, $$props, $$invalidate) {
   Object_1$1.keys($$props).forEach(function (key) {
     if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn("<Timeline> was created with unknown prop '".concat(key, "'"));
   });
+
+  var click_handler = function click_handler(_ref) {
+    var event = _ref.event;
+    return scrollTo(event.target);
+  };
 
   $$self.$set = function ($$props) {
     if ('events' in $$props) $$invalidate('events', events = $$props.events);
@@ -8286,7 +8313,8 @@ function instance$c($$self, $$props, $$invalidate) {
     intersectionNodes: intersectionNodes,
     firstDate: firstDate,
     lastDate: lastDate,
-    timelineEvents: timelineEvents
+    timelineEvents: timelineEvents,
+    click_handler: click_handler
   };
 }
 
