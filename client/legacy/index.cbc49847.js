@@ -3231,7 +3231,7 @@ function create_fragment$2(ctx) {
     },
     h: function hydrate() {
       attr_dev(a, "href", ctx.href);
-      add_location(a, file$2, 73, 0, 5219);
+      add_location(a, file$2, 8, 0, 135);
     },
     m: function mount(target, anchor) {
       insert_dev(target, a, anchor);
@@ -6764,7 +6764,7 @@ function create_if_block_5(ctx) {
     c: function create() {
       section = element("section");
       h3 = element("h3");
-      t0 = text("Current focus");
+      t0 = text("Current interests");
       t1 = space();
       list.$$.fragment.c();
       this.h();
@@ -6778,7 +6778,7 @@ function create_if_block_5(ctx) {
         class: true
       }, false);
       var h3_nodes = children(h3);
-      t0 = claim_text(h3_nodes, "Current focus");
+      t0 = claim_text(h3_nodes, "Current interests");
       h3_nodes.forEach(detach_dev);
       t1 = claim_space(section_nodes);
       list.$$.fragment.l(section_nodes);
@@ -6868,9 +6868,9 @@ function create_if_block$5(ctx) {
     },
     h: function hydrate() {
       attr_dev(div, "class", "footer-layout svelte-1v54yt9");
-      add_location(div, file$a, 299, 6, 13426);
+      add_location(div, file$a, 299, 6, 13430);
       attr_dev(footer, "class", "divided svelte-1v54yt9");
-      add_location(footer, file$a, 298, 4, 13395);
+      add_location(footer, file$a, 298, 4, 13399);
     },
     m: function mount(target, anchor) {
       insert_dev(target, footer, anchor);
@@ -7004,7 +7004,7 @@ function create_if_block_3$2(ctx) {
     },
     h: function hydrate() {
       attr_dev(div, "class", "social-links footer-layout svelte-1v54yt9");
-      add_location(div, file$a, 301, 10, 13485);
+      add_location(div, file$a, 301, 10, 13489);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
@@ -7155,15 +7155,15 @@ function create_each_block_1$2(ctx) {
     h: function hydrate() {
       attr_dev(span0, "class", "icon svelte-1v54yt9");
       attr_dev(span0, "aria-label", span0_aria_label_value = ctx.item.label);
-      add_location(span0, file$a, 304, 16, 13630);
+      add_location(span0, file$a, 304, 16, 13634);
       attr_dev(span1, "class", "u-print-only svelte-1v54yt9");
-      add_location(span1, file$a, 308, 18, 13823);
+      add_location(span1, file$a, 308, 18, 13827);
       attr_dev(span2, "class", "u-print-only svelte-1v54yt9");
-      add_location(span2, file$a, 307, 16, 13777);
+      add_location(span2, file$a, 307, 16, 13781);
       attr_dev(a, "href", a_href_value = ctx.item.url);
       attr_dev(a, "title", a_title_value = ctx.item.label);
       attr_dev(a, "class", "svelte-1v54yt9");
-      add_location(a, file$a, 303, 14, 13575);
+      add_location(a, file$a, 303, 14, 13579);
     },
     m: function mount(target, anchor) {
       insert_dev(target, a, anchor);
@@ -7292,16 +7292,16 @@ function create_if_block_2$2(ctx) {
     },
     h: function hydrate() {
       attr_dev(span0, "class", "download-label svelte-1v54yt9");
-      add_location(span0, file$a, 320, 14, 14183);
+      add_location(span0, file$a, 320, 14, 14187);
       attr_dev(span1, "class", "icon svelte-1v54yt9");
-      add_location(span1, file$a, 321, 14, 14246);
+      add_location(span1, file$a, 321, 14, 14250);
       attr_dev(a, "href", ctx.pdfLink);
       attr_dev(a, "title", "Open PDF version");
       attr_dev(a, "aria-label", "Download PDF");
       attr_dev(a, "class", "svelte-1v54yt9");
-      add_location(a, file$a, 316, 12, 14057);
+      add_location(a, file$a, 316, 12, 14061);
       attr_dev(div, "class", "download u-print-hidden svelte-1v54yt9");
-      add_location(div, file$a, 315, 10, 14007);
+      add_location(div, file$a, 315, 10, 14011);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
@@ -7380,7 +7380,7 @@ function create_if_block_1$3(ctx) {
     },
     h: function hydrate() {
       attr_dev(dl, "class", "contact svelte-1v54yt9");
-      add_location(dl, file$a, 329, 8, 14401);
+      add_location(dl, file$a, 329, 8, 14405);
     },
     m: function mount(target, anchor) {
       insert_dev(target, dl, anchor);
@@ -7477,11 +7477,11 @@ function create_each_block$2(ctx) {
     },
     h: function hydrate() {
       attr_dev(dt, "class", "visually-hidden svelte-1v54yt9");
-      add_location(dt, file$a, 332, 14, 14515);
+      add_location(dt, file$a, 332, 14, 14519);
       attr_dev(dd, "class", "svelte-1v54yt9");
-      add_location(dd, file$a, 333, 14, 14569);
+      add_location(dd, file$a, 333, 14, 14573);
       attr_dev(div, "class", "svelte-1v54yt9");
-      add_location(div, file$a, 331, 12, 14495);
+      add_location(div, file$a, 331, 12, 14499);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
@@ -7986,13 +7986,13 @@ function create_if_block$6(ctx) {
     },
     h: function hydrate() {
       attr_dev(div0, "class", "end-year svelte-3xxkil");
-      add_location(div0, file$b, 165, 4, 5937);
+      add_location(div0, file$b, 165, 4, 5957);
       attr_dev(div1, "class", "events svelte-3xxkil");
-      add_location(div1, file$b, 166, 4, 5985);
+      add_location(div1, file$b, 166, 4, 6005);
       attr_dev(div2, "class", "start-year svelte-3xxkil");
-      add_location(div2, file$b, 176, 4, 6319);
+      add_location(div2, file$b, 176, 4, 6339);
       attr_dev(div3, "class", "timeline svelte-3xxkil");
-      add_location(div3, file$b, 161, 2, 5838);
+      add_location(div3, file$b, 161, 2, 5858);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div3, anchor);
@@ -8104,7 +8104,7 @@ function create_each_block$3(ctx) {
       attr_dev(div, "class", div_class_value = "timeline-event " + ctx.event.modifier + " svelte-3xxkil");
       set_style(div, "width", "" + ctx.event.percent + "%");
       toggle_class(div, "visible", ctx.event.isVisible);
-      add_location(div, file$b, 168, 8, 6052);
+      add_location(div, file$b, 168, 8, 6072);
       dispose = listen_dev(div, "click", click_handler);
     },
     m: function mount(target, anchor) {
@@ -8220,7 +8220,8 @@ var INTERSECTION_RATIO = 0.6;
 
 function instance$c($$self, $$props, $$invalidate) {
   var events = $$props.events,
-      intersectionNodes = $$props.intersectionNodes;
+      _$$props$intersection = $$props.intersectionNodes,
+      intersectionNodes = _$$props$intersection === void 0 ? [] : _$$props$intersection;
   var containerEl;
   var eventsWithMonthLength = events.map(function (event, idx) {
     return {
@@ -8241,7 +8242,7 @@ function instance$c($$self, $$props, $$invalidate) {
       percent: 100 / totalTimelineInMonths * event.monthLength
     });
   });
-  var timelineEvents;
+  var timelineEvents = scaledEvents;
   var observer;
 
   function intersectionCallback(entries) {
@@ -8370,10 +8371,6 @@ function (_SvelteComponentDev) {
 
     if (ctx.events === undefined && !('events' in props)) {
       console.warn("<Timeline> was created without expected prop 'events'");
-    }
-
-    if (ctx.intersectionNodes === undefined && !('intersectionNodes' in props)) {
-      console.warn("<Timeline> was created without expected prop 'intersectionNodes'");
     }
 
     return _this;
