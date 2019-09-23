@@ -17,6 +17,6 @@ export const Default = () => ({
   props: {
     ...summaryData,
     coreSkills: buildList(summaryData.coreSkills, defLinker),
-    currentFocus: buildList(summaryData.currentFocus, defLinker),
+    currentInterests: buildList(summaryData.currentInterests, defLinker),
   },
 });
