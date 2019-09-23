@@ -1,6 +1,6 @@
 <script>
   import List from './List';
-  import { durationInMonths } from '../utils';
+  import { periodDuration } from '../utils';
 
   const PRINT_TRUNCATE_NUMBER_OF_YEARS = 4;
 
@@ -97,7 +97,7 @@
   <header>
     <div class="period">
       {start.month} {start.year} - {end.month} {end.year}
-      <span class="duration">({durationInMonths(start, end)})</span>
+      <span class="duration">({periodDuration(start, end)})</span>
       {#if location}
         <span class="location">({location})</span>
       {/if}

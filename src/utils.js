@@ -35,7 +35,12 @@ export function getNumberOfMonthsBetweenDates(fromDate, toDate) {
   );
 }
 
-export function durationInMonths(fromDate, toDate) {
+export function periodDuration(fromDate, toDate) {
+  if (!fromDate && !toDate) {
+    throw new Error(
+      'fromDate and toDate objects or numberOfMonths number are required',
+    );
+  }
   const numberOfMonths = getNumberOfMonthsBetweenDates(fromDate, toDate);
   const duration = {
     years: Math.floor(numberOfMonths / 12),

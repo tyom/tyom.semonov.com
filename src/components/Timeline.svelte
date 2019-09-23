@@ -1,16 +1,22 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
   import { fade } from 'svelte/transition';
-  import { getNumberOfMonthsBetweenDates } from '../utils';
+  import { getNumberOfMonthsBetweenDates, periodDuration } from '../utils';
+  import { tooltip } from '../actions';
+
+  const INTERSECTION_RATIO = 0.5;
+
   export let events;
   export let intersectionNodes;
 
   const intersectedEvents = [];
 
-  const eventsWithMonthLength = events.map(event => ({
+  const eventsWithMonthLength = events.map((event, idx) => ({
     name: event.name,
     modifier: event.isContractor ? 'contract' : 'permanent',
     monthLength: getNumberOfMonthsBetweenDates(event.start, event.end),
+    label: `${event.name}: ${periodDuration(event.start, event.end)}`,
+    target: intersectionNodes[idx],
   }));
   const totalTimelineInMonths = eventsWithMonthLength.reduce(
     (acc, curr) => acc + curr.monthLength,
@@ -30,9 +36,13 @@
     let updatedEvents = [...scaledEvents];
     entries.forEach(entry => {
       const event = updatedEvents.find(x => x.target === entry.target);
-      event.isVisible = entry.isIntersecting;
+      event.isVisible = entry.intersectionRatio >= INTERSECTION_RATIO;
     });
     timelineEvents = updatedEvents;
+  }
+
+  function scrollTo(node) {
+    node.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   onMount(() => {
@@ -40,7 +50,7 @@
       return;
     }
     observer = new IntersectionObserver(intersectionCallback, {
-      threshold: 0.5,
+      threshold: INTERSECTION_RATIO,
     });
 
     intersectionNodes.forEach((node, i) => {
@@ -69,6 +79,21 @@
     background-color: #ddd;
     box-shadow: 0 0 0 1px #fff;
     min-width: 4px;
+    position: relative;
+    transition: 0.2s background-color;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--panel-color-hi);
+      opacity: 0;
+    }
+
+    &:hover::before {
+      opacity: 0.1;
+    }
   }
 
   .contract {
@@ -109,7 +134,7 @@
 </style>
 
 {#if timelineEvents}
-  <div class="timeline" transition:fade={{ delay: 250, duration: 300 }}>
+  <div class="timeline" transition:fade={{ duration: 200 }}>
     <div class="end-year">{lastDate.year}</div>
     <div class="events">
       {#each timelineEvents as event}
@@ -117,7 +142,8 @@
           class="timeline-event {event.modifier}"
           class:visible={event.isVisible}
           style="width: {event.percent}%"
-          title={event.name} />
+          on:click={() => scrollTo(event.target)}
+          use:tooltip={{ text: event.label }} />
       {/each}
     </div>
     <div class="start-year">{firstDate.year}</div>
