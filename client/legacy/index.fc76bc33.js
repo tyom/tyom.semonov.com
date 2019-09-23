@@ -7918,13 +7918,11 @@ function fade(node, _ref2) {
   };
 }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var Object_1$1 = globals.Object;
 var file$b = "src/components/Timeline.svelte";
 
 function get_each_context$3(ctx, list, i) {
-  var child_ctx = Object.create(ctx);
+  var child_ctx = Object_1$1.create(ctx);
   child_ctx.event = list[i];
   return child_ctx;
 } // (111:0) {#if timelineEvents}
@@ -8001,13 +7999,13 @@ function create_if_block$6(ctx) {
     },
     h: function hydrate() {
       attr_dev(div0, "class", "from-year svelte-ecgmls");
-      add_location(div0, file$b, 112, 4, 3925);
+      add_location(div0, file$b, 112, 4, 3939);
       attr_dev(div1, "class", "events svelte-ecgmls");
-      add_location(div1, file$b, 113, 4, 3975);
+      add_location(div1, file$b, 113, 4, 3989);
       attr_dev(div2, "class", "to-year svelte-ecgmls");
-      add_location(div2, file$b, 122, 4, 4242);
+      add_location(div2, file$b, 122, 4, 4256);
       attr_dev(div3, "class", "timeline svelte-ecgmls");
-      add_location(div3, file$b, 111, 2, 3850);
+      add_location(div3, file$b, 111, 2, 3864);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div3, anchor);
@@ -8116,7 +8114,7 @@ function create_each_block$3(ctx) {
       set_style(div, "width", "" + ctx.event.percent + "%");
       attr_dev(div, "title", div_title_value = ctx.event.name);
       toggle_class(div, "visible", ctx.event.isVisible);
-      add_location(div, file$b, 115, 8, 4042);
+      add_location(div, file$b, 115, 8, 4056);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
@@ -8220,20 +8218,21 @@ function create_fragment$c(ctx) {
 function instance$c($$self, $$props, $$invalidate) {
   var events = $$props.events,
       intersectionNodes = $$props.intersectionNodes;
-  var eventsMonthWithLength = events.map(function (event) {
+  var eventsWithMonthLength = events.map(function (event) {
     return {
       name: event.name,
       modifier: event.isContractor ? 'contract' : 'permanent',
       monthLength: getNumberOfMonthsBetweenDates(event.start, event.end)
     };
   });
-  var totalTimelineInMonths = eventsMonthWithLength.reduce(function (acc, curr) {
+  var totalTimelineInMonths = eventsWithMonthLength.reduce(function (acc, curr) {
     return acc + curr.monthLength;
   }, 0);
   var firstDate = events[events.length - 1].start;
   var lastDate = events[0].end;
-  var scaledEvents = eventsMonthWithLength.map(function (event) {
-    return _objectSpread({}, event, {
+  var scaledEvents = eventsWithMonthLength.map(function (event) {
+    return Object.assign({}, {
+      event: event,
       percent: 100 / totalTimelineInMonths * event.monthLength
     });
   });
@@ -8270,7 +8269,7 @@ function instance$c($$self, $$props, $$invalidate) {
     observer && observer.destroy();
   });
   var writable_props = ['events', 'intersectionNodes'];
-  Object.keys($$props).forEach(function (key) {
+  Object_1$1.keys($$props).forEach(function (key) {
     if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn("<Timeline> was created with unknown prop '".concat(key, "'"));
   });
 
@@ -8357,21 +8356,18 @@ function (_SvelteComponentDev) {
   return Timeline;
 }(SvelteComponentDev);
 
-function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var Object_1$1 = globals.Object,
+var Object_1$2 = globals.Object,
     document_1 = globals.document;
 var file$c = "src/routes/index.svelte";
 
 function get_each_context$4(ctx, list, i) {
-  var child_ctx = Object_1$1.create(ctx);
+  var child_ctx = Object_1$2.create(ctx);
   child_ctx.experience = list[i];
   return child_ctx;
 }
 
 function get_each_context_1$3(ctx, list, i) {
-  var child_ctx = Object_1$1.create(ctx);
+  var child_ctx = Object_1$2.create(ctx);
   child_ctx.experience = list[i];
   return child_ctx;
 } // (165:6) {#if intersectionNodes}
@@ -8783,67 +8779,67 @@ function create_fragment$d(ctx) {
       attr_dev(meta0, "name", "description");
       attr_dev(meta0, "content", meta0_content_value = ctx.about.description);
       attr_dev(meta0, "class", "svelte-7ba723");
-      add_location(meta0, file$c, 141, 2, 7082);
+      add_location(meta0, file$c, 141, 2, 7098);
       attr_dev(meta1, "property", "og:type");
       attr_dev(meta1, "content", "website");
       attr_dev(meta1, "class", "svelte-7ba723");
-      add_location(meta1, file$c, 143, 2, 7173);
+      add_location(meta1, file$c, 143, 2, 7189);
       attr_dev(meta2, "property", "og:url");
       attr_dev(meta2, "content", "https://tyom.semonov.com/");
       attr_dev(meta2, "class", "svelte-7ba723");
-      add_location(meta2, file$c, 144, 2, 7221);
+      add_location(meta2, file$c, 144, 2, 7237);
       attr_dev(meta3, "property", "og:title");
       attr_dev(meta3, "content", meta3_content_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV");
       attr_dev(meta3, "class", "svelte-7ba723");
-      add_location(meta3, file$c, 145, 2, 7286);
+      add_location(meta3, file$c, 145, 2, 7302);
       attr_dev(meta4, "property", "og:description");
       attr_dev(meta4, "content", meta4_content_value = ctx.about.description);
       attr_dev(meta4, "class", "svelte-7ba723");
-      add_location(meta4, file$c, 146, 2, 7360);
+      add_location(meta4, file$c, 146, 2, 7376);
       attr_dev(meta5, "property", "og:image");
       attr_dev(meta5, "content", "https://tyom.semonov.com/logo.png");
       attr_dev(meta5, "class", "svelte-7ba723");
-      add_location(meta5, file$c, 147, 2, 7425);
+      add_location(meta5, file$c, 147, 2, 7441);
       attr_dev(meta6, "property", "twitter:card");
       attr_dev(meta6, "content", "summary_large_image");
       attr_dev(meta6, "class", "svelte-7ba723");
-      add_location(meta6, file$c, 149, 2, 7519);
+      add_location(meta6, file$c, 149, 2, 7535);
       attr_dev(meta7, "property", "twitter:url");
       attr_dev(meta7, "content", "https://tyom.semonov.com/");
       attr_dev(meta7, "class", "svelte-7ba723");
-      add_location(meta7, file$c, 150, 2, 7584);
+      add_location(meta7, file$c, 150, 2, 7600);
       attr_dev(meta8, "property", "twitter:title");
       attr_dev(meta8, "content", meta8_content_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV");
       attr_dev(meta8, "class", "svelte-7ba723");
-      add_location(meta8, file$c, 151, 2, 7654);
+      add_location(meta8, file$c, 151, 2, 7670);
       attr_dev(meta9, "property", "twitter:description");
       attr_dev(meta9, "content", meta9_content_value = ctx.about.description);
       attr_dev(meta9, "class", "svelte-7ba723");
-      add_location(meta9, file$c, 152, 2, 7733);
+      add_location(meta9, file$c, 152, 2, 7749);
       attr_dev(meta10, "property", "twitter:image");
       attr_dev(meta10, "content", "https://tyom.semonov.com/logo.png");
       attr_dev(meta10, "class", "svelte-7ba723");
-      add_location(meta10, file$c, 153, 2, 7803);
+      add_location(meta10, file$c, 153, 2, 7819);
       attr_dev(aside, "class", "svelte-7ba723");
-      add_location(aside, file$c, 156, 0, 7897);
+      add_location(aside, file$c, 156, 0, 7913);
       attr_dev(h20, "class", "svelte-7ba723");
-      add_location(h20, file$c, 163, 6, 8048);
+      add_location(h20, file$c, 163, 6, 8064);
       attr_dev(header0, "class", "svelte-7ba723");
-      add_location(header0, file$c, 162, 4, 8033);
+      add_location(header0, file$c, 162, 4, 8049);
       attr_dev(section0, "class", "experience svelte-7ba723");
-      add_location(section0, file$c, 161, 2, 8000);
+      add_location(section0, file$c, 161, 2, 8016);
       attr_dev(h21, "class", "svelte-7ba723");
-      add_location(h21, file$c, 174, 6, 8353);
+      add_location(h21, file$c, 174, 6, 8369);
       attr_dev(header1, "class", "svelte-7ba723");
-      add_location(header1, file$c, 173, 4, 8338);
+      add_location(header1, file$c, 173, 4, 8354);
       attr_dev(section1, "class", "education svelte-7ba723");
-      add_location(section1, file$c, 172, 2, 8306);
+      add_location(section1, file$c, 172, 2, 8322);
       attr_dev(br, "class", "svelte-7ba723");
-      add_location(br, file$c, 184, 4, 8617);
+      add_location(br, file$c, 184, 4, 8633);
       attr_dev(p, "class", "u-print-only print-details-info svelte-7ba723");
-      add_location(p, file$c, 181, 2, 8496);
+      add_location(p, file$c, 181, 2, 8512);
       attr_dev(article, "class", "content svelte-7ba723");
-      add_location(article, file$c, 160, 0, 7972);
+      add_location(article, file$c, 160, 0, 7988);
     },
     m: function mount(target, anchor) {
       append_dev(document_1.head, meta0);
@@ -9144,12 +9140,10 @@ function instance$d($$self, $$props, $$invalidate) {
   var defLinker = createDefinitionFinder(definitions);
   var coreSkills = buildList(about.coreSkills, defLinker);
   var currentInterests = buildList(about.currentInterests, defLinker);
-
-  var summary = _objectSpread$1({}, about, {
+  var summary = Object.assign({}, about, {
     coreSkills: coreSkills,
     currentInterests: currentInterests
   });
-
   var linkedExperienceItems = experienceItems.map(function (item) {
     return Object.assign({}, item, {
       technologies: buildList(item.technologies, defLinker)
@@ -9161,7 +9155,7 @@ function instance$d($$self, $$props, $$invalidate) {
     $$invalidate('intersectionNodes', intersectionNodes = document.querySelectorAll('.experience .experience-item'));
   });
   var writable_props = ['about', 'experienceItems', 'educationItems', 'definitions'];
-  Object_1$1.keys($$props).forEach(function (key) {
+  Object_1$2.keys($$props).forEach(function (key) {
     if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn("<Index> was created with unknown prop '".concat(key, "'"));
   });
 
