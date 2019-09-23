@@ -98,7 +98,7 @@ function create_fragment(ctx) {
       this.h();
     },
     h: function hydrate() {
-      add_location(main, file, 134, 0, 15690);
+      add_location(main, file, 134, 0, 15703);
     },
     m: function mount(target, anchor) {
       insert_dev(target, main, anchor);
@@ -877,9 +877,9 @@ function (_SvelteComponentDev) {
 var ignore = [/^\/([^\/]+?).json$/];
 var components = [{
   js: function js() {
-    return import('./index.bfc7300d.js');
+    return import('./index.4af8557d.js');
   },
-  css: ["legacy/index.bfc7300d.css"]
+  css: ["legacy/index.4af8557d.css"]
 }];
 var routes = [{
   // index.svelte
