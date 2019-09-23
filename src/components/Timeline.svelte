@@ -9,6 +9,7 @@
   export let events;
   export let intersectionNodes;
 
+  let containerEl;
   const intersectedEvents = [];
 
   const eventsWithMonthLength = events.map((event, idx) => ({
@@ -48,7 +49,13 @@
   }
 
   function scrollTo(node) {
-    node.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const scrollPosition =
+      node.getBoundingClientRect().top + window.pageYOffset;
+    const offset = containerEl.getBoundingClientRect().top;
+    window.scrollTo({
+      top: scrollPosition - offset,
+      behavior: 'smooth',
+    });
   }
 
   onMount(() => {
@@ -142,7 +149,7 @@
 </style>
 
 {#if timelineEvents}
-  <div class="timeline" transition:fade={{ duration: 200 }}>
+  <div class="timeline" transition:fade={{ duration: 200 }} bind:this={containerEl}>
     <div class="end-year">{lastDate.year}</div>
     <div class="events">
       {#each timelineEvents as event}
