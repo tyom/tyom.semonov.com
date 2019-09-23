@@ -7,7 +7,7 @@
   const INTERSECTION_RATIO = 0.6;
 
   export let events;
-  export let intersectionNodes;
+  export let intersectionNodes = [];
 
   let containerEl;
   const intersectedEvents = [];
@@ -30,7 +30,7 @@
       percent: (100 / totalTimelineInMonths) * event.monthLength,
     }),
   );
-  let timelineEvents;
+  let timelineEvents = scaledEvents;
   let observer;
 
   function intersectionCallback(entries) {
