@@ -51,7 +51,6 @@
     }
 
     .summary::before {
-      content: '';
       position: absolute;
       z-index: 0;
       opacity: 0.1;
@@ -66,12 +65,18 @@
         #fff0 2px,
         #fff0 12px
       );
-      mask: radial-gradient(
-        150vw 1000vh ellipse at top left,
-        #0000,
-        #0003,
-        #000
-      );
+    }
+
+    @supports (mask: radial-gradient(ellipse, #000, #fff)) {
+      .summary::before {
+        content: '';
+        mask: radial-gradient(
+          150vw 1000vh ellipse at top left,
+          #0000,
+          #0003,
+          #000
+        );
+      }
     }
   }
 
@@ -126,7 +131,7 @@
     margin-top: 1.5em;
   }
 
-  @supports (display:grid) {
+  @supports (display: grid) {
     section + section {
       margin-top: 0;
     }
