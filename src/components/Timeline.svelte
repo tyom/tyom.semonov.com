@@ -18,10 +18,11 @@
   );
   const firstDate = events[events.length - 1].start;
   const lastDate = events[0].end;
-  const scaledEvents = eventsWithMonthLength.map(event => Object.assign({}, {
-    event,
-    percent: (100 / totalTimelineInMonths) * event.monthLength,
-  }));
+  const scaledEvents = eventsWithMonthLength.map(event =>
+    Object.assign({}, event, {
+      percent: (100 / totalTimelineInMonths) * event.monthLength,
+    }),
+  );
   let timelineEvents;
   let observer;
 
@@ -50,8 +51,8 @@
   });
 
   onDestroy(() => {
-    observer && observer.destroy();
-  })
+    observer && observer.disconnect();
+  });
 </script>
 
 <style>
@@ -60,7 +61,7 @@
   }
 
   .events {
-    height: 6px;
+    height: 7px;
     display: flex;
   }
 
@@ -82,21 +83,22 @@
     background-color: var(--panel-color-hi);
   }
 
-  .from-year,
-  .to-year {
+  .start-year,
+  .end-year {
     font-size: 9px;
-    line-height: 1;
     position: absolute;
     top: 0;
+    bottom: 0;
+    margin: auto;
     color: #999;
     font-weight: bold;
   }
 
-  .to-year {
-    left: -22px;
+  .end-year {
+    left: -24px;
   }
-  .from-year {
-    right: -22px;
+  .start-year {
+    right: -24px;
   }
 
   @media print {
@@ -107,8 +109,8 @@
 </style>
 
 {#if timelineEvents}
-  <div class="timeline" transition:fade="{{delay: 250, duration: 300}}">
-    <div class="from-year">{firstDate.year}</div>
+  <div class="timeline" transition:fade={{ delay: 250, duration: 300 }}>
+    <div class="end-year">{lastDate.year}</div>
     <div class="events">
       {#each timelineEvents as event}
         <div
@@ -118,6 +120,6 @@
           title={event.name} />
       {/each}
     </div>
-    <div class="to-year">{lastDate.year}</div>
+    <div class="start-year">{firstDate.year}</div>
   </div>
 {/if}

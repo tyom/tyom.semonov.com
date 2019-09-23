@@ -118,8 +118,18 @@
     grid-gap: 1em;
   }
 
+  section + section {
+    margin-top: 1em;
+  }
+
   * + .skill-set {
     margin-top: 1.5em;
+  }
+
+  @supports (display:grid) {
+    section + section {
+      margin-top: 0;
+    }
   }
 
   footer a {
@@ -263,8 +273,7 @@
     </div>
   {/if}
   {#if social || pdfLink}
-    <footer>
-      <hr />
+    <footer class="divided">
       <div class="footer-layout">
         {#if social}
           <div class="social-links footer-layout">
