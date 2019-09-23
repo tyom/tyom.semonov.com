@@ -6568,7 +6568,7 @@ function get_each_context_1$2(ctx, list, i) {
   var child_ctx = Object.create(ctx);
   child_ctx.item = list[i];
   return child_ctx;
-} // (266:2) {#if coreSkills || currentInterests}
+} // (276:2) {#if coreSkills || currentInterests}
 
 
 function create_if_block_4$1(ctx) {
@@ -6595,8 +6595,8 @@ function create_if_block_4$1(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(div, "class", "skill-set svelte-f0majr");
-      add_location(div, file$a, 266, 4, 12098);
+      attr_dev(div, "class", "skill-set svelte-11oi47k");
+      add_location(div, file$a, 276, 4, 12491);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
@@ -6666,11 +6666,11 @@ function create_if_block_4$1(ctx) {
     block: block,
     id: create_if_block_4$1.name,
     type: "if",
-    source: "(266:2) {#if coreSkills || currentInterests}",
+    source: "(276:2) {#if coreSkills || currentInterests}",
     ctx: ctx
   });
   return block;
-} // (268:6) {#if coreSkills}
+} // (278:6) {#if coreSkills}
 
 
 function create_if_block_6(ctx) {
@@ -6707,10 +6707,10 @@ function create_if_block_6(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(h3, "class", "svelte-f0majr");
-      add_location(h3, file$a, 269, 10, 12173);
-      attr_dev(section, "class", "svelte-f0majr");
-      add_location(section, file$a, 268, 8, 12153);
+      attr_dev(h3, "class", "svelte-11oi47k");
+      add_location(h3, file$a, 279, 10, 12566);
+      attr_dev(section, "class", "svelte-11oi47k");
+      add_location(section, file$a, 278, 8, 12546);
     },
     m: function mount(target, anchor) {
       insert_dev(target, section, anchor);
@@ -6746,11 +6746,11 @@ function create_if_block_6(ctx) {
     block: block,
     id: create_if_block_6.name,
     type: "if",
-    source: "(268:6) {#if coreSkills}",
+    source: "(278:6) {#if coreSkills}",
     ctx: ctx
   });
   return block;
-} // (274:6) {#if currentInterests}
+} // (284:6) {#if currentInterests}
 
 
 function create_if_block_5(ctx) {
@@ -6787,10 +6787,10 @@ function create_if_block_5(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(h3, "class", "svelte-f0majr");
-      add_location(h3, file$a, 275, 10, 12320);
-      attr_dev(section, "class", "svelte-f0majr");
-      add_location(section, file$a, 274, 8, 12300);
+      attr_dev(h3, "class", "svelte-11oi47k");
+      add_location(h3, file$a, 285, 10, 12713);
+      attr_dev(section, "class", "svelte-11oi47k");
+      add_location(section, file$a, 284, 8, 12693);
     },
     m: function mount(target, anchor) {
       insert_dev(target, section, anchor);
@@ -6826,28 +6826,26 @@ function create_if_block_5(ctx) {
     block: block,
     id: create_if_block_5.name,
     type: "if",
-    source: "(274:6) {#if currentInterests}",
+    source: "(284:6) {#if currentInterests}",
     ctx: ctx
   });
   return block;
-} // (282:2) {#if social || pdfLink}
+} // (292:2) {#if social || pdfLink}
 
 
 function create_if_block$5(ctx) {
-  var footer, hr, t0, div, t1, t2, current;
+  var footer, div, t0, t1, current;
   var if_block0 = ctx.social && create_if_block_3$2(ctx);
   var if_block1 = ctx.pdfLink && create_if_block_2$2(ctx);
   var if_block2 = ctx.contact && create_if_block_1$3(ctx);
   var block = {
     c: function create() {
       footer = element("footer");
-      hr = element("hr");
-      t0 = space();
       div = element("div");
       if (if_block0) if_block0.c();
-      t1 = space();
+      t0 = space();
       if (if_block1) if_block1.c();
-      t2 = space();
+      t1 = space();
       if (if_block2) if_block2.c();
       this.h();
     },
@@ -6856,42 +6854,32 @@ function create_if_block$5(ctx) {
         class: true
       }, false);
       var footer_nodes = children(footer);
-      hr = claim_element(footer_nodes, "HR", {
-        class: true
-      }, false);
-      var hr_nodes = children(hr);
-      hr_nodes.forEach(detach_dev);
-      t0 = claim_space(footer_nodes);
       div = claim_element(footer_nodes, "DIV", {
         class: true
       }, false);
       var div_nodes = children(div);
       if (if_block0) if_block0.l(div_nodes);
-      t1 = claim_space(div_nodes);
+      t0 = claim_space(div_nodes);
       if (if_block1) if_block1.l(div_nodes);
       div_nodes.forEach(detach_dev);
-      t2 = claim_space(footer_nodes);
+      t1 = claim_space(footer_nodes);
       if (if_block2) if_block2.l(footer_nodes);
       footer_nodes.forEach(detach_dev);
       this.h();
     },
     h: function hydrate() {
-      attr_dev(hr, "class", "svelte-f0majr");
-      add_location(hr, file$a, 283, 6, 12482);
-      attr_dev(div, "class", "footer-layout svelte-f0majr");
-      add_location(div, file$a, 284, 6, 12495);
-      attr_dev(footer, "class", "svelte-f0majr");
-      add_location(footer, file$a, 282, 4, 12467);
+      attr_dev(div, "class", "footer-layout svelte-11oi47k");
+      add_location(div, file$a, 293, 6, 12891);
+      attr_dev(footer, "class", "divided svelte-11oi47k");
+      add_location(footer, file$a, 292, 4, 12860);
     },
     m: function mount(target, anchor) {
       insert_dev(target, footer, anchor);
-      append_dev(footer, hr);
-      append_dev(footer, t0);
       append_dev(footer, div);
       if (if_block0) if_block0.m(div, null);
-      append_dev(div, t1);
+      append_dev(div, t0);
       if (if_block1) if_block1.m(div, null);
-      append_dev(footer, t2);
+      append_dev(footer, t1);
       if (if_block2) if_block2.m(footer, null);
       current = true;
     },
@@ -6904,7 +6892,7 @@ function create_if_block$5(ctx) {
           if_block0 = create_if_block_3$2(ctx);
           if_block0.c();
           transition_in(if_block0, 1);
-          if_block0.m(div, t1);
+          if_block0.m(div, t0);
         }
       } else if (if_block0) {
         group_outros();
@@ -6970,11 +6958,11 @@ function create_if_block$5(ctx) {
     block: block,
     id: create_if_block$5.name,
     type: "if",
-    source: "(282:2) {#if social || pdfLink}",
+    source: "(292:2) {#if social || pdfLink}",
     ctx: ctx
   });
   return block;
-} // (286:8) {#if social}
+} // (295:8) {#if social}
 
 
 function create_if_block_3$2(ctx) {
@@ -7016,8 +7004,8 @@ function create_if_block_3$2(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(div, "class", "social-links footer-layout svelte-f0majr");
-      add_location(div, file$a, 286, 10, 12554);
+      attr_dev(div, "class", "social-links footer-layout svelte-11oi47k");
+      add_location(div, file$a, 295, 10, 12950);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
@@ -7091,11 +7079,11 @@ function create_if_block_3$2(ctx) {
     block: block,
     id: create_if_block_3$2.name,
     type: "if",
-    source: "(286:8) {#if social}",
+    source: "(295:8) {#if social}",
     ctx: ctx
   });
   return block;
-} // (288:12) {#each social as item}
+} // (297:12) {#each social as item}
 
 
 function create_each_block_1$2(ctx) {
@@ -7166,17 +7154,17 @@ function create_each_block_1$2(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(span0, "class", "icon svelte-f0majr");
+      attr_dev(span0, "class", "icon svelte-11oi47k");
       attr_dev(span0, "aria-label", span0_aria_label_value = ctx.item.label);
-      add_location(span0, file$a, 289, 16, 12699);
-      attr_dev(span1, "class", "u-print-only svelte-f0majr");
-      add_location(span1, file$a, 293, 18, 12892);
-      attr_dev(span2, "class", "u-print-only svelte-f0majr");
-      add_location(span2, file$a, 292, 16, 12846);
+      add_location(span0, file$a, 298, 16, 13095);
+      attr_dev(span1, "class", "u-print-only svelte-11oi47k");
+      add_location(span1, file$a, 302, 18, 13288);
+      attr_dev(span2, "class", "u-print-only svelte-11oi47k");
+      add_location(span2, file$a, 301, 16, 13242);
       attr_dev(a, "href", a_href_value = ctx.item.url);
       attr_dev(a, "title", a_title_value = ctx.item.label);
-      attr_dev(a, "class", "svelte-f0majr");
-      add_location(a, file$a, 288, 14, 12644);
+      attr_dev(a, "class", "svelte-11oi47k");
+      add_location(a, file$a, 297, 14, 13040);
     },
     m: function mount(target, anchor) {
       insert_dev(target, a, anchor);
@@ -7251,11 +7239,11 @@ function create_each_block_1$2(ctx) {
     block: block,
     id: create_each_block_1$2.name,
     type: "each",
-    source: "(288:12) {#each social as item}",
+    source: "(297:12) {#each social as item}",
     ctx: ctx
   });
   return block;
-} // (300:8) {#if pdfLink}
+} // (309:8) {#if pdfLink}
 
 
 function create_if_block_2$2(ctx) {
@@ -7304,17 +7292,17 @@ function create_if_block_2$2(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(span0, "class", "download-label svelte-f0majr");
-      add_location(span0, file$a, 305, 14, 13252);
-      attr_dev(span1, "class", "icon svelte-f0majr");
-      add_location(span1, file$a, 306, 14, 13315);
+      attr_dev(span0, "class", "download-label svelte-11oi47k");
+      add_location(span0, file$a, 314, 14, 13648);
+      attr_dev(span1, "class", "icon svelte-11oi47k");
+      add_location(span1, file$a, 315, 14, 13711);
       attr_dev(a, "href", ctx.pdfLink);
       attr_dev(a, "title", "Open PDF version");
       attr_dev(a, "aria-label", "Download PDF");
-      attr_dev(a, "class", "svelte-f0majr");
-      add_location(a, file$a, 301, 12, 13126);
-      attr_dev(div, "class", "download u-print-hidden svelte-f0majr");
-      add_location(div, file$a, 300, 10, 13076);
+      attr_dev(a, "class", "svelte-11oi47k");
+      add_location(a, file$a, 310, 12, 13522);
+      attr_dev(div, "class", "download u-print-hidden svelte-11oi47k");
+      add_location(div, file$a, 309, 10, 13472);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
@@ -7352,11 +7340,11 @@ function create_if_block_2$2(ctx) {
     block: block,
     id: create_if_block_2$2.name,
     type: "if",
-    source: "(300:8) {#if pdfLink}",
+    source: "(309:8) {#if pdfLink}",
     ctx: ctx
   });
   return block;
-} // (314:6) {#if contact}
+} // (323:6) {#if contact}
 
 
 function create_if_block_1$3(ctx) {
@@ -7392,8 +7380,8 @@ function create_if_block_1$3(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(dl, "class", "contact svelte-f0majr");
-      add_location(dl, file$a, 314, 8, 13470);
+      attr_dev(dl, "class", "contact svelte-11oi47k");
+      add_location(dl, file$a, 323, 8, 13866);
     },
     m: function mount(target, anchor) {
       insert_dev(target, dl, anchor);
@@ -7441,11 +7429,11 @@ function create_if_block_1$3(ctx) {
     block: block,
     id: create_if_block_1$3.name,
     type: "if",
-    source: "(314:6) {#if contact}",
+    source: "(323:6) {#if contact}",
     ctx: ctx
   });
   return block;
-} // (316:10) {#each Object.entries(contact) as [type, details]}
+} // (325:10) {#each Object.entries(contact) as [type, details]}
 
 
 function create_each_block$2(ctx) {
@@ -7489,12 +7477,12 @@ function create_each_block$2(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(dt, "class", "visually-hidden svelte-f0majr");
-      add_location(dt, file$a, 317, 14, 13584);
-      attr_dev(dd, "class", "svelte-f0majr");
-      add_location(dd, file$a, 318, 14, 13638);
-      attr_dev(div, "class", "svelte-f0majr");
-      add_location(div, file$a, 316, 12, 13564);
+      attr_dev(dt, "class", "visually-hidden svelte-11oi47k");
+      add_location(dt, file$a, 326, 14, 13980);
+      attr_dev(dd, "class", "svelte-11oi47k");
+      add_location(dd, file$a, 327, 14, 14034);
+      attr_dev(div, "class", "svelte-11oi47k");
+      add_location(div, file$a, 325, 12, 13960);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
@@ -7524,7 +7512,7 @@ function create_each_block$2(ctx) {
     block: block,
     id: create_each_block$2.name,
     type: "each",
-    source: "(316:10) {#each Object.entries(contact) as [type, details]}",
+    source: "(325:10) {#each Object.entries(contact) as [type, details]}",
     ctx: ctx
   });
   return block;
@@ -7582,14 +7570,14 @@ function create_fragment$b(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(h1, "class", "svelte-f0majr");
-      add_location(h1, file$a, 260, 2, 11967);
-      attr_dev(h2, "class", "svelte-f0majr");
-      add_location(h2, file$a, 261, 2, 11985);
-      attr_dev(div0, "class", "details svelte-f0majr");
-      add_location(div0, file$a, 262, 2, 12004);
-      attr_dev(div1, "class", "summary svelte-f0majr");
-      add_location(div1, file$a, 259, 0, 11943);
+      attr_dev(h1, "class", "svelte-11oi47k");
+      add_location(h1, file$a, 270, 2, 12360);
+      attr_dev(h2, "class", "svelte-11oi47k");
+      add_location(h2, file$a, 271, 2, 12378);
+      attr_dev(div0, "class", "details svelte-11oi47k");
+      add_location(div0, file$a, 272, 2, 12397);
+      attr_dev(div1, "class", "summary svelte-11oi47k");
+      add_location(div1, file$a, 269, 0, 12336);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div1, anchor);
@@ -7925,19 +7913,19 @@ function get_each_context$3(ctx, list, i) {
   var child_ctx = Object_1$1.create(ctx);
   child_ctx.event = list[i];
   return child_ctx;
-} // (111:0) {#if timelineEvents}
+} // (113:0) {#if timelineEvents}
 
 
 function create_if_block$6(ctx) {
   var div3,
       div0,
-      t0_value = ctx.firstDate.year + "",
+      t0_value = ctx.lastDate.year + "",
       t0,
       t1,
       div1,
       t2,
       div2,
-      t3_value = ctx.lastDate.year + "",
+      t3_value = ctx.firstDate.year + "",
       t3,
       div3_transition,
       current;
@@ -7998,14 +7986,14 @@ function create_if_block$6(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(div0, "class", "from-year svelte-ecgmls");
-      add_location(div0, file$b, 112, 4, 3939);
-      attr_dev(div1, "class", "events svelte-ecgmls");
-      add_location(div1, file$b, 113, 4, 3989);
-      attr_dev(div2, "class", "to-year svelte-ecgmls");
-      add_location(div2, file$b, 122, 4, 4256);
-      attr_dev(div3, "class", "timeline svelte-ecgmls");
-      add_location(div3, file$b, 111, 2, 3864);
+      attr_dev(div0, "class", "end-year svelte-1jg1foz");
+      add_location(div0, file$b, 114, 4, 4008);
+      attr_dev(div1, "class", "events svelte-1jg1foz");
+      add_location(div1, file$b, 115, 4, 4056);
+      attr_dev(div2, "class", "start-year svelte-1jg1foz");
+      add_location(div2, file$b, 124, 4, 4323);
+      attr_dev(div3, "class", "timeline svelte-1jg1foz");
+      add_location(div3, file$b, 113, 2, 3933);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div3, anchor);
@@ -8085,11 +8073,11 @@ function create_if_block$6(ctx) {
     block: block,
     id: create_if_block$6.name,
     type: "if",
-    source: "(111:0) {#if timelineEvents}",
+    source: "(113:0) {#if timelineEvents}",
     ctx: ctx
   });
   return block;
-} // (115:6) {#each timelineEvents as event}
+} // (117:6) {#each timelineEvents as event}
 
 
 function create_each_block$3(ctx) {
@@ -8110,17 +8098,17 @@ function create_each_block$3(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(div, "class", div_class_value = "timeline-event " + ctx.event.modifier + " svelte-ecgmls");
+      attr_dev(div, "class", div_class_value = "timeline-event " + ctx.event.modifier + " svelte-1jg1foz");
       set_style(div, "width", "" + ctx.event.percent + "%");
       attr_dev(div, "title", div_title_value = ctx.event.name);
       toggle_class(div, "visible", ctx.event.isVisible);
-      add_location(div, file$b, 115, 8, 4056);
+      add_location(div, file$b, 117, 8, 4123);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
     },
     p: function update(changed, ctx) {
-      if (changed.timelineEvents && div_class_value !== (div_class_value = "timeline-event " + ctx.event.modifier + " svelte-ecgmls")) {
+      if (changed.timelineEvents && div_class_value !== (div_class_value = "timeline-event " + ctx.event.modifier + " svelte-1jg1foz")) {
         attr_dev(div, "class", div_class_value);
       }
 
@@ -8146,7 +8134,7 @@ function create_each_block$3(ctx) {
     block: block,
     id: create_each_block$3.name,
     type: "each",
-    source: "(115:6) {#each timelineEvents as event}",
+    source: "(117:6) {#each timelineEvents as event}",
     ctx: ctx
   });
   return block;
@@ -8231,8 +8219,7 @@ function instance$c($$self, $$props, $$invalidate) {
   var firstDate = events[events.length - 1].start;
   var lastDate = events[0].end;
   var scaledEvents = eventsWithMonthLength.map(function (event) {
-    return Object.assign({}, {
-      event: event,
+    return Object.assign({}, event, {
       percent: 100 / totalTimelineInMonths * event.monthLength
     });
   });
@@ -8266,7 +8253,7 @@ function instance$c($$self, $$props, $$invalidate) {
     });
   });
   onDestroy(function () {
-    observer && observer.destroy();
+    observer && observer.disconnect();
   });
   var writable_props = ['events', 'intersectionNodes'];
   Object_1$1.keys($$props).forEach(function (key) {
