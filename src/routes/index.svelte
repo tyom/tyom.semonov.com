@@ -78,7 +78,7 @@
       position: absolute;
       left: var(--padding);
       right: var(--padding);
-      bottom: -3px;
+      bottom: -4px;
     }
   }
 

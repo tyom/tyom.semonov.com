@@ -131,15 +131,16 @@
 
   .start-year,
   .end-year {
-    font-size: 9px;
+    font-size: 8px;
+    line-height: 1;
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: -1px;
+    bottom: -1px;
     margin: auto;
     color: #999;
     font-weight: bold;
     background: #fff;
-    padding: 0 3px;
+    padding: 1px 4px;
   }
 
   .end-year {
