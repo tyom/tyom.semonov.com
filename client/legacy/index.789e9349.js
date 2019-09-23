@@ -1,4 +1,4 @@
-import { N as _typeof, O as _slicedToArray, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, r as _createClass, S as SvelteComponentDev, f as create_slot, P as svg_element, v as text, h as claim_element, j as children, w as claim_text, k as detach_dev, l as add_location, m as insert_dev, x as append_dev, y as set_data_dev, A as empty, C as attr_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, D as assign, Q as _defineProperty, R as exclude_internal_props, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, L as _asyncToGenerator, M as _regeneratorRuntime, T as listen, g as element, u as globals, J as group_outros, K as check_outros, U as destroy_each, n as noop, z as space, B as claim_space, V as toggle_class, W as onMount, X as onDestroy, Y as add_render_callback, Z as create_bidirectional_transition, $ as set_style, a0 as listen_dev, a1 as _toConsumableArray } from './index.16f472e3.js';
+import { N as _typeof, O as _slicedToArray, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, r as _createClass, S as SvelteComponentDev, f as create_slot, P as svg_element, v as text, h as claim_element, j as children, w as claim_text, k as detach_dev, l as add_location, m as insert_dev, x as append_dev, y as set_data_dev, A as empty, C as attr_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, D as assign, Q as _defineProperty, R as exclude_internal_props, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, L as _asyncToGenerator, M as _regeneratorRuntime, T as listen, g as element, u as globals, J as group_outros, K as check_outros, U as destroy_each, n as noop, z as space, B as claim_space, V as toggle_class, W as onMount, X as onDestroy, Y as add_render_callback, Z as create_bidirectional_transition, $ as set_style, a0 as listen_dev, a1 as _toConsumableArray, a2 as binding_callbacks } from './index.ca3b94c9.js';
 
 /*!
  * isobject <https://github.com/jonschlinkert/isobject>
@@ -7912,7 +7912,7 @@ function get_each_context$3(ctx, list, i) {
   var child_ctx = Object_1$1.create(ctx);
   child_ctx.event = list[i];
   return child_ctx;
-} // (146:0) {#if timelineEvents}
+} // (153:0) {#if timelineEvents}
 
 
 function create_if_block$6(ctx) {
@@ -7986,13 +7986,13 @@ function create_if_block$6(ctx) {
     },
     h: function hydrate() {
       attr_dev(div0, "class", "end-year svelte-3xxkil");
-      add_location(div0, file$b, 147, 4, 5466);
+      add_location(div0, file$b, 154, 4, 5683);
       attr_dev(div1, "class", "events svelte-3xxkil");
-      add_location(div1, file$b, 148, 4, 5514);
+      add_location(div1, file$b, 155, 4, 5731);
       attr_dev(div2, "class", "start-year svelte-3xxkil");
-      add_location(div2, file$b, 158, 4, 5848);
+      add_location(div2, file$b, 165, 4, 6065);
       attr_dev(div3, "class", "timeline svelte-3xxkil");
-      add_location(div3, file$b, 146, 2, 5403);
+      add_location(div3, file$b, 153, 2, 5596);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div3, anchor);
@@ -8008,6 +8008,7 @@ function create_if_block$6(ctx) {
       append_dev(div3, t2);
       append_dev(div3, div2);
       append_dev(div2, t3);
+      ctx.div3_binding(div3);
       current = true;
     },
     p: function update(changed, ctx) {
@@ -8060,6 +8061,7 @@ function create_if_block$6(ctx) {
       }
 
       destroy_each(each_blocks, detaching);
+      ctx.div3_binding(null);
 
       if (detaching) {
         if (div3_transition) div3_transition.end();
@@ -8070,11 +8072,11 @@ function create_if_block$6(ctx) {
     block: block,
     id: create_if_block$6.name,
     type: "if",
-    source: "(146:0) {#if timelineEvents}",
+    source: "(153:0) {#if timelineEvents}",
     ctx: ctx
   });
   return block;
-} // (150:6) {#each timelineEvents as event}
+} // (157:6) {#each timelineEvents as event}
 
 
 function create_each_block$3(ctx) {
@@ -8102,7 +8104,7 @@ function create_each_block$3(ctx) {
       attr_dev(div, "class", div_class_value = "timeline-event " + ctx.event.modifier + " svelte-3xxkil");
       set_style(div, "width", "" + ctx.event.percent + "%");
       toggle_class(div, "visible", ctx.event.isVisible);
-      add_location(div, file$b, 150, 8, 5581);
+      add_location(div, file$b, 157, 8, 5798);
       dispose = listen_dev(div, "click", click_handler);
     },
     m: function mount(target, anchor) {
@@ -8145,7 +8147,7 @@ function create_each_block$3(ctx) {
     block: block,
     id: create_each_block$3.name,
     type: "each",
-    source: "(150:6) {#each timelineEvents as event}",
+    source: "(157:6) {#each timelineEvents as event}",
     ctx: ctx
   });
   return block;
@@ -8216,16 +8218,10 @@ function create_fragment$c(ctx) {
 
 var INTERSECTION_RATIO = 0.6;
 
-function scrollTo(node) {
-  node.scrollIntoView({
-    behavior: 'smooth',
-    block: 'center'
-  });
-}
-
 function instance$c($$self, $$props, $$invalidate) {
   var events = $$props.events,
       intersectionNodes = $$props.intersectionNodes;
+  var containerEl;
   var eventsWithMonthLength = events.map(function (event, idx) {
     return {
       name: event.name,
@@ -8266,6 +8262,15 @@ function instance$c($$self, $$props, $$invalidate) {
     $$invalidate('timelineEvents', timelineEvents = updatedEvents);
   }
 
+  function scrollTo(node) {
+    var scrollPosition = node.getBoundingClientRect().top + window.pageYOffset;
+    var offset = containerEl.getBoundingClientRect().top;
+    window.scrollTo({
+      top: scrollPosition - offset,
+      behavior: 'smooth'
+    });
+  }
+
   onMount(function () {
     if (!window.IntersectionObserver) {
       return;
@@ -8293,6 +8298,12 @@ function instance$c($$self, $$props, $$invalidate) {
     return scrollTo(event.target);
   };
 
+  function div3_binding($$value) {
+    binding_callbacks[$$value ? 'unshift' : 'push'](function () {
+      $$invalidate('containerEl', containerEl = $$value);
+    });
+  }
+
   $$self.$set = function ($$props) {
     if ('events' in $$props) $$invalidate('events', events = $$props.events);
     if ('intersectionNodes' in $$props) $$invalidate('intersectionNodes', intersectionNodes = $$props.intersectionNodes);
@@ -8302,6 +8313,7 @@ function instance$c($$self, $$props, $$invalidate) {
     return {
       events: events,
       intersectionNodes: intersectionNodes,
+      containerEl: containerEl,
       timelineEvents: timelineEvents,
       observer: observer
     };
@@ -8310,6 +8322,7 @@ function instance$c($$self, $$props, $$invalidate) {
   $$self.$inject_state = function ($$props) {
     if ('events' in $$props) $$invalidate('events', events = $$props.events);
     if ('intersectionNodes' in $$props) $$invalidate('intersectionNodes', intersectionNodes = $$props.intersectionNodes);
+    if ('containerEl' in $$props) $$invalidate('containerEl', containerEl = $$props.containerEl);
     if ('timelineEvents' in $$props) $$invalidate('timelineEvents', timelineEvents = $$props.timelineEvents);
     if ('observer' in $$props) observer = $$props.observer;
   };
@@ -8317,10 +8330,13 @@ function instance$c($$self, $$props, $$invalidate) {
   return {
     events: events,
     intersectionNodes: intersectionNodes,
+    containerEl: containerEl,
     firstDate: firstDate,
     lastDate: lastDate,
     timelineEvents: timelineEvents,
-    click_handler: click_handler
+    scrollTo: scrollTo,
+    click_handler: click_handler,
+    div3_binding: div3_binding
   };
 }
 
