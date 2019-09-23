@@ -272,7 +272,7 @@
       {/if}
       {#if currentInterests}
         <section>
-          <h3>Current focus</h3>
+          <h3>Current interests</h3>
           <List items={currentInterests} />
         </section>
       {/if}
