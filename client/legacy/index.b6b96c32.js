@@ -7912,7 +7912,7 @@ function get_each_context$3(ctx, list, i) {
   var child_ctx = Object_1$1.create(ctx);
   child_ctx.event = list[i];
   return child_ctx;
-} // (161:0) {#if timelineEvents}
+} // (162:0) {#if timelineEvents}
 
 
 function create_if_block$6(ctx) {
@@ -7985,14 +7985,14 @@ function create_if_block$6(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(div0, "class", "end-year svelte-3xxkil");
-      add_location(div0, file$b, 165, 4, 5957);
-      attr_dev(div1, "class", "events svelte-3xxkil");
-      add_location(div1, file$b, 166, 4, 6005);
-      attr_dev(div2, "class", "start-year svelte-3xxkil");
-      add_location(div2, file$b, 176, 4, 6339);
-      attr_dev(div3, "class", "timeline svelte-3xxkil");
-      add_location(div3, file$b, 161, 2, 5858);
+      attr_dev(div0, "class", "end-year svelte-dorrm5");
+      add_location(div0, file$b, 166, 4, 6041);
+      attr_dev(div1, "class", "events svelte-dorrm5");
+      add_location(div1, file$b, 167, 4, 6089);
+      attr_dev(div2, "class", "start-year svelte-dorrm5");
+      add_location(div2, file$b, 177, 4, 6423);
+      attr_dev(div3, "class", "timeline svelte-dorrm5");
+      add_location(div3, file$b, 162, 2, 5942);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div3, anchor);
@@ -8072,11 +8072,11 @@ function create_if_block$6(ctx) {
     block: block,
     id: create_if_block$6.name,
     type: "if",
-    source: "(161:0) {#if timelineEvents}",
+    source: "(162:0) {#if timelineEvents}",
     ctx: ctx
   });
   return block;
-} // (168:6) {#each timelineEvents as event}
+} // (169:6) {#each timelineEvents as event}
 
 
 function create_each_block$3(ctx) {
@@ -8101,10 +8101,10 @@ function create_each_block$3(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(div, "class", div_class_value = "timeline-event " + ctx.event.modifier + " svelte-3xxkil");
+      attr_dev(div, "class", div_class_value = "timeline-event " + ctx.event.modifier + " svelte-dorrm5");
       set_style(div, "width", "" + ctx.event.percent + "%");
       toggle_class(div, "visible", ctx.event.isVisible);
-      add_location(div, file$b, 168, 8, 6072);
+      add_location(div, file$b, 169, 8, 6156);
       dispose = listen_dev(div, "click", click_handler);
     },
     m: function mount(target, anchor) {
@@ -8116,7 +8116,7 @@ function create_each_block$3(ctx) {
     p: function update(changed, new_ctx) {
       ctx = new_ctx;
 
-      if (changed.timelineEvents && div_class_value !== (div_class_value = "timeline-event " + ctx.event.modifier + " svelte-3xxkil")) {
+      if (changed.timelineEvents && div_class_value !== (div_class_value = "timeline-event " + ctx.event.modifier + " svelte-dorrm5")) {
         attr_dev(div, "class", div_class_value);
       }
 
@@ -8147,7 +8147,7 @@ function create_each_block$3(ctx) {
     block: block,
     id: create_each_block$3.name,
     type: "each",
-    source: "(168:6) {#each timelineEvents as event}",
+    source: "(169:6) {#each timelineEvents as event}",
     ctx: ctx
   });
   return block;
@@ -8819,67 +8819,67 @@ function create_fragment$d(ctx) {
     h: function hydrate() {
       attr_dev(meta0, "name", "description");
       attr_dev(meta0, "content", meta0_content_value = ctx.about.description);
-      attr_dev(meta0, "class", "svelte-7wpo20");
+      attr_dev(meta0, "class", "svelte-12y5kmv");
       add_location(meta0, file$c, 133, 2, 6815);
       attr_dev(meta1, "property", "og:type");
       attr_dev(meta1, "content", "website");
-      attr_dev(meta1, "class", "svelte-7wpo20");
+      attr_dev(meta1, "class", "svelte-12y5kmv");
       add_location(meta1, file$c, 135, 2, 6906);
       attr_dev(meta2, "property", "og:url");
       attr_dev(meta2, "content", "https://tyom.semonov.com/");
-      attr_dev(meta2, "class", "svelte-7wpo20");
+      attr_dev(meta2, "class", "svelte-12y5kmv");
       add_location(meta2, file$c, 136, 2, 6954);
       attr_dev(meta3, "property", "og:title");
       attr_dev(meta3, "content", meta3_content_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV");
-      attr_dev(meta3, "class", "svelte-7wpo20");
+      attr_dev(meta3, "class", "svelte-12y5kmv");
       add_location(meta3, file$c, 137, 2, 7019);
       attr_dev(meta4, "property", "og:description");
       attr_dev(meta4, "content", meta4_content_value = ctx.about.description);
-      attr_dev(meta4, "class", "svelte-7wpo20");
+      attr_dev(meta4, "class", "svelte-12y5kmv");
       add_location(meta4, file$c, 138, 2, 7093);
       attr_dev(meta5, "property", "og:image");
       attr_dev(meta5, "content", "https://tyom.semonov.com/logo.png");
-      attr_dev(meta5, "class", "svelte-7wpo20");
+      attr_dev(meta5, "class", "svelte-12y5kmv");
       add_location(meta5, file$c, 139, 2, 7158);
       attr_dev(meta6, "property", "twitter:card");
       attr_dev(meta6, "content", "summary_large_image");
-      attr_dev(meta6, "class", "svelte-7wpo20");
+      attr_dev(meta6, "class", "svelte-12y5kmv");
       add_location(meta6, file$c, 141, 2, 7252);
       attr_dev(meta7, "property", "twitter:url");
       attr_dev(meta7, "content", "https://tyom.semonov.com/");
-      attr_dev(meta7, "class", "svelte-7wpo20");
+      attr_dev(meta7, "class", "svelte-12y5kmv");
       add_location(meta7, file$c, 142, 2, 7317);
       attr_dev(meta8, "property", "twitter:title");
       attr_dev(meta8, "content", meta8_content_value = "" + ctx.about.name + " - " + ctx.about.title + ": CV");
-      attr_dev(meta8, "class", "svelte-7wpo20");
+      attr_dev(meta8, "class", "svelte-12y5kmv");
       add_location(meta8, file$c, 143, 2, 7387);
       attr_dev(meta9, "property", "twitter:description");
       attr_dev(meta9, "content", meta9_content_value = ctx.about.description);
-      attr_dev(meta9, "class", "svelte-7wpo20");
+      attr_dev(meta9, "class", "svelte-12y5kmv");
       add_location(meta9, file$c, 144, 2, 7466);
       attr_dev(meta10, "property", "twitter:image");
       attr_dev(meta10, "content", "https://tyom.semonov.com/logo.png");
-      attr_dev(meta10, "class", "svelte-7wpo20");
+      attr_dev(meta10, "class", "svelte-12y5kmv");
       add_location(meta10, file$c, 145, 2, 7536);
-      attr_dev(aside, "class", "svelte-7wpo20");
+      attr_dev(aside, "class", "svelte-12y5kmv");
       add_location(aside, file$c, 148, 0, 7630);
-      attr_dev(h20, "class", "svelte-7wpo20");
+      attr_dev(h20, "class", "svelte-12y5kmv");
       add_location(h20, file$c, 155, 6, 7781);
-      attr_dev(header0, "class", "svelte-7wpo20");
+      attr_dev(header0, "class", "svelte-12y5kmv");
       add_location(header0, file$c, 154, 4, 7766);
-      attr_dev(section0, "class", "experience svelte-7wpo20");
+      attr_dev(section0, "class", "experience svelte-12y5kmv");
       add_location(section0, file$c, 153, 2, 7733);
-      attr_dev(h21, "class", "svelte-7wpo20");
+      attr_dev(h21, "class", "svelte-12y5kmv");
       add_location(h21, file$c, 166, 6, 8086);
-      attr_dev(header1, "class", "svelte-7wpo20");
+      attr_dev(header1, "class", "svelte-12y5kmv");
       add_location(header1, file$c, 165, 4, 8071);
-      attr_dev(section1, "class", "education svelte-7wpo20");
+      attr_dev(section1, "class", "education svelte-12y5kmv");
       add_location(section1, file$c, 164, 2, 8039);
-      attr_dev(br, "class", "svelte-7wpo20");
+      attr_dev(br, "class", "svelte-12y5kmv");
       add_location(br, file$c, 176, 4, 8350);
-      attr_dev(p, "class", "u-print-only print-details-info svelte-7wpo20");
+      attr_dev(p, "class", "u-print-only print-details-info svelte-12y5kmv");
       add_location(p, file$c, 173, 2, 8229);
-      attr_dev(article, "class", "content svelte-7wpo20");
+      attr_dev(article, "class", "content svelte-12y5kmv");
       add_location(article, file$c, 152, 0, 7705);
     },
     m: function mount(target, anchor) {
