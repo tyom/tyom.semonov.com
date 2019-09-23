@@ -51,6 +51,7 @@
     }
 
     .summary::before {
+      pointer-events: none;
       position: absolute;
       z-index: 0;
       opacity: 0.1;
@@ -100,7 +101,7 @@
   }
 
   * + h2 {
-    margin-top: 1em;
+    margin-top: 1rem;
   }
 
   .details {
@@ -124,7 +125,7 @@
   }
 
   section + section {
-    margin-top: 1em;
+    margin-top: 1rem;
   }
 
   * + .skill-set {
@@ -140,11 +141,11 @@
   footer a {
     margin-right: 1rem;
     display: inline-flex;
-    transition: 0.05s;
+    transition: 0.1s;
 
     &:hover {
       transition: 0.15s;
-      transform: scale(1.2);
+      transform: scale(1.2) translateZ(0);
     }
   }
 
@@ -161,7 +162,7 @@
     }
 
     & a {
-      transform: scale(1.15);
+      transform: scale(1.2);
       margin: 0;
       display: flex;
       align-items: center;
@@ -170,7 +171,7 @@
     }
 
     & a:hover {
-      transform: scale(1.3);
+      transform: scale(1.3) translateZ(0);
       box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
     }
 
@@ -204,7 +205,7 @@
     }
 
     .download-label {
-      font-size: 0.8em;
+      font-size: 0.75em;
       margin-left: 0.5em;
       margin-right: 0.5em;
       display: none;

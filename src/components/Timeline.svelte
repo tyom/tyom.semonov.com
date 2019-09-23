@@ -4,7 +4,7 @@
   import { getNumberOfMonthsBetweenDates, periodDuration } from '../utils';
   import { tooltip } from '../actions';
 
-  const INTERSECTION_RATIO = 0.5;
+  const INTERSECTION_RATIO = 0.6;
 
   export let events;
   export let intersectionNodes;
@@ -37,6 +37,12 @@
     entries.forEach(entry => {
       const event = updatedEvents.find(x => x.target === entry.target);
       event.isVisible = entry.intersectionRatio >= INTERSECTION_RATIO;
+
+      if (event.isVisible) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
     });
     timelineEvents = updatedEvents;
   }
@@ -117,13 +123,15 @@
     margin: auto;
     color: #999;
     font-weight: bold;
+    background: #fff;
+    padding: 0 3px;
   }
 
   .end-year {
-    left: -24px;
+    left: -27px;
   }
   .start-year {
-    right: -24px;
+    right: -27px;
   }
 
   @media print {

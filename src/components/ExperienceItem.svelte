@@ -26,6 +26,7 @@
 
   .experience-item {
     page-break-inside: avoid;
+    position: relative;
   }
 
   .experience-item::before {
@@ -79,6 +80,18 @@
   @media screen {
     .divided::before {
       color: var(--panel-color-hi);
+    }
+
+    .experience-item {
+      padding: var(--padding);
+    }
+
+    .experience-item::before {
+      margin: calc((var(--padding) + 2px) * -1) 0 var(--padding);
+    }
+
+    :global(.experience-item.visible)::before {
+      opacity: 1;
     }
   }
 

@@ -45,10 +45,6 @@
 <style>
   @import '../css/variables.css';
 
-  section + section {
-    margin-top: 3em;
-  }
-
   h2 {
     font-size: 1.2em;
     margin: 0 0 2em;
@@ -64,20 +60,14 @@
       display: flex;
     }
 
-    .content {
-      padding: var(--padding);
-      margin-top: -1.5em;
-    }
-
     header {
       position: sticky;
       z-index: 1;
       top: 0;
       line-height: 1;
-      padding: 1.5rem 0;
+      padding: 1.5rem var(--padding);
       border-bottom: 1px solid #0001;
       background-color: #fffe;
-      margin-bottom: 2em;
     }
 
     h2 {
@@ -86,9 +76,9 @@
 
     header :global(.timeline) {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      left: var(--padding);
+      right: var(--padding);
+      bottom: -3px;
     }
   }
 
