@@ -52,10 +52,18 @@
     const scrollPosition =
       node.getBoundingClientRect().top + window.pageYOffset;
     const offset = containerEl.getBoundingClientRect().top;
-    window.scrollTo({
-      top: scrollPosition - offset,
-      behavior: 'smooth',
-    });
+    const scrollOffset = scrollPosition - offset;
+    const supportsNativeSmoothScroll =
+      'scrollBehavior' in document.documentElement.style;
+
+    if (supportsNativeSmoothScroll) {
+      window.scrollTo({
+        top: scrollOffset,
+        behavior: 'smooth',
+      });
+    } else {
+      window.scrollTo(0, scrollOffset);
+    }
   }
 
   onMount(() => {
@@ -149,7 +157,10 @@
 </style>
 
 {#if timelineEvents}
-  <div class="timeline" transition:fade={{ duration: 200 }} bind:this={containerEl}>
+  <div
+    class="timeline"
+    transition:fade={{ duration: 200 }}
+    bind:this={containerEl}>
     <div class="end-year">{lastDate.year}</div>
     <div class="events">
       {#each timelineEvents as event}
