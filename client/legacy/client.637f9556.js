@@ -1714,8 +1714,6 @@ function trackOutboundLinkClicks(event) {
       transport: 'beacon'
     });
   }
-
-  event.preventDefault();
 }
 
 start({
