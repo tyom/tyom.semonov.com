@@ -1710,7 +1710,7 @@ function trackOutboundLinkClicks(event) {
     window.ga("".concat(trackerName, ".send"), 'event', {
       eventCategory: 'Outbound link',
       eventAction: 'click',
-      eventLabel: event.target.href,
+      eventLabel: anchor.target.href,
       transport: 'beacon'
     });
   }
