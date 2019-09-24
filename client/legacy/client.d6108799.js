@@ -1,4 +1,4 @@
-import { s as safe_not_equal, n as noop, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, f as create_slot, g as element, h as claim_element, j as children, k as detach_dev, l as add_location, m as insert_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, r as _createClass, u as globals, v as text, w as claim_text, x as append_dev, y as set_data_dev, z as space, A as empty, B as claim_space, C as attr_dev, D as assign, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, I as setContext, J as group_outros, K as check_outros, L as _asyncToGenerator, M as _regeneratorRuntime, N as _typeof, O as _slicedToArray } from './index.ca3b94c9.js';
+import { s as safe_not_equal, n as noop, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, f as create_slot, g as element, h as claim_element, j as children, k as detach_dev, l as add_location, m as insert_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, r as _createClass, u as globals, v as text, w as claim_text, x as append_dev, y as set_data_dev, z as space, A as empty, B as claim_space, C as attr_dev, D as assign, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, I as setContext, J as group_outros, K as check_outros, L as _asyncToGenerator, M as _regeneratorRuntime, N as _typeof, O as _slicedToArray } from './index.04174d08.js';
 
 var subscriber_queue = [];
 /**
@@ -877,9 +877,9 @@ function (_SvelteComponentDev) {
 var ignore = [/^\/([^\/]+?).json$/];
 var components = [{
   js: function js() {
-    return import('./index.b6b96c32.js');
+    return import('./index.9779321b.js');
   },
-  css: ["legacy/index.b6b96c32.css"]
+  css: ["legacy/index.9779321b.css"]
 }];
 var routes = [{
   // index.svelte
@@ -1673,11 +1673,29 @@ function googleAnalytics(gaId) {
   window.dataLayer = window.dataLayer || [];
 
   function gtag() {
-    dataLayer.push(arguments);
+    window.dataLayer.push(arguments);
   }
 
   gtag('js', new Date());
   gtag('config', gaId);
+}
+
+function trackOutboundLinkClicks(event) {
+  var _ref = window.ga && window.ga.getAll(),
+      _ref2 = _slicedToArray(_ref, 1),
+      tracker = _ref2[0];
+
+  if (!tracker) return;
+
+  if (event.target.nodeName === 'A') {
+    var trackerName = tracker.a.data.values[':name'];
+    window.ga("".concat(trackerName, ".send"), 'event', {
+      eventCategory: 'Outbound link',
+      eventAction: 'click',
+      eventLabel: event.target.href,
+      transport: 'beacon'
+    });
+  }
 }
 
 start({
@@ -1686,4 +1704,5 @@ start({
 
 {
   googleAnalytics("UA-332655-6");
+  document.addEventListener('click', trackOutboundLinkClicks);
 }
