@@ -1666,6 +1666,23 @@ function handle_popstate(event) {
   }
 }
 
+if (!Element.prototype.matches) {
+  Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+}
+
+if (!Element.prototype.closest) {
+  Element.prototype.closest = function (s) {
+    var el = this;
+
+    do {
+      if (el.matches(s)) return el;
+      el = el.parentElement || el.parentNode;
+    } while (el !== null && el.nodeType === 1);
+
+    return null;
+  };
+}
+
 function googleAnalytics(gaId) {
   var script = document.createElement('script');
   script.src = "https://www.googletagmanager.com/gtag/js?id=".concat(gaId);
@@ -1686,8 +1703,9 @@ function trackOutboundLinkClicks(event) {
       tracker = _ref2[0];
 
   if (!tracker) return;
+  var anchor = event.target.closest('a');
 
-  if (event.target.nodeName === 'A') {
+  if (anchor) {
     var trackerName = tracker.a.data.values[':name'];
     window.ga("".concat(trackerName, ".send"), 'event', {
       eventCategory: 'Outbound link',
@@ -1696,6 +1714,8 @@ function trackOutboundLinkClicks(event) {
       transport: 'beacon'
     });
   }
+
+  event.preventDefault();
 }
 
 start({
