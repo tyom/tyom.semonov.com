@@ -22,6 +22,7 @@ aliases:
 jobs:
   build:
     <<: *container
+    working_directory: ~/app
     steps:
       - checkout
       - *restore_cache
@@ -39,7 +40,9 @@ jobs:
 
   deploy:
     <<: *container
+    working_directory: ~/app
     steps:
+      - checkout
       - add-ssh-keys:
           fingerprints:
             - "4e:cf:57:09:d4:79:0a:da:5e:61:a5:fc:97:bc:42:8e"
@@ -48,7 +51,6 @@ jobs:
           command: |
             git config --global user.name "$GIT_USER_NAME"
             git config --global user.email "$GIT_USER_EMAIL"
-      - checkout
       - *restore_cache
       - *install_dependencies
       - *save_cache
