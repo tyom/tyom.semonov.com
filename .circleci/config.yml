@@ -32,6 +32,9 @@ jobs:
       - add-ssh-keys:
           fingerprints:
             - "4e:cf:57:09:d4:79:0a:da:5e:61:a5:fc:97:bc:42:8e"
+      - checkout
+      - restore_cache:
+          key: dep-cache-{{ checksum "package.json" }}  -
       - run:
           name: Install project dependencies
           command: yarn install
