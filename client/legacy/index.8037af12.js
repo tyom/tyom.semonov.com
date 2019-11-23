@@ -790,42 +790,6 @@ try {
 
 var regenerator = runtime_1;
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-        args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-
-      _next(undefined);
-    });
-  };
-}
-
 function _getPrototypeOf(o) {
   _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
@@ -1188,7 +1152,7 @@ function listen(node, event, handler, options) {
 }
 
 function attr(node, attribute, value) {
-  if (value == null) node.removeAttribute(attribute);else node.setAttribute(attribute, value);
+  if (value == null) node.removeAttribute(attribute);else if (node.getAttribute(attribute) !== value) node.setAttribute(attribute, value);
 }
 
 function children(element) {
@@ -1393,10 +1357,10 @@ function flush() {
 }
 
 function update($$) {
-  if ($$.fragment) {
+  if ($$.fragment !== null) {
     $$.update($$.dirty);
     run_all($$.before_update);
-    $$.fragment.p($$.dirty, $$.ctx);
+    $$.fragment && $$.fragment.p($$.dirty, $$.ctx);
     $$.dirty = null;
     $$.after_update.forEach(add_render_callback);
   }
@@ -1632,6 +1596,14 @@ function get_spread_update(levels, updates) {
 
 function get_spread_object(spread_props) {
   return _typeof(spread_props) === 'object' && spread_props !== null ? spread_props : {};
+} // source: https://html.spec.whatwg.org/multipage/indices.html
+
+function create_component(block) {
+  block && block.c();
+}
+
+function claim_component(block, parent_nodes) {
+  block && block.l(parent_nodes);
 }
 
 function mount_component(component, target, anchor) {
@@ -1640,7 +1612,7 @@ function mount_component(component, target, anchor) {
       on_mount = _component$$$.on_mount,
       on_destroy = _component$$$.on_destroy,
       after_update = _component$$$.after_update;
-  fragment.m(target, anchor); // onMount happens before the initial afterUpdate
+  fragment && fragment.m(target, anchor); // onMount happens before the initial afterUpdate
 
   add_render_callback(function () {
     var new_on_destroy = on_mount.map(run).filter(is_function);
@@ -1659,13 +1631,15 @@ function mount_component(component, target, anchor) {
 }
 
 function destroy_component(component, detaching) {
-  if (component.$$.fragment) {
-    run_all(component.$$.on_destroy);
-    component.$$.fragment.d(detaching); // TODO null out other refs, including component.$$ (but need to
+  var $$ = component.$$;
+
+  if ($$.fragment !== null) {
+    run_all($$.on_destroy);
+    $$.fragment && $$.fragment.d(detaching); // TODO null out other refs, including component.$$ (but need to
     // preserve final state?)
 
-    component.$$.on_destroy = component.$$.fragment = null;
-    component.$$.ctx = {};
+    $$.on_destroy = $$.fragment = null;
+    $$.ctx = {};
   }
 }
 
@@ -1679,15 +1653,15 @@ function make_dirty(component, key) {
   component.$$.dirty[key] = true;
 }
 
-function init(component, options, instance, create_fragment, not_equal, prop_names) {
+function init(component, options, instance, create_fragment, not_equal, props) {
   var parent_component = current_component;
   set_current_component(component);
-  var props = options.props || {};
+  var prop_values = options.props || {};
   var $$ = component.$$ = {
     fragment: null,
     ctx: null,
     // state
-    props: prop_names,
+    props: props,
     update: noop,
     not_equal: not_equal,
     bound: blank_object(),
@@ -1702,7 +1676,7 @@ function init(component, options, instance, create_fragment, not_equal, prop_nam
     dirty: null
   };
   var ready = false;
-  $$.ctx = instance ? instance(component, props, function (key, ret) {
+  $$.ctx = instance ? instance(component, prop_values, function (key, ret) {
     var value = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ret;
 
     if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
@@ -1711,19 +1685,20 @@ function init(component, options, instance, create_fragment, not_equal, prop_nam
     }
 
     return ret;
-  }) : props;
+  }) : prop_values;
   $$.update();
   ready = true;
-  run_all($$.before_update);
-  $$.fragment = create_fragment($$.ctx);
+  run_all($$.before_update); // `false` as a special case of no DOM component
+
+  $$.fragment = create_fragment ? create_fragment($$.ctx) : false;
 
   if (options.target) {
     if (options.hydrate) {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      $$.fragment.l(children(options.target));
+      $$.fragment && $$.fragment.l(children(options.target));
     } else {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      $$.fragment.c();
+      $$.fragment && $$.fragment.c();
     }
 
     if (options.intro) transition_in(component.$$.fragment);
@@ -1736,7 +1711,7 @@ function init(component, options, instance, create_fragment, not_equal, prop_nam
 
 var SvelteElement;
 
-if (typeof HTMLElement !== 'undefined') {
+if (typeof HTMLElement === 'function') {
   SvelteElement =
   /*#__PURE__*/
   function (_HTMLElement) {
@@ -1930,4 +1905,4 @@ function (_SvelteComponent) {
   return SvelteComponentDev;
 }(SvelteComponent);
 
-export { set_style as $, empty as A, claim_space as B, attr_dev as C, assign as D, mount_component as E, get_spread_update as F, get_spread_object as G, destroy_component as H, setContext as I, group_outros as J, check_outros as K, _asyncToGenerator as L, regenerator as M, _typeof as N, _slicedToArray as O, svg_element as P, _defineProperty as Q, exclude_internal_props as R, SvelteComponentDev as S, listen as T, destroy_each as U, toggle_class as V, onMount as W, onDestroy as X, add_render_callback as Y, create_bidirectional_transition as Z, _inherits as _, _classCallCheck as a, listen_dev as a0, _toConsumableArray as a1, binding_callbacks as a2, _possibleConstructorReturn as b, _getPrototypeOf as c, _assertThisInitialized as d, dispatch_dev as e, create_slot as f, element as g, claim_element as h, init as i, children as j, detach_dev as k, add_location as l, insert_dev as m, noop as n, get_slot_changes as o, get_slot_context as p, transition_out as q, _createClass as r, safe_not_equal as s, transition_in as t, globals as u, text as v, claim_text as w, append_dev as x, set_data_dev as y, space as z };
+export { onDestroy as $, empty as A, claim_space as B, attr_dev as C, assign as D, create_component as E, claim_component as F, mount_component as G, get_spread_update as H, get_spread_object as I, destroy_component as J, setContext as K, group_outros as L, check_outros as M, regenerator as N, _slicedToArray as O, _typeof as P, svg_element as Q, _defineProperty as R, SvelteComponentDev as S, exclude_internal_props as T, listen as U, is_function as V, destroy_each as W, toggle_class as X, identity as Y, onMount as Z, _inherits as _, _classCallCheck as a, add_render_callback as a0, create_bidirectional_transition as a1, set_style as a2, listen_dev as a3, _toConsumableArray as a4, binding_callbacks as a5, _possibleConstructorReturn as b, _getPrototypeOf as c, _assertThisInitialized as d, dispatch_dev as e, create_slot as f, element as g, claim_element as h, init as i, children as j, detach_dev as k, add_location as l, insert_dev as m, noop as n, get_slot_changes as o, get_slot_context as p, transition_out as q, _createClass as r, safe_not_equal as s, transition_in as t, globals as u, text as v, claim_text as w, append_dev as x, set_data_dev as y, space as z };

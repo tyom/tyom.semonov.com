@@ -1,4 +1,4 @@
-import { s as safe_not_equal, n as noop, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, f as create_slot, g as element, h as claim_element, j as children, k as detach_dev, l as add_location, m as insert_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, r as _createClass, u as globals, v as text, w as claim_text, x as append_dev, y as set_data_dev, z as space, A as empty, B as claim_space, C as attr_dev, D as assign, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, I as setContext, J as group_outros, K as check_outros, L as _asyncToGenerator, M as _regeneratorRuntime, N as _typeof, O as _slicedToArray } from './index.04174d08.js';
+import { s as safe_not_equal, n as noop, _ as _inherits, a as _classCallCheck, b as _possibleConstructorReturn, c as _getPrototypeOf, i as init, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, f as create_slot, g as element, h as claim_element, j as children, k as detach_dev, l as add_location, m as insert_dev, o as get_slot_changes, p as get_slot_context, t as transition_in, q as transition_out, r as _createClass, u as globals, v as text, w as claim_text, x as append_dev, y as set_data_dev, z as space, A as empty, B as claim_space, C as attr_dev, D as assign, E as create_component, F as claim_component, G as mount_component, H as get_spread_update, I as get_spread_object, J as destroy_component, K as setContext, L as group_outros, M as check_outros, N as _regeneratorRuntime, O as _slicedToArray, P as _typeof } from './index.8037af12.js';
 
 var subscriber_queue = [];
 /**
@@ -81,7 +81,8 @@ var preload = function preload() {
 var file = "src/routes/_layout.svelte";
 
 function create_fragment(ctx) {
-  var main, current;
+  var main;
+  var current;
   var default_slot_template = ctx.$$slots.default;
   var default_slot = create_slot(default_slot_template, ctx, null);
   var block = {
@@ -91,14 +92,14 @@ function create_fragment(ctx) {
       this.h();
     },
     l: function claim(nodes) {
-      main = claim_element(nodes, "MAIN", {}, false);
+      main = claim_element(nodes, "MAIN", {});
       var main_nodes = children(main);
       if (default_slot) default_slot.l(main_nodes);
       main_nodes.forEach(detach_dev);
       this.h();
     },
     h: function hydrate() {
-      add_location(main, file, 204, 0, 26902);
+      add_location(main, file, 210, 0, 27696);
     },
     m: function mount(target, anchor) {
       insert_dev(target, main, anchor);
@@ -124,10 +125,7 @@ function create_fragment(ctx) {
       current = false;
     },
     d: function destroy(detaching) {
-      if (detaching) {
-        detach_dev(main);
-      }
-
+      if (detaching) detach_dev(main);
       if (default_slot) default_slot.d(detaching);
     }
   };
@@ -147,7 +145,7 @@ function instance($$self, $$props, $$invalidate) {
       $$scope = $$props.$$scope;
 
   $$self.$set = function ($$props) {
-    if ('$$scope' in $$props) $$invalidate('$$scope', $$scope = $$props.$$scope);
+    if ("$$scope" in $$props) $$invalidate("$$scope", $$scope = $$props.$$scope);
   };
 
   $$self.$capture_state = function () {
@@ -173,7 +171,7 @@ function (_SvelteComponentDev) {
     _classCallCheck(this, Layout);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Layout).call(this, options));
-    init(_assertThisInitialized(_this), options, instance, create_fragment, safe_not_equal, []);
+    init(_assertThisInitialized(_this), options, instance, create_fragment, safe_not_equal, {});
     dispatch_dev("SvelteRegisterComponent", {
       component: _assertThisInitialized(_this),
       tagName: "Layout",
@@ -190,9 +188,9 @@ var Error_1 = globals.Error;
 var file$1 = "src/routes/_error.svelte"; // (40:0) {#if dev && error.stack}
 
 function create_if_block(ctx) {
-  var pre,
-      t_value = ctx.error.stack + "",
-      t;
+  var pre;
+  var t_value = ctx.error.stack + "";
+  var t;
   var block = {
     c: function create() {
       pre = element("pre");
@@ -200,7 +198,7 @@ function create_if_block(ctx) {
       this.h();
     },
     l: function claim(nodes) {
-      pre = claim_element(nodes, "PRE", {}, false);
+      pre = claim_element(nodes, "PRE", {});
       var pre_nodes = children(pre);
       t = claim_text(pre_nodes, t_value);
       pre_nodes.forEach(detach_dev);
@@ -214,14 +212,10 @@ function create_if_block(ctx) {
       append_dev(pre, t);
     },
     p: function update(changed, ctx) {
-      if (changed.error && t_value !== (t_value = ctx.error.stack + "")) {
-        set_data_dev(t, t_value);
-      }
+      if (changed.error && t_value !== (t_value = ctx.error.stack + "")) set_data_dev(t, t_value);
     },
     d: function destroy(detaching) {
-      if (detaching) {
-        detach_dev(pre);
-      }
+      if (detaching) detach_dev(pre);
     }
   };
   dispatch_dev("SvelteRegisterBlock", {
@@ -235,16 +229,16 @@ function create_if_block(ctx) {
 }
 
 function create_fragment$1(ctx) {
-  var title_value,
-      t0,
-      h1,
-      t1,
-      t2,
-      p,
-      t3_value = ctx.error.message + "",
-      t3,
-      t4,
-      if_block_anchor;
+  var title_value;
+  var t0;
+  var h1;
+  var t1;
+  var t2;
+  var p;
+  var t3_value = ctx.error.message + "";
+  var t3;
+  var t4;
+  var if_block_anchor;
   document.title = title_value = ctx.status;
   var if_block = ctx.dev && ctx.error.stack && create_if_block(ctx);
   var block = {
@@ -264,14 +258,14 @@ function create_fragment$1(ctx) {
       t0 = claim_space(nodes);
       h1 = claim_element(nodes, "H1", {
         class: true
-      }, false);
+      });
       var h1_nodes = children(h1);
       t1 = claim_text(h1_nodes, ctx.status);
       h1_nodes.forEach(detach_dev);
       t2 = claim_space(nodes);
       p = claim_element(nodes, "P", {
         class: true
-      }, false);
+      });
       var p_nodes = children(p);
       t3 = claim_text(p_nodes, t3_value);
       p_nodes.forEach(detach_dev);
@@ -302,13 +296,8 @@ function create_fragment$1(ctx) {
         document.title = title_value;
       }
 
-      if (changed.status) {
-        set_data_dev(t1, ctx.status);
-      }
-
-      if (changed.error && t3_value !== (t3_value = ctx.error.message + "")) {
-        set_data_dev(t3, t3_value);
-      }
+      if (changed.status) set_data_dev(t1, ctx.status);
+      if (changed.error && t3_value !== (t3_value = ctx.error.message + "")) set_data_dev(t3, t3_value);
 
       if (ctx.dev && ctx.error.stack) {
         if (if_block) {
@@ -326,19 +315,13 @@ function create_fragment$1(ctx) {
     i: noop,
     o: noop,
     d: function destroy(detaching) {
-      if (detaching) {
-        detach_dev(t0);
-        detach_dev(h1);
-        detach_dev(t2);
-        detach_dev(p);
-        detach_dev(t4);
-      }
-
+      if (detaching) detach_dev(t0);
+      if (detaching) detach_dev(h1);
+      if (detaching) detach_dev(t2);
+      if (detaching) detach_dev(p);
+      if (detaching) detach_dev(t4);
       if (if_block) if_block.d(detaching);
-
-      if (detaching) {
-        detach_dev(if_block_anchor);
-      }
+      if (detaching) detach_dev(if_block_anchor);
     }
   };
   dispatch_dev("SvelteRegisterBlock", {
@@ -352,17 +335,17 @@ function create_fragment$1(ctx) {
 }
 
 function instance$1($$self, $$props, $$invalidate) {
-  var status = $$props.status,
-      error = $$props.error;
-  var dev = "development" === 'development';
-  var writable_props = ['status', 'error'];
+  var status = $$props.status;
+  var error = $$props.error;
+  var dev = "development" === "development";
+  var writable_props = ["status", "error"];
   Object.keys($$props).forEach(function (key) {
-    if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn("<Error> was created with unknown prop '".concat(key, "'"));
+    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Error> was created with unknown prop '".concat(key, "'"));
   });
 
   $$self.$set = function ($$props) {
-    if ('status' in $$props) $$invalidate('status', status = $$props.status);
-    if ('error' in $$props) $$invalidate('error', error = $$props.error);
+    if ("status" in $$props) $$invalidate("status", status = $$props.status);
+    if ("error" in $$props) $$invalidate("error", error = $$props.error);
   };
 
   $$self.$capture_state = function () {
@@ -373,8 +356,8 @@ function instance$1($$self, $$props, $$invalidate) {
   };
 
   $$self.$inject_state = function ($$props) {
-    if ('status' in $$props) $$invalidate('status', status = $$props.status);
-    if ('error' in $$props) $$invalidate('error', error = $$props.error);
+    if ("status" in $$props) $$invalidate("status", status = $$props.status);
+    if ("error" in $$props) $$invalidate("error", error = $$props.error);
   };
 
   return {
@@ -395,7 +378,10 @@ function (_SvelteComponentDev) {
     _classCallCheck(this, Error);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Error).call(this, options));
-    init(_assertThisInitialized(_this), options, instance$1, create_fragment$1, safe_not_equal, ["status", "error"]);
+    init(_assertThisInitialized(_this), options, instance$1, create_fragment$1, safe_not_equal, {
+      status: 0,
+      error: 0
+    });
     dispatch_dev("SvelteRegisterComponent", {
       component: _assertThisInitialized(_this),
       tagName: "Error",
@@ -405,11 +391,11 @@ function (_SvelteComponentDev) {
     var ctx = _this.$$.ctx;
     var props = options.props || {};
 
-    if (ctx.status === undefined && !('status' in props)) {
+    if (ctx.status === undefined && !("status" in props)) {
       console.warn("<Error> was created without expected prop 'status'");
     }
 
-    if (ctx.error === undefined && !('error' in props)) {
+    if (ctx.error === undefined && !("error" in props)) {
       console.warn("<Error> was created without expected prop 'error'");
     }
 
@@ -440,7 +426,8 @@ function (_SvelteComponentDev) {
 var Error_1$1 = globals.Error;
 
 function create_else_block(ctx) {
-  var switch_instance_anchor, current;
+  var switch_instance_anchor;
+  var current;
   var switch_instance_spread_levels = [ctx.level1.props];
   var switch_value = ctx.level1.component;
 
@@ -463,11 +450,11 @@ function create_else_block(ctx) {
 
   var block = {
     c: function create() {
-      if (switch_instance) switch_instance.$$.fragment.c();
+      if (switch_instance) create_component(switch_instance.$$.fragment);
       switch_instance_anchor = empty();
     },
     l: function claim(nodes) {
-      if (switch_instance) switch_instance.$$.fragment.l(nodes);
+      if (switch_instance) claim_component(switch_instance.$$.fragment, nodes);
       switch_instance_anchor = empty();
     },
     m: function mount(target, anchor) {
@@ -493,7 +480,7 @@ function create_else_block(ctx) {
 
         if (switch_value) {
           switch_instance = new switch_value(switch_props());
-          switch_instance.$$.fragment.c();
+          create_component(switch_instance.$$.fragment);
           transition_in(switch_instance.$$.fragment, 1);
           mount_component(switch_instance, switch_instance_anchor.parentNode, switch_instance_anchor);
         } else {
@@ -513,10 +500,7 @@ function create_else_block(ctx) {
       current = false;
     },
     d: function destroy(detaching) {
-      if (detaching) {
-        detach_dev(switch_instance_anchor);
-      }
-
+      if (detaching) detach_dev(switch_instance_anchor);
       if (switch_instance) destroy_component(switch_instance, detaching);
     }
   };
@@ -542,10 +526,10 @@ function create_if_block$1(ctx) {
   });
   var block = {
     c: function create() {
-      error_1.$$.fragment.c();
+      create_component(error_1.$$.fragment);
     },
     l: function claim(nodes) {
-      error_1.$$.fragment.l(nodes);
+      claim_component(error_1.$$.fragment, nodes);
     },
     m: function mount(target, anchor) {
       mount_component(error_1, target, anchor);
@@ -582,7 +566,10 @@ function create_if_block$1(ctx) {
 
 
 function create_default_slot(ctx) {
-  var current_block_type_index, if_block, if_block_anchor, current;
+  var current_block_type_index;
+  var if_block;
+  var if_block_anchor;
+  var current;
   var if_block_creators = [create_if_block$1, create_else_block];
   var if_blocks = [];
 
@@ -641,17 +628,14 @@ function create_default_slot(ctx) {
     },
     d: function destroy(detaching) {
       if_blocks[current_block_type_index].d(detaching);
-
-      if (detaching) {
-        detach_dev(if_block_anchor);
-      }
+      if (detaching) detach_dev(if_block_anchor);
     }
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
     id: create_default_slot.name,
     type: "slot",
-    source: "(18:0) <Layout segment=\"{segments[0]}\" {...level0.props}>",
+    source: "(18:0) <Layout segment=\\\"{segments[0]}\\\" {...level0.props}>",
     ctx: ctx
   });
   return block;
@@ -681,10 +665,10 @@ function create_fragment$2(ctx) {
   });
   var block = {
     c: function create() {
-      layout.$$.fragment.c();
+      create_component(layout.$$.fragment);
     },
     l: function claim(nodes) {
-      layout.$$.fragment.l(nodes);
+      claim_component(layout.$$.fragment, nodes);
     },
     m: function mount(target, anchor) {
       mount_component(layout, target, anchor);
@@ -694,10 +678,14 @@ function create_fragment$2(ctx) {
       var layout_changes = changed.segments || changed.level0 ? get_spread_update(layout_spread_levels, [changed.segments && {
         segment: ctx.segments[0]
       }, changed.level0 && get_spread_object(ctx.level0.props)]) : {};
-      if (changed.$$scope || changed.error || changed.status || changed.level1) layout_changes.$$scope = {
-        changed: changed,
-        ctx: ctx
-      };
+
+      if (changed.$$scope || changed.error || changed.status || changed.level1) {
+        layout_changes.$$scope = {
+          changed: changed,
+          ctx: ctx
+        };
+      }
+
       layout.$set(layout_changes);
     },
     i: function intro(local) {
@@ -724,26 +712,26 @@ function create_fragment$2(ctx) {
 }
 
 function instance$2($$self, $$props, $$invalidate) {
-  var stores = $$props.stores,
-      error = $$props.error,
-      status = $$props.status,
-      segments = $$props.segments,
-      level0 = $$props.level0,
-      _$$props$level = $$props.level1,
+  var stores = $$props.stores;
+  var error = $$props.error;
+  var status = $$props.status;
+  var segments = $$props.segments;
+  var level0 = $$props.level0;
+  var _$$props$level = $$props.level1,
       level1 = _$$props$level === void 0 ? null : _$$props$level;
   setContext(CONTEXT_KEY, stores);
-  var writable_props = ['stores', 'error', 'status', 'segments', 'level0', 'level1'];
+  var writable_props = ["stores", "error", "status", "segments", "level0", "level1"];
   Object.keys($$props).forEach(function (key) {
-    if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn("<App> was created with unknown prop '".concat(key, "'"));
+    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<App> was created with unknown prop '".concat(key, "'"));
   });
 
   $$self.$set = function ($$props) {
-    if ('stores' in $$props) $$invalidate('stores', stores = $$props.stores);
-    if ('error' in $$props) $$invalidate('error', error = $$props.error);
-    if ('status' in $$props) $$invalidate('status', status = $$props.status);
-    if ('segments' in $$props) $$invalidate('segments', segments = $$props.segments);
-    if ('level0' in $$props) $$invalidate('level0', level0 = $$props.level0);
-    if ('level1' in $$props) $$invalidate('level1', level1 = $$props.level1);
+    if ("stores" in $$props) $$invalidate("stores", stores = $$props.stores);
+    if ("error" in $$props) $$invalidate("error", error = $$props.error);
+    if ("status" in $$props) $$invalidate("status", status = $$props.status);
+    if ("segments" in $$props) $$invalidate("segments", segments = $$props.segments);
+    if ("level0" in $$props) $$invalidate("level0", level0 = $$props.level0);
+    if ("level1" in $$props) $$invalidate("level1", level1 = $$props.level1);
   };
 
   $$self.$capture_state = function () {
@@ -758,12 +746,12 @@ function instance$2($$self, $$props, $$invalidate) {
   };
 
   $$self.$inject_state = function ($$props) {
-    if ('stores' in $$props) $$invalidate('stores', stores = $$props.stores);
-    if ('error' in $$props) $$invalidate('error', error = $$props.error);
-    if ('status' in $$props) $$invalidate('status', status = $$props.status);
-    if ('segments' in $$props) $$invalidate('segments', segments = $$props.segments);
-    if ('level0' in $$props) $$invalidate('level0', level0 = $$props.level0);
-    if ('level1' in $$props) $$invalidate('level1', level1 = $$props.level1);
+    if ("stores" in $$props) $$invalidate("stores", stores = $$props.stores);
+    if ("error" in $$props) $$invalidate("error", error = $$props.error);
+    if ("status" in $$props) $$invalidate("status", status = $$props.status);
+    if ("segments" in $$props) $$invalidate("segments", segments = $$props.segments);
+    if ("level0" in $$props) $$invalidate("level0", level0 = $$props.level0);
+    if ("level1" in $$props) $$invalidate("level1", level1 = $$props.level1);
   };
 
   return {
@@ -787,7 +775,14 @@ function (_SvelteComponentDev) {
     _classCallCheck(this, App);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, options));
-    init(_assertThisInitialized(_this), options, instance$2, create_fragment$2, safe_not_equal, ["stores", "error", "status", "segments", "level0", "level1"]);
+    init(_assertThisInitialized(_this), options, instance$2, create_fragment$2, safe_not_equal, {
+      stores: 0,
+      error: 0,
+      status: 0,
+      segments: 0,
+      level0: 0,
+      level1: 0
+    });
     dispatch_dev("SvelteRegisterComponent", {
       component: _assertThisInitialized(_this),
       tagName: "App",
@@ -797,23 +792,23 @@ function (_SvelteComponentDev) {
     var ctx = _this.$$.ctx;
     var props = options.props || {};
 
-    if (ctx.stores === undefined && !('stores' in props)) {
+    if (ctx.stores === undefined && !("stores" in props)) {
       console.warn("<App> was created without expected prop 'stores'");
     }
 
-    if (ctx.error === undefined && !('error' in props)) {
+    if (ctx.error === undefined && !("error" in props)) {
       console.warn("<App> was created without expected prop 'error'");
     }
 
-    if (ctx.status === undefined && !('status' in props)) {
+    if (ctx.status === undefined && !("status" in props)) {
       console.warn("<App> was created without expected prop 'status'");
     }
 
-    if (ctx.segments === undefined && !('segments' in props)) {
+    if (ctx.segments === undefined && !("segments" in props)) {
       console.warn("<App> was created without expected prop 'segments'");
     }
 
-    if (ctx.level0 === undefined && !('level0' in props)) {
+    if (ctx.level0 === undefined && !("level0" in props)) {
       console.warn("<App> was created without expected prop 'level0'");
     }
 
@@ -877,9 +872,9 @@ function (_SvelteComponentDev) {
 var ignore = [/^\/([^\/]+?).json$/];
 var components = [{
   js: function js() {
-    return import('./index.9779321b.js');
+    return import('./index.6424a5ab.js');
   },
-  css: ["legacy/index.9779321b.css"]
+  css: ["legacy/index.6424a5ab.css"]
 }];
 var routes = [{
   // index.svelte
@@ -921,63 +916,53 @@ var stores = {
 };
 var $session;
 var session_dirty;
-stores.session.subscribe(
-/*#__PURE__*/
-function () {
-  var _ref = _asyncToGenerator(
-  /*#__PURE__*/
-  _regeneratorRuntime.mark(function _callee(value) {
-    var target, token, _ref2, redirect, props, branch;
+stores.session.subscribe(function _callee(value) {
+  var target, token, _ref, redirect, props, branch;
 
-    return _regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            $session = value;
+  return _regeneratorRuntime.async(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          $session = value;
 
-            if (ready) {
-              _context.next = 3;
-              break;
-            }
+          if (ready) {
+            _context.next = 3;
+            break;
+          }
 
-            return _context.abrupt("return");
+          return _context.abrupt("return");
 
-          case 3:
-            session_dirty = true;
-            target = select_target(new URL(location.href));
-            token = current_token = {};
-            _context.next = 8;
-            return hydrate_target(target);
+        case 3:
+          session_dirty = true;
+          target = select_target(new URL(location.href));
+          token = current_token = {};
+          _context.next = 8;
+          return _regeneratorRuntime.awrap(hydrate_target(target));
 
-          case 8:
-            _ref2 = _context.sent;
-            redirect = _ref2.redirect;
-            props = _ref2.props;
-            branch = _ref2.branch;
+        case 8:
+          _ref = _context.sent;
+          redirect = _ref.redirect;
+          props = _ref.props;
+          branch = _ref.branch;
 
-            if (!(token !== current_token)) {
-              _context.next = 14;
-              break;
-            }
+          if (!(token !== current_token)) {
+            _context.next = 14;
+            break;
+          }
 
-            return _context.abrupt("return");
+          return _context.abrupt("return");
 
-          case 14:
-            _context.next = 16;
-            return render(redirect, branch, props, target.page);
+        case 14:
+          _context.next = 16;
+          return _regeneratorRuntime.awrap(render(redirect, branch, props, target.page));
 
-          case 16:
-          case "end":
-            return _context.stop();
-        }
+        case 16:
+        case "end":
+          return _context.stop();
       }
-    }, _callee);
-  }));
-
-  return function (_x) {
-    return _ref.apply(this, arguments);
-  };
-}());
+    }
+  });
+});
 var prefetching = null;
 
 function set_prefetching(href, promise) {
@@ -1116,178 +1101,160 @@ function scroll_state() {
   };
 }
 
-function navigate(_x2, _x3, _x4, _x5) {
-  return _navigate.apply(this, arguments);
-}
+function navigate(target, id, noscroll, hash) {
+  var current_scroll, loaded, token, _ref2, redirect, props, branch, scroll, deep_linked;
 
-function _navigate() {
-  _navigate = _asyncToGenerator(
-  /*#__PURE__*/
-  _regeneratorRuntime.mark(function _callee2(target, id, noscroll, hash) {
-    var current_scroll, loaded, token, _ref3, redirect, props, branch, scroll, deep_linked;
-
-    return _regeneratorRuntime.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            if (id) {
-              // popstate or initial navigation
-              cid = id;
-            } else {
-              current_scroll = scroll_state(); // clicked on a link. preserve scroll state
-
-              scroll_history[cid] = current_scroll;
-              id = cid = ++uid;
-              scroll_history[cid] = noscroll ? current_scroll : {
-                x: 0,
-                y: 0
-              };
-            }
-
+  return _regeneratorRuntime.async(function navigate$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          if (id) {
+            // popstate or initial navigation
             cid = id;
-            if (root_component) stores.preloading.set(true);
-            loaded = prefetching && prefetching.href === target.href ? prefetching.promise : hydrate_target(target);
-            prefetching = null;
-            token = current_token = {};
-            _context2.next = 8;
-            return loaded;
+          } else {
+            current_scroll = scroll_state(); // clicked on a link. preserve scroll state
 
-          case 8:
-            _ref3 = _context2.sent;
-            redirect = _ref3.redirect;
-            props = _ref3.props;
-            branch = _ref3.branch;
+            scroll_history[cid] = current_scroll;
+            id = cid = ++uid;
+            scroll_history[cid] = noscroll ? current_scroll : {
+              x: 0,
+              y: 0
+            };
+          }
 
-            if (!(token !== current_token)) {
-              _context2.next = 14;
-              break;
-            }
+          cid = id;
+          if (root_component) stores.preloading.set(true);
+          loaded = prefetching && prefetching.href === target.href ? prefetching.promise : hydrate_target(target);
+          prefetching = null;
+          token = current_token = {};
+          _context2.next = 8;
+          return _regeneratorRuntime.awrap(loaded);
 
-            return _context2.abrupt("return");
+        case 8:
+          _ref2 = _context2.sent;
+          redirect = _ref2.redirect;
+          props = _ref2.props;
+          branch = _ref2.branch;
 
-          case 14:
-            _context2.next = 16;
-            return render(redirect, branch, props, target.page);
-
-          case 16:
-            if (document.activeElement) document.activeElement.blur();
-
-            if (!noscroll) {
-              scroll = scroll_history[id];
-
-              if (hash) {
-                // scroll is an element id (from a hash), we need to compute y.
-                deep_linked = document.getElementById(hash.slice(1));
-
-                if (deep_linked) {
-                  scroll = {
-                    x: 0,
-                    y: deep_linked.getBoundingClientRect().top
-                  };
-                }
-              }
-
-              scroll_history[cid] = scroll;
-              if (scroll) scrollTo(scroll.x, scroll.y);
-            }
-
-          case 18:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-  return _navigate.apply(this, arguments);
-}
-
-function render(_x6, _x7, _x8, _x9) {
-  return _render.apply(this, arguments);
-}
-
-function _render() {
-  _render = _asyncToGenerator(
-  /*#__PURE__*/
-  _regeneratorRuntime.mark(function _callee3(redirect, branch, props, page) {
-    var _start, end;
-
-    return _regeneratorRuntime.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            if (!redirect) {
-              _context3.next = 2;
-              break;
-            }
-
-            return _context3.abrupt("return", goto(redirect.location, {
-              replaceState: true
-            }));
-
-          case 2:
-            stores.page.set(page);
-            stores.preloading.set(false);
-
-            if (!root_component) {
-              _context3.next = 8;
-              break;
-            }
-
-            root_component.$set(props);
-            _context3.next = 17;
+          if (!(token !== current_token)) {
+            _context2.next = 14;
             break;
+          }
 
-          case 8:
-            props.stores = {
-              page: {
-                subscribe: stores.page.subscribe
-              },
-              preloading: {
-                subscribe: stores.preloading.subscribe
-              },
-              session: stores.session
-            };
-            _context3.next = 11;
-            return root_preloaded;
+          return _context2.abrupt("return");
 
-          case 11:
-            _context3.t0 = _context3.sent;
-            props.level0 = {
-              props: _context3.t0
-            };
-            // first load — remove SSR'd <head> contents
-            _start = document.querySelector('#sapper-head-start');
-            end = document.querySelector('#sapper-head-end');
+        case 14:
+          _context2.next = 16;
+          return _regeneratorRuntime.awrap(render(redirect, branch, props, target.page));
 
-            if (_start && end) {
-              while (_start.nextSibling !== end) {
-                detach(_start.nextSibling);
+        case 16:
+          if (document.activeElement) document.activeElement.blur();
+
+          if (!noscroll) {
+            scroll = scroll_history[id];
+
+            if (hash) {
+              // scroll is an element id (from a hash), we need to compute y.
+              deep_linked = document.getElementById(hash.slice(1));
+
+              if (deep_linked) {
+                scroll = {
+                  x: 0,
+                  y: deep_linked.getBoundingClientRect().top
+                };
               }
-
-              detach(_start);
-              detach(end);
             }
 
-            root_component = new App({
-              target: target,
-              props: props,
-              hydrate: true
-            });
+            scroll_history[cid] = scroll;
+            if (scroll) scrollTo(scroll.x, scroll.y);
+          }
 
-          case 17:
-            current_branch = branch;
-            current_query = JSON.stringify(page.query);
-            ready = true;
-            session_dirty = false;
-
-          case 21:
-          case "end":
-            return _context3.stop();
-        }
+        case 18:
+        case "end":
+          return _context2.stop();
       }
-    }, _callee3);
-  }));
-  return _render.apply(this, arguments);
+    }
+  });
+}
+
+function render(redirect, branch, props, page) {
+  var _start, end;
+
+  return _regeneratorRuntime.async(function render$(_context3) {
+    while (1) {
+      switch (_context3.prev = _context3.next) {
+        case 0:
+          if (!redirect) {
+            _context3.next = 2;
+            break;
+          }
+
+          return _context3.abrupt("return", goto(redirect.location, {
+            replaceState: true
+          }));
+
+        case 2:
+          stores.page.set(page);
+          stores.preloading.set(false);
+
+          if (!root_component) {
+            _context3.next = 8;
+            break;
+          }
+
+          root_component.$set(props);
+          _context3.next = 17;
+          break;
+
+        case 8:
+          props.stores = {
+            page: {
+              subscribe: stores.page.subscribe
+            },
+            preloading: {
+              subscribe: stores.preloading.subscribe
+            },
+            session: stores.session
+          };
+          _context3.next = 11;
+          return _regeneratorRuntime.awrap(root_preloaded);
+
+        case 11:
+          _context3.t0 = _context3.sent;
+          props.level0 = {
+            props: _context3.t0
+          };
+          // first load — remove SSR'd <head> contents
+          _start = document.querySelector('#sapper-head-start');
+          end = document.querySelector('#sapper-head-end');
+
+          if (_start && end) {
+            while (_start.nextSibling !== end) {
+              detach(_start.nextSibling);
+            }
+
+            detach(_start);
+            detach(end);
+          }
+
+          root_component = new App({
+            target: target,
+            props: props,
+            hydrate: true
+          });
+
+        case 17:
+          current_branch = branch;
+          current_query = JSON.stringify(page.query);
+          ready = true;
+          session_dirty = false;
+
+        case 21:
+        case "end":
+          return _context3.stop();
+      }
+    }
+  });
 }
 
 function part_changed(i, segment, match, stringified_query) {
@@ -1306,201 +1273,182 @@ function part_changed(i, segment, match, stringified_query) {
   }
 }
 
-function hydrate_target(_x10) {
-  return _hydrate_target.apply(this, arguments);
-}
+function hydrate_target(target) {
+  var route, page, segments, _redirect, props, preload_context, branch, l, stringified_query, match, segment_dirty;
 
-function _hydrate_target() {
-  _hydrate_target = _asyncToGenerator(
-  /*#__PURE__*/
-  _regeneratorRuntime.mark(function _callee5(target) {
-    var route, page, segments, _redirect, props, preload_context, branch, l, stringified_query, match, segment_dirty;
-
-    return _regeneratorRuntime.wrap(function _callee5$(_context5) {
-      while (1) {
-        switch (_context5.prev = _context5.next) {
-          case 0:
-            route = target.route, page = target.page;
-            segments = page.path.split('/').filter(Boolean);
-            _redirect = null;
-            props = {
-              error: null,
-              status: 200,
-              segments: [segments[0]]
-            };
-            preload_context = {
-              fetch: function (_fetch) {
-                function fetch(_x11, _x12) {
-                  return _fetch.apply(this, arguments);
-                }
-
-                fetch.toString = function () {
-                  return _fetch.toString();
-                };
-
-                return fetch;
-              }(function (url, opts) {
-                return fetch(url, opts);
-              }),
-              redirect: function redirect(statusCode, location) {
-                if (_redirect && (_redirect.statusCode !== statusCode || _redirect.location !== location)) {
-                  throw new Error("Conflicting redirects");
-                }
-
-                _redirect = {
-                  statusCode: statusCode,
-                  location: location
-                };
-              },
-              error: function error(status, _error) {
-                props.error = typeof _error === 'string' ? new Error(_error) : _error;
-                props.status = status;
+  return _regeneratorRuntime.async(function hydrate_target$(_context5) {
+    while (1) {
+      switch (_context5.prev = _context5.next) {
+        case 0:
+          route = target.route, page = target.page;
+          segments = page.path.split('/').filter(Boolean);
+          _redirect = null;
+          props = {
+            error: null,
+            status: 200,
+            segments: [segments[0]]
+          };
+          preload_context = {
+            fetch: function (_fetch) {
+              function fetch(_x, _x2) {
+                return _fetch.apply(this, arguments);
               }
-            };
 
-            if (!root_preloaded) {
-              root_preloaded = initial_data.preloaded[0] || preload.call(preload_context, {
-                host: page.host,
-                path: page.path,
-                query: page.query,
-                params: {}
-              }, $session);
-            }
-
-            l = 1;
-            _context5.prev = 7;
-            stringified_query = JSON.stringify(page.query);
-            match = route.pattern.exec(page.path);
-            segment_dirty = false;
-            _context5.next = 13;
-            return Promise.all(route.parts.map(
-            /*#__PURE__*/
-            function () {
-              var _ref4 = _asyncToGenerator(
-              /*#__PURE__*/
-              _regeneratorRuntime.mark(function _callee4(part, i) {
-                var segment, j, _ref5, component, preload, preloaded;
-
-                return _regeneratorRuntime.wrap(function _callee4$(_context4) {
-                  while (1) {
-                    switch (_context4.prev = _context4.next) {
-                      case 0:
-                        segment = segments[i];
-                        if (part_changed(i, segment, match, stringified_query)) segment_dirty = true;
-                        props.segments[l] = segments[i + 1]; // TODO make this less confusing
-
-                        if (part) {
-                          _context4.next = 5;
-                          break;
-                        }
-
-                        return _context4.abrupt("return", {
-                          segment: segment
-                        });
-
-                      case 5:
-                        j = l++;
-
-                        if (!(!session_dirty && !segment_dirty && current_branch[i] && current_branch[i].part === part.i)) {
-                          _context4.next = 8;
-                          break;
-                        }
-
-                        return _context4.abrupt("return", current_branch[i]);
-
-                      case 8:
-                        segment_dirty = false;
-                        _context4.next = 11;
-                        return load_component(components[part.i]);
-
-                      case 11:
-                        _ref5 = _context4.sent;
-                        component = _ref5.default;
-                        preload = _ref5.preload;
-
-                        if (!(ready || !initial_data.preloaded[i + 1])) {
-                          _context4.next = 25;
-                          break;
-                        }
-
-                        if (!preload) {
-                          _context4.next = 21;
-                          break;
-                        }
-
-                        _context4.next = 18;
-                        return preload.call(preload_context, {
-                          host: page.host,
-                          path: page.path,
-                          query: page.query,
-                          params: part.params ? part.params(target.match) : {}
-                        }, $session);
-
-                      case 18:
-                        _context4.t0 = _context4.sent;
-                        _context4.next = 22;
-                        break;
-
-                      case 21:
-                        _context4.t0 = {};
-
-                      case 22:
-                        preloaded = _context4.t0;
-                        _context4.next = 26;
-                        break;
-
-                      case 25:
-                        preloaded = initial_data.preloaded[i + 1];
-
-                      case 26:
-                        return _context4.abrupt("return", props["level".concat(j)] = {
-                          component: component,
-                          props: preloaded,
-                          segment: segment,
-                          match: match,
-                          part: part.i
-                        });
-
-                      case 27:
-                      case "end":
-                        return _context4.stop();
-                    }
-                  }
-                }, _callee4);
-              }));
-
-              return function (_x13, _x14) {
-                return _ref4.apply(this, arguments);
+              fetch.toString = function () {
+                return _fetch.toString();
               };
-            }()));
 
-          case 13:
-            branch = _context5.sent;
-            _context5.next = 21;
-            break;
+              return fetch;
+            }(function (url, opts) {
+              return fetch(url, opts);
+            }),
+            redirect: function redirect(statusCode, location) {
+              if (_redirect && (_redirect.statusCode !== statusCode || _redirect.location !== location)) {
+                throw new Error("Conflicting redirects");
+              }
 
-          case 16:
-            _context5.prev = 16;
-            _context5.t0 = _context5["catch"](7);
-            props.error = _context5.t0;
-            props.status = 500;
-            branch = [];
+              _redirect = {
+                statusCode: statusCode,
+                location: location
+              };
+            },
+            error: function error(status, _error) {
+              props.error = typeof _error === 'string' ? new Error(_error) : _error;
+              props.status = status;
+            }
+          };
 
-          case 21:
-            return _context5.abrupt("return", {
-              redirect: _redirect,
-              props: props,
-              branch: branch
+          if (!root_preloaded) {
+            root_preloaded = initial_data.preloaded[0] || preload.call(preload_context, {
+              host: page.host,
+              path: page.path,
+              query: page.query,
+              params: {}
+            }, $session);
+          }
+
+          l = 1;
+          _context5.prev = 7;
+          stringified_query = JSON.stringify(page.query);
+          match = route.pattern.exec(page.path);
+          segment_dirty = false;
+          _context5.next = 13;
+          return _regeneratorRuntime.awrap(Promise.all(route.parts.map(function _callee2(part, i) {
+            var segment, j, _ref3, component, preload, preloaded;
+
+            return _regeneratorRuntime.async(function _callee2$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    segment = segments[i];
+                    if (part_changed(i, segment, match, stringified_query)) segment_dirty = true;
+                    props.segments[l] = segments[i + 1]; // TODO make this less confusing
+
+                    if (part) {
+                      _context4.next = 5;
+                      break;
+                    }
+
+                    return _context4.abrupt("return", {
+                      segment: segment
+                    });
+
+                  case 5:
+                    j = l++;
+
+                    if (!(!session_dirty && !segment_dirty && current_branch[i] && current_branch[i].part === part.i)) {
+                      _context4.next = 8;
+                      break;
+                    }
+
+                    return _context4.abrupt("return", current_branch[i]);
+
+                  case 8:
+                    segment_dirty = false;
+                    _context4.next = 11;
+                    return _regeneratorRuntime.awrap(load_component(components[part.i]));
+
+                  case 11:
+                    _ref3 = _context4.sent;
+                    component = _ref3.default;
+                    preload = _ref3.preload;
+
+                    if (!(ready || !initial_data.preloaded[i + 1])) {
+                      _context4.next = 25;
+                      break;
+                    }
+
+                    if (!preload) {
+                      _context4.next = 21;
+                      break;
+                    }
+
+                    _context4.next = 18;
+                    return _regeneratorRuntime.awrap(preload.call(preload_context, {
+                      host: page.host,
+                      path: page.path,
+                      query: page.query,
+                      params: part.params ? part.params(target.match) : {}
+                    }, $session));
+
+                  case 18:
+                    _context4.t0 = _context4.sent;
+                    _context4.next = 22;
+                    break;
+
+                  case 21:
+                    _context4.t0 = {};
+
+                  case 22:
+                    preloaded = _context4.t0;
+                    _context4.next = 26;
+                    break;
+
+                  case 25:
+                    preloaded = initial_data.preloaded[i + 1];
+
+                  case 26:
+                    return _context4.abrupt("return", props["level".concat(j)] = {
+                      component: component,
+                      props: preloaded,
+                      segment: segment,
+                      match: match,
+                      part: part.i
+                    });
+
+                  case 27:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
             });
+          })));
 
-          case 22:
-          case "end":
-            return _context5.stop();
-        }
+        case 13:
+          branch = _context5.sent;
+          _context5.next = 21;
+          break;
+
+        case 16:
+          _context5.prev = 16;
+          _context5.t0 = _context5["catch"](7);
+          props.error = _context5.t0;
+          props.status = 500;
+          branch = [];
+
+        case 21:
+          return _context5.abrupt("return", {
+            redirect: _redirect,
+            props: props,
+            branch: branch
+          });
+
+        case 22:
+        case "end":
+          return _context5.stop();
       }
-    }, _callee5, null, [[7, 16]]);
-  }));
-  return _hydrate_target.apply(this, arguments);
+    }
+  }, null, null, [[7, 16]]);
 }
 
 function load_css(chunk) {
