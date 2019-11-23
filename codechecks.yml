@@ -19,4 +19,4 @@ checks:
       minScores:
         performance: 95
         accessibility: 95
-        best-practices: 90s
+        best-practices: 90
