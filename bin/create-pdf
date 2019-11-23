@@ -1,41 +1,44 @@
 #!/usr/bin/env node
 
-const childProcess = require('child_process');
-const path = require('path');
+const { spawn } = require('child_process');
 const puppeteer = require('puppeteer');
+const kill = require('tree-kill');
 
-const buildDir =
-  (process.argv[2] && process.argv[2].split('=')[1]) || '__sapper__/build';
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+const PORT = process.env.PORT || 3000;
+const PDF_PATH = 'static/tyom-semonov-cv.pdf';
 
 (async () => {
-  const serverProc = childProcess.fork(
-    path.resolve(`${buildDir}/server/server.js`),
-    [],
-    {
-      cwd: process.cwd(),
-      env: {
-        PORT: port,
-        NODE_ENV: 'production',
-        ...process.env,
-      },
+  const server = spawn('yarn', ['start'], {
+    env: {
+      PORT,
+      NODE_ENV: 'production',
+      ...process.env,
     },
-  );
+  });
 
-  try {
-    const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    });
-    const page = await browser.newPage();
-    await page.goto(`http://localhost:${port}`, {
-      waitUntil: 'networkidle2',
-    });
-    await page.pdf({ path: 'static/tyom-semonov-cv.pdf', format: 'A4' });
-    console.log('PDF generated!');
-    await browser.close();
-    serverProc.kill();
-  } catch (err) {
-    serverProc.kill();
-    console.log(err);
-  }
+  server.stdout.on('data', async data => {
+    console.log(`${data}`);
+    if (data.includes('Starting server')) {
+      try {
+        const browser = await puppeteer.launch({
+          args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
+        const page = await browser.newPage();
+        await page.goto(`http://localhost:${PORT}`, {
+          waitUntil: 'networkidle2',
+        });
+        await page.pdf({ path: PDF_PATH, format: 'A4' });
+        console.log('PDF generated!');
+        await browser.close();
+        kill(server.pid);
+      } catch (err) {
+        kill(server.pid);
+        console.log(err);
+      }
+    }
+  });
+
+  server.stderr.on('data', async data => {
+    console.log(`${data}`);
+  });
 })();
