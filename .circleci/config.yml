@@ -1,53 +1,60 @@
 version: 2
 
-jobs:
-  check-build:
+references:
+  container: &container
     docker:
       - image: circleci/node:10.17.0-browsers
-    working_directory: ~/app
+
+aliases:
+  - &restore_cache
+    restore_cache:
+      key: dep-cache-{{ checksum "package.json" }}
+  - &save_cache
+    save_cache:
+      key: dep-cache-{{ checksum "package.json" }}
+      paths:
+        - ./node_modules
+  - &install_dependencies
+    run:
+      name: Install project dependencies
+      command: yarn install --frozen-lockfile
+
+jobs:
+  build:
+    <<: *container
     steps:
       - checkout
-      - restore_cache:
-          key: dep-cache-{{ checksum "package.json" }}
-      - run:
-          name: Install project dependencies
-          command: yarn install
-      - save_cache:
-          key: dep-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
+      - *restore_cache
+      - *install_dependencies
+      - *save_cache
       - run:
           name: Lint source
           command: yarn lint
       - run:
+          name: Build app and generate PDF
+          command: yarn export
+      - run:
           name: CodeChecks
-          command: |
-            yarn export
-            yarn codechecks
+          command: yarn codechecks
+
   deploy:
-    docker:
-      - image: circleci/node:10.17.0-browsers
-    working_directory: ~/app
+    <<: *container
     steps:
       - add-ssh-keys:
           fingerprints:
             - "4e:cf:57:09:d4:79:0a:da:5e:61:a5:fc:97:bc:42:8e"
-      - checkout
-      - restore_cache:
-          key: dep-cache-{{ checksum "package.json" }}  -
-      - run:
-          name: Install project dependencies
-          command: yarn install
-      - run:
-          name: Build app and Storybook as static sites
-          command: yarn prepare-deploy
       - run:
           name: Update Git config
           command: |
             git config --global user.name "$GIT_USER_NAME"
             git config --global user.email "$GIT_USER_EMAIL"
-      - attach_workspace:
-          at: ~/app
+      - checkout
+      - *restore_cache
+      - *install_dependencies
+      - *save_cache
+      - run:
+          name: Build app and Storybook as static sites
+          command: yarn prepare-deploy
       - deploy:
           name: Deploy project
           command: |
@@ -64,7 +71,7 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - check-build:
+      - build:
           filters:
             branches:
               ignore:
