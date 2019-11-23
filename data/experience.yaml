@@ -121,7 +121,7 @@
     - CSS Modules
     - Git
 
-- name: Department for International Trade (DIT)
+- name: Department for International Trade
   role: Senior Frontend Developer
   isContractor: true
   start:
@@ -240,7 +240,7 @@
     - Git/GitHub
     - Jenkins
 
-- name: UK Ministry of Justice
+- name: Ministry of Justice
   role: Developer
   isContractor: true
   start:

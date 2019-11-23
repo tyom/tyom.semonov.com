@@ -124,7 +124,7 @@
     <div class="role">
       {role}
       {#if isContractor}
-        <span class="type">Contractor</span>
+        <span class="type">Contract</span>
       {/if}
     </div>
   </header>
