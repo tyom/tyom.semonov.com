@@ -5254,7 +5254,7 @@ function create_if_block_2$1(ctx) {
   var block = {
     c: function create() {
       span = element("span");
-      t = text("Contractor");
+      t = text("Contract");
       this.h();
     },
     l: function claim(nodes) {
@@ -5262,7 +5262,7 @@ function create_if_block_2$1(ctx) {
         class: true
       });
       var span_nodes = children(span);
-      t = claim_text(span_nodes, "Contractor");
+      t = claim_text(span_nodes, "Contract");
       span_nodes.forEach(detach_dev);
       this.h();
     },
@@ -5306,7 +5306,7 @@ function create_if_block_1$2(ctx) {
     },
     h: function hydrate() {
       attr_dev(div, "class", "description svelte-k6e3h4");
-      add_location(div, file$5, 138, 4, 6328);
+      add_location(div, file$5, 138, 4, 6326);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div, anchor);
@@ -5370,9 +5370,9 @@ function create_if_block$4(ctx) {
     },
     h: function hydrate() {
       attr_dev(h4, "class", "svelte-k6e3h4");
-      add_location(h4, file$5, 144, 6, 6446);
+      add_location(h4, file$5, 144, 6, 6444);
       attr_dev(footer, "class", "svelte-k6e3h4");
-      add_location(footer, file$5, 143, 4, 6431);
+      add_location(footer, file$5, 143, 4, 6429);
     },
     m: function mount(target, anchor) {
       insert_dev(target, footer, anchor);
