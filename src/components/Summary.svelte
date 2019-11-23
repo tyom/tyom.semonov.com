@@ -10,7 +10,6 @@
   export let name = '[Name]';
   export let title = '[Title]';
   export let details = '[Details]';
-  export let description;
   export let contact;
   export let social;
   export let coreSkills;
@@ -243,11 +242,6 @@
 
     .download {
       display: none;
-    }
-
-    .social a {
-      display: block;
-      margin: 0.5em 0;
     }
 
     .icon {
