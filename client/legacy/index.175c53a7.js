@@ -8325,7 +8325,7 @@ function get_each_context_1$3(ctx, list, i) {
   var child_ctx = Object_1$3.create(ctx);
   child_ctx.experience = list[i];
   return child_ctx;
-} // (163:6) {#if intersectionNodes}
+} // (164:6) {#if intersectionNodes}
 
 
 function create_if_block$7(ctx) {
@@ -8371,11 +8371,11 @@ function create_if_block$7(ctx) {
     block: block,
     id: create_if_block$7.name,
     type: "if",
-    source: "(163:6) {#if intersectionNodes}",
+    source: "(164:6) {#if intersectionNodes}",
     ctx: ctx
   });
   return block;
-} // (167:4) {#each linkedExperienceItems as experience}
+} // (168:4) {#each linkedExperienceItems as experience}
 
 
 function create_each_block_1$3(ctx) {
@@ -8423,11 +8423,11 @@ function create_each_block_1$3(ctx) {
     block: block,
     id: create_each_block_1$3.name,
     type: "each",
-    source: "(167:4) {#each linkedExperienceItems as experience}",
+    source: "(168:4) {#each linkedExperienceItems as experience}",
     ctx: ctx
   });
   return block;
-} // (175:4) {#each educationItems as experience}
+} // (176:4) {#each educationItems as experience}
 
 
 function create_each_block$4(ctx) {
@@ -8475,7 +8475,7 @@ function create_each_block$4(ctx) {
     block: block,
     id: create_each_block$4.name,
     type: "each",
-    source: "(175:4) {#each educationItems as experience}",
+    source: "(176:4) {#each educationItems as experience}",
     ctx: ctx
   });
   return block;
@@ -8748,67 +8748,67 @@ function create_fragment$d(ctx) {
       attr_dev(meta0, "name", "description");
       attr_dev(meta0, "content", meta0_content_value = ctx.about.description);
       attr_dev(meta0, "class", "svelte-1sxja35");
-      add_location(meta0, file$c, 139, 2, 7088);
+      add_location(meta0, file$c, 140, 2, 7118);
       attr_dev(meta1, "property", "og:type");
       attr_dev(meta1, "content", "website");
       attr_dev(meta1, "class", "svelte-1sxja35");
-      add_location(meta1, file$c, 141, 2, 7179);
+      add_location(meta1, file$c, 142, 2, 7209);
       attr_dev(meta2, "property", "og:url");
       attr_dev(meta2, "content", "https://tyom.semonov.com/");
       attr_dev(meta2, "class", "svelte-1sxja35");
-      add_location(meta2, file$c, 142, 2, 7227);
+      add_location(meta2, file$c, 143, 2, 7257);
       attr_dev(meta3, "property", "og:title");
       attr_dev(meta3, "content", meta3_content_value = "" + (ctx.about.name + " - " + ctx.about.title + ": CV"));
       attr_dev(meta3, "class", "svelte-1sxja35");
-      add_location(meta3, file$c, 143, 2, 7292);
+      add_location(meta3, file$c, 144, 2, 7322);
       attr_dev(meta4, "property", "og:description");
       attr_dev(meta4, "content", meta4_content_value = ctx.about.description);
       attr_dev(meta4, "class", "svelte-1sxja35");
-      add_location(meta4, file$c, 144, 2, 7366);
+      add_location(meta4, file$c, 145, 2, 7396);
       attr_dev(meta5, "property", "og:image");
       attr_dev(meta5, "content", "https://tyom.semonov.com/logo.png");
       attr_dev(meta5, "class", "svelte-1sxja35");
-      add_location(meta5, file$c, 145, 2, 7431);
+      add_location(meta5, file$c, 146, 2, 7461);
       attr_dev(meta6, "property", "twitter:card");
       attr_dev(meta6, "content", "summary_large_image");
       attr_dev(meta6, "class", "svelte-1sxja35");
-      add_location(meta6, file$c, 147, 2, 7525);
+      add_location(meta6, file$c, 148, 2, 7555);
       attr_dev(meta7, "property", "twitter:url");
       attr_dev(meta7, "content", "https://tyom.semonov.com/");
       attr_dev(meta7, "class", "svelte-1sxja35");
-      add_location(meta7, file$c, 148, 2, 7590);
+      add_location(meta7, file$c, 149, 2, 7620);
       attr_dev(meta8, "property", "twitter:title");
       attr_dev(meta8, "content", meta8_content_value = "" + (ctx.about.name + " - " + ctx.about.title + ": CV"));
       attr_dev(meta8, "class", "svelte-1sxja35");
-      add_location(meta8, file$c, 149, 2, 7660);
+      add_location(meta8, file$c, 150, 2, 7690);
       attr_dev(meta9, "property", "twitter:description");
       attr_dev(meta9, "content", meta9_content_value = ctx.about.description);
       attr_dev(meta9, "class", "svelte-1sxja35");
-      add_location(meta9, file$c, 150, 2, 7739);
+      add_location(meta9, file$c, 151, 2, 7769);
       attr_dev(meta10, "property", "twitter:image");
       attr_dev(meta10, "content", "https://tyom.semonov.com/logo.png");
       attr_dev(meta10, "class", "svelte-1sxja35");
-      add_location(meta10, file$c, 151, 2, 7809);
+      add_location(meta10, file$c, 152, 2, 7839);
       attr_dev(aside, "class", "svelte-1sxja35");
-      add_location(aside, file$c, 154, 0, 7903);
+      add_location(aside, file$c, 155, 0, 7933);
       attr_dev(h20, "class", "svelte-1sxja35");
-      add_location(h20, file$c, 161, 6, 8054);
+      add_location(h20, file$c, 162, 6, 8084);
       attr_dev(header0, "class", "svelte-1sxja35");
-      add_location(header0, file$c, 160, 4, 8039);
+      add_location(header0, file$c, 161, 4, 8069);
       attr_dev(section0, "class", "experience svelte-1sxja35");
-      add_location(section0, file$c, 159, 2, 8006);
+      add_location(section0, file$c, 160, 2, 8036);
       attr_dev(h21, "class", "svelte-1sxja35");
-      add_location(h21, file$c, 172, 6, 8359);
+      add_location(h21, file$c, 173, 6, 8389);
       attr_dev(header1, "class", "svelte-1sxja35");
-      add_location(header1, file$c, 171, 4, 8344);
+      add_location(header1, file$c, 172, 4, 8374);
       attr_dev(section1, "class", "education svelte-1sxja35");
-      add_location(section1, file$c, 170, 2, 8312);
+      add_location(section1, file$c, 171, 2, 8342);
       attr_dev(br, "class", "svelte-1sxja35");
-      add_location(br, file$c, 182, 4, 8623);
+      add_location(br, file$c, 183, 4, 8653);
       attr_dev(p, "class", "u-print-only print-details-info svelte-1sxja35");
-      add_location(p, file$c, 179, 2, 8502);
+      add_location(p, file$c, 180, 2, 8532);
       attr_dev(article, "class", "content svelte-1sxja35");
-      add_location(article, file$c, 158, 0, 7978);
+      add_location(article, file$c, 159, 0, 8008);
     },
     m: function mount(target, anchor) {
       append_dev(document_1.head, meta0);
@@ -9096,6 +9096,7 @@ function instance$d($$self, $$props, $$invalidate) {
     coreSkills: coreSkills,
     currentInterests: currentInterests
   });
+  delete summary.description;
   var linkedExperienceItems = experienceItems.map(function (item) {
     return Object.assign({}, item, {
       technologies: buildList(item.technologies, defLinker)
