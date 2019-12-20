@@ -30,4 +30,8 @@ jobs:
         run: yarn lint
 
       - name: Build app and generate PDF
-        run: yarn export
+        run: |
+          yarn export
+          npx codechecks
+        env:
+          CC_SECRET: ${{ secrets.CC_SECRET }}
