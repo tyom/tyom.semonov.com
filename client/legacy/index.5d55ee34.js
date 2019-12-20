@@ -40,16 +40,14 @@ function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
 }
 
-function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
-
 function _typeof(obj) {
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
     _typeof = function _typeof(obj) {
-      return _typeof2(obj);
+      return typeof obj;
     };
   } else {
     _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
     };
   }
 
@@ -790,6 +788,42 @@ try {
 
 var regenerator = runtime_1;
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
 function _getPrototypeOf(o) {
   _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
@@ -956,21 +990,6 @@ function _toConsumableArray(arr) {
   return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
 }
 
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -1039,19 +1058,36 @@ function safe_not_equal(a, b) {
   return a != a ? b == b : a !== b || a && _typeof(a) === 'object' || typeof a === 'function';
 }
 
-function create_slot(definition, ctx, fn) {
+function create_slot(definition, ctx, $$scope, fn) {
   if (definition) {
-    var slot_ctx = get_slot_context(definition, ctx, fn);
+    var slot_ctx = get_slot_context(definition, ctx, $$scope, fn);
     return definition[0](slot_ctx);
   }
 }
 
-function get_slot_context(definition, ctx, fn) {
-  return definition[1] ? assign({}, assign(ctx.$$scope.ctx, definition[1](fn ? fn(ctx) : {}))) : ctx.$$scope.ctx;
+function get_slot_context(definition, ctx, $$scope, fn) {
+  return definition[1] && fn ? assign($$scope.ctx.slice(), definition[1](fn(ctx))) : $$scope.ctx;
 }
 
-function get_slot_changes(definition, ctx, changed, fn) {
-  return definition[1] ? assign({}, assign(ctx.$$scope.changed || {}, definition[1](fn ? fn(changed) : {}))) : ctx.$$scope.changed || {};
+function get_slot_changes(definition, $$scope, dirty, fn) {
+  if (definition[2] && fn) {
+    var lets = definition[2](fn(dirty));
+
+    if (_typeof($$scope.dirty) === 'object') {
+      var merged = [];
+      var len = Math.max($$scope.dirty.length, lets.length);
+
+      for (var i = 0; i < len; i += 1) {
+        merged[i] = $$scope.dirty[i] | lets[i];
+      }
+
+      return merged;
+    }
+
+    return $$scope.dirty | lets;
+  }
+
+  return $$scope.dirty;
 }
 
 function exclude_internal_props(props) {
@@ -1075,30 +1111,31 @@ var raf = is_client ? function (cb) {
 } : noop; // used internally for testing
 
 var tasks = new Set();
-var running = false;
 
-function run_tasks() {
+function run_tasks(now) {
   tasks.forEach(function (task) {
-    if (!task[0](now())) {
+    if (!task.c(now)) {
       tasks.delete(task);
-      task[1]();
+      task.f();
     }
   });
-  running = tasks.size > 0;
-  if (running) raf(run_tasks);
+  if (tasks.size !== 0) raf(run_tasks);
 }
+/**
+ * Creates a new task that runs on each raf frame
+ * until it returns a falsy value or is aborted
+ */
 
-function loop(fn) {
+
+function loop(callback) {
   var task;
-
-  if (!running) {
-    running = true;
-    raf(run_tasks);
-  }
-
+  if (tasks.size === 0) raf(run_tasks);
   return {
-    promise: new Promise(function (fulfil) {
-      tasks.add(task = [fn, fulfil]);
+    promise: new Promise(function (fulfill) {
+      tasks.add(task = {
+        c: callback,
+        f: fulfill
+      });
     }),
     abort: function abort() {
       tasks.delete(task);
@@ -1358,10 +1395,11 @@ function flush() {
 
 function update($$) {
   if ($$.fragment !== null) {
-    $$.update($$.dirty);
+    $$.update();
     run_all($$.before_update);
-    $$.fragment && $$.fragment.p($$.dirty, $$.ctx);
-    $$.dirty = null;
+    var dirty = $$.dirty;
+    $$.dirty = [-1];
+    $$.fragment && $$.fragment.p($$.ctx, dirty);
     $$.after_update.forEach(add_render_callback);
   }
 }
@@ -1639,21 +1677,22 @@ function destroy_component(component, detaching) {
     // preserve final state?)
 
     $$.on_destroy = $$.fragment = null;
-    $$.ctx = {};
+    $$.ctx = [];
   }
 }
 
-function make_dirty(component, key) {
-  if (!component.$$.dirty) {
+function make_dirty(component, i) {
+  if (component.$$.dirty[0] === -1) {
     dirty_components.push(component);
     schedule_update();
-    component.$$.dirty = blank_object();
+    component.$$.dirty.fill(0);
   }
 
-  component.$$.dirty[key] = true;
+  component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
 }
 
 function init(component, options, instance, create_fragment, not_equal, props) {
+  var dirty = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : [-1];
   var parent_component = current_component;
   set_current_component(component);
   var prop_values = options.props || {};
@@ -1673,19 +1712,19 @@ function init(component, options, instance, create_fragment, not_equal, props) {
     context: new Map(parent_component ? parent_component.$$.context : []),
     // everything else
     callbacks: blank_object(),
-    dirty: null
+    dirty: dirty
   };
   var ready = false;
-  $$.ctx = instance ? instance(component, prop_values, function (key, ret) {
+  $$.ctx = instance ? instance(component, prop_values, function (i, ret) {
     var value = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ret;
 
-    if ($$.ctx && not_equal($$.ctx[key], $$.ctx[key] = value)) {
-      if ($$.bound[key]) $$.bound[key](value);
-      if (ready) make_dirty(component, key);
+    if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+      if ($$.bound[i]) $$.bound[i](value);
+      if (ready) make_dirty(component, i);
     }
 
     return ret;
-  }) : prop_values;
+  }) : [];
   $$.update();
   ready = true;
   run_all($$.before_update); // `false` as a special case of no DOM component
@@ -1905,4 +1944,4 @@ function (_SvelteComponent) {
   return SvelteComponentDev;
 }(SvelteComponent);
 
-export { onDestroy as $, empty as A, claim_space as B, attr_dev as C, assign as D, create_component as E, claim_component as F, mount_component as G, get_spread_update as H, get_spread_object as I, destroy_component as J, setContext as K, group_outros as L, check_outros as M, regenerator as N, _slicedToArray as O, _typeof as P, svg_element as Q, _defineProperty as R, SvelteComponentDev as S, exclude_internal_props as T, listen as U, is_function as V, destroy_each as W, toggle_class as X, identity as Y, onMount as Z, _inherits as _, _classCallCheck as a, add_render_callback as a0, create_bidirectional_transition as a1, set_style as a2, listen_dev as a3, _toConsumableArray as a4, binding_callbacks as a5, _possibleConstructorReturn as b, _getPrototypeOf as c, _assertThisInitialized as d, dispatch_dev as e, create_slot as f, element as g, claim_element as h, init as i, children as j, detach_dev as k, add_location as l, insert_dev as m, noop as n, get_slot_changes as o, get_slot_context as p, transition_out as q, _createClass as r, safe_not_equal as s, transition_in as t, globals as u, text as v, claim_text as w, append_dev as x, set_data_dev as y, space as z };
+export { onDestroy as $, space as A, empty as B, claim_space as C, attr_dev as D, assign as E, create_component as F, claim_component as G, mount_component as H, get_spread_update as I, get_spread_object as J, destroy_component as K, setContext as L, group_outros as M, check_outros as N, _asyncToGenerator as O, regenerator as P, _typeof as Q, svg_element as R, SvelteComponentDev as S, exclude_internal_props as T, listen as U, is_function as V, destroy_each as W, toggle_class as X, identity as Y, onMount as Z, _inherits as _, _classCallCheck as a, add_render_callback as a0, create_bidirectional_transition as a1, set_style as a2, listen_dev as a3, _toConsumableArray as a4, binding_callbacks as a5, _possibleConstructorReturn as b, _getPrototypeOf as c, _assertThisInitialized as d, dispatch_dev as e, create_slot as f, element as g, claim_element as h, init as i, children as j, detach_dev as k, add_location as l, insert_dev as m, noop as n, _slicedToArray as o, get_slot_context as p, get_slot_changes as q, transition_out as r, safe_not_equal as s, transition_in as t, _createClass as u, globals as v, text as w, claim_text as x, append_dev as y, set_data_dev as z };
