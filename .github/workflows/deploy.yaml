@@ -29,6 +29,9 @@ jobs:
         run: |
           yarn prepare-deploy
           echo tyom.semonov.com > dist/CNAME
+          npx codechecks
+        env:
+          CC_SECRET: ${{ secrets.CC_SECRET }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2
