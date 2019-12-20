@@ -8,7 +8,7 @@ GH Pages with [gh-pages](https://github.com/tschaub/gh-pages) package.
 
 The site is automatically built and deployed with CircleCI on commit to master.  
 
-[![CircleCI](https://circleci.com/gh/tyom/tyom.semonov.com/tree/master.svg?style=svg)](https://circleci.com/gh/tyom/tyom.semonov.com/tree/master)
+[![CircleCI](https://github.com/tyom/tyom.semonov.com/workflows/Deploy%20to%20GH%20Pages/badge.svg)](https://github.com/tyom/tyom.semonov.com/actions?query=workflow%3A%22Deploy+to+GH+Pages%22)
 
 ## Result
 
