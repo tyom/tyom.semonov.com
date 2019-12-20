@@ -17,6 +17,6 @@ checks:
     options:
       buildPath: ./__sapper__/export
       minScores:
-        performance: 95
+        performance: 93
         accessibility: 95
         best-practices: 90
