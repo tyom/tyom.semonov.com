@@ -29,10 +29,10 @@ jobs:
       - name: Lint source
         run: yarn lint
 
-      - name: Set up CodeChecks
+      - name: Build app and generate PDF
+        run: yarn export
+
+      - name: CodeChecks
         run: npx codechecks
         env:
           CC_SECRET: ${{ secrets.CC_SECRET }}
-
-      - name: Build app and generate PDF
-        run: yarn export
