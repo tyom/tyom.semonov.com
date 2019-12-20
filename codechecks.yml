@@ -12,7 +12,7 @@ checks:
         - path: './__sapper__/export/client/*.js'
           maxSize: 95KB
         - path: './__sapper__/export/client/legacy/*'
-          maxSize: 400KB
+          maxSize: 420KB
   - name: lighthouse-keeper
     options:
       buildPath: ./__sapper__/export
