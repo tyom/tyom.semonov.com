@@ -8,7 +8,7 @@ GH Pages with [gh-pages](https://github.com/tschaub/gh-pages) package.
 
 The site is automatically built and deployed with GitHub workflow on commit to master.  
 
-[![GH Workflow Status](https://github.com/tyom/tyom.semonov.com/workflows/Deploy%20to%20GH%20Pages/badge.svg)](https://github.com/tyom/tyom.semonov.com/actions?query=workflow%3A%22Deploy+to+GH+Pages%22)
+[![GH Workflow Status](https://github.com/tyom/tyom.semonov.com/workflows/Deployer/badge.svg)](https://github.com/tyom/tyom.semonov.com/actions?query=workflow%3ADeployer)
 
 ## Result
 
