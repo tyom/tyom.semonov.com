@@ -32,7 +32,17 @@ jobs:
       - name: Build app and generate PDF
         run: yarn export
 
+      - name: Deploy to Now
+        run: |
+          DEPLOYMENT_URL=$(npx now -t ${NOW_TOKEN} __sapper__/export/ --name tyom-cv-commit)
+          echo "::set-env name=DEPLOYMENT_URL::$DEPLOYMENT_URL"
+        env:
+          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
+
       - name: CodeChecks
-        run: npx codechecks
+        run: |
+          npx wait-on $DEPLOYMENT_URL
+          npx envsub codechecks.yml
+          npx codechecks
         env:
           CC_SECRET: ${{ secrets.CC_SECRET }}

@@ -15,7 +15,7 @@ checks:
           maxSize: 420KB
   - name: lighthouse-keeper
     options:
-      buildPath: ./__sapper__/export
+      url: ${DEPLOYMENT_URL} # set in GitHub workflow by Now CLI
       minScores:
         performance: 93
         accessibility: 95
