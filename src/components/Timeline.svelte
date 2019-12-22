@@ -137,7 +137,7 @@
     top: -1px;
     bottom: -1px;
     margin: auto;
-    color: #999;
+    color: #666;
     font-weight: bold;
     background: #fff;
     padding: 1px 4px;

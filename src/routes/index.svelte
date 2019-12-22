@@ -49,7 +49,7 @@
   h2 {
     font-size: 1.2em;
     margin: 0 0 2em;
-    color: #888;
+    color: #666;
     text-transform: uppercase;
     letter-spacing: 1px;
     page-break-inside: avoid;
