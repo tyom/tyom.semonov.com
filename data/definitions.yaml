@@ -251,3 +251,6 @@
 - name: Web Components
   url: https://developer.mozilla.org/en-US/docs/Web/Web_Components
   wikipedia: Web_Components
+- name: WebDriver.io
+  url: https://webdriver.io/
+  wikipedia: Selenium_(software)#Selenium_WebDriver
