@@ -19,6 +19,8 @@
   export let isDefunct = false;
   export let isContractor = false;
   export let technologies = [];
+
+  const duration = periodDuration(start, end);
 </script>
 
 <style>
@@ -109,8 +111,11 @@
   class:u-print-hidden={shouldHideFromPrint()}>
   <header>
     <div class="period">
-      {start.month} {start.year} - {end.month} {end.year}
-      <span class="duration">({periodDuration(start, end)})</span>
+      {start.month} {start.year} -
+      {#if end.year}{end.month} {end.year}{:else}present{/if}
+      {#if duration}
+        <span class="duration">({duration})</span>
+      {/if}
       {#if location}
         <span class="location">({location})</span>
       {/if}

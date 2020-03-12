@@ -24,9 +24,9 @@ export function getNumberOfMonthsBetweenDates(fromDate, toDate) {
   const startDate = new Date(
     `${fromDate.year}-${pad(months.indexOf(fromDate.month))}`,
   );
-  const endDate = new Date(
-    `${toDate.year}-${pad(months.indexOf(toDate.month))}`,
-  );
+  const endDate = toDate
+    ? new Date(toDate && `${toDate.year}-${pad(months.indexOf(toDate.month))}`)
+    : new Date();
 
   return (
     endDate.getMonth() -

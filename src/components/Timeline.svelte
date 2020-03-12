@@ -24,7 +24,9 @@
     0,
   );
   const firstDate = events[events.length - 1].start;
-  const lastDate = events[0].end;
+  const lastDate = events[0].end ? events[0].end : {
+    year: new Date().getFullYear(),
+  };
   const scaledEvents = eventsWithMonthLength.map(event =>
     Object.assign({}, event, {
       percent: (100 / totalTimelineInMonths) * event.monthLength,
@@ -161,7 +163,8 @@
   <div
     class="timeline"
     transition:fade={{ duration: 200 }}
-    bind:this={containerEl}>
+    bind:this={containerEl}
+  >
     <div class="end-year">{lastDate.year}</div>
     <div class="events">
       {#each timelineEvents as event}
