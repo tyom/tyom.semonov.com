@@ -20,7 +20,7 @@ export async function tooltip(node, { text, url, resultProp }) {
     el.style.opacity = '0';
 
     if (!tooltipText && url) {
-      const result = await fetch(url).then(res => res.json());
+      const result = await fetch(url).then((res) => res.json());
       tooltipText = resultProp ? result[resultProp] : result;
     }
 

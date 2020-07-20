@@ -20,7 +20,7 @@ export function getNumberOfMonthsBetweenDates(fromDate, toDate) {
     'December',
   ];
 
-  const pad = num => ('00' + num).slice(-2);
+  const pad = (num) => ('00' + num).slice(-2);
   const startDate = new Date(
     `${fromDate.year}-${pad(months.indexOf(fromDate.month))}`,
   );
@@ -54,8 +54,8 @@ export function periodDuration(fromDate, toDate) {
     .join(', ');
 }
 
-export function buildList(list = [], linkerFn = item => [{ name: item }]) {
-  return list.map(item => {
+export function buildList(list = [], linkerFn = (item) => [{ name: item }]) {
+  return list.map((item) => {
     const result = { name: item, links: linkerFn(item) };
 
     if (isPlainObject(item)) {
@@ -71,12 +71,12 @@ export function buildList(list = [], linkerFn = item => [{ name: item }]) {
 export function createDefinitionFinder(definitions = []) {
   const separatorRe = /\s?,|\/\s?/;
 
-  const define = term =>
-    definitions.find(d => term.match(new RegExp(`^${d.name}$`, 'i'))) || {
+  const define = (term) =>
+    definitions.find((d) => term.match(new RegExp(`^${d.name}$`, 'i'))) || {
       name: term,
     };
 
-  const processWikipediaLink = item => {
+  const processWikipediaLink = (item) => {
     const result = Object.assign({}, item);
     if (result.wikipedia) {
       result.wikipedia = `https://en.wikipedia.org/api/rest_v1/page/summary/${item.wikipedia}`;
@@ -86,10 +86,7 @@ export function createDefinitionFinder(definitions = []) {
 
   return function findDefinition(term) {
     if (typeof term === 'string') {
-      return term
-        .split(separatorRe)
-        .map(define)
-        .map(processWikipediaLink);
+      return term.split(separatorRe).map(define).map(processWikipediaLink);
     }
 
     const containerName = term.name || Object.keys(term)[0];

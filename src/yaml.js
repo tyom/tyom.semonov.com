@@ -7,11 +7,11 @@ const md = new MarkdownIt({
 
 const MarkdownYamlType = new yaml.Type('!md', {
   kind: 'scalar',
-  construct: string => md.render(string),
+  construct: (string) => md.render(string),
 });
 const InlineMarkdownYamlType = new yaml.Type('!imd', {
   kind: 'scalar',
-  construct: string => md.renderInline(string),
+  construct: (string) => md.renderInline(string),
 });
 
 const YAML_SCHEMA = yaml.Schema.create([

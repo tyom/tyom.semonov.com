@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint . --ignore-path=.gitignore",
     "dev": "sapper dev",
     "build": "sapper build --legacy",
     "start": "node __sapper__/build",
