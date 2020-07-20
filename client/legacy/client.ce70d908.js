@@ -3,10 +3,7 @@ function _arrayWithHoles(arr) {
 }
 
 function _iterableToArrayLimit(arr, i) {
-  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
-    return;
-  }
-
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
   var _arr = [];
   var _n = true;
   var _d = false;
@@ -32,12 +29,31 @@ function _iterableToArrayLimit(arr, i) {
   return _arr;
 }
 
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
 function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
 function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
 
 function _typeof(obj) {
@@ -842,22 +858,6 @@ function _get(target, property, receiver) {
   return _get(target, property, receiver || target);
 }
 
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return _assertThisInitialized(self);
-}
-
 function _setPrototypeOf(o, p) {
   _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
     o.__proto__ = p;
@@ -882,26 +882,36 @@ function _inherits(subClass, superClass) {
   if (superClass) _setPrototypeOf(subClass, superClass);
 }
 
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
-      arr2[i] = arr[i];
-    }
-
-    return arr2;
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
+
+  return self;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
 }
 
 function _iterableToArray(iter) {
-  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
 }
 
 function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
 function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
 
 function _classCallCheck(instance, Constructor) {
@@ -925,6 +935,10 @@ function _createClass(Constructor, protoProps, staticProps) {
   if (staticProps) _defineProperties(Constructor, staticProps);
   return Constructor;
 }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function noop() {}
 
@@ -1006,6 +1020,15 @@ function get_slot_changes(definition, $$scope, dirty, fn) {
   }
 
   return $$scope.dirty;
+}
+
+function update_slot(slot, slot_definition, ctx, $$scope, dirty, get_slot_changes_fn, get_slot_context_fn) {
+  var slot_changes = get_slot_changes(slot_definition, $$scope, dirty, get_slot_changes_fn);
+
+  if (slot_changes) {
+    var slot_context = get_slot_context(slot_definition, ctx, $$scope, get_slot_context_fn);
+    slot.p(slot_context, slot_changes);
+  }
 }
 
 function exclude_internal_props(props) {
@@ -1124,15 +1147,18 @@ function claim_element(nodes, name, attributes, svg) {
 
     if (node.nodeName === name) {
       var j = 0;
+      var remove = [];
 
       while (j < node.attributes.length) {
-        var attribute = node.attributes[j];
+        var attribute = node.attributes[j++];
 
-        if (attributes[attribute.name]) {
-          j++;
-        } else {
-          node.removeAttribute(attribute.name);
+        if (!attributes[attribute.name]) {
+          remove.push(attribute.name);
         }
+      }
+
+      for (var k = 0; k < remove.length; k++) {
+        node.removeAttribute(remove[k]);
       }
 
       return nodes.splice(i, 1)[0];
@@ -1178,9 +1204,8 @@ function query_selector_all(selector) {
   return Array.from(parent.querySelectorAll(selector));
 }
 
-var stylesheet;
-var active = 0;
-var current_rules = {}; // https://github.com/darkskyapp/string-hash/blob/master/index.js
+var active_docs = new Set();
+var active = 0; // https://github.com/darkskyapp/string-hash/blob/master/index.js
 
 function hash(str) {
   var hash = 5381;
@@ -1205,14 +1230,12 @@ function create_rule(node, a, b, duration, delay, ease, fn) {
 
   var rule = keyframes + "100% {".concat(fn(b, 1 - b), "}\n}");
   var name = "__svelte_".concat(hash(rule), "_").concat(uid);
+  var doc = node.ownerDocument;
+  active_docs.add(doc);
+  var stylesheet = doc.__svelte_stylesheet || (doc.__svelte_stylesheet = doc.head.appendChild(element('style')).sheet);
+  var current_rules = doc.__svelte_rules || (doc.__svelte_rules = {});
 
   if (!current_rules[name]) {
-    if (!stylesheet) {
-      var style = element('style');
-      document.head.appendChild(style);
-      stylesheet = style.sheet;
-    }
-
     current_rules[name] = true;
     stylesheet.insertRule("@keyframes ".concat(name, " ").concat(rule), stylesheet.cssRules.length);
   }
@@ -1224,26 +1247,37 @@ function create_rule(node, a, b, duration, delay, ease, fn) {
 }
 
 function delete_rule(node, name) {
-  node.style.animation = (node.style.animation || '').split(', ').filter(name ? function (anim) {
+  var previous = (node.style.animation || '').split(', ');
+  var next = previous.filter(name ? function (anim) {
     return anim.indexOf(name) < 0;
   } // remove specific animation
   : function (anim) {
     return anim.indexOf('__svelte') === -1;
   } // remove all Svelte animations
-  ).join(', ');
-  if (name && ! --active) clear_rules();
+  );
+  var deleted = previous.length - next.length;
+
+  if (deleted) {
+    node.style.animation = next.join(', ');
+    active -= deleted;
+    if (!active) clear_rules();
+  }
 }
 
 function clear_rules() {
   raf(function () {
     if (active) return;
-    var i = stylesheet.cssRules.length;
+    active_docs.forEach(function (doc) {
+      var stylesheet = doc.__svelte_stylesheet;
+      var i = stylesheet.cssRules.length;
 
-    while (i--) {
-      stylesheet.deleteRule(i);
-    }
+      while (i--) {
+        stylesheet.deleteRule(i);
+      }
 
-    current_rules = {};
+      doc.__svelte_rules = {};
+    });
+    active_docs.clear();
   });
 }
 
@@ -1260,6 +1294,10 @@ function get_current_component() {
 
 function onMount(fn) {
   get_current_component().$$.on_mount.push(fn);
+}
+
+function afterUpdate(fn) {
+  get_current_component().$$.after_update.push(fn);
 }
 
 function onDestroy(fn) {
@@ -1533,7 +1571,7 @@ function create_bidirectional_transition(node, fn, params, intro) {
   };
 }
 
-var globals = typeof window !== 'undefined' ? window : global;
+var globals = typeof window !== 'undefined' ? window : typeof globalThis !== 'undefined' ? globalThis : global;
 
 function get_spread_update(levels, updates) {
   var update = {};
@@ -1675,8 +1713,10 @@ function init(component, options, instance, create_fragment, not_equal, props) {
 
   if (options.target) {
     if (options.hydrate) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      $$.fragment && $$.fragment.l(children(options.target));
+      var nodes = children(options.target); // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
+      $$.fragment && $$.fragment.l(nodes);
+      nodes.forEach(detach);
     } else {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       $$.fragment && $$.fragment.c();
@@ -1722,7 +1762,7 @@ var SvelteComponent = /*#__PURE__*/function () {
 
 function dispatch_dev(type, detail) {
   document.dispatchEvent(custom_event(type, Object.assign({
-    version: '3.19.2'
+    version: '3.24.0'
   }, detail)));
 }
 
@@ -1786,7 +1826,7 @@ function attr_dev(node, attribute, value) {
 
 function set_data_dev(text, data) {
   data = '' + data;
-  if (text.data === data) return;
+  if (text.wholeText === data) return;
   dispatch_dev("SvelteDOMSetData", {
     node: text,
     data: data
@@ -1819,6 +1859,8 @@ function validate_slots(name, slot, keys) {
 var SvelteComponentDev = /*#__PURE__*/function (_SvelteComponent) {
   _inherits(SvelteComponentDev, _SvelteComponent);
 
+  var _super2 = _createSuper(SvelteComponentDev);
+
   function SvelteComponentDev(options) {
     _classCallCheck(this, SvelteComponentDev);
 
@@ -1826,7 +1868,7 @@ var SvelteComponentDev = /*#__PURE__*/function (_SvelteComponent) {
       throw new Error("'target' is a required option");
     }
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SvelteComponentDev).call(this));
+    return _super2.call(this);
   }
 
   _createClass(SvelteComponentDev, [{
@@ -1927,6 +1969,9 @@ var preload = function preload() {
   return {};
 };
 
+function _createSuper$1(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$1(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 var file = "src/routes/_layout.svelte";
 
 function create_fragment(ctx) {
@@ -1952,7 +1997,7 @@ function create_fragment(ctx) {
       this.h();
     },
     h: function hydrate() {
-      add_location(main, file, 204, 0, 26977);
+      add_location(main, file, 203, 0, 3826);
     },
     m: function mount(target, anchor) {
       insert_dev(target, main, anchor);
@@ -1967,14 +2012,14 @@ function create_fragment(ctx) {
       var _ref2 = _slicedToArray(_ref, 1),
           dirty = _ref2[0];
 
-      if (default_slot && default_slot.p && dirty &
-      /*$$scope*/
-      1) {
-        default_slot.p(get_slot_context(default_slot_template, ctx,
+      if (default_slot) {
+        if (default_slot.p && dirty &
         /*$$scope*/
-        ctx[0], null), get_slot_changes(default_slot_template,
-        /*$$scope*/
-        ctx[0], dirty, null));
+        1) {
+          update_slot(default_slot, default_slot_template, ctx,
+          /*$$scope*/
+          ctx[0], dirty, null, null);
+        }
       }
     },
     i: function intro(local) {
@@ -2021,12 +2066,14 @@ function instance($$self, $$props, $$invalidate) {
 var Layout = /*#__PURE__*/function (_SvelteComponentDev) {
   _inherits(Layout, _SvelteComponentDev);
 
+  var _super = _createSuper$1(Layout);
+
   function Layout(options) {
     var _this;
 
     _classCallCheck(this, Layout);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Layout).call(this, options));
+    _this = _super.call(this, options);
     init(_assertThisInitialized(_this), options, instance, create_fragment, safe_not_equal, {});
     dispatch_dev("SvelteRegisterComponent", {
       component: _assertThisInitialized(_this),
@@ -2040,8 +2087,11 @@ var Layout = /*#__PURE__*/function (_SvelteComponentDev) {
   return Layout;
 }(SvelteComponentDev);
 
+function _createSuper$2(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$2(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 var Error_1 = globals.Error;
-var file$1 = "src/routes/_error.svelte"; // (40:0) {#if dev && error.stack}
+var file$1 = "src/routes/_error.svelte"; // (38:0) {#if dev && error.stack}
 
 function create_if_block(ctx) {
   var pre;
@@ -2063,7 +2113,7 @@ function create_if_block(ctx) {
       this.h();
     },
     h: function hydrate() {
-      add_location(pre, file$1, 40, 2, 1205);
+      add_location(pre, file$1, 38, 2, 440);
     },
     m: function mount(target, anchor) {
       insert_dev(target, pre, anchor);
@@ -2084,7 +2134,7 @@ function create_if_block(ctx) {
     block: block,
     id: create_if_block.name,
     type: "if",
-    source: "(40:0) {#if dev && error.stack}",
+    source: "(38:0) {#if dev && error.stack}",
     ctx: ctx
   });
   return block;
@@ -2151,10 +2201,10 @@ function create_fragment$1(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(h1, "class", "svelte-16emfy8");
-      add_location(h1, file$1, 35, 0, 1135);
-      attr_dev(p, "class", "svelte-16emfy8");
-      add_location(p, file$1, 37, 0, 1154);
+      attr_dev(h1, "class", "svelte-wbznm3");
+      add_location(h1, file$1, 33, 0, 370);
+      attr_dev(p, "class", "svelte-wbznm3");
+      add_location(p, file$1, 35, 0, 389);
     },
     m: function mount(target, anchor) {
       insert_dev(target, t0, anchor);
@@ -2270,12 +2320,14 @@ function instance$1($$self, $$props, $$invalidate) {
 var Error$1 = /*#__PURE__*/function (_SvelteComponentDev) {
   _inherits(Error, _SvelteComponentDev);
 
+  var _super = _createSuper$2(Error);
+
   function Error(options) {
     var _this;
 
     _classCallCheck(this, Error);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Error).call(this, options));
+    _this = _super.call(this, options);
     init(_assertThisInitialized(_this), options, instance$1, create_fragment$1, safe_not_equal, {
       status: 0,
       error: 1
@@ -2325,9 +2377,13 @@ var Error$1 = /*#__PURE__*/function (_SvelteComponentDev) {
   return Error;
 }(SvelteComponentDev);
 
+function _createSuper$3(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct$3(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 var Error_1$1 = globals.Error;
 
 function create_else_block(ctx) {
+  var switch_instance;
   var switch_instance_anchor;
   var current;
   var switch_instance_spread_levels = [
@@ -2351,7 +2407,7 @@ function create_else_block(ctx) {
   }
 
   if (switch_value) {
-    var switch_instance = new switch_value(switch_props());
+    switch_instance = new switch_value(switch_props());
   }
 
   var block = {
@@ -2420,16 +2476,17 @@ function create_else_block(ctx) {
     block: block,
     id: create_else_block.name,
     type: "else",
-    source: "(21:1) {:else}",
+    source: "(23:1) {:else}",
     ctx: ctx
   });
   return block;
-} // (19:1) {#if error}
+} // (21:1) {#if error}
 
 
 function create_if_block$1(ctx) {
+  var error_1;
   var current;
-  var error_1 = new Error$1({
+  error_1 = new Error$1({
     props: {
       error:
       /*error*/
@@ -2482,11 +2539,11 @@ function create_if_block$1(ctx) {
     block: block,
     id: create_if_block$1.name,
     type: "if",
-    source: "(19:1) {#if error}",
+    source: "(21:1) {#if error}",
     ctx: ctx
   });
   return block;
-} // (18:0) <Layout segment="{segments[0]}" {...level0.props}>
+} // (20:0) <Layout segment="{segments[0]}" {...level0.props}>
 
 
 function create_default_slot(ctx) {
@@ -2561,13 +2618,14 @@ function create_default_slot(ctx) {
     block: block,
     id: create_default_slot.name,
     type: "slot",
-    source: "(18:0) <Layout segment=\\\"{segments[0]}\\\" {...level0.props}>",
+    source: "(20:0) <Layout segment=\\\"{segments[0]}\\\" {...level0.props}>",
     ctx: ctx
   });
   return block;
 }
 
 function create_fragment$2(ctx) {
+  var layout;
   var current;
   var layout_spread_levels = [{
     segment:
@@ -2589,7 +2647,7 @@ function create_fragment$2(ctx) {
     layout_props = assign(layout_props, layout_spread_levels[i]);
   }
 
-  var layout = new Layout({
+  layout = new Layout({
     props: layout_props,
     $$inline: true
   });
@@ -2624,7 +2682,7 @@ function create_fragment$2(ctx) {
 
       if (dirty &
       /*$$scope, error, status, level1*/
-      83) {
+      147) {
         layout_changes.$$scope = {
           dirty: dirty,
           ctx: ctx
@@ -2664,8 +2722,10 @@ function instance$2($$self, $$props, $$invalidate) {
   var level0 = $$props.level0;
   var _$$props$level = $$props.level1,
       level1 = _$$props$level === void 0 ? null : _$$props$level;
+  var notify = $$props.notify;
+  afterUpdate(notify);
   setContext(CONTEXT_KEY, stores);
-  var writable_props = ["stores", "error", "status", "segments", "level0", "level1"];
+  var writable_props = ["stores", "error", "status", "segments", "level0", "level1", "notify"];
   Object.keys($$props).forEach(function (key) {
     if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<App> was created with unknown prop '".concat(key, "'"));
   });
@@ -2681,11 +2741,13 @@ function instance$2($$self, $$props, $$invalidate) {
     if ("segments" in $$props) $$invalidate(2, segments = $$props.segments);
     if ("level0" in $$props) $$invalidate(3, level0 = $$props.level0);
     if ("level1" in $$props) $$invalidate(4, level1 = $$props.level1);
+    if ("notify" in $$props) $$invalidate(6, notify = $$props.notify);
   };
 
   $$self.$capture_state = function () {
     return {
       setContext: setContext,
+      afterUpdate: afterUpdate,
       CONTEXT_KEY: CONTEXT_KEY,
       Layout: Layout,
       Error: Error$1,
@@ -2694,7 +2756,8 @@ function instance$2($$self, $$props, $$invalidate) {
       status: status,
       segments: segments,
       level0: level0,
-      level1: level1
+      level1: level1,
+      notify: notify
     };
   };
 
@@ -2705,31 +2768,35 @@ function instance$2($$self, $$props, $$invalidate) {
     if ("segments" in $$props) $$invalidate(2, segments = $$props.segments);
     if ("level0" in $$props) $$invalidate(3, level0 = $$props.level0);
     if ("level1" in $$props) $$invalidate(4, level1 = $$props.level1);
+    if ("notify" in $$props) $$invalidate(6, notify = $$props.notify);
   };
 
   if ($$props && "$$inject" in $$props) {
     $$self.$inject_state($$props.$$inject);
   }
 
-  return [error, status, segments, level0, level1, stores];
+  return [error, status, segments, level0, level1, stores, notify];
 }
 
 var App = /*#__PURE__*/function (_SvelteComponentDev) {
   _inherits(App, _SvelteComponentDev);
+
+  var _super = _createSuper$3(App);
 
   function App(options) {
     var _this;
 
     _classCallCheck(this, App);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, options));
+    _this = _super.call(this, options);
     init(_assertThisInitialized(_this), options, instance$2, create_fragment$2, safe_not_equal, {
       stores: 5,
       error: 0,
       status: 1,
       segments: 2,
       level0: 3,
-      level1: 4
+      level1: 4,
+      notify: 6
     });
     dispatch_dev("SvelteRegisterComponent", {
       component: _assertThisInitialized(_this),
@@ -2768,6 +2835,12 @@ var App = /*#__PURE__*/function (_SvelteComponentDev) {
     /*level0*/
     ctx[3] === undefined && !("level0" in props)) {
       console.warn("<App> was created without expected prop 'level0'");
+    }
+
+    if (
+    /*notify*/
+    ctx[6] === undefined && !("notify" in props)) {
+      console.warn("<App> was created without expected prop 'notify'");
     }
 
     return _this;
@@ -2821,16 +2894,24 @@ var App = /*#__PURE__*/function (_SvelteComponentDev) {
     set: function set(value) {
       throw new Error_1$1("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     }
+  }, {
+    key: "notify",
+    get: function get() {
+      throw new Error_1$1("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    },
+    set: function set(value) {
+      throw new Error_1$1("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    }
   }]);
 
   return App;
 }(SvelteComponentDev);
 
 // This file is generated by Sapper — do not edit it!
-var ignore = [/^\/([^\/]+?).json$/];
+var ignore = [/^\/([^\/]+?)\.json$/];
 var components = [{
   js: function js() {
-    return import('./index.132abc36.js');
+    return import('./index.21c8d7d5.js');
   },
   css: []
 }];
@@ -2859,6 +2940,40 @@ function goto(href) {
   location.href = href;
   return new Promise(function (f) {}); // never resolves
 }
+/** Callback to inform of a value updates. */
+
+
+function page_store(value) {
+  var store = writable(value);
+  var ready = true;
+
+  function notify() {
+    ready = true;
+    store.update(function (val) {
+      return val;
+    });
+  }
+
+  function set(new_value) {
+    ready = false;
+    store.set(new_value);
+  }
+
+  function subscribe(run) {
+    var old_value;
+    return store.subscribe(function (value) {
+      if (old_value === undefined || ready && value !== old_value) {
+        run(old_value = value);
+      }
+    });
+  }
+
+  return {
+    notify: notify,
+    set: set,
+    subscribe: subscribe
+  };
+}
 
 var initial_data = typeof __SAPPER__ !== 'undefined' && __SAPPER__;
 var ready = false;
@@ -2868,7 +2983,7 @@ var root_preloaded;
 var current_branch = [];
 var current_query = '{}';
 var stores = {
-  page: writable({}),
+  page: page_store({}),
   preloading: writable(null),
   session: writable(initial_data && initial_data.session)
 };
@@ -2876,7 +2991,7 @@ var $session;
 var session_dirty;
 stores.session.subscribe( /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee(value) {
-    var target, token, _ref2, redirect, props, branch;
+    var target, token, _yield$hydrate_target, redirect, props, branch;
 
     return regenerator.wrap(function _callee$(_context) {
       while (1) {
@@ -2899,10 +3014,10 @@ stores.session.subscribe( /*#__PURE__*/function () {
             return hydrate_target(target);
 
           case 8:
-            _ref2 = _context.sent;
-            redirect = _ref2.redirect;
-            props = _ref2.props;
-            branch = _ref2.branch;
+            _yield$hydrate_target = _context.sent;
+            redirect = _yield$hydrate_target.redirect;
+            props = _yield$hydrate_target.props;
+            branch = _yield$hydrate_target.branch;
 
             if (!(token !== current_token)) {
               _context.next = 14;
@@ -3071,7 +3186,7 @@ function navigate(_x2, _x3, _x4, _x5) {
 
 function _navigate() {
   _navigate = _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee2(target, id, noscroll, hash) {
-    var current_scroll, loaded, token, _ref3, redirect, props, branch, scroll, deep_linked;
+    var current_scroll, loaded, token, _yield$loaded, redirect, props, branch, scroll, deep_linked;
 
     return regenerator.wrap(function _callee2$(_context2) {
       while (1) {
@@ -3100,10 +3215,10 @@ function _navigate() {
             return loaded;
 
           case 8:
-            _ref3 = _context2.sent;
-            redirect = _ref3.redirect;
-            props = _ref3.props;
-            branch = _ref3.branch;
+            _yield$loaded = _context2.sent;
+            redirect = _yield$loaded.redirect;
+            props = _yield$loaded.props;
+            branch = _yield$loaded.branch;
 
             if (!(token !== current_token)) {
               _context2.next = 14;
@@ -3129,7 +3244,7 @@ function _navigate() {
                 if (deep_linked) {
                   scroll = {
                     x: 0,
-                    y: deep_linked.getBoundingClientRect().top
+                    y: deep_linked.getBoundingClientRect().top + scrollY
                   };
                 }
               }
@@ -3179,7 +3294,7 @@ function _render() {
             }
 
             root_component.$set(props);
-            _context3.next = 17;
+            _context3.next = 18;
             break;
 
           case 8:
@@ -3200,7 +3315,8 @@ function _render() {
             props.level0 = {
               props: _context3.t0
             };
-            // first load — remove SSR'd <head> contents
+            props.notify = stores.page.notify; // first load — remove SSR'd <head> contents
+
             _start = document.querySelector('#sapper-head-start');
             end = document.querySelector('#sapper-head-end');
 
@@ -3219,13 +3335,13 @@ function _render() {
               hydrate: true
             });
 
-          case 17:
+          case 18:
             current_branch = branch;
             current_query = JSON.stringify(page.query);
             ready = true;
             session_dirty = false;
 
-          case 21:
+          case 22:
           case "end":
             return _context3.stop();
         }
@@ -3317,8 +3433,8 @@ function _hydrate_target() {
             segment_dirty = false;
             _context5.next = 13;
             return Promise.all(route.parts.map( /*#__PURE__*/function () {
-              var _ref4 = _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee4(part, i) {
-                var segment, j, _ref5, component, preload, preloaded;
+              var _ref2 = _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee4(part, i) {
+                var segment, j, _yield$load_component, component, preload, preloaded;
 
                 return regenerator.wrap(function _callee4$(_context4) {
                   while (1) {
@@ -3353,9 +3469,9 @@ function _hydrate_target() {
                         return load_component(components[part.i]);
 
                       case 11:
-                        _ref5 = _context4.sent;
-                        component = _ref5.default;
-                        preload = _ref5.preload;
+                        _yield$load_component = _context4.sent;
+                        component = _yield$load_component.default;
+                        preload = _yield$load_component.preload;
 
                         if (!(ready || !initial_data.preloaded[i + 1])) {
                           _context4.next = 25;
@@ -3409,7 +3525,7 @@ function _hydrate_target() {
               }));
 
               return function (_x13, _x14) {
-                return _ref4.apply(this, arguments);
+                return _ref2.apply(this, arguments);
               };
             }()));
 
@@ -3488,8 +3604,19 @@ function prefetch(href) {
 function start(opts) {
   if ('scrollRestoration' in _history) {
     _history.scrollRestoration = 'manual';
-  }
+  } // Adopted from Nuxt.js
+  // Reset scrollRestoration to auto when leaving page, allowing page reload
+  // and back-navigation from other pages to use the browser to restore the
+  // scrolling position.
 
+
+  addEventListener('beforeunload', function () {
+    _history.scrollRestoration = 'auto';
+  }); // Setting scrollRestoration to manual again when returning to this page.
+
+  addEventListener('load', function () {
+    _history.scrollRestoration = 'manual';
+  });
   set_target(opts.target);
   addEventListener('click', handle_click);
   addEventListener('popstate', handle_popstate); // prefetch
@@ -3626,4 +3753,4 @@ start({
   target: document.querySelector('#container')
 });
 
-export { identity as $, transition_in as A, transition_out as B, assign as C, exclude_internal_props as D, create_component as E, claim_component as F, mount_component as G, get_spread_update as H, get_spread_object as I, destroy_component as J, _asyncToGenerator as K, regenerator as L, listen as M, element as N, action_destroyer as O, is_function as P, validate_each_argument as Q, globals as R, SvelteComponentDev as S, group_outros as T, check_outros as U, destroy_each as V, noop as W, space as X, claim_space as Y, toggle_class as Z, _typeof as _, _slicedToArray as a, onMount as a0, onDestroy as a1, add_render_callback as a2, create_bidirectional_transition as a3, set_style as a4, listen_dev as a5, run_all as a6, _toConsumableArray as a7, binding_callbacks as a8, query_selector_all as a9, _inherits as b, _classCallCheck as c, _possibleConstructorReturn as d, _getPrototypeOf as e, _assertThisInitialized as f, dispatch_dev as g, _createClass as h, init as i, create_slot as j, svg_element as k, claim_element as l, children as m, claim_text as n, detach_dev as o, add_location as p, insert_dev as q, append_dev as r, safe_not_equal as s, text as t, set_data_dev as u, validate_slots as v, empty as w, attr_dev as x, get_slot_context as y, get_slot_changes as z };
+export { onMount as $, transition_out as A, assign as B, exclude_internal_props as C, create_component as D, claim_component as E, mount_component as F, get_spread_update as G, get_spread_object as H, destroy_component as I, _asyncToGenerator as J, regenerator as K, listen as L, element as M, action_destroyer as N, is_function as O, validate_each_argument as P, globals as Q, group_outros as R, SvelteComponentDev as S, check_outros as T, destroy_each as U, noop as V, space as W, claim_space as X, toggle_class as Y, identity as Z, _typeof as _, _slicedToArray as a, onDestroy as a0, add_render_callback as a1, create_bidirectional_transition as a2, set_style as a3, listen_dev as a4, run_all as a5, _toConsumableArray as a6, binding_callbacks as a7, query_selector_all as a8, _inherits as b, _getPrototypeOf as c, _possibleConstructorReturn as d, _classCallCheck as e, _assertThisInitialized as f, dispatch_dev as g, _createClass as h, init as i, create_slot as j, svg_element as k, claim_element as l, children as m, claim_text as n, detach_dev as o, add_location as p, insert_dev as q, append_dev as r, safe_not_equal as s, text as t, set_data_dev as u, validate_slots as v, empty as w, attr_dev as x, update_slot as y, transition_in as z };
