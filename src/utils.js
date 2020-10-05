@@ -1,4 +1,4 @@
-import isPlainObject from 'is-plain-object';
+import { isPlainObject } from 'is-plain-object';
 
 const renderPluralisedLabel = (label, num) =>
   num > 0 ? `${num} ${label}` + (num === 1 ? '' : 's') : '';
