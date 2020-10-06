@@ -35,6 +35,10 @@ p + p {
   margin-top: 1em;
 }
 
+* + ul {
+  margin-top: 0.5em;
+}
+
 a {
   text-decoration: underline;
   color: inherit;
@@ -53,6 +57,13 @@ hr {
   width: 3em;
   display: block;
   margin: 2rem 0;
+}
+
+.divided::before {
+  content: none;
+}
+.divided + .divided::before {
+  content: '';
 }
 
 .visually-hidden {

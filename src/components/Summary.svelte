@@ -273,7 +273,8 @@
     </div>
   {/if}
   {#if social || pdfLink}
-    <footer class="divided">
+    <hr>
+    <footer>
       <div class="footer-layout">
         {#if social}
           <div class="social-links footer-layout">

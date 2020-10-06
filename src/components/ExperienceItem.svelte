@@ -31,14 +31,6 @@
     position: relative;
   }
 
-  .experience-item::before {
-    content: none;
-  }
-
-  .experience-item + .experience-item::before {
-    content: '';
-  }
-
   h4 {
     margin: 1.1em 0 0.5em;
     font-size: 1em;

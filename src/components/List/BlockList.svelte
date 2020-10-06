@@ -7,10 +7,6 @@
 </script>
 
 <style>
-  * + ul {
-    margin-top: 0.5em;
-  }
-
   ul {
     padding-left: 1.1em;
     margin: 0;
