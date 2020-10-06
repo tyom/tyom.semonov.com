@@ -32,16 +32,15 @@ coreSkills:
   - CSS/PostCSS/Sass
   - Node.js
   - Webpack/Rollup
-  - Express/Polka
-  - React/Preact
+  - Express
+  - React/Preact/Next.js
   - HTML5
   - Accessibility
   - Git/GitHub
-  - Photoshop/Illustrator/Sketch
 
 currentInterests:
   - Functional Programming
-  - Node.js/Microservices/API
-  - React/Preact/Redux
+  - Node.js/Microservices
+  - React/Preact
   - Vue.js
   - Svelte

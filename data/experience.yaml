@@ -1,19 +1,35 @@
 - name: The Economist
-  role: Senior Frontend Developer
+  role: Senior Software Engineer
   isContractor: true
   start:
     month: November
     year: 2019
+  end:
+    month: October
+    year: 2020
   description: !md |
-    Working in a team responsible for delivery of new feature and maintenance of
-    the main public site www.economist.com.
+    Helped to launch the new www.economist.com, maintaining during the transition
+    of the project to the new team within the Economist. Support with pairing, clinics
+    and other forms of knowledge sharing to enable the new team members to effectively
+    contribute to the project.
+
+    Worked on performance optimisation, test tools and utilities (unit, integration
+    and functional testing). Resolved the longstanding issue with unreliable
+    functional tests.
+
+    Took many opportunities to improve the codebase and practices to improve
+    long term maintenance goals. Helped to establish and champion Git practices
+    which helped with debugging and deployment management.
+
+    Was tasked with the third-party integration with core business requirements,
+    such as ads and previum content management.
   technologies:
     - JavaScript:
-        - React
-        - Next.js
+        - Next.js/React
         - Jest
         - Storybook
         - WebDriver.io
+        - TestCafe
         - Node.js
     - CSS/PostCSS
     - Git/GitHub
@@ -35,20 +51,18 @@
     used by online marketplaces around the world for various platforms. Such as
     suggestions by similarity or personal relevance.
 
-    I was hired as a sole frontend developer in the team to build a web SDK which
+    Hired as a sole frontend developer in the team to build a web SDK which
     used backend services developed by the rest of the group. It needed to
-    provide a customisable UI for the marketplaces to use on their sites.
-    I evaluated several options and advised on using Preact for UI layer while
-    separating the core business logic to a separate package. The SDK contained
+    provide a customisable UI for the global marketplaces. Following evaluation,
+    the recommendation was to use small Preact library for UI layer. The core
+    business logic available for low level customiations. The SDK contained
     several packages: core, UI and Web Components.
 
-    The SDK, being technology-agnostic, was designed to be used with any stack
-    and distributed in several ways: via a package manager and scripts stored
-    in an S3 bucket (CDN). The SDK was extensively documented to help other
-    developers to include it to their sites.
+    Tech-agnostic SDK was designed to be used with any stack and distributed in
+    several ways: via a package manager and scripts stored in an S3 bucket (CDN).
+    The SDK was extensively tested and documented to help with implementation
+    and contributions.
 
-    Challenges included: browser support (IE11+), file sizes, styling and
-    customisation.
   technologies:
     - JavaScript:
         - Preact
