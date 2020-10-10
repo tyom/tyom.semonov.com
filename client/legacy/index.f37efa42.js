@@ -1,4 +1,4 @@
-import { _ as _slicedToArray, a as _inherits, b as _getPrototypeOf, c as _possibleConstructorReturn, d as _classCallCheck, i as init, s as safe_not_equal, e as _assertThisInitialized, f as dispatch_dev, g as _createClass, S as SvelteComponentDev, h as create_slot, v as validate_slots, j as svg_element, t as text, k as claim_element, l as children, m as claim_text, n as detach_dev, o as add_location, p as insert_dev, q as append_dev, r as set_data_dev, u as empty, w as attr_dev, x as update_slot, y as transition_in, z as transition_out, A as assign, B as exclude_internal_props, C as create_component, D as claim_component, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, I as regenerator, J as listen, K as element, L as action_destroyer, M as is_function, N as validate_each_argument, O as globals, P as group_outros, Q as check_outros, R as destroy_each, T as noop, U as space, V as claim_space, W as toggle_class, X as identity, Y as onMount, Z as onDestroy, $ as add_render_callback, a0 as create_bidirectional_transition, a1 as set_style, a2 as listen_dev, a3 as run_all, a4 as _toConsumableArray, a5 as binding_callbacks, a6 as query_selector_all } from './client.a246a37c.js';
+import { _ as _slicedToArray, a as _inherits, b as _getPrototypeOf, c as _possibleConstructorReturn, d as _classCallCheck, i as init, s as safe_not_equal, e as _assertThisInitialized, f as dispatch_dev, g as _createClass, S as SvelteComponentDev, h as create_slot, v as validate_slots, j as svg_element, t as text, k as claim_element, l as children, m as claim_text, n as detach_dev, o as add_location, p as insert_dev, q as append_dev, r as set_data_dev, u as empty, w as attr_dev, x as update_slot, y as transition_in, z as transition_out, A as assign, B as exclude_internal_props, C as create_component, D as claim_component, E as mount_component, F as get_spread_update, G as get_spread_object, H as destroy_component, I as regenerator, J as listen, K as element, L as action_destroyer, M as is_function, N as validate_each_argument, O as globals, P as group_outros, Q as check_outros, R as destroy_each, T as noop, U as space, V as claim_space, W as toggle_class, X as identity, Y as onMount, Z as onDestroy, $ as add_render_callback, a0 as create_bidirectional_transition, a1 as set_style, a2 as listen_dev, a3 as run_all, a4 as _toConsumableArray, a5 as binding_callbacks, a6 as query_selector_all } from './client.35f054e0.js';
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
@@ -9964,15 +9964,15 @@ function create_fragment$d(ctx) {
       attr_dev(meta0, "content", meta0_content_value =
       /*about*/
       ctx[0].description);
-      attr_dev(meta0, "class", "svelte-15gx184");
+      attr_dev(meta0, "class", "svelte-1wwxp8");
       add_location(meta0, file$c, 134, 2, 6896);
       attr_dev(meta1, "property", "og:type");
       attr_dev(meta1, "content", "website");
-      attr_dev(meta1, "class", "svelte-15gx184");
+      attr_dev(meta1, "class", "svelte-1wwxp8");
       add_location(meta1, file$c, 136, 2, 6987);
       attr_dev(meta2, "property", "og:url");
       attr_dev(meta2, "content", "https://tyom.semonov.com/");
-      attr_dev(meta2, "class", "svelte-15gx184");
+      attr_dev(meta2, "class", "svelte-1wwxp8");
       add_location(meta2, file$c, 137, 2, 7035);
       attr_dev(meta3, "property", "og:title");
       attr_dev(meta3, "content", meta3_content_value = "" + (
@@ -9980,25 +9980,25 @@ function create_fragment$d(ctx) {
       ctx[0].name + " - " +
       /*about*/
       ctx[0].title + ": CV"));
-      attr_dev(meta3, "class", "svelte-15gx184");
+      attr_dev(meta3, "class", "svelte-1wwxp8");
       add_location(meta3, file$c, 138, 2, 7100);
       attr_dev(meta4, "property", "og:description");
       attr_dev(meta4, "content", meta4_content_value =
       /*about*/
       ctx[0].description);
-      attr_dev(meta4, "class", "svelte-15gx184");
+      attr_dev(meta4, "class", "svelte-1wwxp8");
       add_location(meta4, file$c, 139, 2, 7174);
       attr_dev(meta5, "property", "og:image");
       attr_dev(meta5, "content", "https://tyom.semonov.com/logo.png");
-      attr_dev(meta5, "class", "svelte-15gx184");
+      attr_dev(meta5, "class", "svelte-1wwxp8");
       add_location(meta5, file$c, 140, 2, 7239);
       attr_dev(meta6, "property", "twitter:card");
       attr_dev(meta6, "content", "summary_large_image");
-      attr_dev(meta6, "class", "svelte-15gx184");
+      attr_dev(meta6, "class", "svelte-1wwxp8");
       add_location(meta6, file$c, 142, 2, 7333);
       attr_dev(meta7, "property", "twitter:url");
       attr_dev(meta7, "content", "https://tyom.semonov.com/");
-      attr_dev(meta7, "class", "svelte-15gx184");
+      attr_dev(meta7, "class", "svelte-1wwxp8");
       add_location(meta7, file$c, 143, 2, 7398);
       attr_dev(meta8, "property", "twitter:title");
       attr_dev(meta8, "content", meta8_content_value = "" + (
@@ -10006,37 +10006,37 @@ function create_fragment$d(ctx) {
       ctx[0].name + " - " +
       /*about*/
       ctx[0].title + ": CV"));
-      attr_dev(meta8, "class", "svelte-15gx184");
+      attr_dev(meta8, "class", "svelte-1wwxp8");
       add_location(meta8, file$c, 144, 2, 7468);
       attr_dev(meta9, "property", "twitter:description");
       attr_dev(meta9, "content", meta9_content_value =
       /*about*/
       ctx[0].description);
-      attr_dev(meta9, "class", "svelte-15gx184");
+      attr_dev(meta9, "class", "svelte-1wwxp8");
       add_location(meta9, file$c, 145, 2, 7547);
       attr_dev(meta10, "property", "twitter:image");
       attr_dev(meta10, "content", "https://tyom.semonov.com/logo.png");
-      attr_dev(meta10, "class", "svelte-15gx184");
+      attr_dev(meta10, "class", "svelte-1wwxp8");
       add_location(meta10, file$c, 146, 2, 7617);
-      attr_dev(aside, "class", "svelte-15gx184");
+      attr_dev(aside, "class", "svelte-1wwxp8");
       add_location(aside, file$c, 149, 0, 7711);
-      attr_dev(h20, "class", "svelte-15gx184");
+      attr_dev(h20, "class", "svelte-1wwxp8");
       add_location(h20, file$c, 156, 6, 7862);
-      attr_dev(header0, "class", "svelte-15gx184");
+      attr_dev(header0, "class", "svelte-1wwxp8");
       add_location(header0, file$c, 155, 4, 7847);
-      attr_dev(section0, "class", "experience svelte-15gx184");
+      attr_dev(section0, "class", "experience svelte-1wwxp8");
       add_location(section0, file$c, 154, 2, 7814);
-      attr_dev(h21, "class", "svelte-15gx184");
+      attr_dev(h21, "class", "svelte-1wwxp8");
       add_location(h21, file$c, 167, 6, 8167);
-      attr_dev(header1, "class", "svelte-15gx184");
+      attr_dev(header1, "class", "svelte-1wwxp8");
       add_location(header1, file$c, 166, 4, 8152);
-      attr_dev(section1, "class", "education svelte-15gx184");
+      attr_dev(section1, "class", "education svelte-1wwxp8");
       add_location(section1, file$c, 165, 2, 8120);
-      attr_dev(br, "class", "svelte-15gx184");
+      attr_dev(br, "class", "svelte-1wwxp8");
       add_location(br, file$c, 177, 4, 8431);
-      attr_dev(p, "class", "u-print-only print-details-info svelte-15gx184");
+      attr_dev(p, "class", "u-print-only print-details-info svelte-1wwxp8");
       add_location(p, file$c, 174, 2, 8310);
-      attr_dev(article, "class", "content svelte-15gx184");
+      attr_dev(article, "class", "content svelte-1wwxp8");
       add_location(article, file$c, 153, 0, 7786);
     },
     m: function mount(target, anchor) {
