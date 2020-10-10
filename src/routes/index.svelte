@@ -48,7 +48,7 @@
 
   h2 {
     font-size: 1.2em;
-    margin: 0 0 2em;
+    margin: 0 0 1em;
     color: #888;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -67,8 +67,8 @@
       top: 0;
       line-height: 1;
       padding: 1.5rem var(--padding);
-      border-bottom: 1px solid #0001;
       background-color: #fffe;
+      backdrop-filter: blur(5px);
     }
 
     h2 {

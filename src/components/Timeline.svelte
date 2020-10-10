@@ -133,7 +133,7 @@
 
   .start-year,
   .end-year {
-    font-size: 8px;
+    font-size: 9px;
     line-height: 1;
     position: absolute;
     top: -1px;
@@ -146,10 +146,10 @@
   }
 
   .end-year {
-    left: -27px;
+    left: -30px;
   }
   .start-year {
-    right: -27px;
+    right: -30px;
   }
 
   @media print {
