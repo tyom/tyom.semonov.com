@@ -38,10 +38,12 @@ export default {
         ),
       }),
       svelte({
-        dev,
         preprocess,
-        hydratable: true,
         emitCss: true,
+        compilerOptions: {
+          dev,
+          hydratable: true,
+        },
       }),
       resolve({
         browser: true,
@@ -91,9 +93,11 @@ export default {
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
       svelte({
-        generate: 'ssr',
         preprocess,
-        dev,
+        compilerOptions: {
+          dev,
+          generate: 'ssr',
+        },
       }),
       resolve({
         dedupe,
