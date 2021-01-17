@@ -10,6 +10,9 @@ const defLinker = createDefinitionFinder(definitionsData);
 
 export default {
   title: 'Summary',
+  parameters: {
+    layout: 'fullscreen',
+  },
 };
 
 export const Default = () => ({

@@ -1,13 +1,13 @@
-const postcssPresetEnv = require('postcss-preset-env');
-const rucksackCss = require('rucksack-css');
-const postcssImport = require('postcss-import');
-
 module.exports = {
   plugins: [
-    postcssImport(),
-    postcssPresetEnv({
-      stage: 0,
+    require('postcss-import'),
+    require('postcss-preset-env')({
+      stage: 3,
+      features: {
+        'nesting-rules': true,
+        'custom-media-queries': true,
+      },
     }),
-    rucksackCss(),
+    require('rucksack-css'),
   ],
 };

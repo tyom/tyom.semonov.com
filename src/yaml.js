@@ -14,14 +14,14 @@ const InlineMarkdownYamlType = new yaml.Type('!imd', {
   construct: (string) => md.renderInline(string),
 });
 
-const YAML_SCHEMA = yaml.Schema.create([
+const YAML_SCHEMA = yaml.DEFAULT_SCHEMA.extend([
   MarkdownYamlType,
   InlineMarkdownYamlType,
 ]);
 
 export function parseYaml(yamlData) {
   try {
-    return yaml.safeLoad(yamlData, { schema: YAML_SCHEMA });
+    return yaml.load(yamlData, { schema: YAML_SCHEMA });
   } catch (error) {
     console.error('Failed to parse YAML data');
     throw new Error(error);
