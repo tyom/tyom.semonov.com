@@ -1,7 +1,7 @@
 import { parseYaml } from '../src/yaml';
 import experience from '../data/experience.yaml';
-import Timeline from '../src/components/Timeline.svelte';
-import '../src/css/global.css';
+import Timeline from '$lib/Timeline.svelte';
+import '../src/global.css';
 
 const experienceData = parseYaml(experience);
 

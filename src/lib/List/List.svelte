@@ -6,12 +6,12 @@
   export let inline = false;
 
   const formattedList = items
-    .map(x => ({ name: x.name || x, links: x.links, children: x.children }))
-    .filter(x => x.name);
+    .map((x) => ({ name: x.name || x, links: x.links, children: x.children }))
+    .filter((x) => x.name);
 </script>
 
 {#if inline}
-  <div class="plain-list-inline">
+  <div class="inline-list">
     <InlineList items={formattedList} />
   </div>
 {:else}

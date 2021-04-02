@@ -77,7 +77,7 @@ export function createDefinitionFinder(definitions = []) {
     };
 
   const processWikipediaLink = (item) => {
-    const result = Object.assign({}, item);
+    const result = { ...item };
     if (result.wikipedia) {
       result.wikipedia = `https://en.wikipedia.org/api/rest_v1/page/summary/${item.wikipedia}`;
     }

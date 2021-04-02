@@ -1,6 +1,5 @@
 module.exports = {
   plugins: [
-    require('postcss-import'),
     require('postcss-preset-env')({
       stage: 3,
       features: {
@@ -8,6 +7,9 @@ module.exports = {
         'custom-media-queries': true,
       },
     }),
-    require('rucksack-css'),
+    require('@tailwindcss/jit'),
+    require('autoprefixer'),
+    process.env.NODE_ENV !== 'development' &&
+      require('cssnano')({ preset: 'default' }),
   ],
 };
