@@ -1,42 +1,37 @@
-@import '../css/variables.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@custom-media --extra-small-viewport-below (width < 320px);
+@custom-media --extra-small-viewport-above (width >= 320px);
+@custom-media --small-viewport-below (width < 375px);
+@custom-media --small-viewport-above (width >= 375px);
+@custom-media --medium-viewport-below (width < 768px);
+@custom-media --medium-viewport-above (width >= 768px);
+@custom-media --large-viewport-below (width < 1024px);
+@custom-media --large-viewport-above (width >= 1024px);
+@custom-media --extra-large-viewport-below (width < 1280px);
+@custom-media --extra-large-viewport-above (width >= 1280px);
 
-html {
-  font-size: responsive 15px 19px;
-  font-family: Roboto, sans-serif;
+:root {
+  --panel-color-hi: #2b417a;
+  --panel-color-low: #0e1019;
+
   line-height: 1.4;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  font-smoothing: antialiased;
-  -webkit-font-smoothing: antialiased;
-  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
-}
-
-body {
-  margin: 0;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 @media screen {
   body {
-    color: #333;
+    @apply text-gray-900 antialiased;
+    font-size: clamp(0.98rem, 2vw, 1.5rem);
   }
 }
 
-p {
-  margin: 0;
-}
-
 p + p {
-  margin-top: 1em;
-}
-
-* + ul {
-  margin-top: 0.5em;
+  @apply mt-4;
 }
 
 a {
@@ -48,49 +43,24 @@ a {
   }
 }
 
-.divided::before,
-hr {
+hr,
+.divided > *::before {
+  @apply block w-12 opacity-30 border-0 my-8;
   content: '';
-  border: 0;
-  border-top: 0.25em solid;
-  opacity: 0.3;
-  width: 3em;
-  display: block;
-  margin: 2rem 0;
+  border-top: 0.25rem solid;
 }
-
-.divided::before {
+.divided > :first-child::before {
   content: none;
-}
-.divided + .divided::before {
-  content: '';
-}
-
-.visually-hidden {
-  border: none !important;
-  clip: rect(0 0 0 0) !important;
-  height: 1px !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  white-space: nowrap !important;
-  width: 1px !important;
 }
 
 @media screen {
   .u-print-only {
-    display: none;
+    display: none !important;
   }
 
   .popper {
-    border-radius: 0.3em;
-    background-color: #000d;
-    box-shadow: 0 1px 1px #0003;
-    color: #fff;
-    max-width: 300px;
-    padding: 0.5em;
-    font-size: 0.7em;
+    @apply rounded-md text-white p-4 text-base shadow bg-black bg-opacity-90;
+    max-width: 25rem;
     transition: opacity 0.2s;
 
     & .popper__arrow {
@@ -155,8 +125,14 @@ hr {
 }
 
 @media print {
-  body {
-    font-size: 11pt;
+  .popper {
+    display: none;
+  }
+}
+
+@media print {
+  :root {
+    font-size: 10.5pt;
   }
 
   a {
@@ -166,8 +142,4 @@ hr {
   .u-print-hidden {
     display: none;
   }
-}
-
-@page {
-  margin: 1cm;
 }

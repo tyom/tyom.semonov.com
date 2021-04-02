@@ -10,7 +10,6 @@
   export let intersectionNodes = [];
 
   let containerEl;
-  const intersectedEvents = [];
 
   const eventsWithMonthLength = events.map((event, idx) => ({
     name: event.name,
@@ -23,22 +22,27 @@
     (acc, curr) => acc + curr.monthLength,
     0,
   );
-  const firstDate = events[events.length - 1].start;
-  const lastDate = events[0].end ? events[0].end : {
-    year: new Date().getFullYear(),
-  };
-  const scaledEvents = eventsWithMonthLength.map(event =>
-    Object.assign({}, event, {
-      percent: (100 / totalTimelineInMonths) * event.monthLength,
-    }),
-  );
+
+  const firstEvent = events[events.length - 1] || {};
+  const lastEvent = events[0] || {};
+
+  const firstDate = firstEvent.start || {};
+  const lastDate = lastEvent.end
+    ? lastEvent.end || {}
+    : {
+        year: new Date().getFullYear(),
+      };
+  const scaledEvents = eventsWithMonthLength.map((event) => ({
+    ...event,
+    percent: (100 / totalTimelineInMonths) * event.monthLength,
+  }));
   let timelineEvents = scaledEvents;
   let observer;
 
   function intersectionCallback(entries) {
     let updatedEvents = [...scaledEvents];
-    entries.forEach(entry => {
-      const event = updatedEvents.find(x => x.target === entry.target);
+    entries.forEach((entry) => {
+      const event = updatedEvents.find((x) => x.target === entry.target);
       event.isVisible = entry.intersectionRatio >= INTERSECTION_RATIO;
 
       if (event.isVisible) {
@@ -55,16 +59,17 @@
       node.getBoundingClientRect().top + window.pageYOffset;
     const offset = containerEl.getBoundingClientRect().top;
     const scrollOffset = scrollPosition - offset;
+    const derivedScrollOffset = scrollOffset < 100 ? 0 : scrollOffset;
     const supportsNativeSmoothScroll =
       'scrollBehavior' in document.documentElement.style;
 
     if (supportsNativeSmoothScroll) {
       window.scrollTo({
-        top: scrollOffset,
+        top: derivedScrollOffset,
         behavior: 'smooth',
       });
     } else {
-      window.scrollTo(0, scrollOffset);
+      window.scrollTo(0, derivedScrollOffset);
     }
   }
 
@@ -88,30 +93,48 @@
   });
 </script>
 
-<style>
+{#if timelineEvents}
+  <div
+    class="timeline"
+    transition:fade={{ duration: 200 }}
+    bind:this={containerEl}
+  >
+    <div class="year-label">{lastDate.year}</div>
+    <div class="events">
+      {#each timelineEvents as event}
+        <div
+          class="timeline-event {event.modifier}"
+          class:visible={event.isVisible}
+          style="width: {event.percent}%"
+          on:click={() => scrollTo(event.target)}
+          use:tooltip={{ text: event.label }}
+        />
+      {/each}
+    </div>
+    <div class="year-label">{firstDate.year}</div>
+  </div>
+{/if}
+
+<style lang="postcss">
   .timeline {
-    position: relative;
+    @apply flex items-center;
   }
 
   .events {
-    height: 7px;
-    display: flex;
+    @apply flex flex-1;
+    height: 8px;
   }
 
   .timeline-event {
-    background-color: #ddd;
+    @apply relative bg-gray-300;
     box-shadow: 0 0 0 1px #fff;
     min-width: 4px;
-    position: relative;
     transition: 0.2s background-color;
 
     &::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
+      @apply absolute w-full h-full opacity-0;
       background: var(--panel-color-hi);
-      opacity: 0;
+      content: '';
     }
 
     &:hover::before {
@@ -120,62 +143,29 @@
   }
 
   .contract {
-    background-color: #c3d2f3;
+    @apply bg-blue-300;
   }
 
   .permanent {
-    background-color: #f3d6ad;
+    @apply bg-yellow-300;
   }
 
   .visible {
-    background-color: var(--panel-color-hi);
+    @apply bg-blue-900;
   }
 
-  .start-year,
-  .end-year {
-    font-size: 9px;
-    line-height: 1;
-    position: absolute;
-    top: -1px;
-    bottom: -1px;
-    margin: auto;
-    color: #999;
-    font-weight: bold;
-    background: #fff;
-    padding: 1px 4px;
-  }
+  .year-label {
+    @apply w-8 md:w-12 px-1 font-bold text-gray-500;
+    font-size: 0.5em;
 
-  .end-year {
-    left: -30px;
-  }
-  .start-year {
-    right: -30px;
+    &:first-child {
+      @apply text-right;
+    }
   }
 
   @media print {
     .timeline {
-      display: none;
+      @apply hidden;
     }
   }
 </style>
-
-{#if timelineEvents}
-  <div
-    class="timeline"
-    transition:fade={{ duration: 200 }}
-    bind:this={containerEl}
-  >
-    <div class="end-year">{lastDate.year}</div>
-    <div class="events">
-      {#each timelineEvents as event}
-        <div
-          class="timeline-event {event.modifier}"
-          class:visible={event.isVisible}
-          style="width: {event.percent}%"
-          on:click={() => scrollTo(event.target)}
-          use:tooltip={{ text: event.label }} />
-      {/each}
-    </div>
-    <div class="start-year">{firstDate.year}</div>
-  </div>
-{/if}

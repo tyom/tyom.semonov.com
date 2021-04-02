@@ -4,17 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="theme-color" content="#333333" />
-
-    %sapper.base%
-
     <link rel="icon" type="image/png" href="favicon.png" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-
-    %sapper.styles%
-    %sapper.head%
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
+      rel="stylesheet"
+    />
+    %svelte.head%
   </head>
   <body>
-    <div id="container">%sapper.html%</div>
-    %sapper.scripts%
+    <div id="container">%svelte.body%</div>
   </body>
 </html>

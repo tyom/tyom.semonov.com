@@ -3,7 +3,7 @@
   description: Fractal is a tool to help you build and document web component libraries, and then integrate them into your projects.
 - name: React
   url: https://reactjs.org
-  wikipedia: React_(web_framework)
+  wikipedia: React_(JavaScript_library)
 - name: Preact
   url: https://preactjs.com
   description: Fast 3kB alternative to React with the same modern API.
@@ -239,6 +239,7 @@
   wikipedia: Perl
 - name: CircleCI
   url: https://circleci.com
+  description: CircleCI is a continuous integration and continuous deployment (CI/CD) tool. It automates the build, test, and deployment of software.
 - name: Travis CI
   url: https://travis-ci.org/
   wikipedia: Travis_CI
@@ -254,3 +255,6 @@
 - name: WebDriver.io
   url: https://webdriver.io/
   wikipedia: Selenium_(software)#Selenium_WebDriver
+- name: Next.js
+  url: https://nextjs.org/
+  wikipedia: Next.js
