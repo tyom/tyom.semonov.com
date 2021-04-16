@@ -1,9 +1,8 @@
-import { buildList, createDefinitionFinder } from '../src/utils';
-import { parseYaml } from '../src/yaml';
-import definitions from '../data/definitions.yaml';
-import about from '../data/about.yaml';
-import List from '$lib/List/List.svelte';
-import '../src/global.css';
+import { buildList, createDefinitionFinder } from '$src/utils';
+import { parseYaml } from '$src/yaml';
+import definitions from '$data/definitions.yaml';
+import about from '$data/about.yaml';
+import List from '$src/lib/List/List.svelte';
 
 const defLinker = createDefinitionFinder(parseYaml(definitions));
 const { coreSkills } = parseYaml(about);

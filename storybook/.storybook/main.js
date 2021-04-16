@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  stories: ['../src/**/*.stories.js', '../stories/*.stories.js'],
+  stories: ['../../src/**/*.stories.js', '../stories/*.stories.js'],
   svelteOptions: {
-    preprocess: require('../svelte.config.cjs').preprocess,
+    preprocess: require('../../svelte.config.cjs').preprocess,
   },
   addons: [
     {
@@ -28,7 +28,9 @@ module.exports = {
       use: 'raw-loader',
     });
 
-    config.resolve.alias.$lib = path.resolve(__dirname, '../src/lib');
+    config.resolve.alias.$lib = path.resolve(__dirname, '../../src/lib');
+    config.resolve.alias.$src = path.resolve(__dirname, '../../src');
+    config.resolve.alias.$data = path.resolve(__dirname, '../../data');
 
     return config;
   },
