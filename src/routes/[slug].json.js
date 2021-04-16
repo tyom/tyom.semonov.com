@@ -1,21 +1,13 @@
 import { parseYaml } from '../yaml';
 import { readFileSync } from 'fs';
 
-export async function get(req, res, next) {
-  const { slug } = req.params;
-  let content;
+export async function get({ params }) {
+  const { slug } = params;
 
-  try {
-    const yamlData = readFileSync(`data/${slug}.yaml`);
-    content = await parseYaml(yamlData);
-    if (content !== null) {
-      res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify(content));
-    } else {
-      next();
-    }
-  } catch (error) {
-    console.error(error);
-    next();
-  }
+  const yamlData = readFileSync(`data/${slug}.yaml`);
+  const content = await parseYaml(yamlData);
+
+  return {
+    body: content,
+  };
 }
