@@ -45,7 +45,7 @@ a {
 
 hr,
 .divided > *::before {
-  @apply block w-12 opacity-30 border-0 my-8;
+  @apply block w-12 opacity-30 my-8;
   content: '';
   border-top: 0.25rem solid;
 }
