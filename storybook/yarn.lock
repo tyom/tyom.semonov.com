@@ -7733,7 +7733,7 @@ postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.26, postcss@^7.0.
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^8.1.6, postcss@^8.2.1, postcss@^8.2.9:
+postcss@^8.1.6, postcss@^8.2.1, postcss@^8.2.10:
   version "8.2.10"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.10.tgz#ca7a042aa8aff494b334d0ff3e9e77079f6f702b"
   integrity sha512-b/h7CPV7QEdrqIxtAf2j31U5ef05uBDuvoXv6L51Q4rcS1jdlXAVKJv+atCFdUXYl9dyTHGyoMzIepwowRJjFw==
@@ -9147,7 +9147,7 @@ svelte-hmr@^0.12.3:
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.12.9.tgz#e323b71062a59bf4b73d2d5a7cc80dba256217e1"
   integrity sha512-SGE7Odznj4dqZtUVIWcoPCvZ9gHImxVIIjrz+O3DDSi0j4OaSLim6MRF4UdhlBKeW3glSRc+tXNSKYvM5x+Dyw==
 
-svelte-loader@^3.1.0:
+svelte-loader@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/svelte-loader/-/svelte-loader-3.1.1.tgz#cb03541214b164edee58e4c98d4303f76df9013d"
   integrity sha512-JU7qo1yBdDeJ3Aw23WoGKXrVaSn3KeWkM9KMl43HuMVFrsPNHIzZHTsf1ARJX/Abm3jeqNjigaO35RVbixhmWg==
@@ -9200,7 +9200,7 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-tailwindcss@^2.1.0:
+tailwindcss@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.1.1.tgz#642f6038c9283a8e1454da34585b8b7c1a1e8877"
   integrity sha512-zZ6axGqpSZOCBS7wITm/WNHkBzDt5CIZlDlx0eCVldwTxFPELCVGbgh7Xpb3/kZp3cUxOmK7bZUjqhuMrbN6xQ==
