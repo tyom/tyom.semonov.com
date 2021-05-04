@@ -1,9 +1,15 @@
+const sveltePreprocess = require('svelte-preprocess');
 const path = require('path');
 
 module.exports = {
   stories: ['../../src/**/*.stories.js', '../stories/*.stories.js'],
   svelteOptions: {
-    preprocess: require('../../svelte.config.js').preprocess,
+    preprocess: sveltePreprocess({
+      postcss: true,
+      defaults: {
+        style: 'postcss',
+      },
+    }),
   },
   addons: [
     {
