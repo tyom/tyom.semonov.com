@@ -27,25 +27,25 @@
     "svelte-icons": "^2.1.0"
   },
   "devDependencies": {
-    "@sveltejs/adapter-static": "^1.0.0-next.4",
-    "@sveltejs/kit": "^1.0.0-next.77",
+    "@sveltejs/adapter-static": "^1.0.0-next.8",
+    "@sveltejs/kit": "^1.0.0-next.98",
     "@tailwindcss/jit": "^0.1.18",
     "autoprefixer": "^10.2.5",
-    "cssnano": "^5.0.1",
-    "eslint": "^7.24.0",
-    "eslint-config-prettier": "^8.2.0",
-    "eslint-plugin-svelte3": "^3.1.2",
+    "cssnano": "^5.0.2",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-svelte3": "^3.2.0",
     "gh-pages": "3.1.0",
-    "postcss": "^8.2.10",
+    "postcss": "^8.2.13",
     "postcss-load-config": "^3.0.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
-    "puppeteer": "^8.0.0",
-    "svelte": "^3.37.0",
-    "svelte-preprocess": "^4.7.0",
-    "tailwindcss": "^2.1.1",
+    "puppeteer": "^9.1.0",
+    "svelte": "^3.38.2",
+    "svelte-preprocess": "^4.7.3",
+    "tailwindcss": "^2.1.2",
     "tree-kill": "^1.2.2",
-    "vite": "^2.1.5"
+    "vite": "^2.2.4"
   }
 }

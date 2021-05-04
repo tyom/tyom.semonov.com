@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   stories: ['../../src/**/*.stories.js', '../stories/*.stories.js'],
   svelteOptions: {
-    preprocess: require('../../svelte.config.cjs').preprocess,
+    preprocess: require('../../svelte.config.js').preprocess,
   },
   addons: [
     {

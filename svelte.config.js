@@ -1,8 +1,9 @@
-require('dotenv').config();
-const sveltePreprocess = require('svelte-preprocess');
+// require('dotenv').config();
+import staticAdapter from '@sveltejs/adapter-static';
+import sveltePreprocess from 'svelte-preprocess';
 
 /** @type {import('@sveltejs/kit').Config} */
-module.exports = {
+export default {
   preprocess: sveltePreprocess({
     postcss: true,
     defaults: {
@@ -17,7 +18,7 @@ module.exports = {
   }),
   kit: {
     appDir: 'app',
-    adapter: require('@sveltejs/adapter-static')(),
+    adapter: staticAdapter(),
     target: '#container',
   },
 };

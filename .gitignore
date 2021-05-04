@@ -6,5 +6,6 @@ dist/
 static/*.pdf
 .env
 /.svelte
+/.svelte-kit
 /build
 /functions
