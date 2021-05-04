@@ -4,6 +4,9 @@
   start:
     month: November
     year: 2019
+  end:
+    month: April
+    year: 2021
   description: !md |
     Helped to launch the new www.economist.com, maintaining during the transition
     of the project to the new team within the Economist. Support with pairing, clinics
