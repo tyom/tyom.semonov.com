@@ -9,6 +9,7 @@
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
     "start": "svelte-kit start",
+    "preview": "svelte-kit preview",
     "create-pdf": "node scripts/create-pdf.cjs",
     "predeploy": "rm -rf build && yarn create-pdf && yarn build && yarn build-storybook && cp -a storybook/storybook-static/. build/storybook && echo tyom.semonov.com > build/CNAME",
     "deploy": "gh-pages -d build --dotfiles",
