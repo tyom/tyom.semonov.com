@@ -6,9 +6,6 @@ import sveltePreprocess from 'svelte-preprocess';
 export default {
   preprocess: sveltePreprocess({
     postcss: true,
-    defaults: {
-      style: 'postcss',
-    },
     replace: [
       [
         'process.env.GA_TRACKING_ID',

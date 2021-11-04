@@ -7,7 +7,7 @@ module.exports = {
         'custom-media-queries': true,
       },
     }),
-    require('@tailwindcss/jit'),
+    require('tailwindcss'),
     require('autoprefixer'),
     process.env.NODE_ENV !== 'development' &&
       require('cssnano')({ preset: 'default' }),
