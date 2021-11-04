@@ -28,19 +28,21 @@ details: !md |
   user-centred and accessible design.
 
 coreSkills:
-  - JavaScript
+  - JavaScript/TypeScript
   - CSS/PostCSS/Sass
   - Node.js
-  - Webpack/Rollup
+  - Webpack/Rollup/Vite
   - Express
   - React/Preact/Next.js
+  - Vue.js/Nuxt.js
   - HTML5
   - Accessibility
   - Git/GitHub
+  - CircleCI/GitHub Actions
 
 currentInterests:
   - Functional Programming
   - Node.js/Microservices
-  - React/Preact
+  - React
   - Vue.js
   - Svelte

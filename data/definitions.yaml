@@ -52,6 +52,9 @@
 - name: Rollup
   url: https://rollupjs.org/guide/en/
   description: Rollup is a module bundler for JavaScript which compiles small pieces of code into something larger and more complex, such as a library or application.
+- name: Vite
+  url: https://vitejs.dev/
+  description: Vite (French word for "quick", pronounced /vit/, like "veet") is a build tool that aims to provide a faster and leaner development experience for modern web projects.
 - name: CSS Modules
   url: https://css-tricks.com/css-modules-part-1-need/
   description: A CSS Module is a CSS file in which all class names and animation names are scoped locally by default.
@@ -59,13 +62,13 @@
   url: https://www.browserstack.com/
   wikipedia: BrowserStack
 - name: WebDriver
-  url: http://webdriver.io/
+  url: https://webdriver.io/
   wikipedia: Selenium_(software)
 - name: PhantomJS
-  url: http://phantomjs.org/
+  url: https://phantomjs.org/
   wikipedia: PhantomJS
 - name: Nightwatch.js
-  url: http://nightwatchjs.org
+  url: https://nightwatchjs.org
   description: Nightwatch.js is an integrated, easy to use End-to-End testing solution for web applications and websites, written in Node.js.
 - name: Mocha
   url: https://mochajs.org
@@ -77,7 +80,7 @@
   url: https://jasmine.github.io/
   wikipedia: Jasmine_(JavaScript_testing_framework)
 - name: Spock
-  url: http://spockframework.org/
+  url: https://spockframework.org/
   wikipedia: Spock_(testing_framework)
 - name: Gulp
   url: https://gulpjs.com/
@@ -86,20 +89,20 @@
   url: https://gruntjs.com/
   wikipedia: Grunt_(software)
 - name: Galen Framework
-  url: http://galenframework.com/
+  url: https://galenframework.com/
   wikipedia: Galen_Framework
 - name: skin-deep
   url: https://github.com/glenjamin/skin-deep
 - name: Middleman
   url: https://middlemanapp.com/
 - name: Rails
-  url: http://rubyonrails.org/
+  url: https://rubyonrails.org/
   wikipedia: Ruby_on_Rails
 - name: Flask
-  url: http://flask.pocoo.org/
+  url: https://flask.pocoo.org/
   wikipedia: Flask_(web_framework)
 - name: Jinja
-  url: http://jinja.pocoo.org/
+  url: https://jinja.pocoo.org/
   wikipedia: Jinja_(template_engine)
 - name: Twig
   url: https://twig.symfony.com/
@@ -108,10 +111,10 @@
   url: https://www.djangoproject.com/
   wikipedia: Django_(web_framework)
 - name: Graphviz
-  url: http://www.graphviz.org/
+  url: https://www.graphviz.org/
   wikipedia: Graphviz
 - name: Buster.js
-  url: http://docs.busterjs.org/en/latest/
+  url: https://docs.busterjs.org/en/latest/
 - name: D3.js
   url: https://d3js.org/
   wikipedia: D3.js
@@ -137,13 +140,13 @@
   url: https://puppet.com/products/how-puppet-works
   wikipedia: Puppet_(software)
 - name: Backbone.js
-  url: http://backbonejs.org/
+  url: https://backbonejs.org/
   wikipedia: Backbone.js
 - name: Jenkins
   url: https://jenkins.io/
   wikipedia: Jenkins_(software)
 - name: Template Toolkit
-  url: http://www.template-toolkit.org/
+  url: https://www.template-toolkit.org/
   wikipedia: Template_Toolkit
 - name: MediaWiki
   url: https://www.mediawiki.org/wiki/MediaWiki
@@ -163,12 +166,18 @@
 - name: GitHub
   url: https://en.wikipedia.org/wiki/GitHub
   wikipedia: GitHub
+- name: GitHub Actions
+  url: https://github.com/features/actions
+  description: GitHub Actions makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub. Make code reviews, branch management, and issue triaging work the way you want.
 - name: Sass
   url: https://en.wikipedia.org/wiki/Sass_(stylesheet_language)
   wikipedia: Sass_(stylesheet_language)
 - name: PostCSS
   url: https://postcss.org
   wikipedia: PostCSS
+- name: Tailwind CSS
+  url: https://tailwindcss.com/
+  description: A utility-first CSS framework for rapidly building custom user interfaces.
 - name: HTML
   url: https://en.wikipedia.org/wiki/HTML
   wikipedia: HTML
@@ -183,6 +192,9 @@
 - name: JavaScript
   url: https://en.wikipedia.org/wiki/JavaScript
   wikipedia: JavaScript
+- name: TypeScript
+  url: https://en.wikipedia.org/wiki/TypeScript
+  wikipedia: TypeScript
 - name: CoffeeScript
   url: https://en.wikipedia.org/wiki/CoffeeScript
   wikipedia: CoffeeScript
@@ -205,11 +217,14 @@
   url: https://www.shopify.com
   wikipedia: Shopify
 - name: Kubernetes
-  url: http://kubernetes.io
+  url: https://kubernetes.io/
   wikipedia: Kubernetes
 - name: AWS
-  url: http://aws.amazon.com
+  url: https://aws.amazon.com/
   wikipedia: Amazon_Web_Services
+- name: GCP
+  url: https://cloud.google.com/
+  wikipedia: Google_Cloud_Platform
 - name: Accessibility
   url: https://en.wikipedia.org/wiki/Web_accessibility
   wikipedia: Web_accessibility
@@ -258,3 +273,9 @@
 - name: Next.js
   url: https://nextjs.org/
   wikipedia: Next.js
+- name: Nuxt.js
+  url: https://nuxtjs.org/
+  wikipedia: Nuxt.js
+- name: MSW
+  url: https://mswjs.io/
+  description: Mock Service Worker is an API mocking library that uses Service Worker API to intercept actual requests.

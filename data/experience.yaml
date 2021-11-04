@@ -1,3 +1,30 @@
+- name: Flink
+  role: Senior Software Engineer
+  isContractor: true
+  start:
+    month: April
+    year: 2021
+  description: !md |
+    Helped to launch the new [Flink web shop](https://goflink.com/) in Germany and
+    a few other European countries.
+
+    Introduced to the team component-centric development with the help of Storybook
+    and data mocking (MSW).
+
+    Support the team in continuous development and maitenance of the growing
+    codebase with pairing, architectural discussions and work with backend teams.
+
+  technologies:
+    - TypeScript:
+        - Vue.js/Nuxt.js
+        - Jest
+        - Storybook
+        - MSW
+    - CSS/PostCSS/Tailwind CSS
+    - Git/GitHub/Github Actions
+    - Docker
+    - GCP
+
 - name: The Economist
   role: Senior Software Engineer
   isContractor: true
@@ -8,21 +35,21 @@
     month: April
     year: 2021
   description: !md |
-    Helped to launch the new www.economist.com, maintaining during the transition
-    of the project to the new team within the Economist. Support with pairing, clinics
+    Helped to launch the new www.economist.com and maintain during the transition
+    of the project to the new team within the company. Support with pairing, clinics
     and other forms of knowledge sharing to enable the new team members to effectively
-    contribute to the project.
+    contribute and take over to the project.
 
-    Worked on performance optimisation, test tools and utilities (unit, integration
-    and functional testing). Resolved the longstanding issue with unreliable
-    functional tests.
+    Worked on performance optimisation, test strategies, tools and utilities (unit,
+    integration and functional testing). Resolved the longstanding issue with unreliable
+    end-to-end tests.
 
-    Took many opportunities to improve the codebase and practices to improve
+    Took many opportunities to improve the codebase and practices. Improved the
     long term maintenance goals. Helped to establish and champion Git practices
     which helped with debugging and deployment management.
 
-    Was tasked with the third-party integration with core business requirements,
-    such as ads and previum content management.
+    Integrated third-party services for ads and premium content management based on
+    core business requirements.
   technologies:
     - JavaScript:
         - Next.js/React
