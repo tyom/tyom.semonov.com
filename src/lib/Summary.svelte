@@ -69,6 +69,7 @@
               href={pdfLink}
               title="Open PDF version"
               aria-label="Download PDF"
+              target="_blank"
             >
               <span class="download-label">Download PDF</span>
               <span class="icon">
