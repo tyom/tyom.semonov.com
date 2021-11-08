@@ -2,13 +2,11 @@ const sveltePreprocess = require('svelte-preprocess');
 const path = require('path');
 
 module.exports = {
-  stories: ['../../src/**/*.stories.js', '../stories/*.stories.js'],
+  stories: ['../stories/*.stories.js'],
+  staticDirs: ['../static'],
   svelteOptions: {
     preprocess: sveltePreprocess({
       postcss: true,
-      defaults: {
-        style: 'postcss',
-      },
     }),
   },
   addons: [
@@ -26,7 +24,6 @@ module.exports = {
         },
       },
     },
-    '@storybook/addon-svelte-csf',
   ],
   webpackFinal(config) {
     config.module.rules.push({
@@ -34,9 +31,9 @@ module.exports = {
       use: 'raw-loader',
     });
 
-    config.resolve.alias.$lib = path.resolve(__dirname, '../../src/lib');
-    config.resolve.alias.$src = path.resolve(__dirname, '../../src');
-    config.resolve.alias.$data = path.resolve(__dirname, '../../data');
+    config.resolve.alias.$lib = path.resolve(__dirname, '../src/lib');
+    config.resolve.alias.$src = path.resolve(__dirname, '../src');
+    config.resolve.alias.$data = path.resolve(__dirname, '../data');
 
     return config;
   },

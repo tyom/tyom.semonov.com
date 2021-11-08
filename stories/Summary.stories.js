@@ -1,7 +1,7 @@
 import { buildList, createDefinitionFinder } from '$src/utils';
-import { parseYaml } from '$src/yaml';
 import about from '$data/about.yaml';
 import definitions from '$data/definitions.yaml';
+import { parseYaml } from '$src/yaml';
 import Summary from '$lib/Summary.svelte';
 
 const summaryData = parseYaml(about);

@@ -14,9 +14,8 @@
     "deploy": "gh-pages -d build --dotfiles",
     "lint": "eslint --ignore-path .gitignore . && prettier --check .",
     "format": "prettier --write .",
-    "storybook": "cd storybook && yarn start",
-    "build-storybook": "cd storybook && yarn build",
-    "postinstall": "yarn --cwd storybook"
+    "storybook": "start-storybook -p 6006 --ci",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "dotenv": "^10.0.0",
@@ -27,6 +26,10 @@
     "svelte-icons": "^2.1.0"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^6.4.0-beta.30",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addon-svelte-csf": "^1.1.0",
+    "@storybook/svelte": "^6.4.0-beta.30",
     "@sveltejs/adapter-static": "^1.0.0-next.21",
     "@sveltejs/kit": "^1.0.0-next.193",
     "autoprefixer": "^10.4.0",
@@ -42,6 +45,7 @@
     "prettier-plugin-svelte": "^2.4.0",
     "puppeteer": "^11.0.0",
     "svelte": "^3.44.1",
+    "svelte-loader": "^3.1.2",
     "svelte-preprocess": "^4.9.8",
     "tailwindcss": "^2.2.19",
     "tree-kill": "^1.2.2",
