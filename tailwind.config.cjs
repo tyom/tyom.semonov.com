@@ -1,7 +1,6 @@
 module.exports = {
   darkMode: 'class',
-  mode: 'jit',
-  purge: ["./src/**/*.svelte"],
+  content: ['./src/**/*.svelte'],
   theme: {
     extend: {},
   },
