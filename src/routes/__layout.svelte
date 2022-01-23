@@ -32,6 +32,8 @@
     if (gaTrackingId) {
       googleAnalytics(gaTrackingId);
       document.addEventListener('click', captureOutboundLinkClicks);
+
+      () => document.removeEventListener('click', captureOutboundLinkClicks);
     }
   });
 </script>
