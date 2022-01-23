@@ -76,7 +76,7 @@
 
 <style lang="postcss">
   main {
-    @apply flex flex-col lg:flex-row min-h-screen;
+    @apply flex flex-col lg:flex-row min-h-screen bg-white;
   }
 
   @media screen {
