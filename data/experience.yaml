@@ -4,6 +4,9 @@
   start:
     month: April
     year: 2021
+  end:
+    month: December
+    year: 2021
   description: !md |
     Helped to launch the new [Flink web shop](https://goflink.com/) in Germany and
     a few other European countries.
