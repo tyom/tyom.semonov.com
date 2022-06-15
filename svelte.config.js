@@ -16,6 +16,5 @@ export default {
   kit: {
     appDir: 'app',
     adapter: staticAdapter(),
-    target: '#container',
   },
 };
