@@ -16,5 +16,8 @@ export default {
   kit: {
     appDir: 'app',
     adapter: staticAdapter(),
+    prerender: {
+      default: true
+    }
   },
 };
