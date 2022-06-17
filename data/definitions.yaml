@@ -4,6 +4,9 @@
 - name: React
   url: https://reactjs.org
   wikipedia: React_(JavaScript_library)
+- name: React Native
+  url: https://reactnative.dev/
+  wikipedia: React_Native
 - name: Preact
   url: https://preactjs.com
   description: Fast 3kB alternative to React with the same modern API.
@@ -279,3 +282,15 @@
 - name: MSW
   url: https://mswjs.io/
   description: Mock Service Worker is an API mocking library that uses Service Worker API to intercept actual requests.
+- name: RxJS
+  url: https://rxjs.dev/
+  description: A reactive programming library for JavaScript.
+- name: Expo
+  url: https://expo.dev/
+  description: An open-source platform for making universal native apps with React. Expo runs on Android, iOS, and the web.
+- name: MUI
+  url: https://mui.com/
+  description: MUI Core (formerly Material-UI) is the React UI library you always wanted. Follow your own design system, or start with Material Design.
+- name: Appium
+  url: https://appium.io
+  description: Appium is an open source test automation framework for use with native, hybrid and mobile web apps. It drives iOS, Android, and Windows apps using the WebDriver protocol.

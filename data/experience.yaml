@@ -1,3 +1,23 @@
+- name: Adaptive Financial Consulting
+  role: Senior UI Engineer
+  isContractor: true
+  start:
+    month: January
+    year: 2022
+  description: !md |
+
+
+  technologies:
+    - TypeScript:
+        - React/React Native
+        - Expo
+        - RxJS
+        - Jest
+    - WebDriver/Appium
+    - Tailwind CSS/MUI
+    - Git/GitHub/CircleCI
+    - AWS
+
 - name: Flink
   role: Senior Software Engineer
   isContractor: true
