@@ -1,7 +1,7 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
   import { fade } from 'svelte/transition';
-  import { getNumberOfMonthsBetweenDates, periodDuration } from '../utils';
+  import { getNumberOfMonthsBetweenDates, periodDuration } from '$src/utils';
   import { tooltip } from '../actions';
 
   const INTERSECTION_RATIO = 0.6;

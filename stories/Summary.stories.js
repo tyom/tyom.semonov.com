@@ -1,6 +1,6 @@
+import about from '$data/about.yaml?raw';
+import definitions from '$data/definitions.yaml?raw';
 import { buildList, createDefinitionFinder } from '$src/utils';
-import about from '$data/about.yaml';
-import definitions from '$data/definitions.yaml';
 import { parseYaml } from '$src/yaml';
 import Summary from '$lib/Summary.svelte';
 

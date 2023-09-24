@@ -1,10 +1,9 @@
-// require('dotenv').config();
 import staticAdapter from '@sveltejs/adapter-static';
-import sveltePreprocess from 'svelte-preprocess';
+import { vitePreprocess } from '@sveltejs/kit/vite';
 
 /** @type {import('@sveltejs/kit').Config} */
 export default {
-  preprocess: sveltePreprocess({
+  preprocess: vitePreprocess({
     postcss: true,
     replace: [
       [
@@ -14,10 +13,10 @@ export default {
     ],
   }),
   kit: {
-    appDir: 'app',
     adapter: staticAdapter(),
-    prerender: {
-      default: true
-    }
+    alias: {
+      $data: 'data',
+      $src: 'src',
+    },
   },
 };

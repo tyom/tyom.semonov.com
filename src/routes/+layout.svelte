@@ -27,6 +27,7 @@
     }
   }
 
+  /*
   onMount(() => {
     const gaTrackingId = process.env.GA_TRACKING_ID;
     if (gaTrackingId) {
@@ -36,6 +37,7 @@
       () => document.removeEventListener('click', captureOutboundLinkClicks);
     }
   });
+   */
 </script>
 
 <slot />

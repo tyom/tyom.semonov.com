@@ -1,6 +1,6 @@
 <script>
+  import { periodDuration } from '$src/utils';
   import List from './List';
-  import { periodDuration } from '../utils';
 
   const PRINT_TRUNCATE_NUMBER_OF_YEARS = 4;
 

@@ -1,29 +1,13 @@
-<script context="module">
-  export async function load({ fetch }) {
-    const getData = (resourceName) =>
-      fetch(resourceName).then((res) => res.json());
-
-    return {
-      props: {
-        about: await getData(`/about.json`),
-        experienceItems: await getData(`/experience.json`),
-        educationItems: await getData(`/education.json`),
-        definitions: await getData(`/definitions.json`),
-      },
-    };
-  }
-</script>
-
 <script>
-  import { buildList, createDefinitionFinder } from '../utils';
   import InfoIcon from 'svelte-icons/fa/FaInfoCircle.svelte';
+  import { buildList, createDefinitionFinder } from '$src/utils';
   import Section from '$lib/Section.svelte';
   import Summary from '$lib/Summary.svelte';
 
-  export let about = {};
-  export let experienceItems = [];
-  export let educationItems = [];
-  export let definitions = [];
+  /** @type {import('./$types').PageData} */
+  export let data;
+
+  const { about, experienceItems, educationItems, definitions } = data;
 
   const defLinker = createDefinitionFinder(definitions);
   const coreSkills = buildList(about.coreSkills, defLinker);

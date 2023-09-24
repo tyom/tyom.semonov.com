@@ -2,7 +2,7 @@ const { spawn } = require('child_process');
 const puppeteer = require('puppeteer');
 const kill = require('tree-kill');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5173;
 const PDF_PATH = 'static/tyom-semonov-cv.pdf';
 const PAGE_URL = `http://localhost:${PORT}`;
 
