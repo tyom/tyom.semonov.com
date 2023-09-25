@@ -45,7 +45,7 @@
   wikipedia: Microservices
 - name: Jest
   url: https://facebook.github.io/jest/
-  wikipedia: Jest_(JavaScript_framework)
+  description: Jest is a JavaScript testing framework designed to ensure correctness of any JavaScript codebase. It allows you to write tests with an approachable, familiar and feature-rich API that gives you results quickly.
 - name: TestCafe
   url: https://devexpress.github.io/testcafe/
   description: A node.js tool to automate end-to-end web testing
