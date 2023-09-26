@@ -1,26 +1,13 @@
 <script>
   import InfoIcon from 'svelte-icons/fa/FaInfoCircle.svelte';
-  import { buildList, createDefinitionFinder } from '$src/utils';
-  import Section from '$lib/Section.svelte';
-  import Summary from '$lib/Summary.svelte';
+  import Section from '$components/Section.svelte';
+  import Summary from '$components/Summary.svelte';
 
   /** @type {import('./$types').PageData} */
   export let data;
 
-  const { about, experienceItems, educationItems, definitions } = data;
-
-  const defLinker = createDefinitionFinder(definitions);
-  const coreSkills = buildList(about.coreSkills, defLinker);
-  const currentInterests = buildList(about.currentInterests, defLinker);
-  const { description, ...summary } = {
-    ...about,
-    coreSkills,
-    currentInterests,
-  };
-  const linkedExperienceItems = experienceItems.map((item) => ({
-    ...item,
-    technologies: buildList(item.technologies, defLinker),
-  }));
+  const { about, experience, education } = data;
+  const { description, ...summary } = about;
 </script>
 
 <svelte:head>
@@ -46,8 +33,8 @@
   </aside>
 
   <article class="content">
-    <Section title="Experience" items={linkedExperienceItems} showTimeline />
-    <Section title="Education" items={educationItems} />
+    <Section title="Experience" items={experience} showTimeline />
+    <Section title="Education" items={education} />
 
     <p class="print-notice">
       <InfoIcon />

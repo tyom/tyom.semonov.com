@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
-  import ExperienceItem from '$lib/ExperienceItem.svelte';
-  import Timeline from '$lib/Timeline.svelte';
+  import ExperienceItem from './ExperienceItem.svelte';
+  import Timeline from './Timeline.svelte';
 
   export let title;
   export let items = [];

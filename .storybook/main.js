@@ -12,8 +12,10 @@ module.exports = {
   },
   async viteFinal(config, { configType }) {
     config.resolve.alias = {
-      $data: path.resolve(__dirname, '../data'),
       $src: path.resolve(__dirname, '../src'),
+      $components: path.resolve(__dirname, '../src/components'),
+      $lib: path.resolve(__dirname, '../src/lib'),
+      $data: path.resolve(__dirname, '../data'),
     };
 
     return mergeConfig(config, {

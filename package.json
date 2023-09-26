@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "dotenv": "^16.0.1",
+    "glob": "^10.3.9",
     "is-plain-object": "^5.0.0",
     "js-yaml": "^4.1.0",
     "markdown-it": "^13.0.1",

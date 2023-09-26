@@ -17,6 +17,7 @@ export default {
     alias: {
       $data: 'data',
       $src: 'src',
+      $components: 'src/components',
     },
   },
 };
