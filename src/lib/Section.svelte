@@ -56,7 +56,7 @@
       backdrop-filter: blur(5px);
 
       & :global(.timeline) {
-        margin-top: -10px;
+        @apply absolute inset-x-0 -mt-3;
       }
     }
   }
