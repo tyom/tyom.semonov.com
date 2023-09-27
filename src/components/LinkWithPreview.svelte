@@ -1,5 +1,5 @@
 <script>
-  import { tooltip } from '../actions';
+  import {tooltip} from '../actions';
 
   export let href;
   export let description;
@@ -12,14 +12,8 @@
     text: description,
     url: descriptionUrl,
     resultProp: 'extract',
-  }}><slot /></a
+  }}
+  class="px-1 -mx-1 rounded hover:bg-zinc-900/10"
 >
-
-<style>
-  a:hover {
-    background: #0003;
-    margin: 0 -0.2rem;
-    padding: 0 0.2rem;
-    border-radius: 0.2rem;
-  }
-</style>
+  <slot/>
+</a>

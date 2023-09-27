@@ -95,16 +95,17 @@
 
 {#if timelineEvents}
   <div
-    class="timeline"
+    class="flex items-center print:hidden {$$props.class}"
     transition:fade={{ duration: 200 }}
     bind:this={containerEl}
   >
-    <div class="year-label">{lastDate.year}</div>
-    <div class="events">
+    <div class="year-label text-right">{lastDate.year}</div>
+    <div class="flex flex-1 h-2 gap-px">
       {#each timelineEvents as event}
-        <div
-          class="timeline-event {event.modifier}"
+        <button
+          class="relative bg-gray-300 min-w-[4px] hover:bg-[var(--panel-color-hi)] hover:transition-colors duration-200 {event.modifier}"
           class:visible={event.isVisible}
+          aria-label="{event.label}"
           style="width: {event.percent}%"
           on:click={() => scrollTo(event.target)}
           use:tooltip={{ text: event.label }}
@@ -116,32 +117,6 @@
 {/if}
 
 <style lang="postcss">
-  .timeline {
-    @apply flex items-center;
-  }
-
-  .events {
-    @apply flex flex-1;
-    height: 8px;
-  }
-
-  .timeline-event {
-    @apply relative bg-gray-300;
-    box-shadow: 0 0 0 1px #fff;
-    min-width: 4px;
-    transition: 0.2s background-color;
-
-    &::before {
-      @apply absolute w-full h-full opacity-0;
-      background: var(--panel-color-hi);
-      content: '';
-    }
-
-    &:hover::before {
-      opacity: 0.1;
-    }
-  }
-
   .contract {
     @apply bg-blue-300;
   }
@@ -155,17 +130,6 @@
   }
 
   .year-label {
-    @apply w-8 md:w-12 px-1 font-bold text-gray-500;
-    font-size: 0.5em;
-
-    &:first-child {
-      @apply text-right;
-    }
-  }
-
-  @media print {
-    .timeline {
-      @apply hidden;
-    }
+    @apply w-8 md:w-12 px-1 font-bold text-gray-500 text-[8px];
   }
 </style>

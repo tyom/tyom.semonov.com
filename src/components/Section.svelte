@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { twMerge } from 'tailwind-merge'
   import ExperienceItem from './ExperienceItem.svelte';
   import Timeline from './Timeline.svelte';
 
@@ -15,15 +16,15 @@
   });
 </script>
 
-<section bind:this={sectionEl} class:with-timeline={showTimeline}>
+<section bind:this={sectionEl}>
   <header>
-    <h2>{title}</h2>
+    <h2 class="p-8 md:px-12 print:!p-0 print:!pb-8">{title}</h2>
     {#if showTimeline && intersectionNodes}
-      <Timeline events={items} {intersectionNodes} />
+      <Timeline events={items} {intersectionNodes} class="absolute inset-x-0 -mt-3"/>
     {/if}
   </header>
   {#if items.length}
-    <div class="items divided">
+    <div class="items {twMerge('p-8 md:p-12 pt-0 md:pt-0', showTimeline && '!pt-8', 'print:!p-0')} divided">
       {#each items as item}
         <ExperienceItem {...item} />
       {/each}
@@ -38,33 +39,9 @@
     page-break-after: avoid;
   }
 
-  header h2 {
-    @apply p-8 md:px-12;
-  }
-
-  .items {
-    @apply p-8 md:p-12 pt-0 md:pt-0;
-  }
-
-  .with-timeline .items {
-    @apply pt-8;
-  }
-
   @media screen {
     header {
-      @apply sticky z-10 top-0 leading-none bg-white bg-opacity-90;
-      backdrop-filter: blur(5px);
-
-      & :global(.timeline) {
-        @apply absolute inset-x-0 -mt-3;
-      }
-    }
-  }
-
-  @media print {
-    header h2,
-    .items {
-      @apply p-0;
+      @apply sticky z-10 top-0 leading-none bg-white bg-opacity-90 backdrop-blur;
     }
   }
 </style>

@@ -24,7 +24,8 @@
     "js-yaml": "^4.1.0",
     "markdown-it": "^13.0.1",
     "popper.js": "1.16.1",
-    "svelte-icons": "^2.1.0"
+    "svelte-icons": "^2.1.0",
+    "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.4.5",
