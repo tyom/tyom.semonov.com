@@ -6,7 +6,7 @@
   const separator = (idx, list) => (idx < list.length - 1 ? ', ' : '');
 </script>
 
-<ul>
+<ul class="pl-4 list-disc">
   {#each items as item}
     <li>
       {#if item.links}
@@ -28,9 +28,3 @@
     </li>
   {/each}
 </ul>
-
-<style>
-  ul {
-    @apply list-disc;
-  }
-</style>

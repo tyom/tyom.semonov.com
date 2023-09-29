@@ -1,6 +1,5 @@
 <script>
   import { onMount } from 'svelte';
-  import { twMerge } from 'tailwind-merge'
   import ExperienceItem from './ExperienceItem.svelte';
   import Timeline from './Timeline.svelte';
 
@@ -18,13 +17,24 @@
 
 <section bind:this={sectionEl}>
   <header>
-    <h2 class="p-8 md:px-12 print:!p-0 print:!pb-8">{title}</h2>
+    <h2
+      class="text-2xl text-gray-500 uppercase font-bold tracking-wide p-8 md:px-12 print:(!p-0 !pb-8) break-inside-avoid-page break-after-avoid-page"
+    >
+      {title}
+    </h2>
     {#if showTimeline && intersectionNodes}
-      <Timeline events={items} {intersectionNodes} class="absolute inset-x-0 -mt-3"/>
+      <Timeline
+        events={items}
+        {intersectionNodes}
+        class="absolute inset-x-0 -mt-3"
+      />
     {/if}
   </header>
   {#if items.length}
-    <div class="items {twMerge('p-8 md:p-12 pt-0 md:pt-0', showTimeline && '!pt-8', 'print:!p-0')} divided">
+    <div
+      class="divided space-y-4 p-8 md:p-12 pt-0 md:pt-0 print:!p-0"
+      class:!pt-8={showTimeline}
+    >
       {#each items as item}
         <ExperienceItem {...item} />
       {/each}
@@ -32,16 +42,11 @@
   {/if}
 </section>
 
-<style lang="postcss">
-  h2 {
-    @apply text-2xl text-gray-500 uppercase font-bold tracking-wide;
-    page-break-inside: avoid;
-    page-break-after: avoid;
-  }
-
+<style>
   @media screen {
     header {
-      @apply sticky z-10 top-0 leading-none bg-white bg-opacity-90 backdrop-blur;
+      --at-apply: sticky z-10 top-0 leading-none bg-white bg-opacity-90
+        backdrop-blur;
     }
   }
 </style>

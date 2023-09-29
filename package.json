@@ -18,31 +18,29 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@unocss/reset": "^0.56.4",
     "dotenv": "^16.0.1",
     "glob": "^10.3.9",
     "is-plain-object": "^5.0.0",
     "js-yaml": "^4.1.0",
     "markdown-it": "^13.0.1",
     "popper.js": "1.16.1",
-    "svelte-icons": "^2.1.0",
-    "tailwind-merge": "^1.14.0"
+    "unplugin-icons": "^0.17.0"
   },
   "devDependencies": {
+    "@iconify/json": "^2.2.121",
     "@storybook/addon-essentials": "^7.4.5",
     "@storybook/svelte": "^7.4.5",
     "@storybook/sveltekit": "^7.4.5",
     "@sveltejs/adapter-static": "^2.0.3",
     "@sveltejs/kit": "^1.25.0",
-    "autoprefixer": "^10.4.7",
-    "cssnano": "^5.1.11",
+    "@unocss/preset-icons": "^0.56.4",
+    "@unocss/svelte-scoped": "^0.56.4",
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-storybook": "^0.6.14",
     "eslint-plugin-svelte": "^2.33.2",
     "gh-pages": "4.0.0",
-    "postcss": "^8.4.14",
-    "postcss-load-config": "^4.0.1",
-    "postcss-preset-env": "^7.7.1",
     "prettier": "^2.7.0",
     "prettier-plugin-svelte": "^2.7.0",
     "puppeteer": "^14.4.0",
@@ -52,10 +50,10 @@
     "svelte": "^4.2.1",
     "svelte-loader": "^3.1.9",
     "svelte-preprocess": "^5.0.4",
-    "tailwindcss": "^3.3.3",
     "tree-kill": "^1.2.2",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2",
+    "unocss": "^0.56.4",
     "vite": "^4.4.9"
   }
 }

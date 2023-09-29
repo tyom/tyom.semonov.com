@@ -23,29 +23,36 @@
   const duration = periodDuration(start, end);
 </script>
 
-<div class="experience-item" class:u-print-hidden={shouldHideFromPrint()}>
-  <header>
-    <div class="period">
+<div
+  class="experience-item space-y-4 break-inside-avoid-page"
+  class:u-print-hidden={shouldHideFromPrint()}
+>
+  <header class="space-y-1">
+    <div class="text-[0.95em] font-medium">
       {start.month}
       {start.year} -
       {#if end.year}{end.month} {end.year}{:else}present{/if}
       {#if duration}
-        <span class="duration">({duration})</span>
+        <span class="text-gray-500">({duration})</span>
       {/if}
       {#if location}
         <span class="location">({location})</span>
       {/if}
     </div>
-    <h3 class="name">
+    <h3 class="font-bold leading-tight text-[1.25em]">
       {name}
       {#if isDefunct}
         <span class="defunct">(defunct)</span>
       {/if}
     </h3>
-    <div class="role">
+    <div class="text-[0.95em] text-gray-500">
       {role}
       {#if isContractor}
-        <span class="type">Contract</span>
+        <span
+          class="inline align-middle text-sm font-bold uppercase p-1 rounded bg-blue-50 text-blue-900 print:(text-gray-500 border bg-white ml-1 text-xs)"
+        >
+          Contract
+        </span>
       {/if}
     </div>
   </header>
@@ -55,69 +62,17 @@
     </div>
   {/if}
   {#if technologies.length}
-    <footer>
-      <h4>Technologies & tools</h4>
+    <footer class="text-[0.85em]">
+      <h4 class="font-bold">Technologies & tools</h4>
       <List items={technologies} inline />
     </footer>
   {/if}
 </div>
 
-<style lang="postcss">
-  .experience-item {
-    page-break-inside: avoid;
-
-    & > * + * {
-      @apply mt-4;
-    }
-  }
-
-  header > * + * {
-    @apply mt-1;
-  }
-
-  .name {
-    @apply font-bold leading-tight;
-    font-size: 1.25em;
-  }
-
-  .period,
-  .role {
-    font-size: 0.95em;
-  }
-
-  .period {
-    @apply font-medium;
-  }
-
-  .role,
-  .duration {
-    @apply text-gray-500;
-  }
-
-  .type {
-    @apply inline align-middle font-bold uppercase p-1 rounded bg-blue-50 text-blue-900;
-    font-size: 0.8rem;
-  }
-
-  footer {
-    font-size: 0.85em;
-  }
-
-  h4 {
-    @apply font-bold;
-  }
-
+<style>
   @media screen {
     :global(.experience-item.visible)::before {
-      @apply text-blue-900 opacity-100;
-    }
-  }
-
-  @media print {
-    .type {
-      @apply text-gray-500 border bg-white;
-      font-size: 7pt;
-      margin-left: 2pt;
+      --at-apply: text-blue-900 opacity-100;
     }
   }
 </style>

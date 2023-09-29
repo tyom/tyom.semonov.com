@@ -1,8 +1,9 @@
 <script>
-  import GitHub from 'svelte-icons/fa/FaGithub.svelte';
-  import LinkedIn from 'svelte-icons/fa/FaLinkedin.svelte';
-  import Twitter from 'svelte-icons/fa/FaTwitter.svelte';
-  import PDF from 'svelte-icons/fa/FaFilePdf.svelte';
+  import GitHub from 'virtual:icons/fa6-brands/Github.svelte';
+  import LinkedIn from 'virtual:icons/fa6-brands/Linkedin.svelte';
+  import Twitter from 'virtual:icons/fa6-brands/Twitter.svelte';
+  import PDF from 'virtual:icons/fa6-regular/FilePdf.svelte';
+  import InfoSymbol from 'virtual:icons/material-symbols/info-outline-rounded.svelte';
   import List from './List';
 
   const truncateUrl = (url) => url.replace(/https:\/\//, '');
@@ -23,173 +24,125 @@
   };
 </script>
 
-<div class="summary">
-  <h1>{name}</h1>
-  <h2>{title}</h2>
-  <div class="details">
+<div
+  class="summary relative p-8 md:p-12 print:p-0 flex flex-1 flex-col gap-4 text-[0.9em]"
+>
+  <h1 class="font-bold tracking-wide leading-none text-[2.9em]">{name}</h1>
+  <h2 class="leading-none opacity-60 text-[1.4em]">{title}</h2>
+  <div class="max-w-[68ch] leading-snug">
     {@html details}
   </div>
-  {#if coreSkills || currentInterests}
-    <div class="skill-set">
-      {#if coreSkills}
-        <section>
-          <h3>Core skills</h3>
-          <List items={coreSkills} />
-        </section>
-      {/if}
-      {#if currentInterests}
-        <section>
-          <h3>Current interests</h3>
-          <List items={currentInterests} />
-        </section>
-      {/if}
-    </div>
-  {/if}
-  {#if social || pdfLink}
-    <hr />
-    <footer>
-      <div class="footer-layout">
-        {#if social}
-          <div class="social-links">
-            {#each social as item}
-              <a href={item.url} title={item.label}>
-                <span class="icon" aria-label={item.label}>
-                  <svelte:component this={icons[item.icon]} />
-                </span>
-                <span class="u-print-only">
-                  {truncateUrl(item.url)}
-                </span>
-              </a>
-            {/each}
-          </div>
+  <section class="divided">
+    {#if coreSkills || currentInterests}
+      <div class="skill-set space-y-4">
+        {#if coreSkills}
+          <section class="space-y-1">
+            <h3 class="font-bold text-[1.1em]">Core skills</h3>
+            <List items={coreSkills} />
+          </section>
         {/if}
-        {#if pdfLink}
-          <div class="download u-print-hidden">
-            <a
-              href={pdfLink}
-              title="Open PDF version"
-              aria-label="Download PDF"
-              target="_blank"
-            >
-              <span class="download-label">Download PDF</span>
-              <span class="icon">
-                <PDF />
-              </span>
-            </a>
-          </div>
+        {#if currentInterests}
+          <section class="space-y-1 text-[1.1em]">
+            <h3 class="font-bold">Current interests</h3>
+            <List items={currentInterests} />
+          </section>
         {/if}
       </div>
-      {#if contact}
-        <dl class="contact">
-          {#each Object.entries(contact) as [type, details]}
-            <div>
-              <dt>{type}</dt>
-              <dd>
-                {@html details}
-              </dd>
+    {/if}
+    {#if social || pdfLink}
+      <footer class="sticky top-12">
+        <div class="flex items-center justify-between -mx-2 -mt-2 print:mt-0">
+          {#if social}
+            <div class="flex print:flex-col">
+              {#each social as item}
+                <a
+                  href={item.url}
+                  title={item.label}
+                  class="flex gap-2 p-2 transition-transform-100 hover:scale-125 print:py-1"
+                >
+                  <svelte:component
+                    this={icons[item.icon]}
+                    aria-label={item.label}
+                    class="h-8 w-8 print:(w-6 h-6)"
+                  />
+                  <span class="u-print-only">
+                    {truncateUrl(item.url)}
+                  </span>
+                </a>
+              {/each}
             </div>
-          {/each}
-        </dl>
-      {/if}
-    </footer>
-  {/if}
+          {/if}
+          {#if pdfLink}
+            <div class="download u-print-hidden">
+              <a
+                href={pdfLink}
+                class="p-2 flex gap-3 group"
+                title="Open PDF version"
+                aria-label="Download PDF"
+                target="_blank"
+              >
+                <span class="text-base">Download</span>
+                <span class="transition-transform-100 group-hover:scale-125">
+                  <PDF class="h-8 w-8" />
+                </span>
+              </a>
+            </div>
+          {/if}
+        </div>
+        {#if contact}
+          <dl class="contact print:pl-8">
+            {#each Object.entries(contact) as [type, details]}
+              <div class="space-y-1">
+                <dt class="sr-only">{type}</dt>
+                <dd>
+                  {@html details}
+                </dd>
+              </div>
+            {/each}
+          </dl>
+        {/if}
+      </footer>
+    {/if}
+  </section>
+
+  <div class="u-print-only break-before-page space-y-1 mt-4">
+    <p class="flex items-center gap-2 leading-none">
+      <InfoSymbol class="w-8 h-8" />
+      <span class="max-w-[20ch]"
+        >For brevity, only the last few years are shown here.</span
+      >
+    </p>
+    <p>
+      See the rest at <strong>tyom.semonov.com</strong>
+    </p>
+  </div>
 </div>
 
-<style lang="postcss">
-  .summary {
-    @apply relative p-8 md:p-12 flex-1;
-  }
-
-  .summary > * + *:not(hr) {
-    @apply mt-4;
-  }
-
-  h1 {
-    @apply font-bold tracking-wide leading-none;
-    font-size: 3em;
-  }
-
-  h2 {
-    @apply opacity-60;
-    font-size: 1.5em;
-  }
-
-  h3 {
-    @apply font-bold;
-    font-size: 1.2em;
-  }
-
-  .details {
-    max-width: 68ch;
-  }
-
-  .icon {
-    @apply flex align-top;
-    width: 1.5em;
-    height: 1.5em;
-  }
-
-  .skill-set {
-    @apply grid gap-4;
-
-    & * + :global(ul) {
-      @apply mt-2 ml-5;
-    }
-  }
-
-  footer a {
-    @apply inline-flex p-2 items-center;
-
-    & .icon {
-      transition: 0.1s;
-    }
-
-    &:hover .icon {
-      transform: scale(1.15);
-    }
-  }
-
+<style>
   footer :global(a) {
-    @apply no-underline;
+    --at-apply: no-underline;
 
     &:hover {
-      @apply underline;
-    }
-  }
-
-  .download {
-    @apply ml-auto;
-
-    & a:active {
-      box-shadow: 0 0 0 1px;
-    }
-  }
-
-  .contact {
-    @apply mt-6;
-
-    & dt {
-      @apply sr-only;
+      --at-apply: underline;
     }
   }
 
   @media screen {
     .summary {
-      color: #fffd;
-      font-size: 0.9em;
+      --at-apply: text-white/80;
       background: linear-gradient(
         120deg,
-        var(--panel-color-hi, #333),
-        var(--panel-color-low, #111)
+        theme('colors.primary'),
+        theme('colors.primary-dark')
       );
+    }
 
-      & :global(a):hover {
-        color: #fff;
-      }
+    .summary :global(a):hover {
+      color: #fff;
     }
 
     .summary::before {
-      @apply absolute pointer-events-none z-0 inset-0 opacity-10;
+      --at-apply: absolute pointer-events-none z-0 inset-0 opacity-10;
       background: repeating-linear-gradient(
         30deg,
         #fff 0px,
@@ -199,74 +152,16 @@
       );
     }
 
-    @supports (mask: radial-gradient(ellipse, #000, #fff)) {
+    @supports (-webkit-mask: radial-gradient(ellipse, #000, #fff)) {
       .summary::before {
         content: '';
-        mask: radial-gradient(
+        -webkit-mask: radial-gradient(
           150vw 1000vh ellipse at top left,
           #0000,
           #0003,
           #000
         );
       }
-    }
-
-    footer {
-      @apply sticky top-12;
-    }
-
-    .footer-layout {
-      @apply flex items-center;
-      margin-right: -0.5rem;
-    }
-
-    .skill-set {
-      font-size: 0.9em;
-      grid-template-columns: repeat(auto-fit, minmax(11em, 1fr));
-    }
-  }
-
-  .download-label {
-    @apply mx-2 sm:inline-block lg:hidden xl:inline-block;
-    font-size: 0.75em;
-  }
-
-  @media print {
-    .summary {
-      @apply p-0;
-      font-size: 10.5pt;
-    }
-
-    .social-links {
-      @apply flex flex-col;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-    }
-
-    h2 {
-      font-size: 1.4rem;
-    }
-
-    footer {
-      page-break-inside: avoid;
-
-      & a {
-        @apply p-0;
-
-        & + a {
-          @apply mt-2;
-        }
-      }
-    }
-
-    .download {
-      display: none;
-    }
-
-    .icon {
-      margin-right: 0.5em;
     }
   }
 </style>

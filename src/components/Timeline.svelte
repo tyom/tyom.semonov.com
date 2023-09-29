@@ -103,8 +103,8 @@
     <div class="flex flex-1 h-2 gap-px">
       {#each timelineEvents as event}
         <button
-          class="relative bg-gray-300 min-w-[4px] hover:bg-[var(--panel-color-hi)] hover:transition-colors duration-200 {event.modifier}"
-          class:visible={event.isVisible}
+          class="btn {event.modifier}"
+          class:!bg-blue-900={event.isVisible}
           aria-label="{event.label}"
           style="width: {event.percent}%"
           on:click={() => scrollTo(event.target)}
@@ -116,20 +116,20 @@
   </div>
 {/if}
 
-<style lang="postcss">
+<style>
+  .btn {
+    --at-apply: bg-zinc-300 min-w-[4px] hover:(transition-colors duration-200 bg-zinc-400);
+  }
+
   .contract {
-    @apply bg-blue-300;
+    --at-apply: bg-blue-300 hover\:bg-blue-500;
   }
 
   .permanent {
-    @apply bg-yellow-300;
-  }
-
-  .visible {
-    @apply bg-blue-900;
+    --at-apply: bg-yellow-300 hover\:bg-yellow-500;
   }
 
   .year-label {
-    @apply w-8 md:w-12 px-1 font-bold text-gray-500 text-[8px];
+    --at-apply: w-8 md\:w-12 px-1 font-bold text-gray-500 text-[0.5em];
   }
 </style>

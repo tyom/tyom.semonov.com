@@ -1,5 +1,4 @@
 <script>
-  import InfoIcon from 'svelte-icons/fa/FaInfoCircle.svelte';
   import Section from '$components/Section.svelte';
   import Summary from '$components/Summary.svelte';
 
@@ -27,65 +26,23 @@
   <meta property="twitter:image" content="https://tyom.semonov.com/logo.png" />
 </svelte:head>
 
-<main>
-  <aside>
+<main
+  class="flex flex-col lg:flex-row min-h-screen print:(grid gap-8 grid-cols-[1fr_2fr])"
+>
+  <aside class="flex flex-col lg:flex-1">
     <Summary {...summary} pdfLink="tyom-semonov-cv.pdf" />
   </aside>
 
-  <article class="content">
+  <article class="lg:flex-[2]">
     <Section title="Experience" items={experience} showTimeline />
     <Section title="Education" items={education} />
-
-    <p class="print-notice">
-      <InfoIcon />
-      For brevity, only the last few years are shown here.
-      <br />
-      See the rest at tyom.semonov.com
-    </p>
   </article>
 </main>
 
-<style lang="postcss">
-  main {
-    @apply flex flex-col lg:flex-row min-h-screen bg-white;
-  }
-
-  @media screen {
-    aside {
-      @apply flex;
-    }
-
-    .print-notice {
-      @apply hidden;
-    }
-  }
-
-  @screen lg {
-    aside {
-      flex: 1;
-    }
-
-    .content {
-      flex: 2;
-    }
-  }
-
+<style>
   @media print {
-    main {
-      @apply grid gap-8;
-      grid-template-columns: 1fr 2fr;
-    }
-
-    .content :global(section + section) {
-      @apply hidden;
-    }
-
-    .print-notice {
-      @apply flex items-center text-base leading-snug mt-12;
-
-      & :global(svg) {
-        @apply text-gray-500 w-9 h-9 mr-4;
-      }
+    article :global(section + section) {
+      --at-apply: hidden;
     }
   }
 </style>
