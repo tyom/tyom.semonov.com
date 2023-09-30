@@ -20,7 +20,7 @@ const PAGE_URL = `http://localhost:${PORT}`;
 
     if (data.includes(PAGE_URL)) {
       try {
-        const browser = await puppeteer.launch({ headless: true });
+        const browser = await puppeteer.launch({ headless: 'new' });
         const page = await browser.newPage();
         await page.goto(PAGE_URL, { waitUntil: 'networkidle0' });
 
