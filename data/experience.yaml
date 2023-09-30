@@ -4,17 +4,25 @@
   start:
     month: January
     year: 2022
+  end:
+    month: September
+    year: 2023
   description: !md |
+    Worked on the launch of the trading mobile app for a financial service provider. The app uses realtime data to
+    provide a cutting edge trading experience. The app is built in TypeScript with React Native and Expo and runs on
+    both iOS and Android with several layers of automation testing.
 
-
+    The app was successfully launched and had a multimillion dollar trading turnover in the first weeks of operation.
+    The team continued to maintain the app, releasing new features.
   technologies:
     - TypeScript:
+        - RxJS
         - React/React Native
         - Expo
-        - RxJS
         - Jest
     - WebDriver/Appium
-    - Tailwind CSS/MUI
+    - Sentry
+    - Tailwind CSS
     - Git/GitHub/CircleCI
     - AWS
 

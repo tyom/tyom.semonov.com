@@ -1,7 +1,6 @@
 <script>
   import GitHub from 'virtual:icons/fa6-brands/Github.svelte';
   import LinkedIn from 'virtual:icons/fa6-brands/Linkedin.svelte';
-  import Twitter from 'virtual:icons/fa6-brands/Twitter.svelte';
   import PDF from 'virtual:icons/fa6-regular/FilePdf.svelte';
   import InfoSymbol from 'virtual:icons/material-symbols/info-outline-rounded.svelte';
   import List from './List';
@@ -20,7 +19,6 @@
   export let icons = {
     github: GitHub,
     linkedin: LinkedIn,
-    twitter: Twitter,
   };
 </script>
 
