@@ -58,6 +58,7 @@
   </header>
   {#if description}
     <div class="description">
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
       {@html description}
     </div>
   {/if}

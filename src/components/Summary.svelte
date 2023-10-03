@@ -28,6 +28,7 @@
   <h1 class="font-bold tracking-wide leading-none text-[2.9em]">{name}</h1>
   <h2 class="leading-none opacity-60 text-[1.4em]">{title}</h2>
   <div class="max-w-[68ch] leading-snug">
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     {@html details}
   </div>
   <section class="divided">
@@ -93,6 +94,7 @@
               <div class="space-y-1">
                 <dt class="sr-only">{type}</dt>
                 <dd>
+                  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                   {@html details}
                 </dd>
               </div>

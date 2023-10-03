@@ -9,18 +9,26 @@ jobs:
     name: build and deploys
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: 16
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install
 
-      - name: Build app and Storybook and prepare for deployment
-        run: yarn predeploy
+      - name: Lint source
+        run: pnpm lint
+
+      - name: Build app and generate PDF
+        run: pnpm predeploy
         env:
-          GA_TRACKING_ID: UA-332655-6
+          PUBLIC_GA_MEASUREMENT_ID: G-T41297TYQ1
 
       - name: Deploy to GH Pages
         uses: peaceiris/actions-gh-pages@v3
