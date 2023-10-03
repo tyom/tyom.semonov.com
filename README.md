@@ -64,8 +64,8 @@ The static site is deployed to GH Pages. To deploy manually (this also runs pred
 
 ## Environment variables
 
-| Variable       | Description                            |
-| :------------- | :------------------------------------- |
-| GIT_USER_EMAIL | Git user email for pushing to GH pages |
-| GIT_USER_NAME  | Git user name for pushing to GH pages  |
-| GA_TRACKING_ID | Google Analytics tracking ID           |
+| Variable                 | Description                              |
+|:-------------------------|:-----------------------------------------|
+| GIT_USER_EMAIL           | Git user email for pushing to GH pages   |
+| GIT_USER_NAME            | Git user name for pushing to GH pages    |
+| PUBLIC_GA_MEASUREMENT_ID | Google Analytics measuremet ID           |

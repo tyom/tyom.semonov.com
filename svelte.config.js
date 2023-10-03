@@ -5,14 +5,7 @@ import UnoCSS from '@unocss/svelte-scoped/preprocess';
 /** @type {import('@sveltejs/kit').Config} */
 export default {
   preprocess: [
-    vitePreprocess({
-      replace: [
-        [
-          'process.env.GA_TRACKING_ID',
-          JSON.stringify(process.env.GA_TRACKING_ID),
-        ],
-      ],
-    }),
+    vitePreprocess(),
     UnoCSS({
       combine: process.env.NODE_ENV === 'production',
     }),
