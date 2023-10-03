@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@iconify/json": "^2.2.121",
-    "@storybook/addon-essentials": "^7.4.5",
+    "@storybook/addon-essentials": "^7.4.6",
     "@storybook/svelte": "^7.4.5",
     "@storybook/sveltekit": "^7.4.5",
     "@sveltejs/adapter-static": "^2.0.3",

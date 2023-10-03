@@ -1,8 +1,8 @@
 <script>
-  import GitHub from 'virtual:icons/fa6-brands/Github.svelte';
-  import LinkedIn from 'virtual:icons/fa6-brands/Linkedin.svelte';
-  import PDF from 'virtual:icons/fa6-regular/FilePdf.svelte';
-  import InfoSymbol from 'virtual:icons/material-symbols/info-outline-rounded.svelte';
+  import GitHub from '~icons/fa6-brands/github';
+  import LinkedIn from '~icons/fa6-brands/linkedin';
+  import PDF from '~icons/fa6-regular/file-pdf';
+  import InfoSymbol from '~icons/material-symbols/info-outline-rounded';
   import List from './List';
 
   const truncateUrl = (url) => url.replace(/https:\/\//, '');
@@ -23,7 +23,7 @@
 </script>
 
 <div
-  class="summary relative p-8 md:p-12 print:p-0 flex flex-1 flex-col gap-4 text-[0.9em]"
+  class="summary relative p-8 md:p-12 print:!p-0 flex flex-1 flex-col gap-4 text-[0.9em]"
 >
   <h1 class="font-bold tracking-wide leading-none text-[2.9em]">{name}</h1>
   <h2 class="leading-none opacity-60 text-[1.4em]">{title}</h2>
@@ -61,9 +61,9 @@
                   <svelte:component
                     this={icons[item.icon]}
                     aria-label={item.label}
-                    class="h-8 w-8 print:(w-6 h-6)"
+                    class="h-6 w-6"
                   />
-                  <span class="u-print-only">
+                  <span class="hidden print:block">
                     {truncateUrl(item.url)}
                   </span>
                 </a>
@@ -71,7 +71,7 @@
             </div>
           {/if}
           {#if pdfLink}
-            <div class="download u-print-hidden">
+            <div class="download print:hidden">
               <a
                 href={pdfLink}
                 class="p-2 flex gap-3 group"
@@ -81,7 +81,7 @@
               >
                 <span class="text-base">Download</span>
                 <span class="transition-transform-100 group-hover:scale-125">
-                  <PDF class="h-8 w-8" />
+                  <PDF class="h-6 w-6" />
                 </span>
               </a>
             </div>
@@ -103,7 +103,7 @@
     {/if}
   </section>
 
-  <div class="u-print-only break-before-page space-y-1 mt-4">
+  <div class="hidden print:block break-before-page space-y-1 mt-4">
     <p class="flex items-center gap-2 leading-none">
       <InfoSymbol class="w-8 h-8" />
       <span class="max-w-[20ch]"

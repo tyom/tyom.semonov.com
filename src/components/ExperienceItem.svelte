@@ -25,7 +25,7 @@
 
 <div
   class="experience-item space-y-4 break-inside-avoid-page"
-  class:u-print-hidden={shouldHideFromPrint()}
+  class:print:hidden={shouldHideFromPrint()}
 >
   <header class="space-y-1">
     <div class="text-[0.95em] font-medium">
