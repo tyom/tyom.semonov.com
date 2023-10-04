@@ -24,7 +24,7 @@
 </script>
 
 <div
-  class="experience-item space-y-4 break-inside-avoid-page"
+  class="experience-item space-y-4 break-inside-avoid-page max-w-[70ch]"
   class:print:hidden={shouldHideFromPrint()}
 >
   <header class="space-y-1">
@@ -36,7 +36,7 @@
         <span class="text-gray-500">({duration})</span>
       {/if}
       {#if location}
-        <span class="location">({location})</span>
+        <span class="text-gray-500">({location})</span>
       {/if}
     </div>
     <h3 class="font-bold leading-tight text-[1.25em]">
@@ -49,7 +49,7 @@
       {role}
       {#if isContractor}
         <span
-          class="inline align-middle text-sm font-bold uppercase p-1 rounded bg-blue-50 text-blue-900 print:(text-gray-500 border bg-white ml-1 text-xs)"
+          class="inline align-middle text-xs font-bold uppercase py0.5 px-1 rounded bg-blue-50 text-blue-900 print:(text-gray-600 border border-zinc-300 bg-none ml-1 text-xs)"
         >
           Contract
         </span>
@@ -57,7 +57,7 @@
     </div>
   </header>
   {#if description}
-    <div class="description">
+    <div class="max-w-[70ch]">
       <!-- eslint-disable-next-line svelte/no-at-html-tags -->
       {@html description}
     </div>
