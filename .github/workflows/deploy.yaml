@@ -28,7 +28,7 @@ jobs:
       - name: Build app and generate PDF
         run: pnpm predeploy
         env:
-          PUBLIC_GA_MEASUREMENT_ID: G-T41297TYQ1
+          PUBLIC_GA_MEASUREMENT_ID: ${{ vars.PUBLIC_GA_MEASUREMENT_ID }}
 
       - name: Deploy to GH Pages
         uses: peaceiris/actions-gh-pages@v3

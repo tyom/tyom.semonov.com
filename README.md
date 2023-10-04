@@ -5,7 +5,7 @@ data is used to generate a static website, along with the print-friendly PDF
 version of the CV.
 
 The project is built with [Svelte](https://svelte.dev) and [Svelte Kit](https://kit.svelte.dev/).
-It uses [Puppeteer](https://github.com/GoogleChrome/puppeteer) to generate PDF from site and deploys to
+It uses [Playwright](https://playwright.dev/) to generate PDF from site and deploys to
 GH Pages with [gh-pages](https://github.com/tschaub/gh-pages) package.
 
 The site is automatically built and deployed with GitHub workflow on commit to `master` branch.
@@ -25,7 +25,7 @@ this data and break it up into individual reusable pieces. Some of these can be 
 
 The result is built and uploaded to GitHub Pages.
 
-During the build stage the PDF file is generated using Puppeteer. This PDF is built from the print preview
+During the build stage the PDF file is generated using Playwright. This PDF is built from the print preview
 version of the site and is located in static directory, available for download.
 
 ## Developing

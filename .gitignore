@@ -5,7 +5,7 @@ storybook-static
 dist/
 static/*.pdf
 .env
-/.svelte
-/.svelte-kit
-/build
-/functions
+.svelte/
+.svelte-kit/
+build/
+test-results/
