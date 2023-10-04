@@ -6,6 +6,7 @@ on:
 
 env:
   FORCE_COLOR: 3
+  PUBLIC_DISABLE_ANALYTICS: ''
 
 jobs:
   build:

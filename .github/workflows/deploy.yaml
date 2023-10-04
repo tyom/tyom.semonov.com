@@ -4,6 +4,10 @@ on:
     branches:
       - master
 
+env:
+  FORCE_COLOR: 3
+  PUBLIC_DISABLE_ANALYTICS: ''
+
 jobs:
   deploy:
     name: build and deploys
