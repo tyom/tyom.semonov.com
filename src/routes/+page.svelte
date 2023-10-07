@@ -33,7 +33,7 @@
     <Summary {...summary} pdfLink="tyom-semonov-cv.pdf" />
   </aside>
 
-  <article class="lg:flex-[2]">
+  <article class="lg:flex-[2] bg-white">
     <Section title="Experience" items={experience} showTimeline />
     <Section title="Education" items={education} />
   </article>
