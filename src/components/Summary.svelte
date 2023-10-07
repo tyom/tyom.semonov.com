@@ -108,7 +108,7 @@
   <div class="hidden print:block break-before-page space-y-1 mt-4">
     <p class="flex items-center gap-2 leading-none">
       <InfoSymbol class="w-8 h-8" />
-      <span class="max-w-[20ch]"
+      <span class="max-w-[22ch]"
         >For brevity, only the last few years are shown here.</span
       >
     </p>
