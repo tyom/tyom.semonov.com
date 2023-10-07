@@ -33,3 +33,4 @@ jobs:
         run: pnpm predeploy
         env:
           PUBLIC_GA_MEASUREMENT_ID: ${{ vars.PUBLIC_GA_MEASUREMENT_ID }}
+          PUBLIC_CLARITY_ID: ${{ vars.PUBLIC_CLARITY_ID }}
