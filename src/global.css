@@ -15,6 +15,7 @@ p + p {
   margin-top: 1rem;
 }
 
+hr,
 .divided > *::before {
   display: block;
   width: 50px;

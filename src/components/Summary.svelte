@@ -23,88 +23,88 @@
 </script>
 
 <div
-  class="summary relative p-8 md:p-12 print:!p-0 flex flex-1 flex-col gap-4 text-[0.9em]"
+  class="summary p-8 md:p-12 print:!p-0 flex flex-1 flex-col gap-4 text-[0.9em]"
 >
-  <h1 class="font-bold tracking-wide leading-none text-[2.9em]">{name}</h1>
+  <h1 class="font-bold tracking-wide leading-none text-[2.9em]">
+    {name}
+  </h1>
   <h2 class="leading-none opacity-60 text-[1.4em]">{title}</h2>
   <div class="max-w-[60ch] leading-snug">
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     {@html details}
   </div>
-  <section class="divided">
-    {#if coreSkills || currentInterests}
-      <div class="skill-set space-y-4">
-        {#if coreSkills}
-          <section class="space-y-1">
-            <h3 class="font-bold text-[1.1em]">Core skills</h3>
-            <List items={coreSkills} />
-          </section>
-        {/if}
-        {#if currentInterests}
-          <section class="space-y-1 text-[1.1em]">
-            <h3 class="font-bold">Current interests</h3>
-            <List items={currentInterests} />
-          </section>
-        {/if}
-      </div>
-    {/if}
-    {#if social || pdfLink}
-      <footer class="sticky top-12">
-        <div class="flex items-center justify-between -mx-2 -mt-2 print:mt-0">
-          {#if social}
-            <div class="flex print:flex-col">
-              {#each social as item}
-                <a
-                  href={item.url}
-                  title={item.label}
-                  class="flex gap-2 p-2 transition-transform-100 hover:scale-125 print:py-1"
-                >
-                  <svelte:component
-                    this={icons[item.icon]}
-                    aria-label={item.label}
-                    class="h-6 w-6"
-                  />
-                  <span class="hidden print:block">
-                    {truncateUrl(item.url)}
-                  </span>
-                </a>
-              {/each}
-            </div>
-          {/if}
-          {#if pdfLink}
-            <div class="download print:hidden">
+  {#if coreSkills || currentInterests}
+    <div class="skill-set space-y-4">
+      {#if coreSkills}
+        <section class="space-y-1">
+          <h3 class="font-bold text-[1.1em]">Core skills</h3>
+          <List items={coreSkills} />
+        </section>
+      {/if}
+      {#if currentInterests}
+        <section class="space-y-1 text-[1.1em]">
+          <h3 class="font-bold">Current interests</h3>
+          <List items={currentInterests} />
+        </section>
+      {/if}
+    </div>
+  {/if}
+  {#if social || pdfLink}
+    <hr class="my-4" />
+    <footer class="sticky top-10">
+      <div class="flex items-center justify-between -mx-2 -mt-2 print:mt-0">
+        {#if social}
+          <div class="flex print:flex-col">
+            {#each social as item}
               <a
-                href={pdfLink}
-                class="p-2 flex gap-3 group"
-                title="Open PDF version"
-                aria-label="Download PDF"
-                target="_blank"
+                href={item.url}
+                title={item.label}
+                class="flex gap-2 p-2 transition-transform-100 hover:scale-125 print:py-1"
               >
-                <span class="text-base">Download</span>
-                <span class="transition-transform-100 group-hover:scale-125">
-                  <PDF class="h-6 w-6" />
+                <svelte:component
+                  this={icons[item.icon]}
+                  aria-label={item.label}
+                  class="h-6 w-6"
+                />
+                <span class="hidden print:block">
+                  {truncateUrl(item.url)}
                 </span>
               </a>
-            </div>
-          {/if}
-        </div>
-        {#if contact}
-          <dl class="contact print:pl-8">
-            {#each Object.entries(contact) as [type, details]}
-              <div class="space-y-1">
-                <dt class="sr-only">{type}</dt>
-                <dd>
-                  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                  {@html details}
-                </dd>
-              </div>
             {/each}
-          </dl>
+          </div>
         {/if}
-      </footer>
-    {/if}
-  </section>
-
+        {#if pdfLink}
+          <div class="download print:hidden">
+            <a
+              href={pdfLink}
+              class="p-2 flex gap-3 group"
+              title="Open PDF version"
+              aria-label="Download PDF"
+              target="_blank"
+            >
+              <span class="text-sm">Download</span>
+              <span class="transition-transform-100 group-hover:scale-125">
+                <PDF class="h-6 w-6" />
+              </span>
+            </a>
+          </div>
+        {/if}
+      </div>
+      {#if contact}
+        <dl class="contact print:pl-8">
+          {#each Object.entries(contact) as [type, details]}
+            <div class="space-y-1">
+              <dt class="sr-only">{type}</dt>
+              <dd>
+                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                {@html details}
+              </dd>
+            </div>
+          {/each}
+        </dl>
+      {/if}
+    </footer>
+  {/if}
   <div class="hidden print:block break-before-page space-y-1 mt-4">
     <p class="flex items-center gap-2 leading-none">
       <InfoSymbol class="w-8 h-8" />
