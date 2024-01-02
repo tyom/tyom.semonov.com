@@ -1,5 +1,5 @@
 import staticAdapter from '@sveltejs/adapter-static';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import UnoCSS from '@unocss/svelte-scoped/preprocess';
 
 /** @type {import('@sveltejs/kit').Config} */
