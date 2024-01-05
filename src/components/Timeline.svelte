@@ -119,7 +119,7 @@
     <div class="flex flex-1 h-2 gap-px">
       {#each timelineEvents as event}
         <button
-          class="btn {event.modifier}"
+          class="btn bg-zinc-300 min-w-[4px] hover:(transition-colors duration-200 bg-zinc-400) {event.modifier}"
           class:!bg-blue-900={event.isVisible}
           aria-label={event.label}
           style="width: {event.percent}%"
@@ -133,10 +133,6 @@
 {/if}
 
 <style>
-  .btn {
-    --at-apply: bg-zinc-300 min-w-[4px] hover:(transition-colors duration-200 bg-zinc-400);
-  }
-
   .contract {
     --at-apply: bg-blue-300 hover\:bg-blue-500;
   }
