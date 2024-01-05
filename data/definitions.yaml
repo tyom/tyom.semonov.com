@@ -306,3 +306,6 @@
 - name: Mapbox GL JS
   url: https://docs.mapbox.com/mapbox-gl-js/
   description: Mapbox GL JS is a JavaScript library for interactive, customizable vector maps on the web. It takes map styles that conform to the Mapbox Style Specification, applies them to vector tiles that conform to the Mapbox Vector Tile Specification, and renders them using WebGL.
+- name: Microsoft Azure
+  url: https://azure.microsoft.com/
+  wikipedia: Microsoft_Azure

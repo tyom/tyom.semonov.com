@@ -42,7 +42,7 @@
         </section>
       {/if}
       {#if currentInterests}
-        <section class="space-y-1 text-[1.1em]">
+        <section class="space-y-1">
           <h3 class="font-bold">Current interests</h3>
           <List items={currentInterests} />
         </section>

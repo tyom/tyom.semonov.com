@@ -1,3 +1,26 @@
+- name: Aviva (via AND Digital)
+  role: React Native Developer
+  isContractor: true
+  start:
+    month: November
+    year: 2023
+  end:
+    month: December
+    year: 2023
+  description: !md |
+    A short contract to help with the handover of the project to the new team. The project is a React Native
+    app for iOS and Android. The app is used by Aviva customers to manage their insurance policies.
+
+    Along with day-to-day support with the handover I helped to upgrade the app to the latest version of React Native
+    and Expo and improved the system of icons management across the app.
+
+  technologies:
+    - TypeScript:
+        - React Native
+        - Expo
+        - Jest
+    - Microsoft Azure
+
 - name: Adaptive Financial Consulting
   role: Senior UI Engineer
   isContractor: true
@@ -5,7 +28,7 @@
     month: January
     year: 2022
   end:
-    month: September
+    month: August
     year: 2023
   description: !md |
     Worked on the launch of the trading mobile app for a financial service provider. The app uses realtime data to
@@ -566,6 +589,7 @@
 
 - name: Freelancing
   role: Design, Development
+  isContractor: true
   start:
     month: February
     year: 2004
