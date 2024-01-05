@@ -1,7 +1,10 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
   import { fade } from 'svelte/transition';
-  import { getNumberOfMonthsBetweenDates, periodDuration } from '$lib/utils';
+  import {
+    formatMonthsToYearsAndMonths,
+    getNumberOfMonthsBetweenDates,
+  } from '$lib/utils';
   import { tooltip } from '../actions';
 
   const INTERSECTION_RATIO = 0.6;
@@ -11,13 +14,24 @@
 
   let containerEl;
 
-  const eventsWithMonthLength = events.map((event, idx) => ({
-    name: event.name,
-    modifier: event.isContractor ? 'contract' : 'permanent',
-    monthLength: getNumberOfMonthsBetweenDates(event.start, event.end),
-    label: `${event.name}: ${periodDuration(event.start, event.end)}`,
-    target: intersectionNodes[idx],
-  }));
+  const eventsWithMonthLength = events.map((event, idx) => {
+    // Adding a full month to round up the difference > 1 month
+    const numberOfFullMonths = getNumberOfMonthsBetweenDates(
+      event.start,
+      event.end,
+    );
+
+    return {
+      name: event.name,
+      modifier: event.isContractor ? 'contract' : 'permanent',
+      monthLength: numberOfFullMonths,
+      label: `${event.name}: ${formatMonthsToYearsAndMonths(
+        numberOfFullMonths,
+      )}`,
+      target: intersectionNodes[idx],
+    };
+  });
+
   const totalTimelineInMonths = eventsWithMonthLength.reduce(
     (acc, curr) => acc + curr.monthLength,
     0,
@@ -32,10 +46,12 @@
     : {
         year: new Date().getFullYear(),
       };
-  const scaledEvents = eventsWithMonthLength.map((event) => ({
-    ...event,
-    percent: (100 / totalTimelineInMonths) * event.monthLength,
-  }));
+  const scaledEvents = eventsWithMonthLength.map((event) => {
+    return {
+      ...event,
+      percent: (100 / totalTimelineInMonths) * event.monthLength,
+    };
+  });
   let timelineEvents = scaledEvents;
   let observer;
 
@@ -105,7 +121,7 @@
         <button
           class="btn {event.modifier}"
           class:!bg-blue-900={event.isVisible}
-          aria-label="{event.label}"
+          aria-label={event.label}
           style="width: {event.percent}%"
           on:click={() => scrollTo(event.target)}
           use:tooltip={{ text: event.label }}

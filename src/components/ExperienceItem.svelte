@@ -1,5 +1,8 @@
 <script>
-  import { periodDuration } from '$lib/utils';
+  import {
+    formatMonthsToYearsAndMonths,
+    getNumberOfMonthsBetweenDates,
+  } from '$lib/utils';
   import List from './List';
 
   const PRINT_TRUNCATE_NUMBER_OF_YEARS = 4;
@@ -20,7 +23,8 @@
   export let isContractor = false;
   export let technologies = [];
 
-  const duration = periodDuration(start, end);
+  const numberOfFullMonths = getNumberOfMonthsBetweenDates(start, end);
+  const duration = formatMonthsToYearsAndMonths(numberOfFullMonths);
 </script>
 
 <div

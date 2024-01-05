@@ -1,54 +1,24 @@
+import { differenceInMonths } from 'date-fns';
 import { isPlainObject } from 'is-plain-object';
 
 const renderPluralisedLabel = (label, num) =>
   num > 0 ? `${num} ${label}` + (num === 1 ? '' : 's') : '';
 
-export function getNumberOfMonthsBetweenDates(fromDate, toDate) {
-  const months = [
-    '',
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+export function getNumberOfMonthsBetweenDates(start, end) {
+  const startDate = new Date(`01 ${start.month} ${start.year}`);
+  const endDate = new Date(`01 ${end.month} ${end.year}`);
 
-  const pad = (num) => ('00' + num).slice(-2);
-  const startDate = new Date(
-    `${fromDate.year}-${pad(months.indexOf(fromDate.month))}`,
-  );
-  const endDate = toDate
-    ? new Date(toDate && `${toDate.year}-${pad(months.indexOf(toDate.month))}`)
-    : new Date();
-
-  return (
-    endDate.getMonth() -
-    startDate.getMonth() +
-    12 * (endDate.getFullYear() - startDate.getFullYear())
-  );
+  // Adding a full month to round up the difference > 1 month
+  return differenceInMonths(endDate, startDate) + 1;
 }
 
-export function periodDuration(fromDate, toDate) {
-  if (!fromDate && !toDate) {
-    throw new Error(
-      'fromDate and toDate objects or numberOfMonths number are required',
-    );
-  }
-  const numberOfMonths = getNumberOfMonthsBetweenDates(fromDate, toDate);
-  const duration = {
-    years: Math.floor(numberOfMonths / 12),
-    months: numberOfMonths % 12,
-  };
+export function formatMonthsToYearsAndMonths(totalMonths) {
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+
   return [
-    renderPluralisedLabel('year', duration.years),
-    renderPluralisedLabel('month', duration.months),
+    renderPluralisedLabel('year', years),
+    renderPluralisedLabel('month', months),
   ]
     .filter(Boolean)
     .join(', ');
