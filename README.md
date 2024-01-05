@@ -32,23 +32,23 @@ version of the site and is located in static directory, available for download.
 
 To start development server run:
 
-    yarn dev
+    pnpm dev
 
 To generate static site run:
 
-    yarn build
+    pnpm build
 
 To create PDF run:
 
-    yarn create-pdf
+    pnpm create-pdf
 
 To serve the static build run:
 
-    yarn start
+    pnpm start
 
 To start Storybook run:
 
-    yarn storybook
+    pnpm storybook
 
 ## Deployment
 
@@ -56,11 +56,11 @@ The deployment consists of the CV app and Storybook stories under `stories/` dir
 
 To prepare the distribution (build and collate the files) run:
 
-    yarn predeploy
+    pnpm predeploy
 
 The static site is deployed to GH Pages. To deploy manually (this also runs predeploy script) run:
 
-    yarn deploy
+    pnpm deploy
 
 ## Environment variables
 

@@ -9,7 +9,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "start": "vite preview",
-    "create-pdf": "node scripts/create-pdf",
+    "create-pdf": "pnpm playwright test",
     "predeploy": "rm -rf build && pnpm playwright test && pnpm build && pnpm build-storybook && cp -a storybook-static/. build/storybook && echo tyom.semonov.com > build/CNAME",
     "deploy": "gh-pages -d build --dotfiles",
     "lint": "eslint --ignore-path .gitignore . && prettier --check .",
