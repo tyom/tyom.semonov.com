@@ -1,4 +1,5 @@
 <script>
+  import posthog from 'posthog-js';
   import GitHub from '~icons/fa6-brands/github';
   import LinkedIn from '~icons/fa6-brands/linkedin';
   import PDF from '~icons/fa6-regular/file-pdf';
@@ -81,6 +82,9 @@
               title="Open PDF version"
               aria-label="Download PDF"
               target="_blank"
+              on:click={() => {
+                posthog.capture('click-pdf-download');
+              }}
             >
               <span class="text-sm">Download</span>
               <span class="transition-transform-100 group-hover:scale-125">
