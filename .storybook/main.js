@@ -1,7 +1,6 @@
-import path from 'path';
+import path from 'node:path';
 import { mergeConfig, searchForWorkspaceRoot } from 'vite';
 import Icons from 'unplugin-icons/vite';
-import Unocss from 'unocss/vite';
 
 function workaroundSvelteDocgenPluginConflictWithUnpluginIcons(config) {
   const [_internalPlugins, ...userPlugins] = config.plugins;
@@ -44,7 +43,6 @@ export default {
     return mergeConfig(config, {
       define: { 'process.env': {} },
       plugins: [
-        Unocss(),
         Icons({
           compiler: 'none',
         }),
