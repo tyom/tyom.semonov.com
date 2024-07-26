@@ -1,3 +1,30 @@
+- name: Treecard
+  role: React Native Developer
+  isContractor: true
+  start:
+    month: March
+    year: 2024
+  end:
+    month: July
+    year: 2024
+  description: !md |
+    Joined the team of developers responsible for the development of a fully-featured email client mobile app. Lead the
+    development of the colour system and consulted on the development of the design system for the app, working alongside
+    the design team. Implemented the design token pipeline from Figma into the React Native app.
+    Worked on the development of the new features and bug fixes for the app.
+
+  technologies:
+    - TypeScript
+    - React Native
+    - React Query
+    - Jest
+    - Storybook
+    - MSW
+    - Maestro
+    - Sentry
+    - MongoDB Realm
+    - Figma
+
 - name: Aviva (via AND Digital)
   role: React Native Developer
   isContractor: true
@@ -15,10 +42,10 @@
     and Expo and improved the system of icons management across the app.
 
   technologies:
-    - TypeScript:
-        - React Native
-        - Expo
-        - Jest
+    - TypeScript
+    - React Native
+    - Expo
+    - Jest
     - Microsoft Azure
 
 - name: Adaptive Financial Consulting

@@ -1,5 +1,5 @@
 name: Tyom Semonov
-title: Frontend Developer
+title: UI Developer
 description: Experienced frontend developer based in London.
 
 contact:
@@ -15,7 +15,7 @@ social:
     url: https://linkedin.com/in/tyoms
 
 details: !md |
-  Dedicated web developer with 17+ years of expertise in crafting responsive websites and applications tailored
+  Dedicated web developer with 20 years of expertise in crafting responsive websites and applications tailored
   for a variety of devices and platforms.
 
   Inherently curious, I continuously seek new learning opportunities and love to experiment. I pride myself on
@@ -26,8 +26,8 @@ coreSkills:
   - JavaScript/TypeScript
   - HTML5/CSS/PostCSS
   - Node.js/Express
-  - Webpack/Rollup/Vite/Expo
-  - React/Preact/Next.js/React Native
+  - Webpack/Rollup/Vite
+  - React/Next.js/React Native/Expo
   - Vue.js/Nuxt.js
   - Accessibility
   - Git/GitHub
@@ -35,7 +35,7 @@ coreSkills:
 
 currentInterests:
   - React
-  - React Native
+  - React Native/Expo
   - Svelte/SvelteKit
-  - Tailwind CSS/UnoCSS
+  - Tailwind CSS
   - Mapbox GL JS

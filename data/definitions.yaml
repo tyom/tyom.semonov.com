@@ -309,3 +309,15 @@
 - name: Microsoft Azure
   url: https://azure.microsoft.com/
   wikipedia: Microsoft_Azure
+- name: React Query
+  url: https://react-query.tanstack.com/
+  description: TanStack Query (FKA React Query) is often described as the missing data-fetching library for web applications, but in more technical terms, it makes fetching, caching, synchronizing and updating server state in your web applications a breeze.
+- name: Maestro
+  url: https://maestro.mobile.dev
+  description: Maestro is a UI testing framework for mobile apps. Maestro is built on learnings from its predecessors (Appium, Espresso, UIAutomator, XCTest) and allows you to easily define and test your Flows.
+- name: MongoDB Realm
+  url: https://www.mongodb.com/developer/products/realm/
+  wikipedia: Realm_(database)
+- name: Figma
+  url: https://www.figma.com/
+  wikipedia: Figma
