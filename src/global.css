@@ -1,18 +1,11 @@
 :root {
-  --popper-text-color: #333;
-  --popper-bg-color: #ddde;
-
-  /*color-scheme: light dark;*/
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   font-family: 'Roboto', sans-serif;
-}
-
-p + p {
-  margin-top: 1rem;
+  font-size: clamp(0.98rem, 2vw, 1.5rem);
 }
 
 hr,
@@ -31,11 +24,6 @@ hr,
 }
 
 @media screen {
-  :root {
-    color: #111;
-    font-size: clamp(0.98rem, 2vw, 1.5rem);
-  }
-
   a {
     text-decoration: underline;
     color: inherit;
@@ -46,7 +34,7 @@ hr,
   }
 
   .popper {
-    box-shadow: 1px 2px 3px #0003;
+    box-shadow: 1px 2px 5px #0003;
     border-radius: 0.5rem;
     background-color: var(--popper-bg-color);
     color: var(--popper-text-color);
@@ -122,12 +110,12 @@ hr,
 }
 
 @media print {
-  .popper {
-    display: none;
-  }
-
   :root {
     font-size: 10.5pt;
+  }
+
+  .popper {
+    display: none;
   }
 
   a {

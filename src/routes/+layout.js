@@ -10,7 +10,6 @@ export const load = async () => {
       person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
     });
   }
-  return;
 };
 
 export const prerender = true;

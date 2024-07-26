@@ -7,7 +7,7 @@
   } from '$lib/utils';
   import { tooltip } from '../actions';
 
-  const INTERSECTION_RATIO = 0.6;
+  const INTERSECTION_RATIO = 0.4;
 
   export let events;
   export let intersectionNodes = [];
@@ -120,7 +120,7 @@
       {#each timelineEvents as event}
         <button
           class="btn bg-zinc-300 min-w-[4px] hover:(transition-colors duration-200 bg-zinc-400) {event.modifier}"
-          class:!bg-blue-900={event.isVisible}
+          class:on-screen={event.isVisible}
           aria-label={event.label}
           style="width: {event.percent}%"
           on:click={() => scrollTo(event.target)}
@@ -134,14 +134,18 @@
 
 <style>
   .contract {
-    --at-apply: bg-blue-300 hover\:bg-blue-500;
+    --at-apply: bg-blue-500 bg-opacity-30 hover\:bg-opacity-60;
   }
 
   .permanent {
-    --at-apply: bg-yellow-300 hover\:bg-yellow-500;
+    --at-apply: bg-yellow-500 bg-opacity-30 hover\:bg-opacity-60;
+  }
+
+  .btn.on-screen {
+    --at-apply: bg-opacity-100;
   }
 
   .year-label {
-    --at-apply: w-8 md\:w-12 px-1 font-bold text-gray-500 text-[0.5em];
+    --at-apply: w-8 md\:w-12 px-1 font-bold text-gray-500 text-[0.6rem];
   }
 </style>

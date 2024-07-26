@@ -45,8 +45,8 @@
 <style>
   @media screen {
     header {
-      --at-apply: sticky z-10 top-0 leading-none bg-white bg-opacity-90
-        backdrop-blur;
+      --at-apply: sticky z-10 top-0 leading-none bg-gray-200/80 backdrop-blur
+        dark\:bg-gray-900/80;
     }
   }
 </style>
