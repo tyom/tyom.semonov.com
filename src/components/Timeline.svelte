@@ -5,7 +5,7 @@
     formatMonthsToYearsAndMonths,
     getNumberOfMonthsBetweenDates,
   } from '$lib/utils';
-  import { tooltip } from '../actions';
+  import { tooltip } from '$lib/tooltip';
 
   const INTERSECTION_RATIO = 0.4;
 

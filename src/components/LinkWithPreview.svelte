@@ -1,5 +1,5 @@
 <script>
-  import { tooltip } from '../actions';
+  import { tooltip } from '$lib/tooltip';
 
   export let href;
   export let description;

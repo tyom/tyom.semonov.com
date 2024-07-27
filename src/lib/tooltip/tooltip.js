@@ -1,4 +1,3 @@
-import { listen } from 'svelte/internal';
 import { createPopper } from '@popperjs/core';
 import './tooltip.css';
 
@@ -6,7 +5,7 @@ function fetchData(url) {
   return fetch(url).then((res) => res.json());
 }
 
-export async function tooltip(node, { text: tooltipText, url, resultProp }) {
+export const tooltip = (node, { text: tooltipText, url, resultProp }) => {
   if (!tooltipText && !url) {
     return;
   }
@@ -53,14 +52,14 @@ export async function tooltip(node, { text: tooltipText, url, resultProp }) {
     tooltip.remove();
   }
 
-  const cancelMouseEnter = listen(node, 'mouseenter', append);
-  const cancelMouseLeave = listen(node, 'mouseleave', remove);
+  node.addEventListener('mouseenter', append);
+  node.addEventListener('mouseleave', remove);
 
   return {
     destroy() {
       remove();
-      cancelMouseEnter();
-      cancelMouseLeave();
+      node.removeEventListener('mouseenter', append);
+      node.removeEventListener('mouseleave', remove);
     },
   };
-}
+};
