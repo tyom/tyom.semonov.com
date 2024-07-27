@@ -16,7 +16,7 @@ export default defineConfig({
       getCSS: ({ theme }) => `
         :root {
           --popper-text-color: ${theme.colors.gray[800]};
-          --popper-bg-color: ${theme.colors.gray[100]};
+          --popper-bg-color: ${theme.colors.gray[200]};
 
           background-color: ${theme.colors.gray[100]};
           color: ${theme.colors.gray[800]};

@@ -32,81 +32,6 @@ hr,
       text-decoration: none;
     }
   }
-
-  .popper {
-    box-shadow: 1px 2px 5px #0003;
-    border-radius: 0.5rem;
-    background-color: var(--popper-bg-color);
-    color: var(--popper-text-color);
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-    max-width: 25rem;
-    transition: opacity 0.2s;
-    backdrop-filter: blur(8px);
-
-    & .popper__arrow {
-      border-color: var(--popper-bg-color);
-      border-style: solid;
-      position: absolute;
-      width: 0;
-      height: 0;
-    }
-
-    &[x-placement^='top'] {
-      margin-bottom: 5px;
-    }
-
-    &[x-placement^='top'] .popper__arrow {
-      border-width: 5px 5px 0 5px;
-      border-left-color: transparent;
-      border-right-color: transparent;
-      border-bottom-color: transparent;
-      bottom: -5px;
-      left: calc(50% - 5px);
-    }
-
-    &[x-placement^='bottom'] {
-      margin-top: 5px;
-    }
-    &[x-placement^='bottom'] .popper__arrow {
-      border-width: 0 5px 5px 5px;
-      border-left-color: transparent;
-      border-right-color: transparent;
-      border-top-color: transparent;
-      top: -5px;
-      left: calc(50% - 5px);
-    }
-
-    &[x-placement^='right'] {
-      margin-left: 5px;
-    }
-
-    &[x-placement^='right'] .popper__arrow {
-      border-width: 5px 5px 5px 0;
-      border-left-color: transparent;
-      border-top-color: transparent;
-      border-bottom-color: transparent;
-      left: -5px;
-      top: calc(50% - 5px);
-    }
-
-    &[x-placement^='left'] {
-      margin-right: 5px;
-    }
-
-    &[x-placement^='left'] .popper__arrow {
-      border-width: 5px 0 5px 5px;
-      border-top-color: transparent;
-      border-right-color: transparent;
-      border-bottom-color: transparent;
-      right: -5px;
-      top: calc(50% - 5px);
-    }
-  }
-}
-
-@page {
-  margin: 1cm;
 }
 
 @media print {
@@ -121,4 +46,8 @@ hr,
   a {
     text-decoration: none;
   }
+}
+
+@page {
+  margin: 1cm;
 }

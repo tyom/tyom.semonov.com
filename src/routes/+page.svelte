@@ -28,7 +28,7 @@
 
 <main
   class="flex flex-col lg:flex-row min-h-screen print:(grid gap-8 grid-cols-[1fr_2fr])
-    bg-gray-200 text-gray-900 dark:(bg-gray-900 text-gray-200)"
+    bg-gray-100 text-gray-900 dark:(bg-gray-900 text-gray-200)"
 >
   <aside class="flex flex-col lg:flex-1">
     <Summary {...summary} pdfLink="tyom-semonov-cv.pdf" />

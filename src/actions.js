@@ -1,45 +1,56 @@
 import { listen } from 'svelte/internal';
-import Popper from 'popper.js';
+import { createPopper } from '@popperjs/core';
+import './tooltip.css';
 
-export async function tooltip(node, { text, url, resultProp }) {
-  if (!text && !url) {
+function fetchData(url) {
+  return fetch(url).then((res) => res.json());
+}
+
+export async function tooltip(node, { text: tooltipText, url, resultProp }) {
+  if (!tooltipText && !url) {
     return;
   }
 
-  const el = document.createElement('div');
-  const arrowEl = document.createElement('div');
-  el.className = 'popper';
-  arrowEl.className = 'popper__arrow';
-  arrowEl.setAttribute('x-arrow', '');
-
-  let tooltipText = text;
+  const tooltip = document.createElement('div');
+  tooltip.id = 'tooltip';
+  tooltip.role = 'tooltip';
 
   async function append() {
-    document.body.appendChild(el);
-    el.style.zIndex = '10';
-    el.style.opacity = '0';
+    document.body.appendChild(tooltip);
+    tooltip.style.opacity = '0';
 
     if (!tooltipText && url) {
-      const result = await fetch(url).then((res) => res.json());
+      const result = await fetchData(url);
       tooltipText = resultProp ? result[resultProp] : result;
     }
 
-    el.textContent = tooltipText;
+    tooltip.innerHTML = '<div id="arrow" data-popper-arrow></div>';
+    tooltip.appendChild(document.createTextNode(tooltipText));
 
-    new Popper(node, el, {
-      placement: 'bottom',
-      positionFixed: true,
+    createPopper(node, tooltip, {
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 10],
+          },
+        },
+        {
+          name: 'preventOverflow',
+          options: {
+            padding: 10,
+          },
+        },
+      ],
     });
 
     setTimeout(() => {
-      el.style.opacity = '1';
+      tooltip.style.opacity = '1';
     });
-
-    el.appendChild(arrowEl);
   }
 
   function remove() {
-    el.remove();
+    tooltip.remove();
   }
 
   const cancelMouseEnter = listen(node, 'mouseenter', append);
