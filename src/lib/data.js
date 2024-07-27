@@ -1,13 +1,12 @@
-import { readFileSync } from 'fs';
+import { readFileSync } from 'node:fs';
 import { globSync } from 'glob';
 import { isPlainObject } from 'is-plain-object';
-import { basename } from 'path';
-import { parseYaml } from '$lib/yaml';
-import { createDefinitionFinder } from '$lib/utils';
+import { parseYaml } from '$lib/yaml.js';
+import { createDefinitionFinder } from '$lib/utils.js';
 
 const DEFINITIONS_YAML_FILE = 'data/definitions.yaml';
 
-const allYamlFiles = globSync('data/*.yaml', {
+export const allYamlFiles = globSync('data/*.yaml', {
   ignore: DEFINITIONS_YAML_FILE,
 });
 
@@ -52,16 +51,4 @@ export async function linkWithDefinitions(yamlData) {
   });
 }
 
-const readYaml = (path) => parseYaml(readFileSync(path));
-
-export async function getData(filePaths = allYamlFiles) {
-  const yamlData = await Promise.all(filePaths.map(readYaml));
-  const linkedData = await linkWithDefinitions(yamlData);
-
-  const entries = filePaths.map((path, i) => [
-    basename(path, '.yaml'),
-    linkedData[i],
-  ]);
-
-  return Object.fromEntries(entries);
-}
+export const readYaml = (path) => parseYaml(readFileSync(path));
