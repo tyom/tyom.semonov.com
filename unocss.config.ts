@@ -19,12 +19,14 @@ export default defineConfig({
           --popper-bg-color: ${theme.colors.gray[100]};
 
           background-color: ${theme.colors.gray[100]};
+          color: ${theme.colors.gray[800]};
 
           @media (prefers-color-scheme: dark) {
             --popper-text-color: ${theme.colors.gray[200]};
             --popper-bg-color: ${theme.colors.blue[950]};
 
             background-color: ${theme.colors.gray[900]};
+            color: ${theme.colors.gray[200]};
           }
         }
       `,
