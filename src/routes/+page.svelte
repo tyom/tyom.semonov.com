@@ -28,7 +28,7 @@
 
 <main
   class="flex flex-col lg:flex-row min-h-screen print:(grid gap-8 grid-cols-[1fr_2fr])
-    bg-gray-100 text-gray-900 dark:(bg-gray-900 text-gray-200)"
+    bg-gray-100 text-gray-900 dark:(bg-gray-900 text-gray-200) relative"
 >
   <aside class="flex flex-col lg:flex-1">
     <Summary {...summary} pdfLink="tyom-semonov-cv.pdf" />
@@ -41,6 +41,41 @@
 </main>
 
 <style>
+  main::before {
+    --at-apply: absolute pointer-events-none z-0 inset-0 opacity-10;
+    background: repeating-linear-gradient(
+      30deg,
+      #0003 0px,
+      #0003 2px,
+      #0000 0px,
+      #0000 12px
+    );
+  }
+
+  @media (prefers-color-scheme: dark) {
+    main::before {
+      background: repeating-linear-gradient(
+        30deg,
+        #fff2 0px,
+        #fff2 2px,
+        #fff0 2px,
+        #fff0 12px
+      );
+    }
+  }
+
+  @supports (-webkit-mask: radial-gradient(ellipse, #000, #fff)) {
+    main::before {
+      content: '';
+      -webkit-mask: radial-gradient(
+        150vw 1000vh ellipse at top left,
+        #0000,
+        #0003,
+        #000
+      );
+    }
+  }
+
   @media print {
     article :global(section + section) {
       --at-apply: hidden;

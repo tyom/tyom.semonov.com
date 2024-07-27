@@ -16,7 +16,7 @@
 </script>
 
 <section bind:this={sectionEl}>
-  <header>
+  <header class:with-timeline={showTimeline}>
     <h2
       class="text-2xl text-gray-500 uppercase font-bold tracking-wide p-8 md:px-12 print:(!p-0 !pb-8) break-inside-avoid-page break-after-avoid-page"
     >
@@ -45,8 +45,11 @@
 <style>
   @media screen {
     header {
-      --at-apply: sticky z-10 top-0 leading-none bg-gray-100/80 backdrop-blur
-        dark\:bg-gray-900/80;
+      --at-apply: sticky z-10 top-0 leading-none;
+    }
+
+    .with-timeline {
+      --at-apply: backdrop-blur-lg bg-gray-100/80 dark\:bg-gray-900/80;
     }
   }
 </style>

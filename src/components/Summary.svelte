@@ -140,40 +140,5 @@
     .summary :global(a):hover {
       --at-apply: text-black dark\:text-white;
     }
-
-    .summary::before {
-      --at-apply: absolute pointer-events-none z-0 inset-0 opacity-10;
-      background: repeating-linear-gradient(
-        30deg,
-        #0003 0px,
-        #0003 2px,
-        #0000 0px,
-        #0000 12px
-      );
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .summary::before {
-        background: repeating-linear-gradient(
-          30deg,
-          #fff2 0px,
-          #fff2 2px,
-          #fff0 2px,
-          #fff0 12px
-        );
-      }
-    }
-
-    @supports (-webkit-mask: radial-gradient(ellipse, #000, #fff)) {
-      .summary::before {
-        content: '';
-        -webkit-mask: radial-gradient(
-          150vw 1000vh ellipse at top left,
-          #0000,
-          #0003,
-          #000
-        );
-      }
-    }
   }
 </style>
