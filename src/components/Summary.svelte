@@ -1,4 +1,5 @@
 <script>
+  import posthog from 'posthog-js';
   import GitHub from '~icons/fa6-brands/github';
   import LinkedIn from '~icons/fa6-brands/linkedin';
   import PDF from '~icons/fa6-regular/file-pdf';
@@ -23,13 +24,13 @@
 </script>
 
 <div
-  class="summary p-8 md:p-12 print:!p-0 flex flex-1 flex-col gap-4 text-[0.9em]"
+  class="summary p-8 md:p-12 print:!p-0 flex flex-1 flex-col gap-4 text-sm relative"
 >
   <h1 class="font-bold tracking-wide leading-none text-[2.9em]">
     {name}
   </h1>
   <h2 class="leading-none opacity-60 text-[1.4em]">{title}</h2>
-  <div class="max-w-[60ch] leading-snug">
+  <div class="max-w-[60ch] leading-snug space-y-4">
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     {@html details}
   </div>
@@ -64,7 +65,7 @@
                 <svelte:component
                   this={icons[item.icon]}
                   aria-label={item.label}
-                  class="h-6 w-6"
+                  class="h-6 w-6 print:(h-4 w-4)"
                 />
                 <span class="hidden print:block">
                   {truncateUrl(item.url)}
@@ -81,6 +82,9 @@
               title="Open PDF version"
               aria-label="Download PDF"
               target="_blank"
+              on:click={() => {
+                posthog.capture('click-pdf-download');
+              }}
             >
               <span class="text-sm">Download</span>
               <span class="transition-transform-100 group-hover:scale-125">
@@ -129,39 +133,12 @@
 
   @media screen {
     .summary {
-      --at-apply: text-white/80;
-      background: linear-gradient(
-        120deg,
-        theme('colors.primary'),
-        theme('colors.primary-dark')
-      );
+      --at-apply: text-black/80 bg-gradient-to-br from-blue-gray-300
+        to-blue-gray-300/0 dark\:text-white/80 dark\:from-blue-gray-950 dark\:to-blue-gray-900/0;
     }
 
     .summary :global(a):hover {
-      color: #fff;
-    }
-
-    .summary::before {
-      --at-apply: absolute pointer-events-none z-0 inset-0 opacity-10;
-      background: repeating-linear-gradient(
-        30deg,
-        #fff 0px,
-        #fff 2px,
-        #fff0 2px,
-        #fff0 12px
-      );
-    }
-
-    @supports (-webkit-mask: radial-gradient(ellipse, #000, #fff)) {
-      .summary::before {
-        content: '';
-        -webkit-mask: radial-gradient(
-          150vw 1000vh ellipse at top left,
-          #0000,
-          #0003,
-          #000
-        );
-      }
+      --at-apply: text-black dark\:text-white;
     }
   }
 </style>

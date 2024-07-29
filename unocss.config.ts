@@ -1,16 +1,35 @@
 import { defineConfig, presetUno } from 'unocss';
 
 export default defineConfig({
-  presets: [presetUno()],
+  presets: [
+    presetUno({
+      dark: 'media',
+    }),
+  ],
   content: {
     pipeline: {
       include: [/\.(svelte|[jt]sx|mdx?|html)($|\?)/, 'stories/**/*'],
     },
   },
-  theme: {
-    colors: {
-      primary: '#2b417a',
-      'primary-dark': '#0e1019',
+  preflights: [
+    {
+      getCSS: ({ theme }) => `
+        :root {
+          --popper-text-color: ${theme.colors.gray[800]};
+          --popper-bg-color: ${theme.colors.gray[200]};
+
+          background-color: ${theme.colors.gray[100]};
+          color: ${theme.colors.gray[800]};
+
+          @media (prefers-color-scheme: dark) {
+            --popper-text-color: ${theme.colors.gray[200]};
+            --popper-bg-color: ${theme.colors.blue[950]};
+
+            background-color: ${theme.colors.gray[900]};
+            color: ${theme.colors.gray[200]};
+          }
+        }
+      `,
     },
-  },
+  ],
 });

@@ -1,5 +1,5 @@
 <script>
-  import { tooltip } from '../actions';
+  import { tooltip } from '$lib/tooltip';
 
   export let href;
   export let description;
@@ -13,5 +13,6 @@
     url: descriptionUrl,
     resultProp: 'extract',
   }}
-  class="px-1 -mx-1 rounded hover:bg-zinc-900/10"><slot /></a
+  class="px-1 -mx-1 rounded hover:bg-black/10 dark:hover:bg-white/10"
+  ><slot /></a
 >

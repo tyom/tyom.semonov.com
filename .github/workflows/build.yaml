@@ -6,7 +6,6 @@ on:
 
 env:
   FORCE_COLOR: 3
-  PUBLIC_DISABLE_ANALYTICS: ''
 
 jobs:
   build:
@@ -32,5 +31,4 @@ jobs:
       - name: Build app and generate PDF
         run: pnpm predeploy
         env:
-          PUBLIC_GA_MEASUREMENT_ID: ${{ vars.PUBLIC_GA_MEASUREMENT_ID }}
-          PUBLIC_CLARITY_ID: ${{ vars.PUBLIC_CLARITY_ID }}
+          PUBLIC_POSTHOG_PROJECT_API_KEY: ${{ vars.PUBLIC_POSTHOG_PROJECT_API_KEY }}
