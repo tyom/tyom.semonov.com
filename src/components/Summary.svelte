@@ -1,10 +1,7 @@
 <script>
   import posthog from 'posthog-js';
-  import GitHub from '~icons/fa6-brands/github';
-  import LinkedIn from '~icons/fa6-brands/linkedin';
-  import PDF from '~icons/fa6-regular/file-pdf';
-  import InfoSymbol from '~icons/material-symbols/info-outline-rounded';
   import List from './List';
+  import Icon from '$components/Icon.svelte';
 
   const truncateUrl = (url) => url.replace(/https:\/\//, '');
 
@@ -16,11 +13,6 @@
   export let coreSkills;
   export let currentInterests;
   export let pdfLink;
-
-  export let icons = {
-    github: GitHub,
-    linkedin: LinkedIn,
-  };
 </script>
 
 <div
@@ -62,11 +54,7 @@
                 title={item.label}
                 class="flex gap-2 p-2 transition-transform-100 hover:scale-125 print:py-1"
               >
-                <svelte:component
-                  this={icons[item.icon]}
-                  aria-label={item.label}
-                  class="h-6 w-6 print:(h-4 w-4)"
-                />
+                <Icon name={item.icon} label={item.label} class="size-6 print:size-4" />
                 <span class="hidden print:block">
                   {truncateUrl(item.url)}
                 </span>
@@ -87,18 +75,18 @@
               }}
             >
               <span class="text-sm">Download</span>
-              <span class="transition-transform-100 group-hover:scale-125">
-                <PDF class="h-6 w-6" />
-              </span>
+              <Icon name="pdf" label="PDF" class="size-6 transition-transform-200 group-hover:scale-125"/>
             </a>
           </div>
         {/if}
       </div>
       {#if contact}
-        <dl class="contact print:pl-8">
+        <dl class="contact">
           {#each Object.entries(contact) as [type, details]}
-            <div class="space-y-1">
-              <dt class="sr-only">{type}</dt>
+            <div class="flex gap-2 items-center">
+              <dt class="hidden print:block">
+                <Icon name={type} label={type} class="size-6 print:size-4" />
+              </dt>
               <dd>
                 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                 {@html details}
@@ -111,7 +99,7 @@
   {/if}
   <div class="hidden print:block break-before-page space-y-1 mt-4">
     <p class="flex items-center gap-2 leading-none">
-      <InfoSymbol class="w-8 h-8" />
+      <Icon name="info" class="size-8" />
       <span class="max-w-[22ch]"
         >For brevity, only the last few years are shown here.</span
       >

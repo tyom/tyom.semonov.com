@@ -10,7 +10,7 @@ function workaroundSvelteDocgenPluginConflictWithUnpluginIcons(config) {
   if (docgenPlugin) {
     const origTransform = docgenPlugin.transform;
     const newTransform = (code, id, options) => {
-      if (id.startsWith('~icons/')) {
+      if (id.startsWith('~icons/') || id.startsWith('virtual:icons/')) {
         return;
       }
       return origTransform?.call(docgenPlugin, code, id, options);
