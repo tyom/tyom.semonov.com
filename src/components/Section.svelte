@@ -18,7 +18,7 @@
 <section bind:this={sectionEl}>
   <header class:with-timeline={showTimeline}>
     <h2
-      class="text-2xl text-gray-500 uppercase font-bold tracking-wide p-8 md:px-12 print:(!p-0 !pb-8) break-inside-avoid-page break-after-avoid-page"
+      class="text-2xl text-gray-500 uppercase font-bold tracking-wide p-8 md:px-12 print:(!p-0 !pb-6) break-inside-avoid-page break-after-avoid-page"
     >
       {title}
     </h2>

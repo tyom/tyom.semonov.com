@@ -8,10 +8,10 @@
     month: July
     year: 2024
   description: !md |
-    Joined the team of developers responsible for the development of a fully-featured email client mobile app. Lead the
-    development of the colour system and consulted on the development of the design system for the app, working alongside
-    the design team. Implemented the design token pipeline from Figma into the React Native app.
-    Worked on the development of the new features and bug fixes for the app.
+    I joined the team of developers responsible for developing a fully-featured email client mobile app. Leading the
+    development of the colour system and consulting on the development of the app design system, working alongside
+    the design team. I implemented the design token pipeline from Figma into the React Native app while developing the
+    new features and bug fixes for the app.
 
   technologies:
     - TypeScript
@@ -35,11 +35,11 @@
     month: December
     year: 2023
   description: !md |
-    A short contract to help with the handover of the project to the new team. The project is a React Native
-    app for iOS and Android. The app is used by Aviva customers to manage their insurance policies.
+    I helped prepare the handover of the React Native iOS and Android project to the new team. Aviva customers use the
+    app to manage their insurance policies.
 
-    Along with day-to-day support with the handover I helped to upgrade the app to the latest version of React Native
-    and Expo and improved the system of icons management across the app.
+    Along with providing day-to-day support with the handover, I helped upgrade the app to the latest version of
+    React Native and Expo and improved the icon management system across the app.
 
   technologies:
     - TypeScript
@@ -58,12 +58,13 @@
     month: August
     year: 2023
   description: !md |
-    Worked on the launch of the trading mobile app for a financial service provider. The app uses realtime data to
-    provide a cutting edge trading experience. The app is built in TypeScript with React Native and Expo and runs on
-    both iOS and Android with several layers of automation testing.
+    I worked on the launch of the trading mobile app for a financial service provider. The app uses real-time data to
+    provide a cutting-edge trading experience. The app is built in TypeScript with React Native and Expo and runs on
+    iOS and Android with several layers of automation testing. Collaborated with the design team to build the design
+    system and led the decision on the app's style system.
 
-    The app was successfully launched and had a multimillion dollar trading turnover in the first weeks of operation.
-    The team continued to maintain the app, releasing new features.
+    The app's successful launch and its achievement of a monthly multi-billion dollar trading volume is a testament
+    to its market acceptance and potential, making all stakeholders proud and confident in their investment.
   technologies:
     - TypeScript:
         - RxJS
@@ -74,6 +75,7 @@
     - Sentry
     - Tailwind CSS
     - Git/GitHub/CircleCI
+    - Figma
     - AWS
 
 - name: Flink
@@ -428,7 +430,6 @@
 
 - name: state.com
   role: Frontend Developer
-  isDefunct: true
   start:
     month: May
     year: 2012
@@ -570,7 +571,6 @@
 
 - name: Multimap
   role: Web Developer
-  isDefunct: true
   start:
     month: September
     year: 2006
