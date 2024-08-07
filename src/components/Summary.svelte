@@ -16,7 +16,7 @@
 </script>
 
 <div
-  class="summary p-8 md:p-12 print:!p-0 flex flex-1 flex-col gap-4 text-sm relative"
+  class="summary p-8 md:p-12 print:!p-0 flex flex-1 flex-col gap-4 text-sm"
 >
   <h1 class="font-bold tracking-wide leading-none text-[2.9em]">
     {name}
@@ -97,7 +97,7 @@
       {/if}
     </footer>
   {/if}
-  <div class="hidden print:block break-before-page space-y-1 mt-4">
+  <div class="hidden print:block break-before-page space-y-1 absolute bottom-0 left-0">
     <p class="flex items-center gap-2 leading-none">
       <Icon name="info" class="size-8" />
       <span class="max-w-[22ch]"

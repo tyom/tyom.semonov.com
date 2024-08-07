@@ -5,14 +5,6 @@
   } from '$lib/utils';
   import List from './List';
 
-  const PRINT_TRUNCATE_NUMBER_OF_YEARS = 4;
-
-  function shouldHideFromPrint() {
-    const itemStartYear = parseInt(end.year);
-    const yearsAgo = new Date().getFullYear() - PRINT_TRUNCATE_NUMBER_OF_YEARS;
-    return itemStartYear < yearsAgo;
-  }
-
   export let name;
   export let description = null;
   export let start = {};
@@ -21,6 +13,7 @@
   export let role = '';
   export let isContractor = false;
   export let technologies = [];
+  export let includeInPrint = true;
 
   const numberOfFullMonths = getNumberOfMonthsBetweenDates(start, end);
   const duration = formatMonthsToYearsAndMonths(numberOfFullMonths);
@@ -29,7 +22,7 @@
 <div
   class="experience-item space-y-4 break-inside-avoid-page max-w-[70ch]"
   class:contractor={isContractor}
-  class:print:hidden={shouldHideFromPrint()}
+  class:print:hidden={!includeInPrint}
 >
   <header class="space-y-1">
     <div class="text-sm font-medium">

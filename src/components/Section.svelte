@@ -3,6 +3,8 @@
   import ExperienceItem from './ExperienceItem.svelte';
   import Timeline from './Timeline.svelte';
 
+  const NUMBER_OF_ITEMS_TO_SHOW_IN_PRINT = 6;
+
   export let title;
   export let items = [];
   export let showTimeline = false;
@@ -35,8 +37,8 @@
       class="divided space-y-4 p-8 md:p-12 pt-0 md:pt-0 print:!p-0"
       class:!pt-8={showTimeline}
     >
-      {#each items as item}
-        <ExperienceItem {...item} />
+      {#each items as item, idx}
+        <ExperienceItem {...item} includeInPrint={idx <= NUMBER_OF_ITEMS_TO_SHOW_IN_PRINT} />
       {/each}
     </div>
   {/if}
