@@ -38,7 +38,10 @@
       class:!pt-8={showTimeline}
     >
       {#each items as item, idx}
-        <ExperienceItem {...item} includeInPrint={idx <= NUMBER_OF_ITEMS_TO_SHOW_IN_PRINT} />
+        <ExperienceItem
+          {...item}
+          includeInPrint={idx <= NUMBER_OF_ITEMS_TO_SHOW_IN_PRINT}
+        />
       {/each}
     </div>
   {/if}

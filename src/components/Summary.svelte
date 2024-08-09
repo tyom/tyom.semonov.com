@@ -15,9 +15,7 @@
   export let pdfLink;
 </script>
 
-<div
-  class="summary p-8 md:p-12 print:!p-0 flex flex-1 flex-col gap-4 text-sm"
->
+<div class="summary p-8 md:p-12 print:!p-0 flex flex-1 flex-col gap-4 text-sm">
   <h1 class="font-bold tracking-wide leading-none text-[2.9em]">
     {name}
   </h1>
@@ -54,7 +52,11 @@
                 title={item.label}
                 class="flex gap-2 p-2 transition-transform-100 hover:scale-125 print:py-1"
               >
-                <Icon name={item.icon} label={item.label} class="size-6 print:size-4" />
+                <Icon
+                  name={item.icon}
+                  label={item.label}
+                  class="size-6 print:size-4"
+                />
                 <span class="hidden print:block">
                   {truncateUrl(item.url)}
                 </span>
@@ -75,7 +77,11 @@
               }}
             >
               <span class="text-sm">Download</span>
-              <Icon name="pdf" label="PDF" class="size-6 transition-transform-200 group-hover:scale-125"/>
+              <Icon
+                name="pdf"
+                label="PDF"
+                class="size-6 transition-transform-200 group-hover:scale-125"
+              />
             </a>
           </div>
         {/if}
@@ -97,7 +103,9 @@
       {/if}
     </footer>
   {/if}
-  <div class="hidden print:block break-before-page space-y-1 absolute bottom-0 left-0">
+  <div
+    class="hidden print:block break-before-page space-y-1 absolute bottom-0 left-0"
+  >
     <p class="flex items-center gap-2 leading-none">
       <Icon name="info" class="size-8" />
       <span class="max-w-[22ch]"

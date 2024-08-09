@@ -3,8 +3,8 @@
   import LinkedIn from 'virtual:icons/fa6-brands/linkedin';
   import PDF from 'virtual:icons/fa6-regular/file-pdf';
   import InfoSymbol from 'virtual:icons/material-symbols/info-outline-rounded';
-  import Email from 'virtual:icons/majesticons/mail-line'
-  import Globe from 'virtual:icons/la/globe'
+  import Email from 'virtual:icons/majesticons/mail-line';
+  import Globe from 'virtual:icons/la/globe';
 
   const icons = {
     github: GitHub,
@@ -24,5 +24,5 @@
 <svelte:component
   this={IconComponent}
   aria-label={label}
-  class="{$$props.class}"
+  class={$$props.class}
 />
