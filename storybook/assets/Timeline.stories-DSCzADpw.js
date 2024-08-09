@@ -1,4 +1,4 @@
-import{g as ee,f as ne,e as A,t as te,p as oe}from"./tooltip-DbdBS14B.js";import{d as ae,S as ie,i as re,s as se,e as R,f as G,t as j,b as x,h as le,j as S,k as B,l as E,m as _,n as P,o as W,p as T,q as N,r as H,v as F,w as y,x as k,y as ce,z as O,A as de,B as L,C as U,D as pe,E as me,F as he,G as ue,H as fe,I as ge}from"./index-DbVuHXxF.js";import{o as ve,a as be}from"./lifecycle-DeU8poq5.js";const ye=`- name: Treecard
+import{g as ee,f as ne,e as A,t as te,p as oe}from"./tooltip-DbdBS14B.js";import{d as ae,S as ie,i as re,s as se,e as R,f as G,t as j,b as x,h as le,j as S,k as B,l as E,m as _,n as P,o as W,p as T,q as N,r as F,v as H,w as y,x as k,y as ce,z as O,A as de,B as L,C as U,D as pe,E as me,F as he,G as ue,H as fe,I as ge}from"./index-Ckoa-yNl.js";import{o as ve,a as be}from"./lifecycle-DeU8poq5.js";const ye=`- name: Treecard
   role: React Native Developer
   isContractor: true
   start:
@@ -8,10 +8,10 @@ import{g as ee,f as ne,e as A,t as te,p as oe}from"./tooltip-DbdBS14B.js";import
     month: July
     year: 2024
   description: !md |
-    Joined the team of developers responsible for the development of a fully-featured email client mobile app. Lead the
-    development of the colour system and consulted on the development of the design system for the app, working alongside
-    the design team. Implemented the design token pipeline from Figma into the React Native app.
-    Worked on the development of the new features and bug fixes for the app.
+    I joined the team of developers responsible for developing a fully-featured email client mobile app. Leading the
+    development of the colour system and consulting on the development of the app design system, working alongside
+    the design team. I implemented the design token pipeline from Figma into the React Native app while developing the
+    new features and bug fixes for the app.
 
   technologies:
     - TypeScript
@@ -35,11 +35,11 @@ import{g as ee,f as ne,e as A,t as te,p as oe}from"./tooltip-DbdBS14B.js";import
     month: December
     year: 2023
   description: !md |
-    A short contract to help with the handover of the project to the new team. The project is a React Native
-    app for iOS and Android. The app is used by Aviva customers to manage their insurance policies.
+    I helped prepare the handover of the React Native iOS and Android project to the new team. Aviva customers use the
+    app to manage their insurance policies.
 
-    Along with day-to-day support with the handover I helped to upgrade the app to the latest version of React Native
-    and Expo and improved the system of icons management across the app.
+    Along with providing day-to-day support with the handover, I helped upgrade the app to the latest version of
+    React Native and Expo and improved the icon management system across the app.
 
   technologies:
     - TypeScript
@@ -58,12 +58,13 @@ import{g as ee,f as ne,e as A,t as te,p as oe}from"./tooltip-DbdBS14B.js";import
     month: August
     year: 2023
   description: !md |
-    Worked on the launch of the trading mobile app for a financial service provider. The app uses realtime data to
-    provide a cutting edge trading experience. The app is built in TypeScript with React Native and Expo and runs on
-    both iOS and Android with several layers of automation testing.
+    I worked on the launch of the trading mobile app for a financial service provider. The app uses real-time data to
+    provide a cutting-edge trading experience. The app is built in TypeScript with React Native and Expo and runs on
+    iOS and Android with several layers of automation testing. Collaborated with the design team to build the design
+    system and led the decision on the app's style system.
 
-    The app was successfully launched and had a multimillion dollar trading turnover in the first weeks of operation.
-    The team continued to maintain the app, releasing new features.
+    The app's successful launch and its achievement of a monthly multi-billion dollar trading volume is a testament
+    to its market acceptance and potential, making all stakeholders proud and confident in their investment.
   technologies:
     - TypeScript:
         - RxJS
@@ -74,6 +75,7 @@ import{g as ee,f as ne,e as A,t as te,p as oe}from"./tooltip-DbdBS14B.js";import
     - Sentry
     - Tailwind CSS
     - Git/GitHub/CircleCI
+    - Figma
     - AWS
 
 - name: Flink
@@ -428,7 +430,6 @@ import{g as ee,f as ne,e as A,t as te,p as oe}from"./tooltip-DbdBS14B.js";import
 
 - name: state.com
   role: Frontend Developer
-  isDefunct: true
   start:
     month: May
     year: 2012
@@ -570,7 +571,6 @@ import{g as ee,f as ne,e as A,t as te,p as oe}from"./tooltip-DbdBS14B.js";import
 
 - name: Multimap
   role: Web Developer
-  isDefunct: true
   start:
     month: September
     year: 2006
@@ -632,7 +632,7 @@ import{g as ee,f as ne,e as A,t as te,p as oe}from"./tooltip-DbdBS14B.js";import
     - JavaScript
     - PHP
     - Photoshop/Illustrator
-`;function V(a,{delay:e=0,duration:n=400,easing:o=ae}={}){const s=+getComputedStyle(a).opacity;return{delay:e,duration:n,easing:o,css:d=>`opacity: ${d*s}`}}function z(a,e,n){const o=a.slice();return o[17]=e[n],o}function K(a){let e,n,o=a[3].year+"",s,d,h,w,c,u=a[2].year+"",D,C,f,b,v=A(a[1]),l=[];for(let i=0;i<v.length;i+=1)l[i]=q(z(a,v,i));return{c(){e=_("div"),n=_("div"),s=P(o),d=W(),h=_("div");for(let i=0;i<l.length;i+=1)l[i].c();w=W(),c=_("div"),D=P(u),this.h()},l(i){e=T(i,"DIV",{class:!0});var p=N(e);n=T(p,"DIV",{class:!0});var r=N(n);s=H(r,o),r.forEach(S),d=F(p),h=T(p,"DIV",{class:!0});var t=N(h);for(let g=0;g<l.length;g+=1)l[g].l(t);t.forEach(S),w=F(p),c=T(p,"DIV",{class:!0});var m=N(c);D=H(m,u),m.forEach(S),p.forEach(S),this.h()},h(){y(n,"class","usp-45uv3d year-label svelte-1uvgexx"),y(h,"class","usp-o7w5rz"),y(c,"class","year-label svelte-1uvgexx"),y(e,"class",C="usp-86cppn "+a[5].class+" svelte-1uvgexx")},m(i,p){G(i,e,p),k(e,n),k(n,s),k(e,d),k(e,h);for(let r=0;r<l.length;r+=1)l[r]&&l[r].m(h,null);k(e,w),k(e,c),k(c,D),a[9](e),b=!0},p(i,p){if(p&18){v=A(i[1]);let r;for(r=0;r<v.length;r+=1){const t=z(i,v,r);l[r]?l[r].p(t,p):(l[r]=q(t),l[r].c(),l[r].m(h,null))}for(;r<l.length;r+=1)l[r].d(1);l.length=v.length}(!b||p&32&&C!==(C="usp-86cppn "+i[5].class+" svelte-1uvgexx"))&&y(e,"class",C)},i(i){b||(i&&ce(()=>{b&&(f||(f=O(e,V,{duration:200},!0)),f.run(1))}),b=!0)},o(i){i&&(f||(f=O(e,V,{duration:200},!1)),f.run(0)),b=!1},d(i){i&&S(e),de(l,i),a[9](null),i&&f&&f.end()}}}function q(a){let e,n,o,s,d,h;function w(){return a[8](a[17])}return{c(){e=_("button"),this.h()},l(c){e=T(c,"BUTTON",{class:!0,"aria-label":!0,style:!0}),N(e).forEach(S),this.h()},h(){y(e,"class",n="usp-egnwu0 btn "+a[17].modifier+" svelte-1uvgexx"),y(e,"aria-label",o=a[17].label),L(e,"width",a[17].percent+"%"),U(e,"on-screen",a[17].isVisible)},m(c,u){G(c,e,u),d||(h=[pe(e,"click",w),me(s=te.call(null,e,{text:a[17].label}))],d=!0)},p(c,u){a=c,u&2&&n!==(n="usp-egnwu0 btn "+a[17].modifier+" svelte-1uvgexx")&&y(e,"class",n),u&2&&o!==(o=a[17].label)&&y(e,"aria-label",o),u&2&&L(e,"width",a[17].percent+"%"),s&&he(s.update)&&u&2&&s.update.call(null,{text:a[17].label}),u&2&&U(e,"on-screen",a[17].isVisible)},d(c){c&&S(e),d=!1,ue(h)}}}function Se(a){let e,n=a[1]&&K(a);return{c(){n&&n.c(),e=R()},l(o){n&&n.l(o),e=R()},m(o,s){n&&n.m(o,s),G(o,e,s)},p(o,[s]){o[1]?n?(n.p(o,s),s&2&&j(n,1)):(n=K(o),n.c(),j(n,1),n.m(e.parentNode,e)):n&&(fe(),x(n,1,1,()=>{n=null}),le())},i(o){j(n)},o(o){x(n)},d(o){o&&S(e),n&&n.d(o)}}}const Q=.4;function we(a,e,n){let{events:o}=e,{intersectionNodes:s=[]}=e,d;const h=o.map((t,m)=>{const g=ee(t.start,t.end);return{name:t.name,modifier:t.isContractor?"contract":"permanent",monthLength:g,label:`${t.name}: ${ne(g)}`,target:s[m]}}),w=h.reduce((t,m)=>t+m.monthLength,0),c=o[o.length-1]||{},u=o[0]||{},D=c.start||{},C=u.end?u.end||{}:{year:new Date().getFullYear()},f=h.map(t=>({...t,percent:100/w*t.monthLength}));let b=f,v;function l(t){let m=[...f];t.forEach(g=>{const I=m.find(J=>J.target===g.target);I.isVisible=g.intersectionRatio>=Q,I.isVisible?g.target.classList.add("visible"):g.target.classList.remove("visible")}),n(1,b=m)}function i(t){const m=t.getBoundingClientRect().top+window.pageYOffset,g=d.getBoundingClientRect().top,I=m-g,J=I<100?0:I;"scrollBehavior"in document.documentElement.style?window.scrollTo({top:J,behavior:"smooth"}):window.scrollTo(0,J)}ve(()=>{window.IntersectionObserver&&(v=new IntersectionObserver(l,{threshold:Q}),s.forEach((t,m)=>{f[m]&&(f[m].target=t,v.observe(t))}))}),be(()=>{v&&v.disconnect()});const p=t=>i(t.target);function r(t){ge[t?"unshift":"push"](()=>{d=t,n(0,d)})}return a.$$set=t=>{n(5,e=B(B({},e),E(t))),"events"in t&&n(6,o=t.events),"intersectionNodes"in t&&n(7,s=t.intersectionNodes)},e=E(e),[d,b,D,C,i,e,o,s,p,r]}class $ extends ie{constructor(e){super(),re(this,e,we,Se,se,{events:6,intersectionNodes:7})}}$.__docgen={version:3,name:"Timeline.svelte",data:[{visibility:"public",description:null,keywords:[],name:"events",kind:"let",static:!1,readonly:!1,type:{kind:"type",text:"any",type:"any"}},{visibility:"public",description:null,keywords:[],name:"intersectionNodes",kind:"let",static:!1,readonly:!1,type:{kind:"type",text:"array",type:"array"}}],computed:[],methods:[],components:[],description:null,keywords:[],events:[],slots:[],refs:[]};const ke=oe(ye),Te={title:"Timeline"},M=()=>({Component:$,props:{events:ke}});var Y,X,Z;M.parameters={...M.parameters,docs:{...(Y=M.parameters)==null?void 0:Y.docs,source:{originalSource:`() => ({
+`;function V(a,{delay:e=0,duration:n=400,easing:o=ae}={}){const s=+getComputedStyle(a).opacity;return{delay:e,duration:n,easing:o,css:d=>`opacity: ${d*s}`}}function z(a,e,n){const o=a.slice();return o[17]=e[n],o}function K(a){let e,n,o=a[3].year+"",s,d,h,w,c,u=a[2].year+"",D,C,f,b,v=A(a[1]),l=[];for(let i=0;i<v.length;i+=1)l[i]=q(z(a,v,i));return{c(){e=_("div"),n=_("div"),s=P(o),d=W(),h=_("div");for(let i=0;i<l.length;i+=1)l[i].c();w=W(),c=_("div"),D=P(u),this.h()},l(i){e=T(i,"DIV",{class:!0});var p=N(e);n=T(p,"DIV",{class:!0});var r=N(n);s=F(r,o),r.forEach(S),d=H(p),h=T(p,"DIV",{class:!0});var t=N(h);for(let g=0;g<l.length;g+=1)l[g].l(t);t.forEach(S),w=H(p),c=T(p,"DIV",{class:!0});var m=N(c);D=F(m,u),m.forEach(S),p.forEach(S),this.h()},h(){y(n,"class","usp-45uv3d year-label svelte-1uvgexx"),y(h,"class","usp-o7w5rz"),y(c,"class","year-label svelte-1uvgexx"),y(e,"class",C="usp-86cppn "+a[5].class+" svelte-1uvgexx")},m(i,p){G(i,e,p),k(e,n),k(n,s),k(e,d),k(e,h);for(let r=0;r<l.length;r+=1)l[r]&&l[r].m(h,null);k(e,w),k(e,c),k(c,D),a[9](e),b=!0},p(i,p){if(p&18){v=A(i[1]);let r;for(r=0;r<v.length;r+=1){const t=z(i,v,r);l[r]?l[r].p(t,p):(l[r]=q(t),l[r].c(),l[r].m(h,null))}for(;r<l.length;r+=1)l[r].d(1);l.length=v.length}(!b||p&32&&C!==(C="usp-86cppn "+i[5].class+" svelte-1uvgexx"))&&y(e,"class",C)},i(i){b||(i&&ce(()=>{b&&(f||(f=O(e,V,{duration:200},!0)),f.run(1))}),b=!0)},o(i){i&&(f||(f=O(e,V,{duration:200},!1)),f.run(0)),b=!1},d(i){i&&S(e),de(l,i),a[9](null),i&&f&&f.end()}}}function q(a){let e,n,o,s,d,h;function w(){return a[8](a[17])}return{c(){e=_("button"),this.h()},l(c){e=T(c,"BUTTON",{class:!0,"aria-label":!0,style:!0}),N(e).forEach(S),this.h()},h(){y(e,"class",n="usp-egnwu0 btn "+a[17].modifier+" svelte-1uvgexx"),y(e,"aria-label",o=a[17].label),L(e,"width",a[17].percent+"%"),U(e,"on-screen",a[17].isVisible)},m(c,u){G(c,e,u),d||(h=[pe(e,"click",w),me(s=te.call(null,e,{text:a[17].label}))],d=!0)},p(c,u){a=c,u&2&&n!==(n="usp-egnwu0 btn "+a[17].modifier+" svelte-1uvgexx")&&y(e,"class",n),u&2&&o!==(o=a[17].label)&&y(e,"aria-label",o),u&2&&L(e,"width",a[17].percent+"%"),s&&he(s.update)&&u&2&&s.update.call(null,{text:a[17].label}),u&2&&U(e,"on-screen",a[17].isVisible)},d(c){c&&S(e),d=!1,ue(h)}}}function Se(a){let e,n=a[1]&&K(a);return{c(){n&&n.c(),e=R()},l(o){n&&n.l(o),e=R()},m(o,s){n&&n.m(o,s),G(o,e,s)},p(o,[s]){o[1]?n?(n.p(o,s),s&2&&j(n,1)):(n=K(o),n.c(),j(n,1),n.m(e.parentNode,e)):n&&(fe(),x(n,1,1,()=>{n=null}),le())},i(o){j(n)},o(o){x(n)},d(o){o&&S(e),n&&n.d(o)}}}const Q=.4;function we(a,e,n){let{events:o}=e,{intersectionNodes:s=[]}=e,d;const h=o.map((t,m)=>{const g=ee(t.start,t.end);return{name:t.name,modifier:t.isContractor?"contract":"permanent",monthLength:g,label:`${t.name}: ${ne(g)}`,target:s[m]}}),w=h.reduce((t,m)=>t+m.monthLength,0),c=o[o.length-1]||{},u=o[0]||{},D=c.start||{},C=u.end?u.end||{}:{year:new Date().getFullYear()},f=h.map(t=>({...t,percent:100/w*t.monthLength}));let b=f,v;function l(t){let m=[...f];t.forEach(g=>{const I=m.find(J=>J.target===g.target);I.isVisible=g.intersectionRatio>=Q,I.isVisible?g.target.classList.add("visible"):g.target.classList.remove("visible")}),n(1,b=m)}function i(t){const m=t.getBoundingClientRect().top+window.pageYOffset,g=d.getBoundingClientRect().top,I=m-g,J=I<100?0:I;"scrollBehavior"in document.documentElement.style?window.scrollTo({top:J,behavior:"smooth"}):window.scrollTo(0,J)}ve(()=>{window.IntersectionObserver&&(v=new IntersectionObserver(l,{threshold:Q}),s.forEach((t,m)=>{f[m]&&(f[m].target=t,v.observe(t))}))}),be(()=>{v&&v.disconnect()});const p=t=>i(t.target);function r(t){ge[t?"unshift":"push"](()=>{d=t,n(0,d)})}return a.$$set=t=>{n(5,e=B(B({},e),E(t))),"events"in t&&n(6,o=t.events),"intersectionNodes"in t&&n(7,s=t.intersectionNodes)},e=E(e),[d,b,D,C,i,e,o,s,p,r]}class $ extends ie{constructor(e){super(),re(this,e,we,Se,se,{events:6,intersectionNodes:7})}}$.__docgen={version:3,name:"Timeline.svelte",data:[{visibility:"public",description:null,keywords:[],name:"events",kind:"let",static:!1,readonly:!1,type:{kind:"type",text:"any",type:"any"}},{visibility:"public",description:null,keywords:[],name:"intersectionNodes",kind:"let",static:!1,readonly:!1,type:{kind:"type",text:"array",type:"array"}}],computed:[],methods:[],components:[],description:null,keywords:[],events:[],slots:[],refs:[]};const ke=oe(ye),Te={title:"Timeline"},M=()=>({Component:$,props:{events:ke}});var Y,X,Z;M.parameters={...M.parameters,docs:{...(Y=M.parameters)==null?void 0:Y.docs,source:{originalSource:`() => ({
   Component: Timeline,
   props: {
     events: experienceData

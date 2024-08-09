@@ -1,4 +1,4 @@
-import{c as l,p,b as d}from"./tooltip-DbdBS14B.js";import{L as m,d as u,a as L}from"./List-CDF3XiAo.js";import"./index-DbVuHXxF.js";import"./lifecycle-DeU8poq5.js";const f=l(p(u)),{coreSkills:I}=p(L),c=d(I,f),_={title:"List"},s=()=>({Component:m,props:{items:c}}),e=()=>({Component:m,props:{items:c,inline:!0}});var t,o,r;s.parameters={...s.parameters,docs:{...(t=s.parameters)==null?void 0:t.docs,source:{originalSource:`() => ({
+import{c as l,p,b as d}from"./tooltip-DbdBS14B.js";import{L as m,d as u,a as L}from"./List-0tmRV3R0.js";import"./index-Ckoa-yNl.js";import"./lifecycle-DeU8poq5.js";const f=l(p(u)),{coreSkills:I}=p(L),c=d(I,f),_={title:"List"},s=()=>({Component:m,props:{items:c}}),e=()=>({Component:m,props:{items:c,inline:!0}});var t,o,r;s.parameters={...s.parameters,docs:{...(t=s.parameters)==null?void 0:t.docs,source:{originalSource:`() => ({
   Component: List,
   props: {
     items: listItems
