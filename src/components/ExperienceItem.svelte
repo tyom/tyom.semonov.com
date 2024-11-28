@@ -69,13 +69,13 @@
 <style>
   @media screen {
     :global(.experience-item)::before {
-      --at-apply: transition duration-200ms;
+      --at-apply: transition duration-200ms; /**/
     }
     :global(.experience-item.visible)::before {
-      --at-apply: text-yellow-500 opacity-100;
+      --at-apply: text-yellow-500 opacity-100; /**/
     }
     :global(.experience-item.contractor.visible)::before {
-      --at-apply: text-blue-500 opacity-100;
+      --at-apply: text-blue-500 opacity-100; /**/
     }
   }
 </style>

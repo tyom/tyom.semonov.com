@@ -120,21 +120,23 @@
 
 <style>
   footer :global(a) {
-    --at-apply: no-underline;
+    text-decoration: none;
 
     &:hover {
-      --at-apply: underline;
+      text-decoration: underline;
     }
   }
 
   @media screen {
     .summary {
       --at-apply: text-black/80 bg-gradient-to-br from-blue-gray-300
-        to-blue-gray-300/0 dark\:text-white/80 dark\:from-blue-gray-950 dark\:to-blue-gray-900/0;
+        to-blue-gray-300/0 dark\:text-white/80 dark\:from-blue-gray-950
+        dark\:to-blue-gray-900/0; /**/
+      /* TODO: Temporary fix for Svelte 5 postprocessor issue: https://github.com/unocss/unocss/issues/3956 */
     }
 
     .summary :global(a):hover {
-      --at-apply: text-black dark\:text-white;
+      --at-apply: text-black dark: text-white; /**/
     }
   }
 </style>

@@ -64,10 +64,10 @@
     }
   }
 
-  @supports (-webkit-mask: radial-gradient(ellipse, #000, #fff)) {
+  @supports (mask: radial-gradient(ellipse, #000, #fff)) {
     main::before {
       content: '';
-      -webkit-mask: radial-gradient(
+      mask: radial-gradient(
         150vw 1000vh ellipse at top left,
         #0000,
         #0003,
@@ -78,7 +78,7 @@
 
   @media print {
     article :global(section + section) {
-      --at-apply: hidden;
+      display: none;
     }
   }
 </style>

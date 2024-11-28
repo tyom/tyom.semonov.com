@@ -125,7 +125,7 @@
           style="width: {event.percent}%"
           on:click={() => scrollTo(event.target)}
           use:tooltip={{ text: event.label }}
-        />
+        ></button>
       {/each}
     </div>
     <div class="year-label">{firstDate.year}</div>
@@ -134,18 +134,18 @@
 
 <style>
   .contract {
-    --at-apply: bg-blue-500 bg-opacity-30 hover\:bg-opacity-60;
+    --at-apply: bg-blue-500 bg-opacity-30 hover\:bg-opacity-60; /**/
   }
 
   .permanent {
-    --at-apply: bg-yellow-500 bg-opacity-30 hover\:bg-opacity-60;
+    --at-apply: bg-yellow-500 bg-opacity-30 hover\:bg-opacity-60; /**/
   }
 
   .btn.on-screen {
-    --at-apply: bg-opacity-100;
+    --at-apply: bg-opacity-100; /**/
   }
 
   .year-label {
-    --at-apply: w-8 md\:w-12 px-1 font-bold text-gray-500 text-[0.6rem];
+    --at-apply: w-8 md\:w-12 px-1 font-bold text-gray-500 text-[0.6rem]; /**/
   }
 </style>

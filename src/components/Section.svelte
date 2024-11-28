@@ -50,11 +50,11 @@
 <style>
   @media screen {
     header {
-      --at-apply: sticky z-10 top-0 leading-none;
+      --at-apply: sticky z-10 top-0 leading-none; /**/
     }
 
     .with-timeline {
-      --at-apply: backdrop-blur-lg bg-gray-100/80 dark\:bg-gray-900/80;
+      --at-apply: backdrop-blur-lg bg-gray-100/80 dark\:bg-gray-900/80; /**/
     }
   }
 </style>
