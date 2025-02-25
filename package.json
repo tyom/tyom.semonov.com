@@ -10,7 +10,7 @@
     "build": "vite build",
     "start": "vite preview",
     "create-pdf": "pnpm playwright test",
-    "predeploy": "rm -rf build && pnpm build && pnpm build-storybook && cp -a storybook-static/. build/storybook && echo tyom.semonov.com > build/CNAME",
+    "predeploy": "rm -rf build && pnpm build && echo tyom.semonov.com > build/CNAME",
     "deploy": "gh-pages -d build --dotfiles",
     "lint": "eslint --ignore-path .gitignore . && prettier --check .",
     "postinstall": "pnpm exec playwright install chromium --with-deps",
