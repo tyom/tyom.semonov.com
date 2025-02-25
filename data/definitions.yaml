@@ -321,3 +321,24 @@
 - name: Figma
   url: https://www.figma.com/
   wikipedia: Figma
+- name: LiveKit
+  url: https://livekit.io/
+  description: LiveKit is a realtime platform that enables developers to build video, voice, and data capabilities into their applications. Building on WebRTC, it supports a broad range of frontend and backend platforms.
+- name: Vercel AI SDK
+  url: https://sdk.vercel.ai/
+  description: The AI SDK is the TypeScript toolkit designed to help developers build AI-powered applications and agents with React, Next.js, Vue, Svelte, Node.js, and more.
+- name: WebRTC
+  url: https://webrtc.org/
+  wikipedia: WebRTC
+- name: WebSockets
+  url: https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API
+  wikipedia: WebSocket
+- name: Azure OpenAI Realtime Audio SDK
+  url: https://github.com/azure-samples/aoai-realtime-audio-sdk
+  description: The Azure OpenAI Realtime Audio SDK is a library that enables developers to build realtime audio applications using Azure OpenAI.
+- name: OpenAI API
+  url: https://openai.com/api/
+  description: The OpenAI API is a REST API that enables developers to build applications using OpenAI's powerful language models.
+- name: Generative AI
+  url: https://en.wikipedia.org/wiki/Generative_AI
+  wikipedia: Generative_AI

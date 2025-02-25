@@ -1,3 +1,25 @@
+- name: tomoro.ai
+  role: AI/UI Developer
+  isContractor: true
+  start:
+    month: October
+    year: 2024
+  description: !md |
+    I built a prototype app and conducted experiments to use AI and realtime audio to help an energy
+    drink company to improve the experience and efficiency delivering their products to the point of sale.
+
+    I also built experimental apps to demo various capabilities of realtime audio and AI vision in browser and mobile apps.
+
+  technologies:
+    - TypeScript
+    - React/React Native
+    - LiveKit
+    - WebSockets
+    - WebRTC
+    - Vercel AI SDK
+    - OpenAI API
+    - Azure OpenAI Realtime Audio SDK
+
 - name: Treecard
   role: React Native Developer
   isContractor: true
