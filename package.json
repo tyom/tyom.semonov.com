@@ -6,7 +6,7 @@
   "version": "0.5.1",
   "license": "MIT",
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vite dev --port 4000",
     "build": "vite build",
     "start": "vite preview",
     "create-pdf": "pnpm playwright test",

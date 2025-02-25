@@ -1,6 +1,6 @@
 import { defineConfig } from '@playwright/test';
 
-const PORT = process.env.PORT || 5173;
+const PORT = process.env.PORT || 4000;
 const serverUrl = `http://localhost:${PORT}`;
 
 export default defineConfig({

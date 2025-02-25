@@ -136,7 +136,7 @@
     }
 
     .summary :global(a):hover {
-      --at-apply: text-black dark: text-white; /**/
+      --at-apply: text-black dark\:text-white; /**/
     }
   }
 </style>
