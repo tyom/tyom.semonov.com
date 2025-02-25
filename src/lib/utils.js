@@ -6,7 +6,7 @@ const renderPluralisedLabel = (label, num) =>
 
 export function getNumberOfMonthsBetweenDates(start, end) {
   const startDate = new Date(`01 ${start.month} ${start.year}`);
-  const endDate = new Date(`01 ${end.month} ${end.year}`);
+  const endDate = end ? new Date(`01 ${end.month} ${end.year}`) : new Date();
 
   // Adding a full month to round up the difference > 1 month
   return differenceInMonths(endDate, startDate) + 1;
