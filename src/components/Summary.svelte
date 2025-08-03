@@ -15,20 +15,22 @@
   export let pdfLink;
 </script>
 
-<div class="summary p-8 md:p-12 print:!p-0 flex flex-1 flex-col gap-4 text-sm">
-  <h1 class="font-bold tracking-wide leading-none text-[2.9em]">
+<div
+  class="summary text-foreground/90 flex flex-1 flex-col gap-4 bg-gradient-to-br from-gray-300
+    to-gray-300/0 p-8 text-sm md:p-10 dark:from-gray-950 dark:to-gray-900/0 print:!p-0"
+>
+  <h1 class="text-[2.9em] leading-none font-bold tracking-wide">
     {name}
   </h1>
-  <h2 class="leading-none opacity-60 text-[1.4em]">{title}</h2>
-  <div class="max-w-[60ch] leading-snug space-y-4">
-    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+  <h2 class="text-xl leading-none opacity-60">{title}</h2>
+  <div class="max-w-[60ch] space-y-4 leading-snug">
     {@html details}
   </div>
   {#if coreSkills || currentInterests}
     <div class="skill-set space-y-4">
       {#if coreSkills}
         <section class="space-y-1">
-          <h3 class="font-bold text-[1.1em]">Core skills</h3>
+          <h3 class="text-[1.1em] font-bold">Core skills</h3>
           <List items={coreSkills} />
         </section>
       {/if}
@@ -43,14 +45,14 @@
   {#if social || pdfLink}
     <hr class="my-4" />
     <footer class="sticky top-10">
-      <div class="flex items-center justify-between -mx-2 -mt-2 print:mt-0">
+      <div class="-mx-2 -mt-2 flex items-center justify-between print:mt-0">
         {#if social}
           <div class="flex print:flex-col">
             {#each social as item}
               <a
                 href={item.url}
                 title={item.label}
-                class="flex gap-2 p-2 transition-transform-100 hover:scale-125 print:py-1"
+                class="transition-transform-100 flex gap-2 p-2 hover:scale-125 print:py-1"
               >
                 <Icon
                   name={item.icon}
@@ -68,7 +70,7 @@
           <div class="download print:hidden">
             <a
               href={pdfLink}
-              class="p-2 flex gap-3 group"
+              class="group flex items-center gap-1 p-2"
               title="Open PDF version"
               aria-label="Download PDF"
               target="_blank"
@@ -76,11 +78,11 @@
                 posthog.capture('click-pdf-download');
               }}
             >
-              <span class="text-sm">Download</span>
+              <span class="text-xs">Download PDF</span>
               <Icon
                 name="pdf"
                 label="PDF"
-                class="size-6 transition-transform-200 group-hover:scale-125"
+                class="transition-transform-200 size-6 group-hover:scale-125"
               />
             </a>
           </div>
@@ -89,12 +91,11 @@
       {#if contact}
         <dl class="contact">
           {#each Object.entries(contact) as [type, details]}
-            <div class="flex gap-2 items-center">
+            <div class="flex items-center gap-2">
               <dt class="hidden print:block">
                 <Icon name={type} label={type} class="size-6 print:size-4" />
               </dt>
               <dd>
-                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
                 {@html details}
               </dd>
             </div>
@@ -104,7 +105,7 @@
     </footer>
   {/if}
   <div
-    class="hidden print:block break-before-page space-y-1 absolute bottom-0 left-0"
+    class="absolute bottom-0 left-0 hidden break-before-page space-y-1 print:block"
   >
     <p class="flex items-center gap-2 leading-none">
       <Icon name="info" class="size-8" />
@@ -128,15 +129,8 @@
   }
 
   @media screen {
-    .summary {
-      --at-apply: text-black/80 bg-gradient-to-br from-blue-gray-300
-        to-blue-gray-300/0 dark\:text-white/80 dark\:from-blue-gray-950
-        dark\:to-blue-gray-900/0; /**/
-      /* TODO: Temporary fix for Svelte 5 postprocessor issue: https://github.com/unocss/unocss/issues/3956 */
-    }
-
     .summary :global(a):hover {
-      --at-apply: text-black dark\:text-white; /**/
+      color: light-dark(var(--color-black), var(--color-white));
     }
   }
 </style>

@@ -12,15 +12,19 @@
   let intersectionNodes;
   let sectionEl;
 
+  $: timelineClass = showTimeline
+    ? 'backdrop-blur-lg bg-gray-100/80 dark:bg-gray-900/80 print:bg-transparent print:dark:bg-transparent'
+    : '';
+
   onMount(() => {
     intersectionNodes = sectionEl.querySelectorAll('.experience-item');
   });
 </script>
 
 <section bind:this={sectionEl}>
-  <header class:with-timeline={showTimeline}>
+  <header class="sticky top-0 z-10 leading-none {timelineClass}">
     <h2
-      class="text-2xl text-gray-500 uppercase font-bold tracking-wide p-8 md:px-12 print:(!p-0 !pb-6) break-inside-avoid-page break-after-avoid-page"
+      class="break-inside-avoid-page break-after-avoid-page p-8 text-2xl font-bold tracking-wide text-gray-500 uppercase md:px-12 print:p-0 print:pb-6"
     >
       {title}
     </h2>
@@ -34,7 +38,7 @@
   </header>
   {#if items.length}
     <div
-      class="divided space-y-4 p-8 md:p-12 pt-0 md:pt-0 print:!p-0"
+      class="divided space-y-4 p-8 pt-0 md:p-12 md:pt-0 print:!p-0"
       class:!pt-8={showTimeline}
     >
       {#each items as item, idx}
@@ -46,15 +50,3 @@
     </div>
   {/if}
 </section>
-
-<style>
-  @media screen {
-    header {
-      --at-apply: sticky z-10 top-0 leading-none; /**/
-    }
-
-    .with-timeline {
-      --at-apply: backdrop-blur-lg bg-gray-100/80 dark\:bg-gray-900/80; /**/
-    }
-  }
-</style>

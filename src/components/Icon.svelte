@@ -1,18 +1,20 @@
 <script>
-  import GitHub from 'virtual:icons/fa6-brands/github';
-  import LinkedIn from 'virtual:icons/fa6-brands/linkedin';
-  import PDF from 'virtual:icons/fa6-regular/file-pdf';
-  import InfoSymbol from 'virtual:icons/material-symbols/info-outline-rounded';
-  import Email from 'virtual:icons/majesticons/mail-line';
-  import Globe from 'virtual:icons/la/globe';
+  import {
+    Github,
+    Linkedin,
+    Globe,
+    Mail,
+    Info,
+    FileDown,
+  } from '@lucide/svelte';
 
   const icons = {
-    github: GitHub,
-    linkedin: LinkedIn,
+    github: Github,
+    linkedin: Linkedin,
     web: Globe,
-    email: Email,
-    pdf: PDF,
-    info: InfoSymbol,
+    email: Mail,
+    pdf: FileDown,
+    info: Info,
   };
 
   export let name;

@@ -13,6 +13,6 @@
     url: descriptionUrl,
     resultProp: 'extract',
   }}
-  class="px-1 -mx-1 rounded hover:bg-black/10 dark:hover:bg-white/10"
+  class="-mx-1 rounded px-1 hover:bg-black/10 dark:hover:bg-white/10"
   ><slot /></a
 >

@@ -1,4 +1,19 @@
+@import 'tailwindcss';
+
+@theme {
+  --popper-foreground: light-dark(var(--color-gray-200), var(--color-gray-800));
+  --popper-background: light-dark(var(--color-gray-950), var(--color-gray-200));
+
+  --color-background: light-dark(var(--color-gray-100), var(--color-gray-900));
+  --color-foreground: light-dark(var(--color-gray-800), var(--color-gray-200));
+}
+
 :root {
+  color-scheme: light dark;
+
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -23,6 +38,28 @@ hr,
   content: none;
 }
 
+@layer components {
+  .year-label {
+    @apply w-8 px-1 text-[0.6rem] font-bold text-gray-500 md:w-12;
+  }
+
+  .timeline-bar {
+    @apply min-w-[4px] bg-zinc-300 opacity-30 duration-200 hover:bg-zinc-400 hover:transition-colors;
+
+    &.contract {
+      @apply bg-blue-500 hover:opacity-60;
+    }
+
+    &.permanent {
+      @apply bg-yellow-500 opacity-30 hover:opacity-60;
+    }
+
+    &.on-screen {
+      @apply opacity-100;
+    }
+  }
+}
+
 @media screen {
   a {
     text-decoration: underline;
@@ -37,6 +74,8 @@ hr,
 @media print {
   :root {
     font-size: 10.5pt;
+    color: #000;
+    background-color: #fff;
   }
 
   .popper {

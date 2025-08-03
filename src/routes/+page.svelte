@@ -27,8 +27,8 @@
 </svelte:head>
 
 <main
-  class="flex flex-col lg:flex-row min-h-screen print:(grid gap-8 grid-cols-[1fr_2fr])
-    bg-gray-100 text-gray-900 dark:(bg-gray-900 text-gray-200) relative"
+  class="relative flex min-h-screen flex-col lg:flex-row
+    print:grid print:grid-cols-[1fr_2fr] print:gap-8"
 >
   <aside class="flex flex-col lg:flex-1">
     <Summary {...summary} pdfLink="tyom-semonov-cv.pdf" />
@@ -42,7 +42,11 @@
 
 <style>
   main::before {
-    --at-apply: absolute pointer-events-none z-0 inset-0 opacity-10;
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    inset: 0;
+    opacity: 0.1;
     background: repeating-linear-gradient(
       30deg,
       #0003 0px,

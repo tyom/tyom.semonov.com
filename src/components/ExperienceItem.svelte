@@ -20,7 +20,7 @@
 </script>
 
 <div
-  class="experience-item space-y-4 break-inside-avoid-page max-w-[70ch]"
+  class="experience-item before:duration-200ms max-w-[70ch] break-inside-avoid-page space-y-4 before:transition-all"
   class:contractor={isContractor}
   class:print:hidden={!includeInPrint}
 >
@@ -36,16 +36,16 @@
         <span class="text-gray-500">({location})</span>
       {/if}
     </div>
-    <h3 class="font-bold leading-tight text-[1.25em]">
+    <h3 class="text-[1.25em] leading-tight font-bold">
       {name}
     </h3>
     <div class="text-gray-500">
       {role}
       {#if isContractor}
         <span
-          class="inline-block align-middle text-[0.6rem] font-bold uppercase py-0.5 px-1 rounded bg-blue-400/15
-                text-blue-950 dark:text-blue-100
-                print:(text-gray-600 border border-zinc-300 bg-none ml-1 text-xs)"
+          class="ml-1 inline-block rounded bg-blue-400/15 bg-none px-1 py-0.5
+            align-middle text-[0.6rem]
+            font-bold text-blue-950 uppercase dark:text-blue-100 print:text-xs print:text-gray-600"
         >
           Contract
         </span>
@@ -54,7 +54,6 @@
   </header>
   {#if description}
     <div class="max-w-[70ch] space-y-4">
-      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
       {@html description}
     </div>
   {/if}
@@ -68,14 +67,13 @@
 
 <style>
   @media screen {
-    :global(.experience-item)::before {
-      --at-apply: transition duration-200ms; /**/
-    }
     :global(.experience-item.visible)::before {
-      --at-apply: text-yellow-500 opacity-100; /**/
+      color: var(--color-yellow-500);
+      opacity: 1;
     }
     :global(.experience-item.contractor.visible)::before {
-      --at-apply: text-blue-500 opacity-100; /**/
+      color: var(--color-blue-500);
+      opacity: 1;
     }
   }
 </style>

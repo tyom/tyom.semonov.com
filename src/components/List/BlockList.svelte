@@ -6,7 +6,7 @@
   const separator = (idx, list) => (idx < list.length - 1 ? ', ' : '');
 </script>
 
-<ul class="pl-5 list-disc">
+<ul class="list-disc pl-5">
   {#each items as item}
     <li>
       {#if item.links}
