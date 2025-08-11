@@ -24,6 +24,7 @@ export function formatMonthsToYearsAndMonths(totalMonths) {
     .join(', ');
 }
 
+// Used only in Storybook stories - production uses linkTerms from data.js
 export function buildList(list = [], linkerFn = (item) => [{ name: item }]) {
   return list.map((item) => {
     const result = { name: item, links: linkerFn(item) };
