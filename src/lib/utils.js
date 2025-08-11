@@ -41,8 +41,14 @@ export function buildList(list = [], linkerFn = (item) => [{ name: item }]) {
 export function createDefinitionFinder(definitions = []) {
   const separatorRe = /\s?,|\/\s?/;
 
+  // Cache regex patterns for each definition to avoid recreating them
+  const definitionPatterns = definitions.map((d) => ({
+    ...d,
+    pattern: new RegExp(`^${d.name}$`, 'i'),
+  }));
+
   const define = (term) =>
-    definitions.find((d) => term.match(new RegExp(`^${d.name}$`, 'i'))) || {
+    definitionPatterns.find((d) => term.match(d.pattern)) || {
       name: term,
     };
 

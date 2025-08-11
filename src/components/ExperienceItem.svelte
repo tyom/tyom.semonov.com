@@ -54,6 +54,7 @@
   </header>
   {#if description}
     <div class="max-w-[70ch] space-y-4">
+      <!-- Safe: description is from developer-controlled YAML files, pre-rendered via markdown-it -->
       {@html description}
     </div>
   {/if}

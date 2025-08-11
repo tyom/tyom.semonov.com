@@ -23,7 +23,7 @@ export function parseYaml(yamlData) {
   try {
     return yaml.load(yamlData, { schema: YAML_SCHEMA });
   } catch (error) {
-    console.error('Failed to parse YAML data');
-    throw new Error(error);
+    console.error('Failed to parse YAML data', error);
+    throw error;
   }
 }

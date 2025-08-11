@@ -24,6 +24,7 @@
   </h1>
   <h2 class="text-xl leading-none opacity-60">{title}</h2>
   <div class="max-w-[60ch] space-y-4 leading-snug">
+    <!-- Safe: details is from developer-controlled YAML files, pre-rendered via markdown-it -->
     {@html details}
   </div>
   {#if coreSkills || currentInterests}
@@ -96,6 +97,7 @@
                 <Icon name={type} label={type} class="size-6 print:size-4" />
               </dt>
               <dd>
+                <!-- Safe: contact details from developer-controlled YAML files, pre-rendered via markdown-it -->
                 {@html details}
               </dd>
             </div>
