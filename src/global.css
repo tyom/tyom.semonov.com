@@ -1,11 +1,25 @@
 @import 'tailwindcss';
 
-@theme {
-  --popper-foreground: light-dark(var(--color-gray-200), var(--color-gray-800));
-  --popper-background: light-dark(var(--color-gray-950), var(--color-gray-200));
+@custom-variant dark (&:where(.dark, .dark *));
 
-  --color-background: light-dark(var(--color-gray-100), var(--color-gray-900));
-  --color-foreground: light-dark(var(--color-gray-800), var(--color-gray-200));
+@theme {
+  --popper-foreground: var(--color-gray-200);
+  --popper-background: var(--color-gray-950);
+
+  --color-background: var(--color-gray-100);
+  --color-foreground: var(--color-gray-800);
+}
+
+@layer theme {
+  :root {
+    @variant dark {
+      --popper-foreground: var(--color-gray-800);
+      --popper-background: var(--color-gray-200);
+
+      --color-background: var(--color-gray-900);
+      --color-foreground: var(--color-gray-200);
+    }
+  }
 }
 
 :root {

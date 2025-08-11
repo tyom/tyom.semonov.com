@@ -8,6 +8,20 @@
       href="https://fonts.googleapis.com/css?family=Roboto:400,700"
       rel="stylesheet"
     />
+    <script>
+      function updateColorScheme() {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+      updateColorScheme();
+
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', updateColorScheme);
+    </script>
     %sveltekit.head%
   </head>
   <body>
