@@ -4,13 +4,13 @@ import { mergeConfig, searchForWorkspaceRoot } from 'vite';
 export default {
   stories: ['../stories/*.stories.js'],
   staticDirs: ['../static'],
-  addons: [{ name: '@storybook/addon-essentials' }],
-  docs: { autodocs: 'tag' },
+
   framework: {
     name: '@storybook/sveltekit',
     options: {},
   },
-  async viteFinal(config, { configType }) {
+
+  async viteFinal(config) {
     config.resolve.alias = {
       $src: path.resolve(__dirname, '../src'),
       $components: path.resolve(__dirname, '../src/components'),
